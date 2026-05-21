@@ -8,12 +8,11 @@ describe("Navbar", () => {
     const user = userEvent.setup();
     render(<Navbar />);
 
-    expect(screen.queryByText(/order via instagram/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/đặt hàng qua instagram/i)).not.toBeInTheDocument();
 
-    const openButton = screen.getByRole("button", { name: /open menu/i });
+    const openButton = screen.getByRole("button", { name: /mở menu/i });
     await user.click(openButton);
 
-    expect(screen.getByText(/order via instagram/i)).toBeInTheDocument();
+    expect(screen.getByText(/đặt hàng qua instagram/i)).toBeInTheDocument();
   });
 });
-

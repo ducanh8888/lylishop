@@ -1,7 +1,7 @@
 export type Product = {
   slug: string;
   name: string;
-  priceUsd: number;
+  priceVnd: number;
   shortDescription: string;
   longDescription: string;
   rating: number;
@@ -18,88 +18,88 @@ export type Product = {
 export const PRODUCTS: Product[] = [
   {
     slug: "crochet-bear-keychain",
-    name: "Crochet Bear Keychain",
-    priceUsd: 14,
-    shortDescription: "A tiny teddy with a soft blush nose and gold clasp.",
+    name: "Móc khóa Gấu crochet",
+    priceVnd: 89000,
+    shortDescription: "Gấu nhỏ xinh, mềm tay, kèm khoen vàng chắc chắn.",
     longDescription:
-      "A pocket-sized bear crocheted with premium yarn for a plush, cozy feel. Finished with a sturdy gold clasp so it’s ready for keys, bags, or zipper pulls.",
+      "Móc khóa gấu crochet handmade từ sợi len mềm, lên form gọn gàng. Hoàn thiện kèm khoen vàng chắc chắn, hợp treo chìa khóa, túi xách hoặc balo.",
     rating: 4.9,
     reviewCount: 128,
     image: {
       src: "/products/crochet-bear-keychain.png",
-      alt: "Handmade crochet bear keychain with soft pink background and gold clasp",
+      alt: "Móc khóa gấu crochet handmade nền hồng nhạt, khoen vàng",
       width: 1200,
       height: 1200,
     },
-    highlights: ["Gift-ready packaging", "Soft premium yarn", "Sturdy clasp"],
+    highlights: ["Đóng gói quà xinh", "Len mềm cao cấp", "Khoen chắc chắn"],
   },
   {
     slug: "strawberry-yarn-charm",
-    name: "Strawberry Yarn Charm",
-    priceUsd: 12,
-    shortDescription: "Sweet strawberry charm for bags, pouches, and keys.",
+    name: "Charm Dâu tây crochet",
+    priceVnd: 79000,
+    shortDescription: "Dâu tây ngọt ngào, hợp treo túi, ví, chìa khóa.",
     longDescription:
-      "A cute strawberry charm with embroidered seeds and a leafy top. Lightweight, durable, and perfect for adding a pop of sweetness to your everyday essentials.",
+      "Charm dâu tây crochet với hạt thêu tỉ mỉ và phần lá gọn xinh. Nhẹ, bền, dễ phối đồ và làm quà tặng siêu đáng yêu.",
     rating: 4.8,
     reviewCount: 96,
     image: {
       src: "/products/strawberry-yarn-charm.png",
-      alt: "Handmade crochet strawberry charm keychain on light pink background",
+      alt: "Charm dâu tây crochet handmade nền hồng phấn",
       width: 1200,
       height: 1200,
     },
-    highlights: ["Lightweight", "Neat stitching", "Perfect gift add-on"],
+    highlights: ["Nhẹ và bền", "Mũi len gọn", "Rất hợp làm quà"],
   },
   {
     slug: "tulip-crochet-keychain",
-    name: "Tulip Crochet Keychain",
-    priceUsd: 9,
-    shortDescription: "A delicate tulip bloom, crocheted petal by petal.",
+    name: "Móc khóa Hoa tulip crochet",
+    priceVnd: 59000,
+    shortDescription: "Tulip tối giản, lên ảnh xinh và tinh tế.",
     longDescription:
-      "A minimal tulip keychain inspired by spring bouquets. Clean silhouette, soft touch, and an easy match for backpacks, tote bags, and pencil cases.",
+      "Móc khóa tulip crochet lấy cảm hứng từ bó hoa mùa xuân. Dáng gọn, màu dịu, hợp treo balo, túi tote hoặc hộp bút.",
     rating: 4.9,
     reviewCount: 74,
     image: {
       src: "/products/tulip-crochet-keychain.png",
-      alt: "Handmade crochet tulip keychain with rose pink petals on soft white background",
+      alt: "Móc khóa hoa tulip crochet màu hồng rose, nền trắng hồng",
       width: 1200,
       height: 1200,
     },
-    highlights: ["Smooth finish", "Cute boutique style", "Great for students"],
+    highlights: ["Form gọn đẹp", "Phong cách boutique", "Hợp học sinh - sinh viên"],
   },
   {
     slug: "bunny-plush-charm",
-    name: "Bunny Plush Charm",
-    priceUsd: 15,
-    shortDescription: "Fluffy bunny charm with long ears and gentle vibe.",
+    name: "Charm Thỏ bông crochet",
+    priceVnd: 99000,
+    shortDescription: "Thỏ tai dài, vibe mềm mại, dễ thương hết nấc.",
     longDescription:
-      "A plush-style bunny charm made for cozy aesthetics. Designed with rounded edges and soft textures, plus a secure clasp for everyday use.",
+      "Charm thỏ crochet kiểu bông mềm, thiết kế bo tròn đáng yêu. Hoàn thiện chắc chắn, phù hợp dùng hằng ngày và tặng bạn bè.",
     rating: 5.0,
     reviewCount: 63,
     image: {
       src: "/products/bunny-plush-charm.png",
-      alt: "Handmade crochet bunny plush charm keychain photographed on pink gradient background",
+      alt: "Charm thỏ bông crochet handmade nền hồng nhạt",
       width: 1200,
       height: 1200,
     },
-    highlights: ["Super soft texture", "Iconic long ears", "Handmade with love"],
+    highlights: ["Cảm giác mềm tay", "Tai dài đặc trưng", "Làm thủ công tỉ mỉ"],
   },
   {
     slug: "cat-paw-crochet-accessory",
-    name: "Cat Paw Crochet Accessory",
-    priceUsd: 10,
-    shortDescription: "Tiny paw pad details with a satisfying squishy look.",
+    name: "Phụ kiện Bàn chân mèo crochet",
+    priceVnd: 69000,
+    shortDescription: "Chi tiết đệm chân thêu xinh, nhìn “mềm” cực đã.",
     longDescription:
-      "A kawaii-inspired cat paw accessory featuring embroidered paw pads and a glossy clasp. Ideal for keyrings, phone straps, and mini pouches.",
+      "Phụ kiện bàn chân mèo crochet phong cách kawaii, thêu đệm chân tỉ mỉ. Hợp treo móc khóa, dây điện thoại hoặc túi mini.",
     rating: 4.8,
     reviewCount: 82,
     image: {
       src: "/products/cat-paw-crochet-accessory.png",
-      alt: "Handmade crochet cat paw accessory with cute paw pad details",
+      alt: "Phụ kiện bàn chân mèo crochet với chi tiết đệm chân",
       width: 1200,
       height: 1200,
     },
-    highlights: ["Kawaii look", "Neat embroidery", "Easy to clip on"],
+    highlights: ["Phong cách kawaii", "Thêu gọn đẹp", "Dễ kẹp - dễ treo"],
   },
 ];
 

@@ -19,11 +19,6 @@ export function websiteJsonLd() {
     "@type": "WebSite",
     name: SITE.name,
     url: SITE.url,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE.url}/products?query={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   } as const;
 }
 
@@ -57,8 +52,8 @@ export function productJsonLd(product: Product) {
     offers: {
       "@type": "Offer",
       url: `${SITE.url}/products/${product.slug}`,
-      priceCurrency: "USD",
-      price: product.priceUsd.toFixed(2),
+      priceCurrency: "VND",
+      price: product.priceVnd.toString(),
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
     },

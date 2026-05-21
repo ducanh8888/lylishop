@@ -8,36 +8,36 @@ import { Card } from "@/components/ui/card";
 import { CopyToClipboard } from "@/components/CopyToClipboard";
 import { FadeUp } from "@/components/motion/Reveal";
 
-const ORDER_TEMPLATE = `Hi LyliShop 👋
+const ORDER_TEMPLATE = `Xin chào LyliShop 👋
 
-I’d like to order:
-- Product:
-- Color:
-- Quantity:
+Mình muốn đặt:
+- Sản phẩm:
+- Màu:
+- Số lượng:
 
-Delivery info:
-- Name:
-- Phone:
-- Address:
+Thông tin nhận hàng:
+- Tên:
+- SĐT:
+- Địa chỉ:
 
-Thank you!`;
+Cảm ơn shop!`;
 
 export function ContactSection() {
   return (
     <section id="order" className="bg-gradient-to-b from-rose-50 to-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Contact / Order"
-          title="Order Through Social Media"
-          description="No checkout needed. Message us on your favorite app and we’ll confirm details, customization, and shipping."
+          eyebrow="Liên hệ / Đặt hàng"
+          title="Đặt hàng qua mạng xã hội"
+          description="Không cần giỏ hàng hay thanh toán trên web. Bạn nhắn shop trên app bạn dùng, shop sẽ xác nhận mẫu, tùy chỉnh và phí ship."
         />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           <FadeUp>
             <Card className="h-full border-border/70 bg-white/60 p-6 shadow-sm backdrop-blur-md">
-              <h3 className="font-display text-lg font-semibold">Choose a channel</h3>
+              <h3 className="font-display text-lg font-semibold">Chọn kênh liên hệ</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Fast replies and friendly help with customization.
+                Shop phản hồi nhanh và hỗ trợ tùy chỉnh màu/mẫu theo yêu cầu.
               </p>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -70,9 +70,9 @@ export function ContactSection() {
               <div className="mt-6 rounded-lg border border-border/70 bg-background/60 p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="text-sm font-medium">Tip</p>
+                    <p className="text-sm font-medium">Gợi ý</p>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      Send a screenshot of the product you like for the fastest order.
+                      Gửi ảnh chụp sản phẩm bạn thích để shop xử lý nhanh nhất.
                     </p>
                   </div>
                   <div className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary/10 text-primary">
@@ -85,9 +85,9 @@ export function ContactSection() {
 
           <FadeUp delay={0.06}>
             <Card className="h-full border-border/70 bg-white/60 p-6 shadow-sm backdrop-blur-md">
-              <h3 className="font-display text-lg font-semibold">Message template</h3>
+              <h3 className="font-display text-lg font-semibold">Mẫu tin nhắn</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Copy this template and paste it into your chat. Edit the product name and colors.
+                Sao chép mẫu này và dán vào chat. Bạn chỉ cần điền tên sản phẩm và màu mong muốn.
               </p>
 
               <pre className="mt-4 whitespace-pre-wrap rounded-lg border border-border/70 bg-background/60 p-4 text-sm leading-6 text-foreground/90">
@@ -95,7 +95,7 @@ export function ContactSection() {
               </pre>
 
               <div className="mt-4">
-                <CopyToClipboard text={ORDER_TEMPLATE} label="Copy template" />
+                <CopyToClipboard text={ORDER_TEMPLATE} label="Sao chép mẫu tin nhắn" />
               </div>
             </Card>
           </FadeUp>
@@ -104,3 +104,4 @@ export function ContactSection() {
     </section>
   );
 }
+

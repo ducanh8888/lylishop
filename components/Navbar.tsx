@@ -17,12 +17,12 @@ import {
 } from "@/components/ui/sheet";
 
 const NAV_LINKS: Array<{ label: string; href: string }> = [
-  { label: "Products", href: "#featured" },
-  { label: "Why Us", href: "#why" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Order", href: "#order" },
+  { label: "Sản phẩm", href: "#featured" },
+  { label: "Vì sao chọn", href: "#why" },
+  { label: "Bộ sưu tập", href: "#gallery" },
+  { label: "Đánh giá", href: "#reviews" },
+  { label: "Hỏi đáp", href: "#faq" },
+  { label: "Đặt hàng", href: "#order" },
 ];
 
 function NavLinks({
@@ -33,7 +33,7 @@ function NavLinks({
   itemWrapper?: (node: React.ReactNode, key: string) => React.ReactNode;
 }) {
   return (
-    <ul className={cn("flex items-center gap-1", className)} aria-label="Primary">
+    <ul className={cn("flex items-center gap-1", className)} aria-label="Điều hướng chính">
       {NAV_LINKS.map((l) => {
         const link = (
           <Link
@@ -54,8 +54,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/75 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2" aria-label={`${SITE.name} home`}>
-          <Image src={SITE.logo} alt="LyliShop logo" width={28} height={28} priority />
+        <Link href="/" className="flex items-center gap-2" aria-label={`Trang chủ ${SITE.name}`}>
+          <Image src={SITE.logo} alt="Logo LyliShop" width={28} height={28} priority />
           <span className="font-display text-base font-semibold tracking-tight">
             {SITE.name}
           </span>
@@ -67,21 +67,21 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Button asChild variant="outline" className="hidden sm:inline-flex">
-            <Link href="#featured" aria-label="Browse featured products">
+            <Link href="#featured" aria-label="Xem sản phẩm nổi bật">
               <Sparkles className="h-4 w-4" />
-              Featured
+              Nổi bật
             </Link>
           </Button>
 
           <Button asChild className="hidden sm:inline-flex">
-            <Link href="#order" aria-label="Jump to order section">
-              Order Now
+            <Link href="#order" aria-label="Đi tới mục đặt hàng">
+              Đặt hàng
             </Link>
           </Button>
 
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="md:hidden" aria-label="Open menu">
+              <Button variant="outline" size="icon" className="md:hidden" aria-label="Mở menu">
                 <Menu className="h-4 w-4" />
               </Button>
             </SheetTrigger>
@@ -101,16 +101,16 @@ export function Navbar() {
               </div>
               <div className="mt-4 grid gap-2">
                 <Button asChild>
-                  <Link href="#order">Order Now</Link>
+                  <Link href="#order">Đặt hàng</Link>
                 </Button>
                 <Button asChild variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                    Order via Instagram
+                    Đặt hàng qua Instagram
                   </a>
                 </Button>
               </div>
               <p className="mt-4 text-xs text-muted-foreground">
-                Handmade crochet keychains with gift-ready packaging and customizable designs.
+                Móc khóa crochet handmade. Đóng gói quà xinh. Có thể tùy chỉnh màu sắc theo yêu cầu.
               </p>
             </SheetContent>
           </Sheet>

@@ -13,28 +13,28 @@ import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 
 const REASONS = [
   {
-    title: "Handmade with love",
-    description: "Carefully crocheted, stitched, and finished by hand.",
+    title: "Thủ công tỉ mỉ",
+    description: "Móc tay, khâu tay, hoàn thiện kỹ từng chi tiết.",
     icon: HeartHandshake,
   },
   {
-    title: "Premium yarn materials",
-    description: "Soft texture, clean shape, and a cozy look that lasts.",
+    title: "Len cao cấp",
+    description: "Mềm tay, lên form gọn, nhìn xinh và bền theo thời gian.",
     icon: Sparkles,
   },
   {
-    title: "Cute gift packaging",
-    description: "Boutique-style packaging that feels instantly special.",
+    title: "Đóng gói quà xinh",
+    description: "Phong cách boutique, mở ra là thấy “xịn” ngay.",
     icon: PackageCheck,
   },
   {
-    title: "Customizable designs",
-    description: "Pick your colors or request small add-ons for a personal touch.",
+    title: "Tùy chỉnh theo yêu cầu",
+    description: "Chọn màu, thêm nơ/hoa/chi tiết nhỏ để đúng gu của bạn.",
     icon: Palette,
   },
   {
-    title: "Fast shipping support",
-    description: "Quick replies and helpful tracking updates via chat.",
+    title: "Hỗ trợ giao hàng nhanh",
+    description: "Trả lời nhanh và cập nhật đơn hàng rõ ràng qua chat.",
     icon: Truck,
   },
 ];
@@ -44,9 +44,9 @@ export function WhyChooseUsSection() {
     <section id="why" className="bg-gradient-to-b from-rose-50 to-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Why LyliShop"
-          title="Soft Luxury, Handmade Details"
-          description="We focus on premium stitching, consistent finishing, and a smooth ordering experience through the social apps you already use."
+          eyebrow="Vì sao LyliShop"
+          title="Mềm sang, handmade chỉn chu"
+          description="Tụi mình tập trung vào mũi len gọn đẹp, hoàn thiện đồng đều và trải nghiệm đặt hàng đơn giản qua các app bạn dùng hằng ngày."
         />
 
         <Stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -75,4 +75,3 @@ export function WhyChooseUsSection() {
     </section>
   );
 }
-

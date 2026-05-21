@@ -7,10 +7,10 @@ describe("HomePage", () => {
     render(<HomePage />);
 
     expect(
-      screen.getByRole("heading", { level: 1, name: /tiny handmade gifts/i })
+      screen.getByRole("heading", { level: 1, name: /món quà handmade/i })
     ).toBeInTheDocument();
 
-    expect(screen.getByRole("link", { name: /order now/i })).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: /đặt hàng/i }).length).toBeGreaterThan(0);
 
     // Sections present
     expect(document.querySelector("#featured")).toBeTruthy();
@@ -21,4 +21,3 @@ describe("HomePage", () => {
     expect(document.querySelector("#order")).toBeTruthy();
   });
 });
-

@@ -36,7 +36,7 @@ export const DEFAULT_METADATA: Metadata = {
         url: SITE.ogImage,
         width: 1200,
         height: 630,
-        alt: "LyliShop — Handmade crochet keychains and cute yarn accessories",
+        alt: "LyliShop - Móc khóa crochet handmade và phụ kiện len cute",
       },
     ],
   },
@@ -54,3 +54,4 @@ export const DEFAULT_METADATA: Metadata = {
     apple: [{ url: "/apple-touch-icon.png" }],
   },
 };
+

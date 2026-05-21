@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="vi">
       <body className={cn(inter.variable, jakarta.variable, "min-h-screen font-sans")}>
         <SkipToContent />
         <Navbar />

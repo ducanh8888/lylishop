@@ -13,9 +13,9 @@ export function FeaturedProductsSection() {
     <section id="featured" className="bg-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Featured"
-          title="Best‑Loved Crochet Keychains"
-          description="A curated set of cute, giftable favorites. Each piece is handmade, so tiny details may vary in the most charming way."
+          eyebrow="Nổi bật"
+          title="Móc khóa crochet được yêu thích"
+          description="Một vài mẫu xinh, dễ tặng, dễ dùng. Vì là hàng handmade nên chi tiết nhỏ có thể hơi khác nhau, nhưng vẫn rất đáng yêu."
         />
 
         <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -28,8 +28,8 @@ export function FeaturedProductsSection() {
 
         <div className="mt-10 flex justify-center">
           <Button asChild variant="outline" size="lg">
-            <Link href="/products" aria-label="See all products">
-              View all products
+            <Link href="/products" aria-label="Xem tất cả sản phẩm">
+              Xem tất cả sản phẩm
               <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>

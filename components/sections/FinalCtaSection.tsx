@@ -19,26 +19,26 @@ export function FinalCtaSection() {
           </FadeUp>
           <FadeUp delay={0.06}>
             <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-              Make someone smile with a tiny handmade gift.
+              Tặng một món quà handmade nhỏ xinh, ai cũng sẽ mỉm cười.
             </h2>
           </FadeUp>
           <FadeUp delay={0.12}>
             <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
-              Pick a design, choose your colors, and we’ll craft it with care. Order in minutes
-              through Instagram, TikTok, Facebook, or Zalo.
+              Chọn mẫu, chọn màu, shop làm tỉ mỉ. Đặt hàng trong vài phút qua Instagram, TikTok,
+              Facebook hoặc Zalo.
             </p>
           </FadeUp>
           <FadeUp delay={0.18}>
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row sm:items-center">
               <Button asChild size="lg">
                 <Link href="#order">
-                  Order Now
+                  Đặt hàng
                   <Sparkles className="h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                  Order via Instagram
+                  Đặt qua Instagram
                 </a>
               </Button>
             </div>

@@ -4,6 +4,7 @@ import { HeartHandshake, Package, Palette, Sparkles } from "lucide-react";
 
 import { SITE } from "@/lib/site";
 import { FEATURED_PRODUCTS } from "@/lib/products";
+import { formatVnd } from "@/lib/format";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -22,42 +23,42 @@ export function HeroSection() {
           <div className="max-w-xl">
             <FadeUp>
               <div className="flex flex-wrap items-center gap-2">
-                <Badge variant="pink">Handmade crochet</Badge>
-                <Badge variant="secondary">Gift-ready</Badge>
-                <Badge>Custom colors</Badge>
+                <Badge variant="pink">Crochet thủ công</Badge>
+                <Badge variant="secondary">Đóng gói quà</Badge>
+                <Badge>Tùy chỉnh màu</Badge>
               </div>
             </FadeUp>
 
             <FadeUp delay={0.05}>
               <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                Tiny Handmade Gifts{" "}
-                <span className="text-primary">Full of Warmth</span>.
+                Món quà handmade nhỏ xinh{" "}
+                <span className="text-primary">đầy ấm áp</span>.
               </h1>
             </FadeUp>
 
             <FadeUp delay={0.1}>
               <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-                Cute crochet keychains and yarn accessories designed for everyday joy: soft
-                textures, premium stitching, and boutique-style packaging.
+                Móc khóa crochet và phụ kiện len cute cho niềm vui mỗi ngày: mềm tay, mũi
+                len gọn đẹp, và phong cách đóng gói boutique.
               </p>
             </FadeUp>
 
             <FadeUp delay={0.15}>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg" className="shadow-sm">
-                  <Link href="#order" aria-label="Go to order section">
-                    Order Now
+                  <Link href="#order" aria-label="Đi tới mục đặt hàng">
+                    Đặt hàng
                     <Sparkles className="h-4 w-4" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                    Order via Instagram
+                    Đặt qua Instagram
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="ghost">
-                  <Link href="#featured" aria-label="See featured products">
-                    Browse Products
+                  <Link href="#featured" aria-label="Xem sản phẩm nổi bật">
+                    Xem sản phẩm
                   </Link>
                 </Button>
               </div>
@@ -68,22 +69,22 @@ export function HeroSection() {
                 <div className="flex items-start gap-3 rounded-lg border border-border/70 bg-white/60 p-4 shadow-sm backdrop-blur-md">
                   <HeartHandshake className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-medium">Handmade with love</p>
-                    <p className="text-xs text-muted-foreground">Every stitch is crafted by hand.</p>
+                    <p className="text-sm font-medium">Làm thủ công tỉ mỉ</p>
+                    <p className="text-xs text-muted-foreground">Từng mũi len đều được móc tay.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 rounded-lg border border-border/70 bg-white/60 p-4 shadow-sm backdrop-blur-md">
                   <Palette className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-medium">Custom colors</p>
-                    <p className="text-xs text-muted-foreground">Match your bag or your vibe.</p>
+                    <p className="text-sm font-medium">Tùy chỉnh màu sắc</p>
+                    <p className="text-xs text-muted-foreground">Phối theo túi hoặc đúng “gu”.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 rounded-lg border border-border/70 bg-white/60 p-4 shadow-sm backdrop-blur-md">
                   <Package className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-medium">Gift packaging</p>
-                    <p className="text-xs text-muted-foreground">Cute, clean, and ready to gift.</p>
+                    <p className="text-sm font-medium">Đóng gói quà xinh</p>
+                    <p className="text-xs text-muted-foreground">Gọn sạch, xinh, tặng là mê.</p>
                   </div>
                 </div>
               </div>
@@ -110,7 +111,7 @@ export function HeroSection() {
                     <p className="text-xs text-muted-foreground">{heroProduct.shortDescription}</p>
                   </div>
                   <div className="rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-foreground">
-                    ${heroProduct.priceUsd}
+                    {formatVnd(heroProduct.priceVnd)}
                   </div>
                 </div>
               </div>
@@ -121,4 +122,3 @@ export function HeroSection() {
     </section>
   );
 }
-

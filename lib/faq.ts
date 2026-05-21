@@ -7,33 +7,33 @@ export type FaqItem = {
 export const FAQ_ITEMS: FaqItem[] = [
   {
     id: "shipping",
-    question: "Do you ship nationwide? How long does shipping take?",
+    question: "Shop có giao hàng toàn quốc không? Mất bao lâu?",
     answer:
-      "Yes. Most orders are prepared in 1–3 business days. Delivery time depends on your location, but typical shipping is 2–5 business days after dispatch. We’ll send tracking details via your preferred chat app.",
+      "Có. Thông thường shop chuẩn bị đơn trong 1-3 ngày làm việc. Thời gian nhận hàng tùy khu vực, thường 2-5 ngày sau khi gửi. Shop sẽ gửi mã vận đơn/chi tiết theo dõi qua ứng dụng chat bạn dùng.",
   },
   {
     id: "customization",
-    question: "Can I customize colors or add a name tag?",
+    question: "Mình có thể chọn màu hoặc tùy chỉnh theo yêu cầu không?",
     answer:
-      "Absolutely. You can request color changes, small add-ons (bows, hearts), or a short name tag. Send a message on Instagram/TikTok/Facebook/Zalo with your idea and we’ll confirm the details before making it.",
+      "Được nha. Bạn có thể chọn màu, yêu cầu thêm chi tiết nhỏ (nơ, tim...), hoặc tag tên ngắn. Nhắn shop qua Instagram/TikTok/Facebook/Zalo để chốt mẫu trước khi shop bắt đầu làm.",
   },
   {
     id: "handmade",
-    question: "Are your keychains fully handmade?",
+    question: "Sản phẩm có phải handmade 100% không?",
     answer:
-      "Yes. Every piece is crocheted by hand, stitched carefully, and finished with durable hardware. Small variations are normal and are part of the handmade charm.",
+      "Đúng rồi. Mỗi sản phẩm đều được móc tay, khâu tay và hoàn thiện với khoen chắc chắn. Vì là handmade nên có thể có khác biệt nhỏ giữa từng sản phẩm, đó cũng là điểm dễ thương riêng.",
   },
   {
     id: "packaging",
-    question: "Do you include gift packaging?",
+    question: "Có đóng gói quà không?",
     answer:
-      "Yes. We pack every order in a clean, cute, gift-ready style. You can also add a short message for the recipient at no extra cost.",
+      "Có. Mỗi đơn đều được đóng gói gọn sạch, xinh xắn, sẵn sàng để tặng. Bạn cũng có thể nhờ shop ghi lời nhắn ngắn cho người nhận.",
   },
   {
     id: "order",
-    question: "How do I order?",
+    question: "Cách đặt hàng như thế nào?",
     answer:
-      "Tap any “Order via Instagram” button on the website, or contact us through Instagram, TikTok, Facebook, or Zalo. Share the product name (or screenshot), your color preferences, and your delivery address.",
+      "Bạn bấm nút “Đặt qua Instagram” trên website hoặc nhắn shop qua Instagram, TikTok, Facebook hay Zalo. Chỉ cần gửi tên sản phẩm (hoặc ảnh chụp), màu bạn muốn và thông tin nhận hàng.",
   },
 ];
 

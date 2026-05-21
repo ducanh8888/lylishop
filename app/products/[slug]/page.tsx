@@ -6,6 +6,7 @@ import { ArrowLeft, Camera, Sparkles } from "lucide-react";
 
 import { PRODUCTS, getProductBySlug } from "@/lib/products";
 import { SITE } from "@/lib/site";
+import { formatVnd } from "@/lib/format";
 import { productJsonLd } from "@/lib/schema";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
@@ -26,8 +27,8 @@ export async function generateMetadata({
   const product = getProductBySlug(slug);
   if (!product) return {};
 
-  const title = `${product.name}`;
-  const description = `${product.shortDescription} Handmade crochet keychain by LyliShop.`;
+  const title = product.name;
+  const description = `${product.shortDescription} Móc khóa crochet handmade từ LyliShop.`;
   const url = `${SITE.url}/products/${product.slug}`;
 
   return {
@@ -69,14 +70,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <Container>
           <div className="flex items-center justify-between gap-3">
             <Button asChild variant="ghost">
-              <Link href="/products" aria-label="Back to products">
+              <Link href="/products" aria-label="Quay lại trang sản phẩm">
                 <ArrowLeft className="h-4 w-4" />
-                Products
+                Sản phẩm
               </Link>
             </Button>
-            <div className="hidden sm:flex items-center gap-2">
-              <Badge variant="pink">Handmade</Badge>
-              <Badge variant="secondary">Gift-ready</Badge>
+            <div className="hidden items-center gap-2 sm:flex">
+              <Badge variant="pink">Thủ công</Badge>
+              <Badge variant="secondary">Đóng gói quà</Badge>
             </div>
           </div>
 
@@ -105,16 +106,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               <div className="mt-5 flex flex-wrap items-center gap-3">
                 <div className="rounded-full bg-primary/10 px-4 py-2 font-display text-base font-semibold">
-                  ${product.priceUsd}
+                  {formatVnd(product.priceVnd)}
                 </div>
                 <StarRating rating={product.rating} />
-                <span className="text-sm text-muted-foreground">
-                  {product.reviewCount} reviews
-                </span>
+                <span className="text-sm text-muted-foreground">{product.reviewCount} đánh giá</span>
               </div>
 
               <div className="mt-6 rounded-xl border border-border/70 bg-white/60 p-5 shadow-sm backdrop-blur-md">
-                <h2 className="font-display text-base font-semibold">Highlights</h2>
+                <h2 className="font-display text-base font-semibold">Điểm nổi bật</h2>
                 <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
                   {product.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-2">
@@ -127,22 +126,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg">
-                  <Link href="/#order" aria-label="Go to order section on homepage">
-                    Order Now
+                  <Link href="/#order" aria-label="Đi tới mục đặt hàng trên trang chủ">
+                    Đặt hàng
                     <Sparkles className="h-4 w-4" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
                     <Camera className="h-4 w-4" />
-                    Message on Instagram
+                    Nhắn Instagram
                   </a>
                 </Button>
               </div>
 
               <p className="mt-4 text-sm text-muted-foreground">
-                Want a custom color? Send us a message with your preferred palette and we’ll confirm
-                availability before crocheting.
+                Muốn đổi màu? Nhắn shop bảng màu bạn thích, shop sẽ xác nhận trước khi bắt đầu làm.
               </p>
             </div>
           </div>
@@ -151,3 +149,4 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     </>
   );
 }
+

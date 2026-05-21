@@ -3,7 +3,6 @@ export type Testimonial = {
   handle: string;
   rating: number;
   quote: string;
-  avatar: string;
 };
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -12,32 +11,27 @@ export const TESTIMONIALS: Testimonial[] = [
     handle: "@minatrn",
     rating: 5,
     quote:
-      "The bear keychain looks even cuter in person. The stitches are super neat and the packaging felt like a little gift to myself.",
-    avatar: "/avatars/mina.png",
+      "Móc khóa gấu ngoài đời còn xinh hơn ảnh. Mũi len gọn, đóng gói rất có tâm, mở ra thấy như quà tự thưởng luôn.",
   },
   {
     name: "Chloe Nguyen",
     handle: "@chloeng",
     rating: 5,
     quote:
-      "I ordered a tulip charm for my backpack and it’s perfect. Lightweight, premium feel, and the clasp is sturdy.",
-    avatar: "/avatars/chloe.png",
+      "Mình mua tulip treo balo, nhẹ mà nhìn sang. Khoen chắc, cầm lên cảm giác rất “xịn”.",
   },
   {
     name: "Sophie Lee",
     handle: "@sophiel",
     rating: 5,
     quote:
-      "Fast replies on Instagram and they helped me customize colors for a birthday gift. My friend was obsessed.",
-    avatar: "/avatars/sophie.png",
+      "Nhắn Instagram phản hồi nhanh, tư vấn phối màu dễ thương. Mình tặng bạn sinh nhật, bạn mê luôn.",
   },
   {
     name: "Hana Park",
     handle: "@hanapark",
     rating: 4,
     quote:
-      "The strawberry charm is adorable and the details are so clean. Shipping updates were clear and friendly.",
-    avatar: "/avatars/hana.png",
+      "Charm dâu tây siêu đáng yêu, chi tiết thêu gọn đẹp. Shop cập nhật tình trạng đơn rõ ràng, dễ theo dõi.",
   },
 ];
-

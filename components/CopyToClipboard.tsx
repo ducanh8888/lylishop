@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export function CopyToClipboard({
   text,
-  label = "Copy",
+  label = "Sao chép",
 }: {
   text: string;
   label?: string;
@@ -27,8 +27,7 @@ export function CopyToClipboard({
   return (
     <Button type="button" variant="outline" onClick={onCopy} aria-label={label}>
       {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-      {copied ? "Copied" : label}
+      {copied ? "Đã sao chép" : label}
     </Button>
   );
 }
-

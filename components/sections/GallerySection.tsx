@@ -10,9 +10,9 @@ export function GallerySection() {
     <section id="gallery" className="bg-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Gallery"
-          title="Cute Details, Boutique Aesthetic"
-          description="A quick look at textures, packaging, and the soft, handcrafted vibe behind every piece."
+          eyebrow="Bộ sưu tập"
+          title="Góc vibe xinh của LyliShop"
+          description="Một vài khung hình về chất len, đóng gói, và cảm giác “mềm” của đồ handmade."
         />
 
         <FadeUp>
@@ -41,4 +41,3 @@ export function GallerySection() {
     </section>
   );
 }
-

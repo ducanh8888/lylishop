@@ -4,12 +4,12 @@ import { Container } from "@/components/Container";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Terms",
+  title: "Điều khoản",
   alternates: { canonical: "/terms" },
   openGraph: {
     url: `${SITE.url}/terms`,
-    title: "Terms | LyliShop",
-    description: "Ordering terms for handmade crochet keychains and accessories.",
+    title: "Điều khoản | LyliShop",
+    description: "Điều khoản đặt hàng móc khóa crochet handmade và phụ kiện len.",
   },
 };
 
@@ -18,35 +18,39 @@ export default function TermsPage() {
     <section className="bg-background py-14 sm:py-20">
       <Container>
         <article className="mx-auto max-w-3xl rounded-xl border border-border/70 bg-white/60 p-8 shadow-sm backdrop-blur-md">
-          <h1 className="font-display text-3xl font-semibold tracking-tight">Terms</h1>
+          <h1 className="font-display text-3xl font-semibold tracking-tight">Điều khoản</h1>
           <p className="mt-3 text-sm text-muted-foreground">
-            These terms help set expectations for handmade items and social-media ordering.
+            Các điều khoản này giúp thống nhất kỳ vọng khi đặt sản phẩm handmade qua mạng xã hội.
           </p>
 
           <div className="prose prose-sm mt-8 max-w-none prose-p:text-muted-foreground prose-li:text-muted-foreground">
-            <h2>Handmade nature</h2>
+            <h2>Tính chất handmade</h2>
             <p>
-              Each item is crocheted by hand. Small variations in size or stitching are normal and
-              part of the handmade character.
+              Mỗi sản phẩm đều được móc tay. Kích thước hoặc mũi len có thể chênh lệch rất nhỏ giữa
+              từng sản phẩm, đây là nét đặc trưng của đồ handmade.
             </p>
-            <h2>Customization</h2>
+
+            <h2>Tùy chỉnh</h2>
             <p>
-              Custom colors and small add-ons are available. We confirm details via chat before we
-              start making your order.
+              Shop có nhận tùy chỉnh màu sắc và một số chi tiết nhỏ. Shop sẽ xác nhận mẫu/chi tiết
+              qua chat trước khi bắt đầu làm.
             </p>
-            <h2>Packaging</h2>
+
+            <h2>Đóng gói</h2>
             <p>
-              We pack items in a clean, gift-ready style. You may request a short gift message.
+              Shop đóng gói gọn sạch, phong cách quà tặng. Bạn có thể nhờ shop ghi lời nhắn ngắn.
             </p>
-            <h2>Shipping</h2>
+
+            <h2>Giao hàng</h2>
             <p>
-              Preparation usually takes 1–3 business days. Delivery time varies by location. We
-              share tracking details when available.
+              Thời gian chuẩn bị đơn thường 1-3 ngày làm việc. Thời gian nhận hàng tùy khu vực. Shop
+              sẽ gửi mã vận đơn/chi tiết theo dõi khi có.
             </p>
-            <h2>Ordering</h2>
+
+            <h2>Đặt hàng</h2>
             <p>
-              Orders are placed through Instagram, TikTok, Facebook, or Zalo messages. Your order is
-              confirmed once we agree on the product, price, and delivery details in chat.
+              Đơn hàng được đặt qua tin nhắn Instagram, TikTok, Facebook hoặc Zalo. Đơn được xác
+              nhận khi hai bên thống nhất mẫu, giá và thông tin nhận hàng qua chat.
             </p>
           </div>
         </article>

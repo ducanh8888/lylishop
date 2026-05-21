@@ -7,16 +7,16 @@ import { PRODUCTS } from "@/lib/products";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Products",
+  title: "Sản phẩm",
   description:
-    "Browse LyliShop’s handmade crochet keychains and cute yarn accessories. See prices, details, and order through Instagram, TikTok, Facebook, or Zalo.",
+    "Xem các mẫu móc khóa crochet handmade và phụ kiện len cute của LyliShop. Xem giá, chi tiết và đặt hàng qua Instagram, TikTok, Facebook hoặc Zalo.",
   alternates: { canonical: "/products" },
   openGraph: {
     url: `${SITE.url}/products`,
-    title: "Products | LyliShop",
+    title: "Sản phẩm | LyliShop",
     description:
-      "Handmade crochet keychains and cute yarn accessories. Gift-ready packaging and customizable designs.",
-    images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: "LyliShop products" }],
+      "Móc khóa crochet handmade và phụ kiện len cute. Đóng gói quà xinh và có thể tùy chỉnh màu sắc.",
+    images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: "Sản phẩm LyliShop" }],
   },
 };
 
@@ -25,9 +25,9 @@ export default function ProductsPage() {
     <section className="bg-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Products"
-          title="Crochet Keychains & Yarn Accessories"
-          description="Simple, giftable, and handmade with premium yarn. Click a product to view details and ordering info."
+          eyebrow="Sản phẩm"
+          title="Móc khóa crochet & phụ kiện len"
+          description="Xinh, dễ tặng, handmade tỉ mỉ. Bấm vào sản phẩm để xem chi tiết và cách đặt hàng."
         />
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

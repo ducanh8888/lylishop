@@ -9,9 +9,9 @@ export function FaqSection() {
     <section id="faq" className="bg-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="FAQ"
-          title="Quick Answers"
-          description="Shipping, customization, packaging, and the easiest ways to order."
+          eyebrow="Hỏi đáp"
+          title="Trả lời nhanh"
+          description="Giao hàng, tùy chỉnh, đóng gói quà và cách đặt hàng đơn giản nhất."
         />
 
         <FadeUp className="mx-auto mt-10 max-w-3xl rounded-lg border border-border/70 bg-white/60 p-6 shadow-sm backdrop-blur-md">
@@ -28,4 +28,3 @@ export function FaqSection() {
     </section>
   );
 }
-

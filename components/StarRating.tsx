@@ -15,7 +15,7 @@ export function StarRating({
   return (
     <div
       className={cn("flex items-center gap-2", className)}
-      aria-label={label ?? `Rated ${rating} out of 5`}
+      aria-label={label ?? `Đánh giá ${rating} trên 5`}
     >
       <div className="flex items-center gap-0.5 text-primary">
         {Array.from({ length: 5 }).map((_, idx) => (

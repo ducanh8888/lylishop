@@ -1,26 +1,20 @@
-# LyliShop (Next.js 15) — Handmade Crochet Keychain Showcase
+# LyliShop (Next.js 15) - Website trưng bày móc khóa crochet handmade
 
-Domain: `https://LyliShop.online`
+Domain mục tiêu: `https://lylishop.store`
 
-LyliShop is a production-ready, mobile-first product showcase website for handmade crochet keychains and cute yarn accessories. It’s intentionally simple: no cart, no checkout, no payments, no backend.
+LyliShop là website **trưng bày sản phẩm** (product showcase) cho brand móc khóa crochet handmade và phụ kiện len cute.
 
-## Tech Stack
+Dự án này **KHÔNG** có: giỏ hàng, thanh toán, backend API, database, CMS, đăng nhập.
 
-- Next.js 15 (App Router)
-- TypeScript
-- TailwindCSS
-- shadcn/ui-style components (Radix + CVA)
-- Framer Motion
-- Lucide React
-- Testing: Vitest + React Testing Library
+---
 
-## Quick Start (Commands)
+## 1) Chạy dự án (Commands)
 
 ```bash
 npm install
 npm run dev
 
-# production build
+# build production
 npm run build
 npm run start
 
@@ -28,71 +22,90 @@ npm run start
 npm run test
 ```
 
-Local dev URL (default): `http://localhost:3000`
+Mở web local: `http://localhost:3000`
 
-## Folder Structure (Key Files)
+---
+
+## 2) Tech Stack
+
+- Next.js 15 (App Router) + TypeScript
+- TailwindCSS
+- shadcn/ui-style components (Radix + CVA)
+- Framer Motion
+- Lucide React
+- SEO: Metadata + OpenGraph/Twitter + robots + sitemap + JSON-LD
+- Test: Vitest + React Testing Library
+
+---
+
+## 3) Cấu trúc thư mục (quan trọng nhất)
 
 ```
 app/
-  page.tsx                  # homepage (all sections + JSON-LD)
-  layout.tsx                # global metadata + fonts + navbar/footer
-  robots.ts                 # generates /robots.txt
-  sitemap.ts                # generates /sitemap.xml
+  layout.tsx                # metadata + fonts + navbar/footer
+  page.tsx                  # homepage (đầy đủ sections + JSON-LD)
+  robots.ts                 # /robots.txt
+  sitemap.ts                # /sitemap.xml
   products/
-    page.tsx                # /products listing
-    [slug]/page.tsx         # /products/:slug product detail (SSG + Product JSON-LD)
+    page.tsx                # /products (danh sách sản phẩm)
+    [slug]/page.tsx         # /products/:slug (chi tiết sản phẩm + Product JSON-LD)
   privacy/page.tsx          # /privacy
   terms/page.tsx            # /terms
-components/
-  Navbar.tsx
-  Footer.tsx
-  ProductCard.tsx
-  StarRating.tsx
-  JsonLd.tsx
-  sections/                 # homepage sections (Hero, Gallery, FAQ, Contact, etc.)
-  ui/                       # shadcn/ui-style primitives (Button, Accordion, Sheet, ...)
+
 lib/
-  site.ts                   # brand + domain + social links (edit here first)
-  products.ts               # products + pricing (easy manual edits)
-  gallery.ts                # gallery images list
-  testimonials.ts
-  faq.ts
-  seo.ts                    # default metadata (OG/Twitter/canonical/robots)
-  schema.ts                 # JSON-LD helpers (Org/Product/FAQ/ItemList)
+  site.ts                   # domain + title/description + social links (sửa đầu tiên)
+  products.ts               # danh sách sản phẩm + giá + nội dung
+  gallery.ts                # danh sách ảnh gallery
+  faq.ts                    # FAQ
+  testimonials.ts           # đánh giá khách hàng
+  seo.ts                    # default metadata (canonical/OG/Twitter/robots)
+  schema.ts                 # JSON-LD (Organization/Product/FAQ/ItemList)
+
 public/
-  products/                 # product images you upload
-  gallery/                  # gallery images you upload
-styles/
-  globals.css               # Tailwind + design tokens
-tests/                      # Vitest + RTL tests
+  products/                 # ảnh sản phẩm bạn upload
+  gallery/                  # ảnh gallery bạn upload
 ```
 
-## Editing Content (Easy Manual Updates)
+---
 
-1. Brand name, domain, social links:
-   - `lib/site.ts`
+## 4) Chỉnh nội dung (dễ nhất)
 
-2. Products, prices, descriptions, images:
-   - `lib/products.ts`
-   - Each product has `slug`, `name`, `priceUsd`, descriptions, rating, and `image.src`.
+### 4.1 Domain + mạng xã hội
 
-3. Gallery images:
-   - `lib/gallery.ts`
+Sửa file: `lib/site.ts`
 
-4. Testimonials:
-   - `lib/testimonials.ts`
+- `SITE.url` phải đúng: `https://lylishop.store`
+- `SITE.socials.*` sửa link Instagram/TikTok/Facebook/Zalo của bạn
 
-5. FAQ:
-   - `lib/faq.ts`
+### 4.2 Sản phẩm + giá
 
-## Replacing Product Images (No Placeholder Generation)
+Sửa file: `lib/products.ts`
 
-Put your real images in:
+Mỗi sản phẩm có:
+- `slug` (URL, ví dụ: `/products/crochet-bear-keychain`)
+- `name` (tên hiển thị)
+- `priceVnd` (giá VND)
+- `shortDescription` / `longDescription`
+- `image.src` (đường dẫn ảnh trong `public/`)
 
-- `public/products/`
-- `public/gallery/`
+### 4.3 Gallery / FAQ / Reviews
 
-The code expects these filenames by default (edit in `lib/products.ts` / `lib/gallery.ts` if you prefer different names):
+- Gallery: `lib/gallery.ts`
+- FAQ: `lib/faq.ts`
+- Reviews: `lib/testimonials.ts`
+
+---
+
+## 5) Ảnh (bạn tự upload, không dùng ảnh placeholder)
+
+### 5.1 Thư mục ảnh
+
+- Ảnh sản phẩm: `public/products/`
+- Ảnh gallery: `public/gallery/`
+
+### 5.2 Tên file ảnh mặc định
+
+Website đang trỏ tới các file này (bạn có thể đổi trong `lib/products.ts` và `lib/gallery.ts`):
 
 - `public/products/crochet-bear-keychain.png`
 - `public/products/strawberry-yarn-charm.png`
@@ -100,231 +113,108 @@ The code expects these filenames by default (edit in `lib/products.ts` / `lib/ga
 - `public/products/bunny-plush-charm.png`
 - `public/products/cat-paw-crochet-accessory.png`
 
-Recommended image specs:
+### 5.3 Gợi ý tối ưu ảnh (để Lighthouse cao)
 
-- Product images: square (1:1), at least `1200x1200`
-- Gallery images: vertical or square, at least `1200px` wide
-- Format: `webp` or `avif` preferred (PNG/JPG also supported)
+- Ảnh sản phẩm: tỉ lệ **1:1**, tối thiểu `1200x1200`
+- Dung lượng mục tiêu: ~`150KB - 400KB`/ảnh (tùy chất lượng)
+- Ưu tiên `webp` hoặc `avif`
 
-## SEO Overview (What’s Already Implemented)
-
-- App Router metadata with canonical URLs, OpenGraph, and Twitter cards (`lib/seo.ts`, `app/layout.tsx`)
-- `/robots.txt` (`app/robots.ts`)
-- `/sitemap.xml` including product URLs (`app/sitemap.ts`)
-- JSON-LD structured data:
-  - Organization + Website (homepage)
-  - FAQPage (homepage)
-  - ItemList (homepage featured products)
-  - Product (each product detail page)
-
-## Testing
-
-- `npm run test` runs Vitest in CI-friendly mode.
-- Coverage includes: homepage rendering, product card, FAQ accordion, navbar mobile sheet, metadata config.
+Công cụ miễn phí:
+- Squoosh
+- TinyPNG / TinyJPG
 
 ---
 
-# Deployment Runbook (Beginner-Friendly, Step-by-Step)
+## 6) SEO đã có sẵn
 
-## 1) Install Node.js
+- Metadata + canonical + OpenGraph + Twitter card: `lib/seo.ts`, `app/layout.tsx`
+- `robots.txt`: `app/robots.ts`
+- `sitemap.xml` (có URL sản phẩm): `app/sitemap.ts`
+- JSON-LD:
+  - Organization + WebSite + FAQPage + ItemList (homepage)
+  - Product (trang chi tiết sản phẩm)
 
-1. Go to the official Node.js website.
-2. Download the **LTS** version for your operating system.
-3. Install it using the default options.
-4. Verify installation:
+Kiểm tra sau khi deploy:
+- `https://lylishop.store/robots.txt`
+- `https://lylishop.store/sitemap.xml`
 
-```bash
-node -v
-npm -v
-```
+---
 
-## 2) Download / Open the Project
+## 7) Test
 
-You can use one of these options:
-
-- If you have a ZIP: unzip it, then open the folder.
-- If you use Git:
+Chạy:
 
 ```bash
-git clone <your-repo-url>
-cd web_lyli
+npm run test
 ```
 
-## 3) Install Dependencies
+Các test chính:
+- Homepage render
+- ProductCard
+- FAQ accordion
+- Navbar mobile menu
+- SEO metadata config
 
-From the project folder:
+---
 
-```bash
-npm install
-```
+# 8) Triển khai bằng giao diện Vercel + gắn domain `lylishop.store`
 
-## 4) Run Locally (Development)
+## 8.1 Deploy lên Vercel (UI)
 
-```bash
-npm run dev
-```
+1. Đưa code lên GitHub (repo private cũng được)
+2. Vào Vercel -> **Add New...** -> **Project**
+3. Import repo
+4. Framework: Next.js (Vercel tự nhận)
+5. Build Command: `npm run build` (mặc định)
+6. Output: tự động
+7. Bấm **Deploy**
 
-Open: `http://localhost:3000`
+## 8.2 Gắn domain `lylishop.store`
 
-## 5) Build the Production Version
+1. Vercel -> Project -> **Settings** -> **Domains**
+2. Add domain:
+   - `lylishop.store`
+   - (khuyến nghị) `www.lylishop.store`
+3. Vercel sẽ hiện “Required DNS Records” (bảng record cần tạo). Bạn làm đúng theo bảng đó.
 
-```bash
-npm run build
-```
+### DNS thường gặp (tham khảo)
 
-## 6) Start the Production Server Locally
+Lưu ý: luôn ưu tiên record mà Vercel hiển thị trong project của bạn.
 
-```bash
-npm run start
-```
-
-## 7) Deploy to Vercel (Recommended)
-
-### Option A: Deploy from GitHub (Easiest)
-
-1. Push your project to GitHub.
-2. Go to Vercel and click **Add New… → Project**.
-3. Import the GitHub repo.
-4. Framework preset: Next.js.
-5. Click **Deploy**.
-
-### Option B: Deploy with Vercel CLI
-
-1. Install CLI:
-
-```bash
-npm i -g vercel
-```
-
-2. Login:
-
-```bash
-vercel login
-```
-
-3. Deploy:
-
-```bash
-vercel
-```
-
-## 8) Connect Your Domain: `LyliShop.online`
-
-1. In Vercel, open your Project → **Settings → Domains**.
-2. Add:
-   - `lylishop.online`
-   - `www.lylishop.online` (optional but recommended)
-3. Vercel will show the exact DNS records needed for your DNS provider.
-
-## 9) Configure DNS (Typical Setup)
-
-In your domain registrar / DNS provider dashboard:
-
-- Apex domain (`lylishop.online`):
+- Apex domain (`lylishop.store`):
   - Type: `A`
-  - Host/Name: `@`
-  - Value: `76.76.21.21` (Vercel Anycast IP)
-- WWW subdomain (`www.lylishop.online`):
+  - Name/Host: `@`
+  - Value: `76.76.21.21`
+- WWW (`www.lylishop.store`):
   - Type: `CNAME`
-  - Host/Name: `www`
-  - Value: use the exact CNAME target Vercel shows (often `cname.vercel-dns.com` or `cname.vercel-dns-0.com`)
+  - Name/Host: `www`
+  - Value: Vercel cung cấp (ví dụ `cname.vercel-dns-0.com`)
 
-Important:
-- Use the exact values Vercel shows in your Domain settings, because they may vary by project/provider.
-- DNS propagation can take minutes to hours.
+## 8.3 Bật HTTPS/SSL
 
-## 10) Enable HTTPS/SSL
+Vercel sẽ tự cấp SSL khi domain “Valid Configuration”.
 
-Vercel automatically provisions SSL after the domain is verified.
+1. Chờ DNS cập nhật (thường vài phút, đôi khi vài giờ)
+2. Khi Vercel báo domain hợp lệ, thử mở: `https://lylishop.store`
 
-1. Wait until Vercel shows “Valid Configuration” for the domain.
-2. Test `https://lylishop.online` in your browser.
+## 8.4 Redeploy khi bạn cập nhật sản phẩm/ảnh
 
-## 11) Update Products Manually Later
+- Nếu deploy từ GitHub: chỉ cần `git push`, Vercel tự build & deploy lại
+- Nếu bạn thay ảnh trong `public/`, nhớ commit ảnh lên repo rồi push
 
-Edit:
+---
 
-- `lib/products.ts`
+## 9) Google/Bing indexing (khuyến nghị)
 
-Common edits:
-- Change price: update `priceUsd`
-- Rename product: update `name`
-- Update description: update `shortDescription` / `longDescription`
-- Update URL slug: update `slug` (also rename the image file + update links)
+### Google Search Console
 
-## 12) Replace Product Images
+1. Thêm website (Domain property)
+2. Verify bằng DNS TXT record
+3. Submit sitemap: `https://lylishop.store/sitemap.xml`
 
-1. Put your new image file in `public/products/`.
-2. Keep the same filename (easy) OR update `image.src` in `lib/products.ts`.
-3. Prefer `webp`/`avif` and keep at least `1200x1200` for product images.
+### Bing Webmaster Tools
 
-## 13) Edit Product Prices
-
-Update `priceUsd` in `lib/products.ts`. The UI and Product JSON-LD will update automatically on rebuild.
-
-## 14) Redeploy the Website
-
-- If you deployed via GitHub: push commits → Vercel redeploys automatically.
-- If you deployed via CLI:
-
-```bash
-vercel --prod
-```
-
-## 15) Common Deployment Errors (And Fixes)
-
-- `EADDRINUSE` (port already in use):
-  - Stop the process using the port, or run dev on a different port:
-
-```bash
-npm run dev -- -p 3001
-```
-
-- Build fails on Vercel:
-  - Confirm you can run `npm run build` locally.
-  - Make sure you committed `package-lock.json`.
-
-- Domain not verifying:
-  - Double-check DNS records (A/CNAME), remove duplicates, then wait for propagation.
-
-## 16) Optimize SEO Indexing
-
-Checklist:
-- Make sure `https://lylishop.online/sitemap.xml` loads.
-- Make sure `https://lylishop.online/robots.txt` loads.
-- Add your site to Google Search Console and submit the sitemap.
-
-## 17) Submit Sitemap to Google Search Console
-
-1. Go to Google Search Console.
-2. Add a property for `lylishop.online` (Domain property recommended).
-3. Verify ownership (DNS TXT record).
-4. Open **Sitemaps**.
-5. Submit: `sitemap.xml`
-
-## 18) Submit to Bing Webmaster Tools
-
-1. Go to Bing Webmaster Tools.
-2. Add your site.
-3. Verify ownership.
-4. Submit sitemap: `https://lylishop.online/sitemap.xml`
-
-## 19) Improve Google Ranking (Practical Tips)
-
-- Upload real, high-quality product photos (this matters most for handmade goods).
-- Keep product names and slugs consistent and descriptive.
-- Add more products over time (fresh content helps).
-- Share your product pages on TikTok/Instagram and link back to your domain.
-- Encourage customers to share photos and let you reuse them as testimonials (with permission).
-
-## 20) Optimize Images Before Upload (Free Tools)
-
-Recommended:
-- Squoosh (web) for WebP/AVIF conversion
-- TinyPNG / TinyJPG (web) for quick compression
-- ImageOptim (macOS) for batch optimization
-
-Targets:
-- Keep most images under ~250–400KB if possible (without harming quality).
-- Use WebP/AVIF whenever possible.
+1. Add site
+2. Verify ownership
+3. Submit sitemap: `https://lylishop.store/sitemap.xml`
 

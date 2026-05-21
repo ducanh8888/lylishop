@@ -4,12 +4,12 @@ import { Container } from "@/components/Container";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Chính sách riêng tư",
   alternates: { canonical: "/privacy" },
   openGraph: {
     url: `${SITE.url}/privacy`,
-    title: "Privacy Policy | LyliShop",
-    description: "How LyliShop handles messages, order information, and privacy.",
+    title: "Chính sách riêng tư | LyliShop",
+    description: "Cách LyliShop xử lý tin nhắn, thông tin đặt hàng và quyền riêng tư.",
   },
 };
 
@@ -18,36 +18,41 @@ export default function PrivacyPage() {
     <section className="bg-background py-14 sm:py-20">
       <Container>
         <article className="mx-auto max-w-3xl rounded-xl border border-border/70 bg-white/60 p-8 shadow-sm backdrop-blur-md">
-          <h1 className="font-display text-3xl font-semibold tracking-tight">Privacy Policy</h1>
+          <h1 className="font-display text-3xl font-semibold tracking-tight">Chính sách riêng tư</h1>
           <p className="mt-3 text-sm text-muted-foreground">
-            Effective date: {new Date().getFullYear()}.
+            Cập nhật: {new Date().getFullYear()}.
           </p>
 
           <div className="prose prose-sm mt-8 max-w-none prose-p:text-muted-foreground prose-li:text-muted-foreground">
             <p>
-              LyliShop is a handmade product showcase website. Orders are placed through social
-              media chats (Instagram, TikTok, Facebook, or Zalo). We only use the information you
-              share to confirm your order, arrange delivery, and provide support.
+              LyliShop là website trưng bày sản phẩm handmade. Bạn đặt hàng qua chat trên Instagram,
+              TikTok, Facebook hoặc Zalo. Shop chỉ sử dụng thông tin bạn cung cấp để xác nhận đơn,
+              giao hàng và hỗ trợ sau mua.
             </p>
-            <h2>What we collect</h2>
+
+            <h2>Thông tin shop có thể thu thập</h2>
             <ul>
-              <li>Messages you send to us (product, color, quantity).</li>
-              <li>Delivery details you provide (name, phone, address).</li>
+              <li>Nội dung tin nhắn bạn gửi (mẫu, màu, số lượng).</li>
+              <li>Thông tin nhận hàng bạn cung cấp (tên, số điện thoại, địa chỉ).</li>
             </ul>
-            <h2>How we use information</h2>
+
+            <h2>Mục đích sử dụng</h2>
             <ul>
-              <li>To craft your handmade item and confirm customization.</li>
-              <li>To arrange shipping and share tracking updates.</li>
-              <li>To respond to questions and support requests.</li>
+              <li>Để làm sản phẩm handmade và xác nhận tùy chỉnh.</li>
+              <li>Để sắp xếp giao hàng và gửi mã vận đơn (nếu có).</li>
+              <li>Để trả lời câu hỏi và hỗ trợ khách hàng.</li>
             </ul>
-            <h2>Third‑party services</h2>
+
+            <h2>Dịch vụ bên thứ ba</h2>
             <p>
-              Messaging and delivery services are provided by third parties. Their privacy policies
-              may apply when you use their platforms.
+              Nền tảng nhắn tin và đơn vị vận chuyển do bên thứ ba cung cấp. Chính sách riêng tư của
+              họ có thể áp dụng khi bạn sử dụng các nền tảng đó.
             </p>
-            <h2>Contact</h2>
+
+            <h2>Liên hệ</h2>
             <p>
-              For privacy requests, contact us via the same social channel you used to order.
+              Nếu bạn có yêu cầu liên quan tới quyền riêng tư, hãy nhắn shop qua đúng kênh bạn đã
+              dùng để đặt hàng.
             </p>
           </div>
         </article>

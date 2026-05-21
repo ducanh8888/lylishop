@@ -1,7 +1,7 @@
 {
   "name": "lylishop",
   "version": "1.0.0",
-  "description": "LyliShop — Handmade crochet keychains & cute yarn accessories (product showcase site)",
+  "description": "LyliShop - Website trưng bày móc khóa crochet handmade (không có giỏ hàng / thanh toán)",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,12 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://LyliShop.store"
+    "url": "https://lylishop.store"
   },
   "keywords": [
     "lylishop",
     "crochet",
     "handmade",
+    "moc khoa",
     "keychain",
     "nextjs",
     "tailwindcss",
@@ -63,3 +64,4 @@
     "postcss": "8.5.15"
   }
 }
+
