@@ -6,16 +6,16 @@ import { SITE } from "@/lib/site";
 import { Container } from "@/components/Container";
 
 const FOOTER_LINKS: Array<{ label: string; href: string }> = [
-  { label: "Sản phẩm nổi bật", href: "/#featured" },
-  { label: "Bộ sưu tập", href: "/#gallery" },
-  { label: "Đánh giá", href: "/#reviews" },
-  { label: "Hỏi đáp", href: "/#faq" },
-  { label: "Đặt hàng", href: "/#order" },
+  { label: "Featured Products", href: "/#featured" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact to order", href: "/#order" },
 ];
 
 const POLICY_LINKS: Array<{ label: string; href: string }> = [
-  { label: "Chính sách riêng tư", href: "/privacy" },
-  { label: "Điều khoản", href: "/terms" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
 ];
 
 export function Footer() {
@@ -24,13 +24,13 @@ export function Footer() {
       <Container className="py-12">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Link href="/" className="flex items-center gap-2" aria-label="Trang chủ LyliShop">
-              <Image src={SITE.logo} alt="Logo LyliShop" width={28} height={28} />
+            <Link href="/" className="flex items-center gap-2" aria-label="LyliShop homepage">
+              <Image src={SITE.logo} alt="LyliShop logo" width={28} height={28} />
               <span className="font-display text-base font-semibold tracking-tight">{SITE.name}</span>
             </Link>
             <p className="mt-3 max-w-md text-sm text-muted-foreground">
-              Móc khóa crochet handmade và phụ kiện len cute. Len cao cấp, đóng gói quà xinh, có
-              thể tùy chỉnh màu sắc theo yêu cầu.
+              Handmade crochet keychains and yarn accessories with soft premium yarn, gift-ready
+              packaging, and custom color options.
             </p>
 
             <div className="mt-5 flex items-center gap-2">
@@ -74,7 +74,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <h2 className="font-display text-sm font-semibold">Khám phá</h2>
+            <h2 className="font-display text-sm font-semibold">Explore</h2>
             <ul className="mt-4 grid gap-2">
               {FOOTER_LINKS.map((l) => (
                 <li key={l.href}>
@@ -87,7 +87,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h2 className="font-display text-sm font-semibold">Chính sách</h2>
+            <h2 className="font-display text-sm font-semibold">Policies</h2>
             <ul className="mt-4 grid gap-2">
               {POLICY_LINKS.map((l) => (
                 <li key={l.href}>
@@ -100,19 +100,19 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h2 className="font-display text-sm font-semibold">Liên hệ</h2>
-            <p className="mt-4 text-sm text-muted-foreground">Đặt hàng qua:</p>
+            <h2 className="font-display text-sm font-semibold">Contact</h2>
+            <p className="mt-4 text-sm text-muted-foreground">Order via:</p>
             <p className="mt-2 text-sm text-foreground/80">Instagram, TikTok, Facebook, Zalo</p>
           </div>
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-border/70 pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {SITE.name}. Mọi quyền được bảo lưu.
+            © {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
           <p>
             <Link href="/#order" className="hover:text-foreground">
-              Sẵn sàng đặt hàng?
+              Contact to order
             </Link>
           </p>
         </div>
@@ -120,4 +120,3 @@ export function Footer() {
     </footer>
   );
 }
-

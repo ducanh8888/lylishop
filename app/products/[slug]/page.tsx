@@ -28,7 +28,7 @@ export async function generateMetadata({
   if (!product) return {};
 
   const title = product.name;
-  const description = `${product.shortDescription} Móc khóa crochet handmade từ LyliShop.`;
+  const description = `${product.shortDescription} Phụ kiện crochet handmade từ LyliShop, có thể tùy chỉnh màu và đặt hàng qua tin nhắn.`;
   const url = `${SITE.url}/products/${product.slug}`;
 
   return {
@@ -70,14 +70,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <Container>
           <div className="flex items-center justify-between gap-3">
             <Button asChild variant="ghost">
-              <Link href="/products" aria-label="Quay lại trang sản phẩm">
-                <ArrowLeft className="h-4 w-4" />
-                Sản phẩm
+              <Link href="/products" aria-label="Back to products">
+                <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                Products
               </Link>
             </Button>
             <div className="hidden items-center gap-2 sm:flex">
-              <Badge variant="pink">Thủ công</Badge>
-              <Badge variant="secondary">Đóng gói quà</Badge>
+              <Badge variant="pink">Handmade</Badge>
+              <Badge variant="secondary">Gift-ready</Badge>
             </div>
           </div>
 
@@ -109,11 +109,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   {formatVnd(product.priceVnd)}
                 </div>
                 <StarRating rating={product.rating} />
-                <span className="text-sm text-muted-foreground">{product.reviewCount} đánh giá</span>
+                <span className="text-sm text-muted-foreground">{product.reviewCount} reviews</span>
               </div>
 
               <div className="mt-6 rounded-xl border border-border/70 bg-white/60 p-5 shadow-sm backdrop-blur-md">
-                <h2 className="font-display text-base font-semibold">Điểm nổi bật</h2>
+                <h2 className="font-display text-base font-semibold">Highlights</h2>
                 <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
                   {product.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-2">
@@ -126,21 +126,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg">
-                  <Link href="/#order" aria-label="Đi tới mục đặt hàng trên trang chủ">
-                    Đặt hàng
-                    <Sparkles className="h-4 w-4" />
+                  <Link href="/#order" aria-label="Go to order contact section">
+                    Contact to order
+                    <Sparkles className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                    <Camera className="h-4 w-4" />
-                    Nhắn Instagram
+                    <Camera className="h-4 w-4" aria-hidden="true" />
+                    DM Instagram
                   </a>
                 </Button>
               </div>
 
               <p className="mt-4 text-sm text-muted-foreground">
-                Muốn đổi màu? Nhắn shop bảng màu bạn thích, shop sẽ xác nhận trước khi bắt đầu làm.
+                Muốn đổi màu? Nhắn shop bảng màu bạn thích, shop sẽ xác nhận mẫu trước khi bắt đầu làm.
               </p>
             </div>
           </div>
@@ -149,4 +149,3 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     </>
   );
 }
-

@@ -11,27 +11,27 @@ export const TESTIMONIALS: Testimonial[] = [
     handle: "@minatrn",
     rating: 5,
     quote:
-      "Móc khóa gấu ngoài đời còn xinh hơn ảnh. Mũi len gọn, đóng gói rất có tâm, mở ra thấy như quà tự thưởng luôn.",
+      "Móc khóa gấu ngoài đời còn xinh hơn ảnh. Mũi len gọn, đóng gói chỉn chu, mở ra thấy như một món quà tự thưởng.",
   },
   {
     name: "Chloe Nguyen",
     handle: "@chloeng",
     rating: 5,
     quote:
-      "Mình mua tulip treo balo, nhẹ mà nhìn sang. Khoen chắc, cầm lên cảm giác rất “xịn”.",
+      "Mình mua tulip treo ba lô, nhẹ mà nhìn rất tinh tế. Khoen chắc, cầm lên thấy sản phẩm được hoàn thiện kỹ.",
   },
   {
     name: "Sophie Lee",
     handle: "@sophiel",
     rating: 5,
     quote:
-      "Nhắn Instagram phản hồi nhanh, tư vấn phối màu dễ thương. Mình tặng bạn sinh nhật, bạn mê luôn.",
+      "Nhắn Instagram phản hồi nhanh, tư vấn phối màu rất dễ thương. Mình tặng sinh nhật bạn và bạn thích lắm.",
   },
   {
     name: "Hana Park",
     handle: "@hanapark",
     rating: 4,
     quote:
-      "Charm dâu tây siêu đáng yêu, chi tiết thêu gọn đẹp. Shop cập nhật tình trạng đơn rõ ràng, dễ theo dõi.",
+      "Charm dâu tây đáng yêu, chi tiết thêu gọn đẹp. Shop cập nhật tình trạng đơn rõ ràng nên mình dễ theo dõi.",
   },
 ];

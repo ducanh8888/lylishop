@@ -17,9 +17,9 @@ export function TestimonialsSection() {
     <section id="reviews" className="bg-gradient-to-b from-rose-50 to-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Cảm nhận"
-          title="Khách mua quà rất mê"
-          description="Nhiều bạn thích mũi len gọn đẹp, đóng gói xinh và hỗ trợ nhanh qua chat."
+          eyebrow="Reviews"
+          title="Khách chọn quà yêu thích"
+          description="Nhiều bạn thích mũi len gọn đẹp, đóng gói chỉn chu và hỗ trợ nhanh qua tin nhắn."
         />
 
         <Stagger className="mt-10 grid gap-4 md:grid-cols-2">
@@ -39,7 +39,7 @@ export function TestimonialsSection() {
                       <p className="text-xs text-muted-foreground">{t.handle}</p>
                     </div>
                   </div>
-                  <StarRating rating={t.rating} label={`${t.name} đánh giá ${t.rating} trên 5`} />
+                  <StarRating rating={t.rating} label={`${t.name} rated ${t.rating} out of 5`} />
                 </div>
                 <p className="mt-4 text-sm leading-6 text-foreground/90">{t.quote}</p>
               </Card>

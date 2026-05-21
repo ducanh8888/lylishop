@@ -14,7 +14,7 @@ export function HeroDecor() {
         animate={{ y: [0, -8, 0] }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <Sparkles className="h-4 w-4 text-primary" />
+        <Sparkles className="h-4 w-4 text-primary" aria-hidden="true" />
       </motion.div>
 
       <motion.div
@@ -22,7 +22,7 @@ export function HeroDecor() {
         animate={{ y: [0, 10, 0], rotate: [0, 6, 0] }}
         transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut" }}
       >
-        <Star className="h-4 w-4 text-primary" fill="currentColor" />
+        <Star className="h-4 w-4 text-primary" fill="currentColor" aria-hidden="true" />
       </motion.div>
 
       <motion.div
@@ -30,7 +30,7 @@ export function HeroDecor() {
         animate={{ y: [0, -10, 0], rotate: [0, -6, 0] }}
         transition={{ duration: 6.2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <Heart className="h-4 w-4 text-primary" fill="currentColor" />
+        <Heart className="h-4 w-4 text-primary" fill="currentColor" aria-hidden="true" />
       </motion.div>
     </div>
   );

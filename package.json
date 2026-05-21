@@ -1,7 +1,7 @@
 {
   "name": "lylishop",
   "version": "1.0.0",
-  "description": "LyliShop - Website trưng bày móc khóa crochet handmade (không có giỏ hàng / thanh toán)",
+  "description": "LyliShop - Handmade crochet product showcase without cart or checkout",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -64,4 +64,3 @@
     "postcss": "8.5.15"
   }
 }
-

@@ -37,7 +37,7 @@ const SheetContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed z-50 flex flex-col gap-4 bg-background/90 p-6 shadow-xl backdrop-blur-md transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
+        "fixed z-50 flex flex-col gap-4 overflow-y-auto bg-background/90 p-6 shadow-xl backdrop-blur-md transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
         side === "right" &&
           "inset-y-0 right-0 h-full w-[92vw] max-w-sm border-l border-border/70 data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right",
         side === "left" &&
@@ -54,7 +54,7 @@ const SheetContent = React.forwardRef<
         className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         aria-label="Close menu"
       >
-        <X className="h-4 w-4" />
+        <X className="h-4 w-4" aria-hidden="true" />
       </DialogPrimitive.Close>
       {children}
     </DialogPrimitive.Content>
@@ -83,6 +83,18 @@ function SheetTitle({
   );
 }
 
+const SheetDescription = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Description>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
+>(({ className, ...props }, ref) => (
+  <DialogPrimitive.Description
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+));
+SheetDescription.displayName = "SheetDescription";
+
 export {
   Sheet,
   SheetTrigger,
@@ -90,7 +102,7 @@ export {
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetDescription,
   SheetPortal,
   SheetOverlay,
 };
-

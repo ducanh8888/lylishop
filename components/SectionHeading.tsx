@@ -5,12 +5,16 @@ export function SectionHeading({
   title,
   description,
   className,
+  as = "h2",
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   className?: string;
+  as?: "h1" | "h2";
 }) {
+  const Heading = as;
+
   return (
     <div className={cn("mx-auto max-w-2xl text-center", className)}>
       {eyebrow ? (
@@ -18,9 +22,9 @@ export function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+      <Heading className="mt-2 font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
         {title}
-      </h2>
+      </Heading>
       {description ? (
         <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
           {description}
@@ -29,4 +33,3 @@ export function SectionHeading({
     </div>
   );
 }
-

@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 330 81% 60%; /* #ec4899 */
+    --primary: 333 79% 42%; /* #be185d */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 329 86% 70%; /* #f472b6 */
@@ -41,6 +41,7 @@
   }
 
   html {
+    scroll-padding-top: 5rem;
     scroll-behavior: smooth;
   }
 
@@ -53,5 +54,19 @@
     outline: 2px solid hsl(var(--ring));
     outline-offset: 2px;
   }
-}
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

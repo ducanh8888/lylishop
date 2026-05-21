@@ -15,12 +15,14 @@ export function StarRating({
   return (
     <div
       className={cn("flex items-center gap-2", className)}
-      aria-label={label ?? `Đánh giá ${rating} trên 5`}
+      role="img"
+      aria-label={label ?? `Rating ${rating} out of 5`}
     >
       <div className="flex items-center gap-0.5 text-primary">
         {Array.from({ length: 5 }).map((_, idx) => (
           <Star
             key={idx}
+            aria-hidden="true"
             className={cn("h-4 w-4", idx < full ? "text-primary" : "text-primary/30")}
             fill={idx < full ? "currentColor" : "none"}
           />

@@ -7,27 +7,49 @@ import { Button } from "@/components/ui/button";
 
 export function CopyToClipboard({
   text,
-  label = "Sao chép",
+  label = "Copy",
 }: {
   text: string;
   label?: string;
 }) {
   const [copied, setCopied] = React.useState(false);
+  const timeoutRef = React.useRef<number | null>(null);
+
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        window.clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   async function onCopy() {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      window.setTimeout(() => setCopied(false), 1400);
+      if (timeoutRef.current) {
+        window.clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = window.setTimeout(() => setCopied(false), 1400);
     } catch {
       setCopied(false);
     }
   }
 
   return (
-    <Button type="button" variant="outline" onClick={onCopy} aria-label={label}>
-      {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-      {copied ? "Đã sao chép" : label}
+    <Button
+      type="button"
+      variant="outline"
+      onClick={onCopy}
+      aria-label={copied ? "Copied to clipboard" : label}
+      aria-live="polite"
+    >
+      {copied ? (
+        <Check className="h-4 w-4" aria-hidden="true" />
+      ) : (
+        <Copy className="h-4 w-4" aria-hidden="true" />
+      )}
+      {copied ? "Copied" : label}
     </Button>
   );
 }

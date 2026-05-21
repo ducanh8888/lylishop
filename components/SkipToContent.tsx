@@ -11,7 +11,7 @@ export function SkipToContent({ className }: { className?: string }) {
         className
       )}
     >
-      Chuyển tới nội dung
+      Skip to content
     </Link>
   );
 }

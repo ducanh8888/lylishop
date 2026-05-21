@@ -23,9 +23,9 @@ export function HeroSection() {
           <div className="max-w-xl">
             <FadeUp>
               <div className="flex flex-wrap items-center gap-2">
-                <Badge variant="pink">Crochet thủ công</Badge>
-                <Badge variant="secondary">Đóng gói quà</Badge>
-                <Badge>Tùy chỉnh màu</Badge>
+                <Badge variant="pink">Handmade Crochet</Badge>
+                <Badge variant="secondary">Gift-ready</Badge>
+                <Badge>Custom Colors</Badge>
               </div>
             </FadeUp>
 
@@ -38,27 +38,27 @@ export function HeroSection() {
 
             <FadeUp delay={0.1}>
               <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-                Móc khóa crochet và phụ kiện len cute cho niềm vui mỗi ngày: mềm tay, mũi
-                len gọn đẹp, và phong cách đóng gói boutique.
+                Móc khóa crochet và phụ kiện len nhỏ xinh cho niềm vui mỗi ngày: mềm tay,
+                mũi len gọn đẹp và đóng gói chỉn chu như một món quà.
               </p>
             </FadeUp>
 
             <FadeUp delay={0.15}>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg" className="shadow-sm">
-                  <Link href="#order" aria-label="Đi tới mục đặt hàng">
-                    Đặt hàng
-                    <Sparkles className="h-4 w-4" />
+                  <Link href="#order" aria-label="Go to order contact section">
+                    Contact to order
+                    <Sparkles className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                    Đặt qua Instagram
+                    DM Instagram
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="ghost">
-                  <Link href="#featured" aria-label="Xem sản phẩm nổi bật">
-                    Xem sản phẩm
+                  <Link href="#featured" aria-label="View featured products">
+                    View products
                   </Link>
                 </Button>
               </div>
@@ -67,24 +67,24 @@ export function HeroSection() {
             <FadeUp delay={0.2}>
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 <div className="flex items-start gap-3 rounded-lg border border-border/70 bg-white/60 p-4 shadow-sm backdrop-blur-md">
-                  <HeartHandshake className="mt-0.5 h-5 w-5 text-primary" />
+                  <HeartHandshake className="mt-0.5 h-5 w-5 text-primary" aria-hidden="true" />
                   <div>
                     <p className="text-sm font-medium">Làm thủ công tỉ mỉ</p>
                     <p className="text-xs text-muted-foreground">Từng mũi len đều được móc tay.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 rounded-lg border border-border/70 bg-white/60 p-4 shadow-sm backdrop-blur-md">
-                  <Palette className="mt-0.5 h-5 w-5 text-primary" />
+                  <Palette className="mt-0.5 h-5 w-5 text-primary" aria-hidden="true" />
                   <div>
                     <p className="text-sm font-medium">Tùy chỉnh màu sắc</p>
-                    <p className="text-xs text-muted-foreground">Phối theo túi hoặc đúng “gu”.</p>
+                    <p className="text-xs text-muted-foreground">Phối theo túi hoặc phong cách bạn thích.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 rounded-lg border border-border/70 bg-white/60 p-4 shadow-sm backdrop-blur-md">
-                  <Package className="mt-0.5 h-5 w-5 text-primary" />
+                  <Package className="mt-0.5 h-5 w-5 text-primary" aria-hidden="true" />
                   <div>
-                    <p className="text-sm font-medium">Đóng gói quà xinh</p>
-                    <p className="text-xs text-muted-foreground">Gọn sạch, xinh, tặng là mê.</p>
+                    <p className="text-sm font-medium">Đóng gói quà chỉn chu</p>
+                    <p className="text-xs text-muted-foreground">Gọn gàng, sạch đẹp, sẵn sàng để tặng.</p>
                   </div>
                 </div>
               </div>

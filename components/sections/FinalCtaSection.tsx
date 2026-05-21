@@ -24,21 +24,21 @@ export function FinalCtaSection() {
           </FadeUp>
           <FadeUp delay={0.12}>
             <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
-              Chọn mẫu, chọn màu, shop làm tỉ mỉ. Đặt hàng trong vài phút qua Instagram, TikTok,
-              Facebook hoặc Zalo.
+              Chọn mẫu, chọn màu, shop làm tỉ mỉ. Liên hệ trong vài phút qua Instagram, TikTok,
+              Facebook hoặc Zalo để chốt mẫu và thông tin nhận hàng.
             </p>
           </FadeUp>
           <FadeUp delay={0.18}>
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row sm:items-center">
               <Button asChild size="lg">
                 <Link href="#order">
-                  Đặt hàng
-                  <Sparkles className="h-4 w-4" />
+                  Contact to order
+                  <Sparkles className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                  Đặt qua Instagram
+                  DM Instagram
                 </a>
               </Button>
             </div>
@@ -48,4 +48,3 @@ export function FinalCtaSection() {
     </section>
   );
 }
-
