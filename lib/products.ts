@@ -27,7 +27,7 @@ export const PRODUCTS: Product[] = [
     reviewCount: 128,
     image: {
       src: "/products/crochet-bear-keychain.png",
-      alt: "Móc khóa gấu crochet handmade với khoen vàng trên nền hồng nhạt",
+      alt: "Quý khách chưa thực hiện thay đổi địa chỉ",
       width: 1200,
       height: 1200,
     },
