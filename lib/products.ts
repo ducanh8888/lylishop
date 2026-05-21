@@ -22,12 +22,12 @@ export const PRODUCTS: Product[] = [
     priceVnd: 89000,
     shortDescription: "Gấu nhỏ xinh, mềm tay, kèm khoen vàng chắc chắn.",
     longDescription:
-      "Móc khóa gấu crochet handmade từ sợi len mềm, lên form gọn gàng. Hoàn thiện kèm khoen vàng chắc chắn, phù hợp treo chìa khóa, túi xách hoặc ba lô.",
+      "Alo 123",
     rating: 4.9,
     reviewCount: 128,
     image: {
       src: "/products/crochet-bear-keychain.png",
-      alt: "Quý khách chưa thực hiện thay đổi địa chỉ",
+      alt: "Móc khóa gấu crochet handmade với khoen vàng trên nền hồng nhạt",
       width: 1200,
       height: 1200,
     },
