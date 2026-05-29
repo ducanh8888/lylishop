@@ -1,7 +1,7 @@
 export const SITE = {
   name: "LyliShop",
-  domain: "lylishop.store",
-  url: "https://lylishop.store",
+  domain: "lylishop.online",
+  url: "https://lylishop.online",
   locale: "vi_VN",
   title: "LyliShop | Móc khóa crochet handmade & phụ kiện len",
   description:

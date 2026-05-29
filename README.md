@@ -1,6 +1,6 @@
 # LyliShop (Next.js 15) - Website trưng bày móc khóa crochet handmade
 
-Domain mục tiêu: `https://lylishop.store`
+Domain mục tiêu: `https://lylishop.online`
 
 LyliShop là website **trưng bày sản phẩm** (product showcase) cho brand móc khóa crochet handmade và phụ kiện len cute.
 
@@ -74,7 +74,7 @@ public/
 
 Sửa file: `lib/site.ts`
 
-- `SITE.url` phải đúng: `https://lylishop.store`
+- `SITE.url` phải đúng: `https://lylishop.online`
 - `SITE.socials.*` sửa link Instagram/TikTok/Facebook/Zalo của bạn
 
 ### 4.2 Sản phẩm + giá
@@ -135,8 +135,8 @@ Công cụ miễn phí:
   - Product (trang chi tiết sản phẩm)
 
 Kiểm tra sau khi deploy:
-- `https://lylishop.store/robots.txt`
-- `https://lylishop.store/sitemap.xml`
+- `https://lylishop.online/robots.txt`
+- `https://lylishop.online/sitemap.xml`
 
 ---
 
@@ -157,7 +157,7 @@ Các test chính:
 
 ---
 
-# 8) Triển khai bằng giao diện Vercel + gắn domain `lylishop.store`
+# 8) Triển khai bằng giao diện Vercel + gắn domain `lylishop.online`
 
 ## 8.1 Deploy lên Vercel (UI)
 
@@ -169,23 +169,23 @@ Các test chính:
 6. Output: tự động
 7. Bấm **Deploy**
 
-## 8.2 Gắn domain `lylishop.store`
+## 8.2 Gắn domain `lylishop.online`
 
 1. Vercel -> Project -> **Settings** -> **Domains**
 2. Add domain:
-   - `lylishop.store`
-   - (khuyến nghị) `www.lylishop.store`
+   - `lylishop.online`
+   - (khuyến nghị) `www.lylishop.online`
 3. Vercel sẽ hiện “Required DNS Records” (bảng record cần tạo). Bạn làm đúng theo bảng đó.
 
 ### DNS thường gặp (tham khảo)
 
 Lưu ý: luôn ưu tiên record mà Vercel hiển thị trong project của bạn.
 
-- Apex domain (`lylishop.store`):
+- Apex domain (`lylishop.online`):
   - Type: `A`
   - Name/Host: `@`
   - Value: `76.76.21.21`
-- WWW (`www.lylishop.store`):
+- WWW (`www.lylishop.online`):
   - Type: `CNAME`
   - Name/Host: `www`
   - Value: Vercel cung cấp (ví dụ `cname.vercel-dns-0.com`)
@@ -195,7 +195,7 @@ Lưu ý: luôn ưu tiên record mà Vercel hiển thị trong project của bạ
 Vercel sẽ tự cấp SSL khi domain “Valid Configuration”.
 
 1. Chờ DNS cập nhật (thường vài phút, đôi khi vài giờ)
-2. Khi Vercel báo domain hợp lệ, thử mở: `https://lylishop.store`
+2. Khi Vercel báo domain hợp lệ, thử mở: `https://lylishop.online`
 
 ## 8.4 Redeploy khi bạn cập nhật sản phẩm/ảnh
 
@@ -210,11 +210,11 @@ Vercel sẽ tự cấp SSL khi domain “Valid Configuration”.
 
 1. Thêm website (Domain property)
 2. Verify bằng DNS TXT record
-3. Submit sitemap: `https://lylishop.store/sitemap.xml`
+3. Submit sitemap: `https://lylishop.online/sitemap.xml`
 
 ### Bing Webmaster Tools
 
 1. Add site
 2. Verify ownership
-3. Submit sitemap: `https://lylishop.store/sitemap.xml`
+3. Submit sitemap: `https://lylishop.online/sitemap.xml`
 
