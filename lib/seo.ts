@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import { SITE } from "@/lib/site";
 
+const googleSiteVerification = SITE.google.searchConsoleVerification;
+
 export const DEFAULT_METADATA: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
@@ -53,4 +55,11 @@ export const DEFAULT_METADATA: Metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png" }],
   },
+  ...(googleSiteVerification
+    ? {
+        verification: {
+          google: googleSiteVerification,
+        },
+      }
+    : {}),
 };

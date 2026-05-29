@@ -20,10 +20,14 @@ export const SITE = {
   ogImage: "/og.png",
   twitterImage: "/twitter-card.png",
   logo: "/logo.svg",
+  google: {
+    analyticsMeasurementId: "G-MJ7EP9BPQH",
+    searchConsoleVerification: "google-site-verification=CJ6HkBRGaUnGabnWhbRFvP3EDaClZkRuQvZQBSuwAGE",
+  },
   socials: {
-    instagram: "https://instagram.com/lylishop.store",
-    tiktok: "https://tiktok.com/@lylishop.store",
-    facebook: "https://facebook.com/lylishop.store",
-    zalo: "https://zalo.me",
+    instagram: "https://www.instagram.com/lylishopstr/",
+    tiktok: "https://www.tiktok.com/@lylistr1105",
+    facebook: "https://www.facebook.com/profile.php?id=61579372469264",
+    zalo: "https://zalo.me/0356839196",
   },
 } as const;
