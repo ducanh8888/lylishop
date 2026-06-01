@@ -18,11 +18,11 @@ export type Product = {
 export const PRODUCTS: Product[] = [
   {
     slug: "crochet-bear-keychain",
-    name: "Móc khóa gấu aihi",
+    name: "Móc khóa thỏ con",
     priceVnd: 89000,
     shortDescription: "Gấu nhỏ xinh, mềm tay, kèm khoen khóa vàng .",
     longDescription:
-      "Alo 123",
+      "Thủ công, tỉ mỉ",
     rating: 4.9,
     reviewCount: 128,
     image: {
