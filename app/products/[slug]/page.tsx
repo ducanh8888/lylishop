@@ -107,6 +107,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   height={product.image.height}
                   className="h-full w-full object-cover"
                   priority
+                  quality={60}
                   sizes="(max-width: 1024px) 100vw, 520px"
                 />
               </div>

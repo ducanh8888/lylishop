@@ -56,7 +56,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/75 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2" aria-label={`${SITE.name} homepage`}>
-          <Image src={SITE.logo} alt="LyliShop logo" width={28} height={28} priority />
+          <Image src={SITE.logo} alt="LyliShop logo" width={28} height={28} />
           <span className="font-display text-base font-semibold tracking-tight">
             {SITE.name}
           </span>

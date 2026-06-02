@@ -103,6 +103,7 @@ export function HeroSection() {
                   height={heroProduct.image.height}
                   className="h-auto w-full object-cover"
                   priority
+                  quality={60}
                   sizes="(max-width: 1024px) 90vw, 520px"
                 />
                 <div className="flex items-center justify-between gap-3 p-4">

@@ -29,6 +29,7 @@ export function GallerySection() {
                       className="h-auto w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                       sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                       loading="lazy"
+                      quality={55}
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10 opacity-0 transition group-hover:opacity-100" />
                   </div>
