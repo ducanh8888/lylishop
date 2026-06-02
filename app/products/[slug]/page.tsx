@@ -7,12 +7,13 @@ import { ArrowLeft, Camera, Sparkles } from "lucide-react";
 import { PRODUCTS, getProductBySlug } from "@/lib/products";
 import { SITE } from "@/lib/site";
 import { formatVnd } from "@/lib/format";
-import { productJsonLd } from "@/lib/schema";
+import { breadcrumbJsonLd, productJsonLd } from "@/lib/schema";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { StarRating } from "@/components/StarRating";
 import { JsonLd } from "@/components/JsonLd";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -28,7 +29,7 @@ export async function generateMetadata({
   if (!product) return {};
 
   const title = product.name;
-  const description = `${product.shortDescription} Phụ kiện crochet handmade từ LyliShop, có thể tùy chỉnh màu và đặt hàng qua tin nhắn.`;
+  const description = product.metaDescription;
   const url = `${SITE.url}/products/${product.slug}`;
 
   return {
@@ -66,18 +67,33 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   return (
     <>
       <JsonLd data={productJsonLd(product)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Trang chủ", url: SITE.url },
+          { name: "Sản phẩm", url: `${SITE.url}/products` },
+          { name: product.name, url: `${SITE.url}/products/${product.slug}` },
+        ])}
+      />
       <section className="bg-background py-10 sm:py-14">
         <Container>
+          <Breadcrumbs
+            items={[
+              { label: "Trang chủ", href: "/" },
+              { label: "Sản phẩm", href: "/products" },
+              { label: product.name },
+            ]}
+            className="mb-5"
+          />
           <div className="flex items-center justify-between gap-3">
             <Button asChild variant="ghost">
-              <Link href="/products" aria-label="Back to products">
+              <Link href="/products" aria-label="Quay lại danh sách sản phẩm">
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                Products
+                Sản phẩm
               </Link>
             </Button>
             <div className="hidden items-center gap-2 sm:flex">
-              <Badge variant="pink">Handmade</Badge>
-              <Badge variant="secondary">Gift-ready</Badge>
+              <Badge variant="pink">handmade</Badge>
+              <Badge variant="secondary">Sẵn sàng làm quà</Badge>
             </div>
           </div>
 
@@ -109,11 +125,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   {formatVnd(product.priceVnd)}
                 </div>
                 <StarRating rating={product.rating} />
-                <span className="text-sm text-muted-foreground">{product.reviewCount} reviews</span>
+                <span className="text-sm text-muted-foreground">{product.reviewCount} đánh giá</span>
               </div>
 
               <div className="mt-6 rounded-xl border border-border/70 bg-white/60 p-5 shadow-sm backdrop-blur-md">
-                <h2 className="font-display text-base font-semibold">Highlights</h2>
+                <h2 className="font-display text-base font-semibold">Điểm nổi bật</h2>
                 <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
                   {product.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-2">
@@ -126,15 +142,15 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg">
-                  <Link href="/#order" aria-label="Go to order contact section">
-                    Contact to order
+                  <Link href="/#order" aria-label="Đến phần liên hệ đặt hàng">
+                    Liên hệ đặt hàng
                     <Sparkles className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
                     <Camera className="h-4 w-4" aria-hidden="true" />
-                    DM Instagram
+                    Nhắn Instagram
                   </a>
                 </Button>
               </div>

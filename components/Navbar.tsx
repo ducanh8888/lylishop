@@ -18,12 +18,12 @@ import {
 } from "@/components/ui/sheet";
 
 const NAV_LINKS: Array<{ label: string; href: string }> = [
-  { label: "Products", href: "/#featured" },
-  { label: "Why LyliShop", href: "/#why" },
-  { label: "Gallery", href: "/#gallery" },
-  { label: "Reviews", href: "/#reviews" },
-  { label: "FAQ", href: "/#faq" },
-  { label: "Order", href: "/#order" },
+  { label: "Sản phẩm", href: "/#featured" },
+  { label: "Vì sao chọn", href: "/#why" },
+  { label: "Hình ảnh", href: "/#gallery" },
+  { label: "Đánh giá", href: "/#reviews" },
+  { label: "Câu hỏi", href: "/#faq" },
+  { label: "Đặt hàng", href: "/#order" },
 ];
 
 function NavLinks({
@@ -68,15 +68,15 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Button asChild variant="outline" className="hidden sm:inline-flex">
-            <Link href="/#featured" aria-label="View featured products">
+            <Link href="/#featured" aria-label="Xem sản phẩm nổi bật">
               <Sparkles className="h-4 w-4" aria-hidden="true" />
-              Featured
+              Nổi bật
             </Link>
           </Button>
 
           <Button asChild className="hidden sm:inline-flex">
-            <Link href="/#order" aria-label="Go to order contact section">
-              Contact to order
+            <Link href="/#order" aria-label="Đến phần liên hệ đặt hàng">
+              Liên hệ đặt hàng
             </Link>
           </Button>
 
@@ -90,7 +90,7 @@ export function Navbar() {
               <SheetHeader>
                 <SheetTitle className="font-display">{SITE.name}</SheetTitle>
                 <SheetDescription className="sr-only">
-                  Main navigation and order contact links
+                  Điều hướng chính và liên kết đặt hàng
                 </SheetDescription>
               </SheetHeader>
               <div className="mt-2">
@@ -106,7 +106,7 @@ export function Navbar() {
               <div className="mt-4 grid gap-2">
                 <SheetClose asChild>
                   <Link href="/#order" className={buttonVariants({ size: "lg" })}>
-                    Contact to order
+                    Liên hệ đặt hàng
                   </Link>
                 </SheetClose>
                 <SheetClose asChild>
@@ -116,12 +116,12 @@ export function Navbar() {
                     rel="noreferrer"
                     className={buttonVariants({ variant: "outline", size: "lg" })}
                   >
-                    DM Instagram
+                    Nhắn Instagram
                   </a>
                 </SheetClose>
               </div>
               <p className="mt-4 text-xs text-muted-foreground">
-                Handmade crochet keychains with gift-ready packaging and custom color support.
+                Móc khóa len handmade, đóng gói chỉn chu và hỗ trợ tùy chỉnh màu.
               </p>
             </SheetContent>
           </Sheet>

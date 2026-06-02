@@ -38,7 +38,7 @@ export const DEFAULT_METADATA: Metadata = {
         url: SITE.ogImage,
         width: 1200,
         height: 630,
-        alt: "LyliShop handmade crochet keychains and yarn accessories",
+        alt: "LyliShop móc khóa len handmade và phụ kiện len",
       },
     ],
   },

@@ -33,6 +33,6 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "order",
     question: "Cách đặt hàng như thế nào?",
     answer:
-      "Bạn có thể bấm “DM Instagram” trên website hoặc nhắn shop qua Instagram, TikTok, Facebook hay Zalo. Chỉ cần gửi tên sản phẩm hoặc ảnh chụp, màu mong muốn và thông tin nhận hàng.",
+      "Bạn có thể bấm “Nhắn Instagram” trên website hoặc nhắn shop qua Instagram, TikTok, Facebook hay Zalo. Chỉ cần gửi tên sản phẩm hoặc ảnh chụp, màu mong muốn và thông tin nhận hàng.",
   },
 ];

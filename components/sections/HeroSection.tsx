@@ -23,9 +23,9 @@ export function HeroSection() {
           <div className="max-w-xl">
             <FadeUp>
               <div className="flex flex-wrap items-center gap-2">
-                <Badge variant="pink">Handmade Crochet</Badge>
-                <Badge variant="secondary">Gift-ready</Badge>
-                <Badge>Custom Colors</Badge>
+                <Badge variant="pink">Len handmade</Badge>
+                <Badge variant="secondary">Sẵn sàng làm quà</Badge>
+                <Badge>Tùy chỉnh màu</Badge>
               </div>
             </FadeUp>
 
@@ -38,7 +38,7 @@ export function HeroSection() {
 
             <FadeUp delay={0.1}>
               <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-                Móc khóa crochet và phụ kiện len nhỏ xinh cho niềm vui mỗi ngày: mềm tay,
+                Móc khóa len và phụ kiện len nhỏ xinh cho niềm vui mỗi ngày: mềm tay,
                 mũi len gọn đẹp và đóng gói chỉn chu như một món quà.
               </p>
             </FadeUp>
@@ -46,19 +46,19 @@ export function HeroSection() {
             <FadeUp delay={0.15}>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg" className="shadow-sm">
-                  <Link href="#order" aria-label="Go to order contact section">
-                    Contact to order
+                  <Link href="#order" aria-label="Đến phần liên hệ đặt hàng">
+                    Liên hệ đặt hàng
                     <Sparkles className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                    DM Instagram
+                    Nhắn Instagram
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="ghost">
-                  <Link href="#featured" aria-label="View featured products">
-                    View products
+                  <Link href="#featured" aria-label="Xem sản phẩm nổi bật">
+                    Xem sản phẩm
                   </Link>
                 </Button>
               </div>

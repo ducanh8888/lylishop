@@ -9,7 +9,7 @@ export function FaqSection() {
     <section id="faq" className="bg-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="FAQ"
+          eyebrow="Câu hỏi"
           title="Trả lời nhanh"
           description="Thông tin về giao hàng, tùy chỉnh, đóng gói quà và cách liên hệ đặt hàng."
         />

@@ -32,13 +32,13 @@ export function FinalCtaSection() {
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row sm:items-center">
               <Button asChild size="lg">
                 <Link href="#order">
-                  Contact to order
+                  Liên hệ đặt hàng
                   <Sparkles className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                  DM Instagram
+                  Nhắn Instagram
                 </a>
               </Button>
             </div>

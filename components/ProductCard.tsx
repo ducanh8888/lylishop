@@ -26,7 +26,7 @@ export function ProductCard({
       <Link
         href={`/products/${product.slug}`}
         className="block"
-        aria-label={`View details for ${product.name}`}
+        aria-label={`Xem chi tiết ${product.name}`}
       >
         <div className="relative aspect-square overflow-hidden bg-gradient-to-b from-white to-rose-50">
           <Image
@@ -55,7 +55,7 @@ export function ProductCard({
                 {formatVnd(product.priceVnd)}
               </div>
               <Badge variant="pink" className="mt-1">
-                Handmade
+                handmade
               </Badge>
             </div>
           </div>
@@ -63,7 +63,7 @@ export function ProductCard({
           <div className="mt-4 flex items-center justify-between">
             <StarRating rating={product.rating} />
             <span className="inline-flex items-center gap-1 text-sm font-medium text-primary">
-              View
+              Xem
               <ArrowUpRight
                 className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                 aria-hidden="true"

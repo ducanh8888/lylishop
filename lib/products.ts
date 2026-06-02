@@ -4,6 +4,7 @@ export type Product = {
   priceVnd: number;
   shortDescription: string;
   longDescription: string;
+  metaDescription: string;
   rating: number;
   reviewCount: number;
   image: {
@@ -20,31 +21,35 @@ export const PRODUCTS: Product[] = [
     slug: "crochet-bear-keychain",
     name: "Móc khóa thỏ con",
     priceVnd: 89000,
-    shortDescription: "Gấu nhỏ xinh, mềm tay, kèm khoen khóa vàng .",
+    shortDescription: "Thỏ nhỏ xinh, mềm tay, kèm khoen khóa vàng chắc chắn.",
     longDescription:
-      "Thủ công, tỉ mỉ",
+      "Móc khóa thỏ con handmade được làm thủ công từng mũi len, dáng nhỏ gọn và dễ thương để treo chìa khóa, túi xách, balo hoặc hộp bút. Sản phẩm dùng len mềm, bề mặt êm tay, phần khoen khóa vàng chắc chắn giúp bạn dùng hằng ngày mà vẫn giữ được vẻ chỉn chu. Mẫu thỏ con phù hợp làm quà tặng sinh nhật, quà cảm ơn hoặc món phụ kiện nhỏ cho người thích đồ len xinh xắn. Bạn có thể nhắn shop để chọn màu tai, màu thân hoặc phối thêm chi tiết nhỏ trước khi shop bắt đầu làm.",
+    metaDescription:
+      "Móc khóa thỏ con handmade bằng len mềm, kèm khoen vàng chắc chắn, phù hợp treo túi, chìa khóa hoặc làm quà tặng nhỏ xinh.",
     rating: 4.9,
     reviewCount: 128,
     image: {
       src: "/products/crochet-bear-keychain.png",
-      alt: "Móc khóa gấu crochet handmade với khoen vàng trên nền hồng nhạt",
+      alt: "Móc khóa thỏ con handmade bằng len với khoen vàng trên nền hồng nhạt",
       width: 1200,
       height: 1200,
     },
-    highlights: ["Gift-ready packaging", "Len mềm cao cấp", "Khoen vàng chắc chắn"],
+    highlights: ["Đóng gói sẵn để tặng", "Len mềm cao cấp", "Khoen vàng chắc chắn"],
   },
   {
     slug: "strawberry-yarn-charm",
-    name: "Charm dâu tây crochet",
+    name: "Móc treo dâu tây",
     priceVnd: 79000,
     shortDescription: "Dâu tây ngọt ngào, hợp treo túi, ví, chìa khóa.",
     longDescription:
-      "Charm dâu tây crochet với hạt thêu tỉ mỉ và phần lá gọn xinh. Nhẹ, bền, dễ phối với túi hoặc ví và phù hợp làm quà tặng.",
+      "Móc treo dâu tây handmade có dáng quả nhỏ xinh, phần hạt thêu tỉ mỉ và chiếc lá gọn gàng phía trên. Sản phẩm nhẹ, dễ treo lên túi, ví, chìa khóa hoặc dây trang trí điện thoại. Tông màu đỏ nổi bật giúp phụ kiện trông vui mắt nhưng vẫn mềm mại nhờ chất len êm tay. Đây là lựa chọn phù hợp khi bạn muốn tìm một món quà nhỏ, dễ thương và có cảm giác riêng hơn đồ sản xuất hàng loạt. Shop có thể hỗ trợ chọn sắc đỏ, xanh lá hoặc điều chỉnh chi tiết theo sở thích của bạn.",
+    metaDescription:
+      "Móc treo dâu tây handmade nhỏ gọn, thêu hạt tỉ mỉ, dễ treo túi, ví hoặc chìa khóa và có thể tùy chỉnh màu theo yêu cầu.",
     rating: 4.8,
     reviewCount: 96,
     image: {
       src: "/products/strawberry-yarn-charm.png",
-      alt: "Charm dâu tây crochet handmade trên nền hồng phấn",
+      alt: "Móc treo dâu tây handmade bằng len trên nền hồng phấn",
       width: 1200,
       height: 1200,
     },
@@ -52,33 +57,37 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "tulip-crochet-keychain",
-    name: "Móc khóa hoa tulip crochet",
+    name: "Móc khóa hoa tulip",
     priceVnd: 59000,
     shortDescription: "Tulip tối giản, lên ảnh xinh và tinh tế.",
     longDescription:
-      "Móc khóa tulip crochet lấy cảm hứng từ bó hoa mùa xuân. Dáng gọn, màu dịu, phù hợp treo ba lô, túi tote hoặc hộp bút.",
+      "Móc khóa hoa tulip handmade lấy cảm hứng từ một bó hoa nhỏ mang theo mỗi ngày. Dáng hoa gọn, màu sắc dịu và dễ phối với balo, túi tote, hộp bút hoặc chùm chìa khóa. Từng cánh hoa được móc và hoàn thiện thủ công để giữ form mềm, không quá cứng nhưng vẫn rõ dáng tulip. Mẫu này hợp với người thích phong cách nhẹ nhàng, tối giản và tinh tế. Bạn có thể đặt theo màu yêu thích như hồng, trắng, vàng, tím hoặc phối màu riêng để làm quà tặng.",
+    metaDescription:
+      "Móc khóa hoa tulip handmade dáng gọn, màu dịu, phù hợp treo balo, túi tote, hộp bút hoặc làm quà tặng tinh tế.",
     rating: 4.9,
     reviewCount: 74,
     image: {
       src: "/products/tulip-crochet-keychain.png",
-      alt: "Móc khóa hoa tulip crochet màu hồng rose trên nền trắng hồng",
+      alt: "Móc khóa hoa tulip handmade màu hồng trên nền trắng hồng",
       width: 1200,
       height: 1200,
     },
-    highlights: ["Form gọn đẹp", "Boutique style", "Phù hợp đi học"],
+    highlights: ["Dáng gọn đẹp", "Phong cách nhẹ nhàng", "Phù hợp đi học"],
   },
   {
     slug: "bunny-plush-charm",
-    name: "Charm thỏ bông crochet",
+    name: "Móc treo thỏ bông",
     priceVnd: 99000,
     shortDescription: "Thỏ tai dài, dáng mềm mại và đáng yêu.",
     longDescription:
-      "Charm thỏ crochet kiểu bông mềm, thiết kế bo tròn đáng yêu. Hoàn thiện chắc chắn, phù hợp dùng hằng ngày hoặc tặng bạn bè.",
+      "Móc treo thỏ bông handmade có đôi tai dài, thân bo tròn và cảm giác mềm mại khi cầm trên tay. Sản phẩm được làm thủ công bằng len, phù hợp treo túi, chìa khóa, balo hoặc dùng như một món phụ kiện nhỏ để trang trí góc học tập. Dáng thỏ đáng yêu nhưng vẫn gọn, không quá cồng kềnh khi mang theo hằng ngày. Đây là mẫu hợp để tặng bạn bè, người thân hoặc tự thưởng cho bản thân nếu bạn thích đồ len có nét riêng. Shop có thể đổi màu thân, màu tai hoặc thêm chi tiết nhỏ theo yêu cầu.",
+    metaDescription:
+      "Móc treo thỏ bông handmade mềm tay, tai dài đáng yêu, phù hợp treo túi, balo, chìa khóa hoặc tặng bạn bè.",
     rating: 5.0,
     reviewCount: 63,
     image: {
       src: "/products/bunny-plush-charm.png",
-      alt: "Charm thỏ bông crochet handmade trên nền hồng nhạt",
+      alt: "Móc treo thỏ bông handmade bằng len trên nền hồng nhạt",
       width: 1200,
       height: 1200,
     },
@@ -86,20 +95,22 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "cat-paw-crochet-accessory",
-    name: "Phụ kiện bàn chân mèo crochet",
+    name: "Phụ kiện bàn chân mèo",
     priceVnd: 69000,
     shortDescription: "Chi tiết đệm chân thêu xinh, mềm mại và vui mắt.",
     longDescription:
-      "Phụ kiện bàn chân mèo crochet phong cách kawaii, thêu đệm chân tỉ mỉ. Phù hợp treo móc khóa, dây điện thoại hoặc túi mini.",
+      "Phụ kiện bàn chân mèo handmade có phần đệm chân được thêu gọn, tạo cảm giác vui mắt và rất dễ thương. Kích thước nhỏ giúp sản phẩm dễ treo vào chìa khóa, túi mini, dây điện thoại hoặc balo mà không gây vướng. Chất len mềm, đường hoàn thiện chắc chắn và màu sắc có thể tùy chỉnh theo sở thích. Mẫu bàn chân mèo phù hợp với người yêu mèo, thích phụ kiện nhỏ xinh hoặc muốn tìm một món quà handmade có giá vừa dễ chọn vừa có dấu ấn cá nhân.",
+    metaDescription:
+      "Phụ kiện bàn chân mèo handmade bằng len mềm, thêu đệm chân dễ thương, hợp treo chìa khóa, túi mini hoặc dây điện thoại.",
     rating: 4.8,
     reviewCount: 82,
     image: {
       src: "/products/cat-paw-crochet-accessory.png",
-      alt: "Phụ kiện bàn chân mèo crochet với chi tiết đệm chân",
+      alt: "Phụ kiện bàn chân mèo handmade bằng len với chi tiết đệm chân",
       width: 1200,
       height: 1200,
     },
-    highlights: ["Kawaii style", "Thêu gọn đẹp", "Dễ kẹp, dễ treo"],
+    highlights: ["Dễ thương", "Thêu gọn đẹp", "Dễ kẹp, dễ treo"],
   },
 ];
 

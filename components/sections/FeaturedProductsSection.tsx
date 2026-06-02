@@ -13,8 +13,8 @@ export function FeaturedProductsSection() {
     <section id="featured" className="bg-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Featured"
-          title="Móc khóa crochet được yêu thích"
+          eyebrow="Nổi bật"
+          title="Móc khóa len được yêu thích"
           description="Những mẫu nhỏ xinh, dễ tặng và dễ dùng. Vì là hàng handmade nên từng chi tiết có thể khác nhau đôi chút, tạo nên nét riêng cho mỗi sản phẩm."
         />
 
@@ -28,8 +28,8 @@ export function FeaturedProductsSection() {
 
         <div className="mt-10 flex justify-center">
           <Button asChild variant="outline" size="lg">
-            <Link href="/products" aria-label="View all products">
-              View all products
+            <Link href="/products" aria-label="Xem tất cả sản phẩm">
+              Xem tất cả sản phẩm
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </Button>

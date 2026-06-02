@@ -26,7 +26,7 @@ vi.mock("next/link", () => {
 });
 
 if (!window.matchMedia) {
-  // Basic matchMedia polyfill for framer-motion / reduced motion checks.
+  // Basic matchMedia polyfill for components that check media queries.
   window.matchMedia = ((query: string) => {
     return {
       matches: false,

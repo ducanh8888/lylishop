@@ -28,7 +28,7 @@ export function ContactSection() {
     <section id="order" className="bg-gradient-to-b from-rose-50 to-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Order"
+          eyebrow="Đặt hàng"
           title="Liên hệ đặt hàng qua mạng xã hội"
           description="Website không có giỏ hàng hay thanh toán trực tuyến. Bạn nhắn shop qua kênh quen dùng, shop sẽ xác nhận mẫu, tùy chỉnh và phí giao hàng."
         />
@@ -36,7 +36,7 @@ export function ContactSection() {
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           <FadeUp>
             <Card className="h-full border-border/70 bg-white/60 p-6 shadow-sm backdrop-blur-md">
-              <h3 className="font-display text-lg font-semibold">Contact channels</h3>
+              <h3 className="font-display text-lg font-semibold">Kênh liên hệ</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 Shop phản hồi nhanh và hỗ trợ tùy chỉnh màu, mẫu theo yêu cầu.
               </p>
@@ -71,7 +71,7 @@ export function ContactSection() {
               <div className="mt-6 rounded-lg border border-border/70 bg-background/60 p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="text-sm font-medium">Tip</p>
+                    <p className="text-sm font-medium">Gợi ý</p>
                     <p className="mt-1 text-sm text-muted-foreground">
                       Gửi ảnh chụp sản phẩm bạn thích để shop hỗ trợ nhanh hơn.
                     </p>
@@ -86,7 +86,7 @@ export function ContactSection() {
 
           <FadeUp delay={0.06}>
             <Card className="h-full border-border/70 bg-white/60 p-6 shadow-sm backdrop-blur-md">
-              <h3 className="font-display text-lg font-semibold">Message template</h3>
+              <h3 className="font-display text-lg font-semibold">Mẫu tin nhắn</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 Sao chép mẫu này và dán vào tin nhắn. Bạn chỉ cần điền tên sản phẩm, màu mong muốn và thông tin nhận hàng.
               </p>
@@ -96,7 +96,7 @@ export function ContactSection() {
               </pre>
 
               <div className="mt-4">
-                <CopyToClipboard text={ORDER_TEMPLATE} label="Copy message template" />
+                <CopyToClipboard text={ORDER_TEMPLATE} label="Sao chép mẫu tin nhắn" />
               </div>
             </Card>
           </FadeUp>

@@ -6,16 +6,16 @@ import { SITE } from "@/lib/site";
 import { Container } from "@/components/Container";
 
 const FOOTER_LINKS: Array<{ label: string; href: string }> = [
-  { label: "Featured Products", href: "/#featured" },
-  { label: "Gallery", href: "/#gallery" },
-  { label: "Reviews", href: "/#reviews" },
-  { label: "FAQ", href: "/#faq" },
-  { label: "Contact to order", href: "/#order" },
+  { label: "Sản phẩm nổi bật", href: "/#featured" },
+  { label: "Hình ảnh", href: "/#gallery" },
+  { label: "Đánh giá", href: "/#reviews" },
+  { label: "Câu hỏi thường gặp", href: "/#faq" },
+  { label: "Liên hệ đặt hàng", href: "/#order" },
 ];
 
 const POLICY_LINKS: Array<{ label: string; href: string }> = [
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
+  { label: "Chính sách bảo mật", href: "/privacy" },
+  { label: "Điều khoản", href: "/terms" },
 ];
 
 export function Footer() {
@@ -29,8 +29,8 @@ export function Footer() {
               <span className="font-display text-base font-semibold tracking-tight">{SITE.name}</span>
             </Link>
             <p className="mt-3 max-w-md text-sm text-muted-foreground">
-              Handmade crochet keychains and yarn accessories with soft premium yarn, gift-ready
-              packaging, and custom color options.
+              Móc khóa len handmade và phụ kiện len nhỏ xinh, dùng len mềm, đóng gói chỉn chu
+              và có thể tùy chỉnh màu theo yêu cầu.
             </p>
 
             <div className="mt-5 flex items-center gap-2">
@@ -74,7 +74,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <h2 className="font-display text-sm font-semibold">Explore</h2>
+            <h2 className="font-display text-sm font-semibold">Khám phá</h2>
             <ul className="mt-4 grid gap-2">
               {FOOTER_LINKS.map((l) => (
                 <li key={l.href}>
@@ -87,7 +87,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h2 className="font-display text-sm font-semibold">Policies</h2>
+            <h2 className="font-display text-sm font-semibold">Chính sách</h2>
             <ul className="mt-4 grid gap-2">
               {POLICY_LINKS.map((l) => (
                 <li key={l.href}>
@@ -100,19 +100,19 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h2 className="font-display text-sm font-semibold">Contact</h2>
-            <p className="mt-4 text-sm text-muted-foreground">Order via:</p>
+            <h2 className="font-display text-sm font-semibold">Liên hệ</h2>
+            <p className="mt-4 text-sm text-muted-foreground">Đặt hàng qua:</p>
             <p className="mt-2 text-sm text-foreground/80">Instagram, TikTok, Facebook, Zalo</p>
           </div>
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-border/70 pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+            © {new Date().getFullYear()} {SITE.name}. Bản quyền thuộc về LyliShop.
           </p>
           <p>
             <Link href="/#order" className="hover:text-foreground">
-              Contact to order
+              Liên hệ đặt hàng
             </Link>
           </p>
         </div>

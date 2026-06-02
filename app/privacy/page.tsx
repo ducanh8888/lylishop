@@ -5,7 +5,13 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Chính sách bảo mật",
+  description:
+    "Chính sách bảo mật của LyliShop về cách xử lý tin nhắn, thông tin đặt hàng và dữ liệu cá nhân khi khách liên hệ đặt sản phẩm handmade.",
   alternates: { canonical: "/privacy" },
+  robots: {
+    index: false,
+    follow: true,
+  },
   openGraph: {
     url: `${SITE.url}/privacy`,
     title: "Chính sách bảo mật | LyliShop",

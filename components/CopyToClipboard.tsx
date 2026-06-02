@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export function CopyToClipboard({
   text,
-  label = "Copy",
+  label = "Sao chép",
 }: {
   text: string;
   label?: string;
@@ -41,7 +41,7 @@ export function CopyToClipboard({
       type="button"
       variant="outline"
       onClick={onCopy}
-      aria-label={copied ? "Copied to clipboard" : label}
+      aria-label={copied ? "Đã sao chép vào bộ nhớ tạm" : label}
       aria-live="polite"
     >
       {copied ? (
@@ -49,7 +49,7 @@ export function CopyToClipboard({
       ) : (
         <Copy className="h-4 w-4" aria-hidden="true" />
       )}
-      {copied ? "Copied" : label}
+      {copied ? "Đã sao chép" : label}
     </Button>
   );
 }

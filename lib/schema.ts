@@ -62,7 +62,7 @@ export function productJsonLd(product: Product) {
     url,
     image: [`${SITE.url}${product.image.src}`],
     sku: product.slug,
-    category: "Handmade crochet keychain",
+    category: "Móc khóa len handmade",
     brand: {
       "@type": "Brand",
       name: SITE.name,
@@ -90,7 +90,7 @@ export function productItemListJsonLd(products: Product[]) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Featured handmade crochet products",
+    name: "Danh sách sản phẩm len handmade",
     itemListElement: products.map((p, idx) => ({
       "@type": "ListItem",
       position: idx + 1,
@@ -101,6 +101,19 @@ export function productItemListJsonLd(products: Product[]) {
         url: `${SITE.url}/products/${p.slug}`,
         image: `${SITE.url}${p.image.src}`,
       },
+    })),
+  } as const;
+}
+
+export function breadcrumbJsonLd(items: Array<{ name: string; url: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: item.name,
+      item: item.url,
     })),
   } as const;
 }

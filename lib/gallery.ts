@@ -8,7 +8,7 @@ export type GalleryImage = {
 export const GALLERY_IMAGES: GalleryImage[] = [
   {
     src: "/gallery/packaging-flatlay.png",
-    alt: "Bộ đóng gói quà cho móc khóa crochet tông hồng pastel",
+    alt: "Bộ đóng gói quà cho móc khóa len tông hồng pastel",
     width: 1200,
     height: 1500,
   },
@@ -20,37 +20,37 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     src: "/products/crochet-bear-keychain.png",
-    alt: "Móc khóa gấu crochet trên nền hồng nhạt",
+    alt: "Móc khóa thỏ con handmade bằng len trên nền hồng nhạt",
     width: 1200,
     height: 1200,
   },
   {
     src: "/products/strawberry-yarn-charm.png",
-    alt: "Charm dâu tây crochet với chi tiết hạt thêu",
+    alt: "Móc treo dâu tây handmade với chi tiết hạt thêu",
     width: 1200,
     height: 1200,
   },
   {
     src: "/products/tulip-crochet-keychain.png",
-    alt: "Móc khóa tulip crochet phong cách mùa xuân nhẹ nhàng",
+    alt: "Móc khóa tulip handmade phong cách mùa xuân nhẹ nhàng",
     width: 1200,
     height: 1200,
   },
   {
     src: "/products/bunny-plush-charm.png",
-    alt: "Charm thỏ crochet phong cách mềm mại",
+    alt: "Móc treo thỏ handmade phong cách mềm mại",
     width: 1200,
     height: 1200,
   },
   {
     src: "/products/cat-paw-crochet-accessory.png",
-    alt: "Phụ kiện bàn chân mèo crochet với đệm chân thêu",
+    alt: "Phụ kiện bàn chân mèo handmade với đệm chân thêu",
     width: 1200,
     height: 1200,
   },
   {
     src: "/gallery/group-collection.png",
-    alt: "Bộ sưu tập móc khóa crochet được bày trên nền sáng",
+    alt: "Bộ sưu tập móc khóa len handmade được bày trên nền sáng",
     width: 1200,
     height: 1500,
   },
