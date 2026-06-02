@@ -93,7 +93,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </Button>
             <div className="hidden items-center gap-2 sm:flex">
               <Badge variant="pink">handmade</Badge>
-              <Badge variant="secondary">Sẵn sàng làm quà</Badge>
+              <Badge variant="secondary">Đóng gói làm quà</Badge>
             </div>
           </div>
 

@@ -7,7 +7,7 @@ describe("ProductsPage", () => {
     render(<ProductsPage />);
 
     expect(
-      screen.getByRole("heading", { level: 1, name: /móc khóa crochet/i })
+      screen.getByRole("heading", { level: 1, name: /móc khóa len/i })
     ).toBeInTheDocument();
   });
 });

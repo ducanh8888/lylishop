@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+.pnp.cjs
+.yarn/install-state.gz
 
 # testing
 /coverage
@@ -11,24 +13,35 @@
 # next.js
 /.next/
 /out/
+.next
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
 *.pem
+*.tsbuildinfo
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+.next.trace
 
 # local env files
+.env
+.env*.local
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
 # vercel
-.vercel
+.vercel/
+
+# cache
+.cache/
+.turbo/

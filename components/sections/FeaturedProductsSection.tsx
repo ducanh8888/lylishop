@@ -13,7 +13,7 @@ export function FeaturedProductsSection() {
     <section id="featured" className="bg-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Nổi bật"
+          eyebrow="Được yêu thích"
           title="Móc khóa len được yêu thích"
           description="Những mẫu nhỏ xinh, dễ tặng và dễ dùng. Vì là hàng handmade nên từng chi tiết có thể khác nhau đôi chút, tạo nên nét riêng cho mỗi sản phẩm."
         />

@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 import { Container } from "@/components/Container";
 
 const FOOTER_LINKS: Array<{ label: string; href: string }> = [
-  { label: "Sản phẩm nổi bật", href: "/#featured" },
+  { label: "Mẫu nổi bật", href: "/#featured" },
   { label: "Hình ảnh", href: "/#gallery" },
   { label: "Đánh giá", href: "/#reviews" },
   { label: "Câu hỏi thường gặp", href: "/#faq" },
@@ -74,7 +74,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <h2 className="font-display text-sm font-semibold">Khám phá</h2>
+            <h2 className="font-display text-sm font-semibold">Liên kết nhanh</h2>
             <ul className="mt-4 grid gap-2">
               {FOOTER_LINKS.map((l) => (
                 <li key={l.href}>

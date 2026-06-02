@@ -15,7 +15,7 @@ export function Breadcrumbs({
   className?: string;
 }) {
   return (
-    <nav className={cn("text-sm text-muted-foreground", className)} aria-label="Đường dẫn trang">
+    <nav className={cn("text-sm text-muted-foreground", className)} aria-label="Bạn đang ở">
       <ol className="flex flex-wrap items-center gap-1.5">
         {items.map((item, idx) => {
           const isLast = idx === items.length - 1;

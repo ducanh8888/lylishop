@@ -19,7 +19,7 @@ import {
 
 const NAV_LINKS: Array<{ label: string; href: string }> = [
   { label: "Sản phẩm", href: "/#featured" },
-  { label: "Vì sao chọn", href: "/#why" },
+  { label: "Lý do chọn", href: "/#why" },
   { label: "Hình ảnh", href: "/#gallery" },
   { label: "Đánh giá", href: "/#reviews" },
   { label: "Câu hỏi", href: "/#faq" },
@@ -34,7 +34,7 @@ function NavLinks({
   itemWrapper?: (node: React.ReactNode, key: string) => React.ReactNode;
 }) {
   return (
-    <ul className={cn("flex items-center gap-1", className)} aria-label="Main navigation">
+    <ul className={cn("flex items-center gap-1", className)} aria-label="Điều hướng chính">
       {NAV_LINKS.map((l) => {
         const link = (
           <Link
@@ -70,7 +70,7 @@ export function Navbar() {
           <Button asChild variant="outline" className="hidden sm:inline-flex">
             <Link href="/#featured" aria-label="Xem sản phẩm nổi bật">
               <Sparkles className="h-4 w-4" aria-hidden="true" />
-              Nổi bật
+              Xem mẫu
             </Link>
           </Button>
 
@@ -82,7 +82,7 @@ export function Navbar() {
 
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="md:hidden" aria-label="Open menu">
+              <Button variant="outline" size="icon" className="md:hidden" aria-label="Mở menu">
                 <Menu className="h-4 w-4" aria-hidden="true" />
               </Button>
             </SheetTrigger>

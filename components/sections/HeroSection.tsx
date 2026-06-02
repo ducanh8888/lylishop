@@ -24,7 +24,7 @@ export function HeroSection() {
             <FadeUp>
               <div className="flex flex-wrap items-center gap-2">
                 <Badge variant="pink">Len handmade</Badge>
-                <Badge variant="secondary">Sẵn sàng làm quà</Badge>
+                <Badge variant="secondary">Đóng gói làm quà</Badge>
                 <Badge>Tùy chỉnh màu</Badge>
               </div>
             </FadeUp>

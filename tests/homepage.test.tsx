@@ -10,7 +10,7 @@ describe("HomePage", () => {
       screen.getByRole("heading", { level: 1, name: /món quà handmade/i })
     ).toBeInTheDocument();
 
-    expect(screen.getAllByRole("link", { name: /contact to order/i }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("link", { name: /liên hệ đặt hàng/i }).length).toBeGreaterThan(0);
 
     // Sections present
     expect(document.querySelector("#featured")).toBeTruthy();
