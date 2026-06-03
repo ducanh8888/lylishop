@@ -5,7 +5,6 @@ import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { CopyToClipboard } from "@/components/CopyToClipboard";
 import { FadeUp } from "@/components/motion/Reveal";
 
 const ORDER_TEMPLATE = `Xin chào LyliShop,
@@ -94,10 +93,6 @@ export function ContactSection() {
               <pre className="mt-4 whitespace-pre-wrap rounded-lg border border-border/70 bg-background/60 p-4 text-sm leading-6 text-foreground/90">
                 {ORDER_TEMPLATE}
               </pre>
-
-              <div className="mt-4">
-                <CopyToClipboard text={ORDER_TEMPLATE} label="Sao chép mẫu tin nhắn" />
-              </div>
             </Card>
           </FadeUp>
         </div>
