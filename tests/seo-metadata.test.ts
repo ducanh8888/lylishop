@@ -20,6 +20,18 @@ describe("SEO metadata", () => {
     expect(DEFAULT_METADATA.verification?.google).not.toContain("google-site-verification=");
   });
 
+  it("keeps themed favicon assets separate from the on-page logo", () => {
+    const icons = Array.isArray(DEFAULT_METADATA.icons?.icon)
+      ? DEFAULT_METADATA.icons.icon
+      : [DEFAULT_METADATA.icons?.icon];
+    const iconUrls = icons.map((icon) => (typeof icon === "string" ? icon : icon?.url));
+
+    expect(iconUrls).toContain("/favicon-lyli-tab-dark-48.png");
+    expect(iconUrls).toContain("/favicon-lyli-tab-light-48.png");
+    expect(iconUrls).not.toContain(SITE.logo);
+    expect(iconUrls).not.toContain("/favicon.ico");
+  });
+
   it("emits stable Website and Product structured data identifiers", () => {
     expect(websiteJsonLd()).toMatchObject({
       "@type": "WebSite",
