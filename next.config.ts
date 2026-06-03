@@ -28,6 +28,10 @@ const nextConfig: NextConfig = {
         headers: longTermImageCache,
       },
       {
+        source: "/logo-lylishop-v2.svg",
+        headers: longTermImageCache,
+      },
+      {
         source: "/logo-lylishop.svg",
         headers: longTermImageCache,
       },
@@ -45,6 +49,18 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/twitter-card.png",
+        headers: longTermImageCache,
+      },
+      {
+        source: "/favicon.svg",
+        headers: longTermImageCache,
+      },
+      {
+        source: "/favicon-48x48.png",
+        headers: longTermImageCache,
+      },
+      {
+        source: "/favicon-32x32.png",
         headers: longTermImageCache,
       },
       {
