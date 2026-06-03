@@ -15,6 +15,11 @@ describe("SEO metadata", () => {
     expect(DEFAULT_METADATA.twitter?.card).toBe("summary_large_image");
   });
 
+  it("uses the Google Search Console verification code without meta tag prefix", () => {
+    expect(DEFAULT_METADATA.verification?.google).toBe(SITE.google.searchConsoleVerification);
+    expect(DEFAULT_METADATA.verification?.google).not.toContain("google-site-verification=");
+  });
+
   it("emits stable Website and Product structured data identifiers", () => {
     expect(websiteJsonLd()).toMatchObject({
       "@type": "WebSite",

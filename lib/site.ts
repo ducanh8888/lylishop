@@ -29,7 +29,7 @@ export const SITE = {
   logo: "/logo.svg",
   google: {
     analyticsMeasurementId: "G-MJ7EP9BPQH",
-    searchConsoleVerification: "google-site-verification=CJ6HkBRGaUnGabnWhbRFvP3EDaClZkRuQvZQBSuwAGE",
+    searchConsoleVerification: "CJ6HkBRGaUnGabnWhbRFvP3EDaClZkRuQvZQBSuwAGE",
   },
   socials: {
     instagram: "https://www.instagram.com/lylishopstr/",
