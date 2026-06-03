@@ -8,7 +8,6 @@ import { formatVnd } from "@/lib/format";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { FadeUp } from "@/components/motion/Reveal";
 import { HeroDecor } from "@/components/sections/HeroSectionDecor";
 
 export function HeroSection() {
@@ -21,29 +20,29 @@ export function HeroSection() {
       <Container className="relative py-14 sm:py-20">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className="max-w-xl">
-            <FadeUp>
+            <>
               <div className="flex flex-wrap items-center gap-2">
                 <Badge variant="pink">Len handmade</Badge>
                 <Badge variant="secondary">Đóng gói làm quà</Badge>
                 <Badge>Tùy chỉnh màu</Badge>
               </div>
-            </FadeUp>
+            </>
 
-            <FadeUp delay={0.05}>
+            <>
               <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
                 Món quà handmade nhỏ xinh{" "}
                 <span className="text-primary">đầy ấm áp</span>.
               </h1>
-            </FadeUp>
+            </>
 
-            <FadeUp delay={0.1}>
+            <>
               <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
                 Móc khóa len và phụ kiện len nhỏ xinh cho niềm vui mỗi ngày: mềm tay,
                 mũi len gọn đẹp và đóng gói chỉn chu như một món quà.
               </p>
-            </FadeUp>
+            </>
 
-            <FadeUp delay={0.15}>
+            <>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg" className="shadow-sm">
                   <Link href="#order" aria-label="Đến phần liên hệ đặt hàng">
@@ -62,9 +61,9 @@ export function HeroSection() {
                   </Link>
                 </Button>
               </div>
-            </FadeUp>
+            </>
 
-            <FadeUp delay={0.2}>
+            <>
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 <div className="flex items-start gap-3 rounded-lg border border-border/70 bg-white/60 p-4 shadow-sm backdrop-blur-md">
                   <HeartHandshake className="mt-0.5 h-5 w-5 text-primary" aria-hidden="true" />
@@ -88,7 +87,7 @@ export function HeroSection() {
                   </div>
                 </div>
               </div>
-            </FadeUp>
+            </>
           </div>
 
           <div className="relative">
@@ -103,6 +102,7 @@ export function HeroSection() {
                   height={heroProduct.image.height}
                   className="h-auto w-full object-cover"
                   priority
+                  fetchPriority="high"
                   quality={60}
                   sizes="(max-width: 1024px) 90vw, 520px"
                 />

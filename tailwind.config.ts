@@ -49,8 +49,8 @@ const config: Config = {
       },
     },
     fontFamily: {
-      sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
-      display: ["var(--font-jakarta)", ...defaultTheme.fontFamily.sans],
+      sans: [...defaultTheme.fontFamily.sans],
+      display: [...defaultTheme.fontFamily.sans],
     },
   },
   variants: {
