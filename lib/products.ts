@@ -16,14 +16,38 @@ export type Product = {
   highlights: string[];
 };
 
+const SIZE_AND_PRICE_NOTE = `Kích thước:
+• Sản phẩm size S: 6-7 cm.
+
+Nhận theo yêu cầu:
+• Size S: 6-7 cm.
+• Size M: 8-10 cm.
+• Size L: 10-12 cm.
+
+Giá sản phẩm thay đổi theo kích thước và độ chi tiết của từng mẫu.`;
+
+function productDescription(title: string, bullets: string[]) {
+  return `${title}
+
+${bullets.map((bullet) => `• ${bullet}`).join("\n")}
+
+${SIZE_AND_PRICE_NOTE}`;
+}
+
 export const PRODUCTS: Product[] = [
   {
     slug: "crochet-bear-keychain",
     name: "Móc khóa len thỏ con",
     priceVnd: 89000,
     shortDescription: "Móc khóa len thỏ con nhỏ xinh, mềm tay, kèm khoen vàng chắc chắn.",
-    longDescription:
-      "Móc khóa len thỏ con handmade được làm thủ công từng mũi len, dáng nhỏ gọn và dễ thương để treo chìa khóa, túi xách, balo hoặc hộp bút. Sản phẩm dùng len mềm, bề mặt êm tay, phần khoen khóa vàng chắc chắn giúp bạn dùng hằng ngày mà vẫn giữ được vẻ chỉn chu. Mẫu thỏ con phù hợp làm quà tặng sinh nhật, quà cảm ơn hoặc món phụ kiện nhỏ cho người thích đồ len xinh xắn. Bạn có thể nhắn shop để chọn màu tai, màu thân hoặc phối thêm chi tiết nhỏ trước khi shop bắt đầu làm.",
+    longDescription: productDescription("Móc khóa thỏ con handmade", [
+      "Handmade 100%, đan thủ công từng mũi len.",
+      "Len Milk cotton, bền, giữ form tốt và hạn chế xù lông.",
+      "Khoen móc kim loại màu vàng chắc chắn, dày dặn.",
+      "Thích hợp treo chìa khóa, túi xách, balo hoặc hộp bút.",
+      "Phù hợp làm quà tặng sinh nhật, quà cảm ơn hoặc dành cho người yêu thích đồ len handmade.",
+      "Có thể lựa chọn màu sắc và thêm một số chi tiết theo yêu cầu.",
+    ]),
     metaDescription:
       "Móc khóa len thỏ con handmade bằng len mềm, kèm khoen vàng chắc chắn, phù hợp treo túi, chìa khóa hoặc làm quà tặng nhỏ xinh.",
     rating: 4.9,
@@ -41,8 +65,15 @@ export const PRODUCTS: Product[] = [
     name: "Móc khóa len dâu tây",
     priceVnd: 79000,
     shortDescription: "Móc khóa len dâu tây ngọt ngào, hợp treo túi, ví, chìa khóa.",
-    longDescription:
-      "Móc khóa len dâu tây handmade có dáng quả nhỏ xinh, phần hạt thêu tỉ mỉ và chiếc lá gọn gàng phía trên. Sản phẩm nhẹ, dễ treo lên túi, ví, chìa khóa hoặc dây trang trí điện thoại. Tông màu đỏ nổi bật giúp phụ kiện trông vui mắt nhưng vẫn mềm mại nhờ chất len êm tay. Đây là lựa chọn phù hợp khi bạn muốn tìm một món quà nhỏ, dễ thương và có cảm giác riêng hơn đồ sản xuất hàng loạt. Shop có thể hỗ trợ chọn sắc đỏ, xanh lá hoặc điều chỉnh chi tiết theo sở thích của bạn.",
+    longDescription: productDescription("Móc khóa dâu tây handmade", [
+      "Handmade 100%, đan thủ công từng mũi len.",
+      "Len Milk cotton, bền, giữ form tốt và hạn chế xù lông.",
+      "Khoen móc kim loại màu vàng chắc chắn, dày dặn.",
+      "Tạo hình quả dâu tây nhỏ xinh, có lá xanh và chi tiết hạt thêu tỉ mỉ.",
+      "Thích hợp treo chìa khóa, túi xách, ví, balo hoặc hộp bút.",
+      "Phù hợp làm quà tặng sinh nhật, quà cảm ơn hoặc dành cho người yêu thích đồ len handmade.",
+      "Có thể lựa chọn màu sắc và thêm một số chi tiết theo yêu cầu.",
+    ]),
     metaDescription:
       "Móc khóa len dâu tây handmade nhỏ gọn, thêu hạt tỉ mỉ, dễ treo túi, ví hoặc chìa khóa và có thể tùy chỉnh màu theo yêu cầu.",
     rating: 4.8,
@@ -60,8 +91,15 @@ export const PRODUCTS: Product[] = [
     name: "Móc khóa len hoa tulip",
     priceVnd: 59000,
     shortDescription: "Móc khóa len hoa tulip tối giản, lên ảnh xinh và tinh tế.",
-    longDescription:
-      "Móc khóa len hoa tulip handmade lấy cảm hứng từ một bó hoa nhỏ mang theo mỗi ngày. Dáng hoa gọn, màu sắc dịu và dễ phối với balo, túi tote, hộp bút hoặc chùm chìa khóa. Từng cánh hoa được móc và hoàn thiện thủ công để giữ form mềm, không quá cứng nhưng vẫn rõ dáng tulip. Mẫu này hợp với người thích phong cách nhẹ nhàng, tối giản và tinh tế. Bạn có thể đặt theo màu yêu thích như hồng, trắng, vàng, tím hoặc phối màu riêng để làm quà tặng.",
+    longDescription: productDescription("Móc khóa hoa tulip handmade", [
+      "Handmade 100%, đan thủ công từng mũi len.",
+      "Len Milk cotton, bền, giữ form tốt và hạn chế xù lông.",
+      "Khoen móc kim loại màu vàng chắc chắn, dày dặn.",
+      "Tạo hình hoa tulip nhỏ gọn, màu sắc nhẹ nhàng và dễ phối với nhiều phong cách.",
+      "Thích hợp treo chìa khóa, túi tote, balo hoặc hộp bút.",
+      "Phù hợp làm quà tặng sinh nhật, quà cảm ơn hoặc dành cho người yêu thích đồ len handmade.",
+      "Có thể lựa chọn màu hoa, màu lá và thêm một số chi tiết theo yêu cầu.",
+    ]),
     metaDescription:
       "Móc khóa len hoa tulip handmade dáng gọn, màu dịu, phù hợp treo balo, túi tote, hộp bút hoặc làm quà tặng tinh tế.",
     rating: 4.9,
@@ -79,8 +117,15 @@ export const PRODUCTS: Product[] = [
     name: "Móc khóa thú len thỏ bông",
     priceVnd: 99000,
     shortDescription: "Móc khóa thú len thỏ tai dài, dáng mềm mại và đáng yêu.",
-    longDescription:
-      "Móc khóa thú len thỏ bông handmade có đôi tai dài, thân bo tròn và cảm giác mềm mại khi cầm trên tay. Sản phẩm được làm thủ công bằng len, phù hợp treo túi, chìa khóa, balo hoặc dùng như một món phụ kiện nhỏ để trang trí góc học tập. Dáng thỏ đáng yêu nhưng vẫn gọn, không quá cồng kềnh khi mang theo hằng ngày. Đây là mẫu hợp để tặng bạn bè, người thân hoặc tự thưởng cho bản thân nếu bạn thích đồ len có nét riêng. Shop có thể đổi màu thân, màu tai hoặc thêm chi tiết nhỏ theo yêu cầu.",
+    longDescription: productDescription("Móc khóa thỏ bông handmade", [
+      "Handmade 100%, đan thủ công từng mũi len.",
+      "Len Milk cotton, bền, giữ form tốt và hạn chế xù lông.",
+      "Khoen móc kim loại màu vàng chắc chắn, dày dặn.",
+      "Tạo hình thỏ tai dài mềm mại, dáng bo tròn và dễ thương khi treo hằng ngày.",
+      "Thích hợp treo chìa khóa, túi xách, balo hoặc trang trí góc học tập.",
+      "Phù hợp làm quà tặng sinh nhật, quà cảm ơn hoặc dành cho người yêu thích đồ len handmade.",
+      "Có thể lựa chọn màu thân, màu tai và thêm một số chi tiết theo yêu cầu.",
+    ]),
     metaDescription:
       "Móc khóa thú len thỏ bông handmade mềm tay, tai dài đáng yêu, phù hợp treo túi, balo, chìa khóa hoặc tặng bạn bè.",
     rating: 5.0,
@@ -98,8 +143,15 @@ export const PRODUCTS: Product[] = [
     name: "Móc khóa len bàn chân mèo",
     priceVnd: 69000,
     shortDescription: "Móc khóa len bàn chân mèo với đệm chân thêu xinh, mềm mại.",
-    longDescription:
-      "Móc khóa len bàn chân mèo handmade có phần đệm chân được thêu gọn, tạo cảm giác vui mắt và rất dễ thương. Kích thước nhỏ giúp sản phẩm dễ treo vào chìa khóa, túi mini, dây điện thoại hoặc balo mà không gây vướng. Chất len mềm, đường hoàn thiện chắc chắn và màu sắc có thể tùy chỉnh theo sở thích. Mẫu bàn chân mèo phù hợp với người yêu mèo, thích phụ kiện nhỏ xinh hoặc muốn tìm một món quà handmade có giá vừa dễ chọn vừa có dấu ấn cá nhân.",
+    longDescription: productDescription("Móc khóa bàn chân mèo handmade", [
+      "Handmade 100%, đan thủ công từng mũi len.",
+      "Len Milk cotton, bền, giữ form tốt và hạn chế xù lông.",
+      "Khoen móc kim loại màu vàng chắc chắn, dày dặn.",
+      "Tạo hình bàn chân mèo nhỏ xinh, có phần đệm chân thêu nổi bật.",
+      "Thích hợp treo chìa khóa, túi mini, balo hoặc dây điện thoại.",
+      "Phù hợp làm quà tặng sinh nhật, quà cảm ơn hoặc dành cho người yêu thích đồ len handmade.",
+      "Có thể lựa chọn màu nền, màu đệm chân và thêm một số chi tiết theo yêu cầu.",
+    ]),
     metaDescription:
       "Móc khóa len bàn chân mèo handmade bằng len mềm, thêu đệm chân dễ thương, hợp treo chìa khóa, túi mini hoặc dây điện thoại.",
     rating: 4.8,

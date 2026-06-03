@@ -118,9 +118,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
                 {product.name}
               </h1>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+              <div className="mt-3 whitespace-pre-line text-base leading-7 text-muted-foreground">
                 {product.longDescription}
-              </p>
+              </div>
 
               <div className="mt-5 flex flex-wrap items-center gap-3">
                 <div className="rounded-full bg-primary/10 px-4 py-2 font-display text-base font-semibold">
