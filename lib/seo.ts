@@ -50,24 +50,13 @@ export const DEFAULT_METADATA: Metadata = {
   },
   icons: {
     icon: [
-      {
-        url: "/favicon-lyli-tab-dark-48.png",
-        sizes: "48x48",
-        type: "image/png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/favicon-lyli-tab-light-48.png",
-        sizes: "48x48",
-        type: "image/png",
-        media: "(prefers-color-scheme: light)",
-      },
-      { url: "/favicon-lyli-tab-dark.ico", sizes: "any", media: "(prefers-color-scheme: dark)" },
-      { url: "/favicon-lyli-tab-light.ico", sizes: "any", media: "(prefers-color-scheme: light)" },
-      { url: "/favicon-lyli-tab-light-48.png", sizes: "48x48", type: "image/png" },
-      { url: "/favicon-lyli-tab-light-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-lylishop-v3-48.png", sizes: "48x48", type: "image/png" },
+      { url: SITE.logo, type: "image/svg+xml" },
+      { url: "/favicon-lylishop-v3.svg", type: "image/svg+xml" },
+      { url: "/favicon-lylishop-v3-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-lylishop-v3.ico", sizes: "any" },
     ],
-    apple: [{ url: "/apple-touch-icon-lyli-tab.png", sizes: "180x180", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon-lylishop-v3.png", sizes: "180x180", type: "image/png" }],
   },
   ...(googleSiteVerification
     ? {

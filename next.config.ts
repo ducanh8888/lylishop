@@ -62,34 +62,6 @@ const nextConfig: NextConfig = {
         headers: longTermImageCache,
       },
       {
-        source: "/favicon-lyli-tab-dark-48.png",
-        headers: longTermImageCache,
-      },
-      {
-        source: "/favicon-lyli-tab-dark-32.png",
-        headers: longTermImageCache,
-      },
-      {
-        source: "/favicon-lyli-tab-dark.ico",
-        headers: longTermImageCache,
-      },
-      {
-        source: "/favicon-lyli-tab-light-48.png",
-        headers: longTermImageCache,
-      },
-      {
-        source: "/favicon-lyli-tab-light-32.png",
-        headers: longTermImageCache,
-      },
-      {
-        source: "/favicon-lyli-tab-light.ico",
-        headers: longTermImageCache,
-      },
-      {
-        source: "/apple-touch-icon-lyli-tab.png",
-        headers: longTermImageCache,
-      },
-      {
         source: "/favicon-lylishop-v3.svg",
         headers: longTermImageCache,
       },
