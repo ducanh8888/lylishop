@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ProductCard } from "@/components/ProductCard";
+import { Button } from "@/components/ui/button";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PRODUCTS } from "@/lib/products";
@@ -48,6 +50,19 @@ export default function ProductsPage() {
             title="Móc khóa len & phụ kiện handmade"
             description="Nhỏ xinh, dễ tặng và được làm thủ công tỉ mỉ. Chọn sản phẩm để xem chi tiết và cách liên hệ đặt hàng."
           />
+
+          <div className="mx-auto mt-6 max-w-2xl text-center text-sm leading-6 text-muted-foreground">
+            <p>
+              Nếu bạn đang tìm thông tin đầy đủ về móc khóa len, móc khóa crochet,
+              móc khóa thú len và cách chọn quà tặng handmade, xem trang tổng hợp
+              móc khóa len của LyliShop.
+            </p>
+            <div className="mt-4">
+              <Button asChild variant="outline">
+                <Link href="/moc-khoa-len">Xem hướng dẫn chọn móc khóa len</Link>
+              </Button>
+            </div>
+          </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {PRODUCTS.map((p) => (

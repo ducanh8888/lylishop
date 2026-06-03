@@ -28,8 +28,8 @@ export function FeaturedProductsSection() {
 
         <div className="mt-10 flex justify-center">
           <Button asChild variant="outline" size="lg">
-            <Link href="/products" aria-label="Xem tất cả sản phẩm">
-              Xem tất cả sản phẩm
+            <Link href="/moc-khoa-len" aria-label="Xem bộ sưu tập móc khóa len">
+              Xem bộ sưu tập móc khóa len
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </Button>

@@ -63,6 +63,19 @@ export function productJsonLd(product: Product) {
     image: [`${SITE.url}${product.image.src}`],
     sku: product.slug,
     category: "Móc khóa len handmade",
+    material: "Len mềm",
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "Kiểu sản phẩm",
+        value: "Móc khóa len handmade",
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Kỹ thuật",
+        value: "Crochet",
+      },
+    ],
     brand: {
       "@type": "Brand",
       name: SITE.name,
@@ -102,6 +115,61 @@ export function productItemListJsonLd(products: Product[]) {
         image: `${SITE.url}${p.image.src}`,
       },
     })),
+  } as const;
+}
+
+export function collectionPageJsonLd({
+  name,
+  description,
+  url,
+  products,
+  keywords,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  products: Product[];
+  keywords: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${url}#collection`,
+    name,
+    description,
+    url,
+    inLanguage: "vi-VN",
+    isPartOf: {
+      "@id": websiteId,
+    },
+    publisher: {
+      "@id": organizationId,
+    },
+    about: keywords.map((keyword) => ({
+      "@type": "Thing",
+      name: keyword,
+    })),
+    mainEntity: {
+      "@type": "ItemList",
+      name,
+      itemListElement: products.map((p, idx) => ({
+        "@type": "ListItem",
+        position: idx + 1,
+        item: {
+          "@type": "Product",
+          "@id": `${SITE.url}/products/${p.slug}#product`,
+          name: p.name,
+          url: `${SITE.url}/products/${p.slug}`,
+          image: `${SITE.url}${p.image.src}`,
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "VND",
+            price: p.priceVnd.toString(),
+            availability: "https://schema.org/InStock",
+          },
+        },
+      })),
+    },
   } as const;
 }
 

@@ -19,6 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    {
+      url: `${SITE.url}/moc-khoa-len`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
     ...PRODUCTS.map((p) => ({
       url: `${SITE.url}/products/${p.slug}`,
       lastModified: now,

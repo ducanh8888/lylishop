@@ -70,7 +70,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", url: SITE.url },
-          { name: "Sản phẩm", url: `${SITE.url}/products` },
+          { name: "Móc khóa len", url: `${SITE.url}/moc-khoa-len` },
           { name: product.name, url: `${SITE.url}/products/${product.slug}` },
         ])}
       />
@@ -79,16 +79,16 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <Breadcrumbs
             items={[
               { label: "Trang chủ", href: "/" },
-              { label: "Sản phẩm", href: "/products" },
+              { label: "Móc khóa len", href: "/moc-khoa-len" },
               { label: product.name },
             ]}
             className="mb-5"
           />
           <div className="flex items-center justify-between gap-3">
             <Button asChild variant="ghost">
-              <Link href="/products" aria-label="Quay lại danh sách sản phẩm">
+              <Link href="/moc-khoa-len" aria-label="Quay lại bộ sưu tập móc khóa len">
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                Sản phẩm
+                Móc khóa len
               </Link>
             </Button>
             <div className="hidden items-center gap-2 sm:flex">
