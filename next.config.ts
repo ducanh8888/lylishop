@@ -28,6 +28,10 @@ const nextConfig: NextConfig = {
         headers: longTermImageCache,
       },
       {
+        source: "/logo-lylishop.svg",
+        headers: longTermImageCache,
+      },
+      {
         source: "/logo.svg",
         headers: longTermImageCache,
       },

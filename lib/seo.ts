@@ -50,8 +50,8 @@ export const DEFAULT_METADATA: Metadata = {
   },
   icons: {
     icon: [
+      { url: SITE.logo, type: "image/svg+xml" },
       { url: "/favicon.ico" },
-      { url: "/icon.svg", type: "image/svg+xml" },
     ],
     apple: [{ url: "/apple-touch-icon.png" }],
   },
