@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
         value: "public, max-age=31536000, immutable",
       },
     ];
+    const revalidateIconCache = [
+      {
+        key: "Cache-Control",
+        value: "public, max-age=0, must-revalidate",
+      },
+    ];
 
     return [
       {
@@ -25,6 +31,10 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/gallery/:path*",
+        headers: longTermImageCache,
+      },
+      {
+        source: "/logo-lylishop-v3.svg",
         headers: longTermImageCache,
       },
       {
@@ -52,6 +62,26 @@ const nextConfig: NextConfig = {
         headers: longTermImageCache,
       },
       {
+        source: "/favicon-lylishop-v3.svg",
+        headers: longTermImageCache,
+      },
+      {
+        source: "/favicon-lylishop-v3-48.png",
+        headers: longTermImageCache,
+      },
+      {
+        source: "/favicon-lylishop-v3-32.png",
+        headers: longTermImageCache,
+      },
+      {
+        source: "/favicon-lylishop-v3.ico",
+        headers: longTermImageCache,
+      },
+      {
+        source: "/apple-touch-icon-lylishop-v3.png",
+        headers: longTermImageCache,
+      },
+      {
         source: "/favicon.svg",
         headers: longTermImageCache,
       },
@@ -69,7 +99,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/favicon.ico",
-        headers: longTermImageCache,
+        headers: revalidateIconCache,
       },
     ];
   },

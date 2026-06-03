@@ -26,7 +26,7 @@ export const SITE = {
   themeColor: "#be185d",
   ogImage: "/og.png",
   twitterImage: "/twitter-card.png",
-  logo: "/logo-lylishop-v2.svg",
+  logo: "/logo-lylishop-v3.svg",
   google: {
     analyticsMeasurementId: "G-MJ7EP9BPQH",
     searchConsoleVerification: "CJ6HkBRGaUnGabnWhbRFvP3EDaClZkRuQvZQBSuwAGE",
