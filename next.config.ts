@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
         headers: longTermImageCache,
       },
       {
-        source: "/products/:path*",
+        source: "/product-assets/:path*",
         headers: longTermImageCache,
       },
       {

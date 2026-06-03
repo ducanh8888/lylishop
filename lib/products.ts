@@ -29,7 +29,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 128,
     image: {
-      src: "/products/crochet-bear-keychain.jpg",
+      src: "/product-assets/crochet-bear-keychain.jpg",
       alt: "Móc khóa thỏ con handmade bằng len với khoen vàng trên nền hồng nhạt",
       width: 1000,
       height: 995,
@@ -48,7 +48,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 96,
     image: {
-      src: "/products/strawberry-yarn-charm.jpg",
+      src: "/product-assets/strawberry-yarn-charm.jpg",
       alt: "Móc treo dâu tây handmade bằng len trên nền hồng phấn",
       width: 1000,
       height: 993,
@@ -67,7 +67,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 74,
     image: {
-      src: "/products/tulip-crochet-keychain.jpg",
+      src: "/product-assets/tulip-crochet-keychain.jpg",
       alt: "Móc khóa hoa tulip handmade màu hồng trên nền trắng hồng",
       width: 1000,
       height: 1000,
@@ -86,7 +86,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 63,
     image: {
-      src: "/products/bunny-plush-charm.jpg",
+      src: "/product-assets/bunny-plush-charm.jpg",
       alt: "Móc treo thỏ bông handmade bằng len trên nền hồng nhạt",
       width: 1000,
       height: 1000,
@@ -105,7 +105,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 82,
     image: {
-      src: "/products/cat-paw-crochet-accessory.jpg",
+      src: "/product-assets/cat-paw-crochet-accessory.jpg",
       alt: "Phụ kiện bàn chân mèo handmade bằng len với chi tiết đệm chân",
       width: 1000,
       height: 1176,
