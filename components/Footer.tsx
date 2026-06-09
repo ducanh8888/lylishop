@@ -30,11 +30,29 @@ export function Footer() {
               <span className="font-display text-base font-semibold tracking-tight">{SITE.name}</span>
             </Link>
             <p className="mt-3 max-w-md text-sm text-muted-foreground">
-              Móc khóa len handmade và phụ kiện len nhỏ xinh, dùng len mềm, đóng gói chỉn chu
-              và có thể tùy chỉnh màu theo yêu cầu.
+              Móc khóa len handmade cute để treo balo, túi xách hoặc làm quà tặng.
+              LyliShop nhận chọn màu theo yêu cầu, đóng gói xinh và giao hàng toàn quốc.
             </p>
 
             <div className="mt-5 flex items-center gap-2">
+              <a
+                href={SITE.socials.zalo}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border/70 bg-background/70 text-foreground/80 shadow-sm transition hover:bg-accent hover:text-foreground"
+                aria-label="Zalo LyliShop"
+              >
+                <MessageCircle className="h-4 w-4" />
+              </a>
+              <a
+                href={SITE.socials.facebook}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border/70 bg-background/70 text-foreground/80 shadow-sm transition hover:bg-accent hover:text-foreground"
+                aria-label="Facebook LyliShop"
+              >
+                <ThumbsUp className="h-4 w-4" />
+              </a>
               <a
                 href={SITE.socials.instagram}
                 target="_blank"
@@ -52,24 +70,6 @@ export function Footer() {
                 aria-label="TikTok LyliShop"
               >
                 <Music2 className="h-4 w-4" />
-              </a>
-              <a
-                href={SITE.socials.facebook}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border/70 bg-background/70 text-foreground/80 shadow-sm transition hover:bg-accent hover:text-foreground"
-                aria-label="Facebook LyliShop"
-              >
-                <ThumbsUp className="h-4 w-4" />
-              </a>
-              <a
-                href={SITE.socials.zalo}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border/70 bg-background/70 text-foreground/80 shadow-sm transition hover:bg-accent hover:text-foreground"
-                aria-label="Zalo LyliShop"
-              >
-                <MessageCircle className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -102,8 +102,11 @@ export function Footer() {
 
           <div className="md:col-span-2">
             <h2 className="font-display text-sm font-semibold">Liên hệ</h2>
-            <p className="mt-4 text-sm text-muted-foreground">Đặt hàng qua:</p>
-            <p className="mt-2 text-sm text-foreground/80">Instagram, TikTok, Facebook, Zalo</p>
+            <p className="mt-4 text-sm text-muted-foreground">Đặt hàng nhanh qua:</p>
+            <p className="mt-2 text-sm text-foreground/80">Zalo, Facebook, Instagram</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Shop xác nhận mẫu, giá và thời gian làm trước khi chốt đơn.
+            </p>
           </div>
         </div>
 
@@ -113,7 +116,7 @@ export function Footer() {
           </p>
           <p>
             <Link href="/#order" className="hover:text-foreground">
-              Liên hệ đặt hàng
+              Nhắn shop để đặt hàng
             </Link>
           </p>
         </div>

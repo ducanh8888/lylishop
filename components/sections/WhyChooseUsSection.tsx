@@ -14,27 +14,27 @@ import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 const REASONS = [
   {
     title: "Thủ công tỉ mỉ",
-    description: "Móc tay, khâu tay, hoàn thiện kỹ từng chi tiết.",
+    description: "Từng sản phẩm được làm bằng tay, hợp để tặng hoặc tự dùng mỗi ngày.",
     icon: HeartHandshake,
   },
   {
     title: "Len cao cấp",
-    description: "Mềm tay, lên form gọn, giữ dáng đẹp theo thời gian.",
+    description: "Mềm tay, form gọn, dễ treo balo, túi xách hoặc chìa khóa.",
     icon: Sparkles,
   },
   {
     title: "Đóng gói quà chỉn chu",
-    description: "Phong cách boutique, sạch đẹp và sẵn sàng để tặng.",
+    description: "Gói xinh, sạch đẹp, phù hợp làm quà sinh nhật hoặc quà bất ngờ.",
     icon: PackageCheck,
   },
   {
     title: "Tùy chỉnh theo yêu cầu",
-    description: "Chọn màu, thêm nơ, hoa hoặc chi tiết nhỏ theo phong cách bạn thích.",
+    description: "Chọn tone màu, thêm nơ, hoa hoặc chi tiết nhỏ theo gu của bạn.",
     icon: Palette,
   },
   {
     title: "Hỗ trợ đơn hàng rõ ràng",
-    description: "Phản hồi nhanh và cập nhật tình trạng đơn qua kênh nhắn tin bạn đã chọn.",
+    description: "Shop xác nhận mẫu, giá, thời gian làm và phí giao hàng trước khi chốt.",
     icon: Truck,
   },
 ];
@@ -44,9 +44,9 @@ export function WhyChooseUsSection() {
     <section id="why" className="bg-gradient-to-b from-rose-50 to-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Why LyliShop"
-          title="Mềm mại, tinh tế và chỉn chu"
-          description="Chúng mình tập trung vào mũi len gọn đẹp, hoàn thiện đồng đều và trải nghiệm đặt hàng đơn giản qua các kênh bạn quen dùng."
+          eyebrow="Vì sao khách thích?"
+          title="Đặt móc khóa len dễ thương, rõ ràng và dễ nhắn"
+          description="LyliShop tập trung vào sản phẩm dễ tặng, dễ dùng và quy trình đặt hàng đơn giản qua Zalo, Facebook, Instagram hoặc TikTok."
         />
 
         <Stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

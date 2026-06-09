@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Sparkles } from "lucide-react";
 
 import { SITE } from "@/lib/site";
@@ -19,26 +18,26 @@ export function FinalCtaSection() {
           </FadeUp>
           <FadeUp delay={0.06}>
             <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-              Tặng một món quà handmade nhỏ xinh, ai cũng sẽ mỉm cười.
+              Thấy mẫu nào xinh? Nhắn LyliShop để chọn màu và đặt làm riêng cho bạn nhé.
             </h2>
           </FadeUp>
           <FadeUp delay={0.12}>
             <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
-              Chọn mẫu, chọn màu, shop làm tỉ mỉ. Liên hệ trong vài phút qua Instagram, TikTok,
-              Facebook hoặc Zalo để chốt mẫu và thông tin nhận hàng.
+              Shop sẽ tư vấn mẫu, xác nhận giá, thời gian làm và phí giao hàng trước khi chốt đơn.
+              Bạn chỉ cần gửi mẫu thích và màu mong muốn.
             </p>
           </FadeUp>
           <FadeUp delay={0.18}>
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row sm:items-center">
               <Button asChild size="lg">
-                <Link href="#order">
-                  Liên hệ đặt hàng
+                <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                  Nhắn Zalo để đặt
                   <Sparkles className="h-4 w-4" aria-hidden="true" />
-                </Link>
+                </a>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                  Nhắn Instagram
+                <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
+                  Inbox Facebook
                 </a>
               </Button>
             </div>

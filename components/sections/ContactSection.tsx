@@ -10,15 +10,10 @@ import { FadeUp } from "@/components/motion/Reveal";
 const ORDER_TEMPLATE = `Xin chào LyliShop,
 
 Mình muốn đặt mẫu:
-- Sản phẩm:
-- Màu mong muốn:
+- Mẫu:
+- Màu:
 - Số lượng:
-- Ghi chú tùy chỉnh:
-
-Thông tin nhận hàng:
-- Họ tên:
-- Số điện thoại:
-- Địa chỉ:
+- Ghi chú:
 
 Cảm ơn shop!`;
 
@@ -28,8 +23,8 @@ export function ContactSection() {
       <Container>
         <SectionHeading
           eyebrow="Đặt hàng"
-          title="Liên hệ đặt hàng qua mạng xã hội"
-          description="Website không có giỏ hàng hay thanh toán trực tuyến. Bạn nhắn shop qua kênh quen dùng, shop sẽ xác nhận mẫu, tùy chỉnh và phí giao hàng."
+          title="Đặt hàng rất đơn giản: chỉ cần nhắn shop"
+          description="Bạn chọn mẫu, gửi màu mong muốn và số lượng. LyliShop sẽ tư vấn, xác nhận giá, thời gian làm và phí giao hàng trước khi chốt đơn."
         />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -37,11 +32,23 @@ export function ContactSection() {
             <Card className="h-full border-border/70 bg-white/60 p-6 shadow-sm backdrop-blur-md">
               <h3 className="font-display text-lg font-semibold">Kênh liên hệ</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Shop phản hồi nhanh và hỗ trợ tùy chỉnh màu, mẫu theo yêu cầu.
+                Shop phản hồi nhanh, hỗ trợ chọn màu và xác nhận mẫu trước khi làm.
               </p>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <Button asChild size="lg">
+                  <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                    <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                    Zalo
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
+                    <ThumbsUp className="h-4 w-4" aria-hidden="true" />
+                    Facebook
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
                     <Camera className="h-4 w-4" aria-hidden="true" />
                     Instagram
@@ -53,18 +60,6 @@ export function ContactSection() {
                     TikTok
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="outline">
-                  <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
-                    <ThumbsUp className="h-4 w-4" aria-hidden="true" />
-                    Facebook
-                  </a>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
-                    <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                    Zalo
-                  </a>
-                </Button>
               </div>
 
               <div className="mt-6 rounded-lg border border-border/70 bg-background/60 p-4">
@@ -72,7 +67,7 @@ export function ContactSection() {
                   <div>
                     <p className="text-sm font-medium">Gợi ý</p>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      Gửi ảnh chụp sản phẩm bạn thích để shop hỗ trợ nhanh hơn.
+                      Gửi ảnh chụp mẫu bạn thích để shop tư vấn màu và thời gian làm nhanh hơn.
                     </p>
                   </div>
                   <div className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary/10 text-primary">
@@ -87,7 +82,7 @@ export function ContactSection() {
             <Card className="h-full border-border/70 bg-white/60 p-6 shadow-sm backdrop-blur-md">
               <h3 className="font-display text-lg font-semibold">Mẫu tin nhắn</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Sao chép mẫu này và dán vào tin nhắn. Bạn chỉ cần điền tên sản phẩm, màu mong muốn và thông tin nhận hàng.
+                Sao chép mẫu ngắn này để bắt đầu. Thông tin nhận hàng có thể gửi sau khi shop xác nhận mẫu.
               </p>
 
               <pre className="mt-4 whitespace-pre-wrap rounded-lg border border-border/70 bg-background/60 p-4 text-sm leading-6 text-foreground/90">

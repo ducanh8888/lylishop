@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HeartHandshake, Package, Palette, Sparkles } from "lucide-react";
+import { HeartHandshake, MessageCircle, Package, Palette, Sparkles, ThumbsUp } from "lucide-react";
 
 import { SITE } from "@/lib/site";
 import { FEATURED_PRODUCTS } from "@/lib/products";
@@ -30,34 +30,36 @@ export function HeroSection() {
 
             <>
               <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                Món quà handmade nhỏ xinh{" "}
-                <span className="text-primary">đầy ấm áp</span>.
+                Móc khóa len handmade cute{" "}
+                <span className="text-primary">để tặng và treo mỗi ngày</span>.
               </h1>
             </>
 
             <>
               <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-                Móc khóa len và phụ kiện len nhỏ xinh cho niềm vui mỗi ngày: mềm tay,
-                mũi len gọn đẹp và đóng gói chỉn chu như một món quà.
+                LyliShop làm móc khóa len thủ công, có thể chọn màu theo ý thích,
+                đóng gói xinh để tặng bạn bè, người yêu hoặc tự thưởng cho mình.
               </p>
             </>
 
             <>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg" className="shadow-sm">
-                  <Link href="#order" aria-label="Đến phần liên hệ đặt hàng">
-                    Liên hệ đặt hàng
-                    <Sparkles className="h-4 w-4" aria-hidden="true" />
-                  </Link>
+                  <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                    <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                    Nhắn Zalo để đặt mẫu
+                  </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                    Nhắn Instagram
+                  <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
+                    <ThumbsUp className="h-4 w-4" aria-hidden="true" />
+                    Inbox Facebook
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="ghost">
                   <Link href="#featured" aria-label="Xem sản phẩm nổi bật">
-                    Xem sản phẩm
+                    Xem mẫu cute
+                    <Sparkles className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
               </div>
@@ -69,21 +71,21 @@ export function HeroSection() {
                   <HeartHandshake className="mt-0.5 h-5 w-5 text-primary" aria-hidden="true" />
                   <div>
                     <p className="text-sm font-medium">Làm thủ công tỉ mỉ</p>
-                    <p className="text-xs text-muted-foreground">Từng mũi len đều được móc tay.</p>
+                    <p className="text-xs text-muted-foreground">Từng mũi len đều được làm bằng tay.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 rounded-lg border border-border/70 bg-white/60 p-4 shadow-sm backdrop-blur-md">
                   <Palette className="mt-0.5 h-5 w-5 text-primary" aria-hidden="true" />
                   <div>
                     <p className="text-sm font-medium">Tùy chỉnh màu sắc</p>
-                    <p className="text-xs text-muted-foreground">Phối theo túi hoặc phong cách bạn thích.</p>
+                    <p className="text-xs text-muted-foreground">Chọn tone màu hợp balo, túi hoặc gu của bạn.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 rounded-lg border border-border/70 bg-white/60 p-4 shadow-sm backdrop-blur-md">
                   <Package className="mt-0.5 h-5 w-5 text-primary" aria-hidden="true" />
                   <div>
                     <p className="text-sm font-medium">Đóng gói quà chỉn chu</p>
-                    <p className="text-xs text-muted-foreground">Gọn gàng, sạch đẹp, sẵn sàng để tặng.</p>
+                    <p className="text-xs text-muted-foreground">Gói xinh, sạch đẹp, sẵn sàng đem tặng.</p>
                   </div>
                 </div>
               </div>
