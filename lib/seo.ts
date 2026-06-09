@@ -6,6 +6,10 @@ const googleSiteVerification = SITE.google.searchConsoleVerification;
 
 export const DEFAULT_METADATA: Metadata = {
   metadataBase: new URL(SITE.url),
+  applicationName: SITE.name,
+  creator: SITE.name,
+  publisher: SITE.name,
+  category: "handmade crochet keychains",
   title: {
     default: SITE.title,
     template: "%s | LyliShop",
@@ -48,6 +52,7 @@ export const DEFAULT_METADATA: Metadata = {
     description: SITE.description,
     images: [SITE.twitterImage],
   },
+  manifest: "/manifest.json",
   icons: {
     icon: [
       { url: "/favicon-lylishop-v3-48.png", sizes: "48x48", type: "image/png" },

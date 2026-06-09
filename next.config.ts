@@ -82,6 +82,10 @@ const nextConfig: NextConfig = {
         headers: longTermImageCache,
       },
       {
+        source: "/manifest.json",
+        headers: revalidateIconCache,
+      },
+      {
         source: "/favicon.svg",
         headers: longTermImageCache,
       },

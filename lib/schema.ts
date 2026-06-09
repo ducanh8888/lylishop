@@ -34,6 +34,30 @@ export function websiteJsonLd() {
   } as const;
 }
 
+export function homePageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE.url}/#webpage`,
+    url: SITE.url,
+    name: SITE.title,
+    description: SITE.description,
+    inLanguage: "vi-VN",
+    isPartOf: {
+      "@id": websiteId,
+    },
+    about: {
+      "@id": organizationId,
+    },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: `${SITE.url}${SITE.ogImage}`,
+      width: 1200,
+      height: 630,
+    },
+  } as const;
+}
+
 export function faqJsonLd(items: FaqItem[]) {
   return {
     "@context": "https://schema.org",

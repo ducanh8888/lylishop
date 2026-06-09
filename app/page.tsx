@@ -13,6 +13,7 @@ import { FAQ_ITEMS } from "@/lib/faq";
 import { FEATURED_PRODUCTS } from "@/lib/products";
 import {
   faqJsonLd,
+  homePageJsonLd,
   organizationJsonLd,
   productItemListJsonLd,
   websiteJsonLd,
@@ -27,6 +28,7 @@ export default function HomePage() {
     <>
       <JsonLd data={organizationJsonLd()} />
       <JsonLd data={websiteJsonLd()} />
+      <JsonLd data={homePageJsonLd()} />
       <JsonLd data={productItemListJsonLd(FEATURED_PRODUCTS)} />
       <JsonLd data={faqJsonLd(FAQ_ITEMS)} />
 
