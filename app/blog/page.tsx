@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, BookOpen } from "lucide-react";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -8,7 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BLOG_POSTS } from "@/lib/blog";
+import { BLOG_POSTS, getBlogCoverProduct } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/schema";
 
@@ -79,32 +80,54 @@ export default function BlogPage() {
             {BLOG_POSTS.map((post) => (
               <article
                 key={post.slug}
-                className="flex h-full flex-col rounded-lg border border-border/70 bg-white/70 p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
+                className="group flex h-full flex-col overflow-hidden rounded-lg border border-border/70 bg-white/70 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
               >
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <BookOpen className="h-4 w-4 text-primary" aria-hidden="true" />
-                  <span>{post.readingTime}</span>
-                </div>
-                <h2 className="mt-3 font-display text-xl font-semibold leading-tight tracking-tight">
-                  <Link href={`/blog/${post.slug}`} className="hover:text-primary">
-                    {post.title}
-                  </Link>
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">{post.excerpt}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {post.keywords.slice(0, 3).map((keyword) => (
-                    <Badge key={keyword} variant="secondary">
-                      {keyword}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="mt-auto pt-5">
-                  <Button asChild variant="outline">
-                    <Link href={`/blog/${post.slug}`}>
-                      Đọc bài viết
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="relative block aspect-[4/3] overflow-hidden bg-gradient-to-b from-white to-rose-50"
+                  aria-label={`Đọc bài viết ${post.title}`}
+                >
+                  <Image
+                    src={getBlogCoverProduct(post).image.src}
+                    alt={getBlogCoverProduct(post).image.alt}
+                    width={getBlogCoverProduct(post).image.width}
+                    height={getBlogCoverProduct(post).image.height}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    loading="lazy"
+                    quality={58}
+                  />
+                  <div className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-foreground shadow-sm backdrop-blur">
+                    {post.readingTime}
+                  </div>
+                </Link>
+
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <BookOpen className="h-4 w-4 text-primary" aria-hidden="true" />
+                    <span>Cẩm nang handmade</span>
+                  </div>
+                  <h2 className="mt-3 font-display text-xl font-semibold leading-tight tracking-tight">
+                    <Link href={`/blog/${post.slug}`} className="hover:text-primary">
+                      {post.title}
                     </Link>
-                  </Button>
+                  </h2>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{post.excerpt}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {post.keywords.slice(0, 3).map((keyword) => (
+                      <Badge key={keyword} variant="secondary">
+                        {keyword}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="mt-auto pt-5">
+                    <Button asChild variant="outline">
+                      <Link href={`/blog/${post.slug}`}>
+                        Đọc bài viết
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </article>
             ))}

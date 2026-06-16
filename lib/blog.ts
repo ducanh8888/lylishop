@@ -309,3 +309,7 @@ export function getRelatedProductsForPost(post: BlogPost) {
     .map((slug) => PRODUCTS.find((product) => product.slug === slug))
     .filter((product): product is NonNullable<typeof product> => Boolean(product));
 }
+
+export function getBlogCoverProduct(post: BlogPost) {
+  return getRelatedProductsForPost(post)[0] ?? PRODUCTS[0];
+}
