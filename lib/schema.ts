@@ -197,6 +197,49 @@ export function collectionPageJsonLd({
   } as const;
 }
 
+export function articleJsonLd({
+  title,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  keywords,
+}: {
+  title: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  keywords: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: title,
+    description,
+    url,
+    inLanguage: "vi-VN",
+    datePublished,
+    dateModified,
+    keywords,
+    image: [`${SITE.url}${SITE.ogImage}`],
+    isPartOf: {
+      "@id": websiteId,
+    },
+    author: {
+      "@id": organizationId,
+    },
+    publisher: {
+      "@id": organizationId,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+  } as const;
+}
+
 export function breadcrumbJsonLd(items: Array<{ name: string; url: string }>) {
   return {
     "@context": "https://schema.org",

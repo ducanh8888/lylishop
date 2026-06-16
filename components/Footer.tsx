@@ -8,6 +8,7 @@ import { Container } from "@/components/Container";
 const FOOTER_LINKS: Array<{ label: string; href: string }> = [
   { label: "Móc khóa len", href: "/moc-khoa-len" },
   { label: "Mẫu nổi bật", href: "/#featured" },
+  { label: "Cẩm nang handmade", href: "/blog" },
   { label: "Hình ảnh", href: "/#gallery" },
   { label: "Đánh giá", href: "/#reviews" },
   { label: "Câu hỏi thường gặp", href: "/#faq" },

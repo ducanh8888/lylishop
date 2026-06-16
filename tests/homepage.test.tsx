@@ -7,10 +7,11 @@ describe("HomePage", () => {
     render(<HomePage />);
 
     expect(
-      screen.getByRole("heading", { level: 1, name: /món quà handmade/i })
+      screen.getByRole("heading", { level: 1, name: /móc khóa len handmade cute/i })
     ).toBeInTheDocument();
 
-    expect(screen.getAllByRole("link", { name: /liên hệ đặt hàng/i }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("link", { name: /nhắn zalo/i }).length).toBeGreaterThan(0);
+    expect(screen.getByRole("link", { name: /xem cẩm nang/i })).toBeInTheDocument();
 
     // Sections present
     expect(document.querySelector("#featured")).toBeTruthy();

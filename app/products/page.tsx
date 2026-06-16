@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PRODUCTS } from "@/lib/products";
+import { FEATURED_BLOG_POSTS } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd, productItemListJsonLd } from "@/lib/schema";
 
@@ -68,6 +69,34 @@ export default function ProductsPage() {
             {PRODUCTS.map((p) => (
               <ProductCard key={p.slug} product={p} />
             ))}
+          </div>
+
+          <div className="mt-14 rounded-lg border border-border/70 bg-rose-50 p-6">
+            <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+              <div>
+                <h2 className="font-display text-xl font-semibold tracking-tight">
+                  Cẩm nang chọn móc khóa len handmade
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                  Tìm hiểu cách chọn quà handmade, cách bảo quản móc khóa len và gợi ý mẫu
+                  phù hợp trước khi nhắn shop đặt hàng.
+                </p>
+                <Button asChild variant="outline" className="mt-5">
+                  <Link href="/blog">Xem cẩm nang</Link>
+                </Button>
+              </div>
+              <div className="grid gap-3">
+                {FEATURED_BLOG_POSTS.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="rounded-md border border-border/70 bg-white/70 p-4 text-sm font-medium transition hover:text-primary hover:shadow-sm"
+                  >
+                    {post.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </Container>
       </section>

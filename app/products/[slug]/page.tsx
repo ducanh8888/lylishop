@@ -63,6 +63,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) notFound();
+  const relatedProducts = PRODUCTS.filter((item) => item.slug !== product.slug).slice(0, 3);
 
   return (
     <>
@@ -162,6 +163,35 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </p>
             </div>
           </div>
+
+          <section className="mt-14">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                Có thể bạn cũng thích
+              </p>
+              <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                Mẫu móc khóa len liên quan
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
+                Xem thêm các mẫu móc khóa len handmade khác để dễ chọn quà hoặc phối theo
+                màu bạn thích.
+              </p>
+            </div>
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedProducts.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/products/${item.slug}`}
+                  className="rounded-lg border border-border/70 bg-white/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  <span className="font-display text-base font-semibold">{item.name}</span>
+                  <span className="mt-2 block text-sm leading-6 text-muted-foreground">
+                    {item.shortDescription}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
         </Container>
       </section>
     </>

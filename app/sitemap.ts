@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { SITE } from "@/lib/site";
 import { PRODUCTS } from "@/lib/products";
+import { BLOG_POSTS } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -25,11 +26,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.95,
     },
+    {
+      url: `${SITE.url}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
     ...PRODUCTS.map((p) => ({
       url: `${SITE.url}/products/${p.slug}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    ...BLOG_POSTS.map((post) => ({
+      url: `${SITE.url}/blog/${post.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
     })),
   ];
 
