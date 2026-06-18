@@ -29,6 +29,7 @@ export const SITE = {
   logo: "/logo-lylishop-v3.svg",
   google: {
     analyticsMeasurementId: "G-MJ7EP9BPQH",
+    adsId: "AW-18205425232",
     searchConsoleVerification: "CJ6HkBRGaUnGabnWhbRFvP3EDaClZkRuQvZQBSuwAGE",
   },
   socials: {

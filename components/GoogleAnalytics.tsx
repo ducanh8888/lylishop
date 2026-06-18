@@ -1,21 +1,39 @@
 import { SITE } from "@/lib/site";
 
 const GA_MEASUREMENT_ID = SITE.google.analyticsMeasurementId;
+const GOOGLE_ADS_ID = SITE.google.adsId;
 const ANALYTICS_DELAY_MS = 10000;
 
 export function GoogleAnalytics() {
-  if (!GA_MEASUREMENT_ID) {
+  const tagIds = [GA_MEASUREMENT_ID, GOOGLE_ADS_ID].filter(Boolean);
+
+  if (tagIds.length === 0) {
     return null;
   }
 
   const script = `
     (() => {
-      const measurementId = ${JSON.stringify(GA_MEASUREMENT_ID)};
+      const tagIds = ${JSON.stringify(tagIds)};
+      const primaryTagId = tagIds[0];
       const delayMs = ${ANALYTICS_DELAY_MS};
       let loaded = false;
+      let configured = false;
+
+      function configureGoogleTags() {
+        if (configured || !window.gtag) return;
+        configured = true;
+        window.gtag('js', new Date());
+        tagIds.forEach(function(tagId) {
+          window.gtag('config', tagId);
+        });
+      }
 
       function loadAnalytics() {
-        if (loaded || window.gtag) return;
+        if (window.gtag) {
+          configureGoogleTags();
+          return;
+        }
+        if (loaded) return;
         loaded = true;
 
         window.dataLayer = window.dataLayer || [];
@@ -23,11 +41,8 @@ export function GoogleAnalytics() {
 
         const script = document.createElement('script');
         script.async = true;
-        script.src = 'https://www.google' + 'tagmanager.com/gtag/js?id=' + measurementId;
-        script.onload = function() {
-          window.gtag('js', new Date());
-          window.gtag('config', measurementId);
-        };
+        script.src = 'https://www.google' + 'tagmanager.com/gtag/js?id=' + primaryTagId;
+        script.onload = configureGoogleTags;
         document.head.appendChild(script);
       }
 
