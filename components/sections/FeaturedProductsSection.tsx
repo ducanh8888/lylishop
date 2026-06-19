@@ -15,7 +15,7 @@ export function FeaturedProductsSection() {
       <Container>
         <SectionHeading
           eyebrow="Được yêu thích"
-          title="Móc khóa len được yêu thích"
+          title="10 mã sản phẩm được yêu thích nhất Lyli Shop"
           description="Những mẫu móc khóa len handmade cute để treo balo, túi xách hoặc làm quà tặng nhỏ xinh. Thích mẫu nào, bạn có thể nhắn shop để chọn màu theo ý thích."
         />
 

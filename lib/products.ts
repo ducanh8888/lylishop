@@ -317,7 +317,10 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export const FEATURED_PRODUCTS = PRODUCTS.slice(0, 5);
+export const FEATURED_PRODUCTS = [
+  PRODUCTS.find((p) => p.slug === "set-moc-khoa-len-10-mau-mix"),
+  ...PRODUCTS.filter((p) => p.slug !== "set-moc-khoa-len-10-mau-mix").slice(0, 4),
+].filter((product): product is Product => Boolean(product));
 
 export function getProductBySlug(slug: string) {
   return PRODUCTS.find((p) => p.slug === slug);
