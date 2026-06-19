@@ -119,7 +119,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               {productImages.length > 1 ? (
                 <div className="grid grid-cols-2 gap-3">
-                  {productImages.slice(0, 2).map((image, index) => (
+                  {productImages.map((image, index) => (
                     <div
                       key={image.src}
                       className="overflow-hidden rounded-lg border border-border/70 bg-white/60 shadow-sm"
