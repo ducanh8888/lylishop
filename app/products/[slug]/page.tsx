@@ -64,6 +64,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = getProductBySlug(slug);
   if (!product) notFound();
   const relatedProducts = PRODUCTS.filter((item) => item.slug !== product.slug).slice(0, 3);
+  const productImages = product.images ?? [product.image];
 
   return (
     <>
@@ -99,20 +100,46 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
 
           <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:items-start">
-            <div className="overflow-hidden rounded-xl border border-border/70 bg-white/60 shadow-sm backdrop-blur-md">
-              <div className="relative aspect-square bg-gradient-to-b from-white to-rose-50">
-                <Image
-                  src={product.image.src}
-                  alt={product.image.alt}
-                  width={product.image.width}
-                  height={product.image.height}
-                  className="h-full w-full object-cover"
-                  priority
-                  fetchPriority="high"
-                  quality={60}
-                  sizes="(max-width: 1024px) 100vw, 520px"
-                />
+            <div className="grid gap-4">
+              <div className="overflow-hidden rounded-xl border border-border/70 bg-white/60 shadow-sm backdrop-blur-md">
+                <div className="relative aspect-square bg-gradient-to-b from-white to-rose-50">
+                  <Image
+                    src={productImages[0].src}
+                    alt={productImages[0].alt}
+                    width={productImages[0].width}
+                    height={productImages[0].height}
+                    className="h-full w-full object-cover"
+                    priority
+                    fetchPriority="high"
+                    quality={60}
+                    sizes="(max-width: 1024px) 100vw, 520px"
+                  />
+                </div>
               </div>
+
+              {productImages.length > 1 ? (
+                <div className="grid grid-cols-2 gap-3">
+                  {productImages.slice(0, 2).map((image, index) => (
+                    <div
+                      key={image.src}
+                      className="overflow-hidden rounded-lg border border-border/70 bg-white/60 shadow-sm"
+                    >
+                      <div className="relative aspect-square bg-gradient-to-b from-white to-rose-50">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          width={image.width}
+                          height={image.height}
+                          className="h-full w-full object-cover"
+                          loading={index === 0 ? "eager" : "lazy"}
+                          quality={55}
+                          sizes="(max-width: 1024px) 50vw, 250px"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
             </div>
 
             <div>

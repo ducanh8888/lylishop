@@ -13,6 +13,12 @@ export type Product = {
     width: number;
     height: number;
   };
+  images?: Array<{
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  }>;
   highlights: string[];
 };
 
@@ -32,6 +38,19 @@ function productDescription(title: string, bullets: string[]) {
 ${bullets.map((bullet) => `• ${bullet}`).join("\n")}
 
 ${SIZE_AND_PRICE_NOTE}`;
+}
+
+const TIERED_SIZE_AND_PRICE_NOTE = `Giá sản phẩm thay đổi theo kích thước và độ chi tiết của từng mẫu.
+• Giá sp từ 45k / size S: 6-7 cm.
+• Giá sp từ 59k / size M: 8-10 cm.
+• Giá sp từ 69k / size L: 10-12 cm.`;
+
+function productDescriptionWithTieredPrice(title: string, bullets: string[]) {
+  return `${title}
+
+${bullets.map((bullet) => `• ${bullet}`).join("\n")}
+
+${TIERED_SIZE_AND_PRICE_NOTE}`;
 }
 
 export const PRODUCTS: Product[] = [
@@ -163,6 +182,126 @@ export const PRODUCTS: Product[] = [
       height: 1176,
     },
     highlights: ["Dễ thương", "Thêu gọn đẹp", "Dễ kẹp, dễ treo"],
+  },
+  {
+    slug: "set-moc-khoa-len-6-mau-cute",
+    name: "Set móc khóa len 6 mẫu cute",
+    priceVnd: 45000,
+    shortDescription:
+      "Set móc khóa len handmade gồm 6 mẫu nhỏ xinh, phù hợp treo balo, túi xách hoặc làm quà tặng.",
+    longDescription: productDescriptionWithTieredPrice("Set móc khóa len handmade 6 mẫu cute", [
+      "Handmade 100%, đan thủ công từng mũi len.",
+      "Gồm 6 mẫu móc khóa len nhỏ xinh, dễ phối theo nhiều phong cách.",
+      "Len Milk cotton, bền, giữ form tốt và hạn chế xù lông.",
+      "Khoen móc kim loại chắc chắn, phù hợp treo chìa khóa, túi xách, balo hoặc hộp bút.",
+      "Phù hợp làm quà tặng sinh nhật, quà cảm ơn, quà nhóm bạn hoặc quà handmade dễ thương.",
+      "Có thể lựa chọn màu sắc và thêm một số chi tiết theo yêu cầu.",
+    ]),
+    metaDescription:
+      "Set móc khóa len handmade 6 mẫu cute, giá từ 45k size S, có size M và L, phù hợp treo balo, túi xách hoặc làm quà tặng handmade.",
+    rating: 4.9,
+    reviewCount: 51,
+    image: {
+      src: "/product-assets/crochet-bear-keychain.jpg",
+      alt: "Set móc khóa len handmade 6 mẫu cute ảnh đại diện",
+      width: 1000,
+      height: 995,
+    },
+    images: [
+      {
+        src: "/product-assets/crochet-bear-keychain.jpg",
+        alt: "Ảnh 1 set móc khóa len handmade 6 mẫu cute",
+        width: 1000,
+        height: 995,
+      },
+      {
+        src: "/gallery/group-collection.png",
+        alt: "Ảnh 2 set móc khóa len handmade 6 mẫu cute",
+        width: 1200,
+        height: 1500,
+      },
+    ],
+    highlights: ["Gồm 6 mẫu", "Giá từ 45k", "Có size S, M, L"],
+  },
+  {
+    slug: "set-moc-khoa-len-6-mau-qua-tang",
+    name: "Set móc khóa len 6 mẫu quà tặng",
+    priceVnd: 45000,
+    shortDescription:
+      "Set 6 móc khóa len handmade phong cách quà tặng, dễ chọn màu và đóng gói xinh theo yêu cầu.",
+    longDescription: productDescriptionWithTieredPrice("Set móc khóa len handmade 6 mẫu quà tặng", [
+      "Handmade 100%, đan thủ công từng mũi len.",
+      "Gồm 6 mẫu móc khóa len phù hợp làm quà cho bạn bè, người yêu hoặc người thích đồ handmade.",
+      "Len Milk cotton, mềm tay, bền và giữ form tốt khi treo hằng ngày.",
+      "Khoen móc kim loại chắc chắn, dễ treo balo, túi tote, chìa khóa hoặc hộp bút.",
+      "Có thể trao đổi màu sắc, phong cách dễ thương hoặc nhẹ nhàng trước khi làm.",
+      "Shop xác nhận mẫu, size và thời gian hoàn thiện trước khi chốt đơn.",
+    ]),
+    metaDescription:
+      "Set móc khóa len handmade 6 mẫu quà tặng, giá từ 45k size S, có size M và L, nhận chọn màu và đóng gói xinh theo yêu cầu.",
+    rating: 4.9,
+    reviewCount: 47,
+    image: {
+      src: "/product-assets/strawberry-yarn-charm.jpg",
+      alt: "Set móc khóa len handmade 6 mẫu quà tặng ảnh đại diện",
+      width: 1000,
+      height: 993,
+    },
+    images: [
+      {
+        src: "/product-assets/strawberry-yarn-charm.jpg",
+        alt: "Ảnh 1 set móc khóa len handmade 6 mẫu quà tặng",
+        width: 1000,
+        height: 993,
+      },
+      {
+        src: "/gallery/packaging-flatlay.png",
+        alt: "Ảnh 2 set móc khóa len handmade 6 mẫu quà tặng",
+        width: 1200,
+        height: 1500,
+      },
+    ],
+    highlights: ["Gồm 6 mẫu", "Hợp làm quà", "Nhận chọn màu"],
+  },
+  {
+    slug: "set-moc-khoa-len-10-mau-mix",
+    name: "Set móc khóa len 10 mẫu mix",
+    priceVnd: 45000,
+    shortDescription:
+      "Set móc khóa len handmade 10 mẫu mix, phù hợp đặt theo nhóm, quà lớp hoặc bộ sưu tập phụ kiện len.",
+    longDescription: productDescriptionWithTieredPrice("Set móc khóa len handmade 10 mẫu mix", [
+      "Handmade 100%, đan thủ công từng mũi len.",
+      "Gồm 10 mẫu móc khóa len mix nhiều kiểu dáng, phù hợp đặt theo nhóm hoặc làm quà số lượng nhiều.",
+      "Len Milk cotton, bền, giữ form tốt và hạn chế xù lông khi sử dụng đúng cách.",
+      "Khoen móc kim loại chắc chắn, thích hợp treo chìa khóa, túi xách, balo hoặc hộp bút.",
+      "Phù hợp làm quà sinh nhật, quà lớp, quà cảm ơn hoặc bộ sưu tập móc khóa len mini.",
+      "Có thể lựa chọn tone màu, size và một số chi tiết nhỏ theo yêu cầu.",
+    ]),
+    metaDescription:
+      "Set móc khóa len handmade 10 mẫu mix, giá từ 45k size S, có size M và L, phù hợp đặt theo nhóm, quà lớp hoặc quà handmade dễ thương.",
+    rating: 4.9,
+    reviewCount: 58,
+    image: {
+      src: "/gallery/group-collection.png",
+      alt: "Set móc khóa len handmade 10 mẫu mix ảnh đại diện",
+      width: 1200,
+      height: 1500,
+    },
+    images: [
+      {
+        src: "/gallery/group-collection.png",
+        alt: "Ảnh 1 set móc khóa len handmade 10 mẫu mix",
+        width: 1200,
+        height: 1500,
+      },
+      {
+        src: "/product-assets/tulip-crochet-keychain.jpg",
+        alt: "Ảnh 2 set móc khóa len handmade 10 mẫu mix",
+        width: 1000,
+        height: 1000,
+      },
+    ],
+    highlights: ["Gồm 10 mẫu", "Hợp đặt theo nhóm", "Giá từ 45k"],
   },
 ];
 

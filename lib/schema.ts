@@ -76,6 +76,7 @@ export function faqJsonLd(items: FaqItem[]) {
 
 export function productJsonLd(product: Product) {
   const url = `${SITE.url}/products/${product.slug}`;
+  const images = product.images ?? [product.image];
 
   return {
     "@context": "https://schema.org",
@@ -84,7 +85,7 @@ export function productJsonLd(product: Product) {
     name: product.name,
     description: product.longDescription,
     url,
-    image: [`${SITE.url}${product.image.src}`],
+    image: images.map((image) => `${SITE.url}${image.src}`),
     sku: product.slug,
     category: "Móc khóa len handmade",
     material: "Len mềm",
