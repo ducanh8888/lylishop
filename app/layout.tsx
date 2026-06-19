@@ -9,6 +9,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SkipToContent } from "@/components/SkipToContent";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { PromotionBanner } from "@/components/PromotionBanner";
 
 export const metadata = DEFAULT_METADATA;
 
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className={cn("min-h-screen font-sans")}>
         <SkipToContent />
         <Navbar />
+        <PromotionBanner />
         <main id="main" className="min-h-[60vh]">
           {children}
         </main>

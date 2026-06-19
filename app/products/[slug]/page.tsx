@@ -170,6 +170,31 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </ul>
               </div>
 
+              {product.promotion ? (
+                <div className="mt-4 rounded-xl border border-primary/20 bg-rose-50 p-5 shadow-sm">
+                  <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                    {product.promotion.eyebrow}
+                  </p>
+                  <h2 className="mt-1 font-display text-lg font-semibold text-foreground">
+                    {product.promotion.title}
+                  </h2>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    {product.promotion.summary}
+                  </p>
+                  <ul className="mt-4 grid gap-2 text-sm text-foreground/85">
+                    {product.promotion.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-primary" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 rounded-md border border-border/70 bg-white/75 px-3 py-2 text-xs leading-5 text-muted-foreground">
+                    Ghi chú: {product.promotion.notes.join(" ")}
+                  </p>
+                </div>
+              ) : null}
+
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg">
                   <Link href="/#order" aria-label="Đến phần liên hệ đặt hàng">
