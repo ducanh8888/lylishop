@@ -9,17 +9,21 @@ export type Promotion = {
 };
 
 export const JUNE_PROMOTION: Promotion = {
-  title: "Khuyến mãi tháng 6",
+  title: "CHỈ 5 SUẤT QUÀ TẶNG",
   eyebrow: "Ưu đãi móc khóa len handmade",
   summary:
-    "Móc khóa len handmade đồng giá từ 45k, có quà tặng size S cho đơn đủ điều kiện trong tháng 6.",
+    "Mua 3 tặng 1 hoặc rủ bạn mua cùng nhận quà đôi 45K.",
   items: [
-    "Mua 3 móc khóa đồng giá 45k, tặng 1 móc khóa túi mù size S cho 3 khách hàng đầu tiên.",
-    "Rủ bạn mua cùng, có cơ hội nhận 1 móc khóa size S trị giá tương đương 45k cho 2 khách hàng đã từng mua hàng.",
+    "Mua 3 móc khóa len handmade bất kỳ, tặng 1 Túi Mù Size S trị giá 45.000đ. Chỉ áp dụng cho 3 khách hàng đầu tiên.",
+    "Rủ bạn mua cùng tại LyliShop, mỗi người nhận 1 móc khóa Size S trị giá 45.000đ. Chỉ áp dụng cho 2 cặp khách hàng đầu tiên.",
   ],
   notes: [
-    "Mỗi khách chỉ dùng 1 ưu đãi; không cộng dồn, không quy đổi tiền mặt và áp dụng đến khi hết quà tặng.",
+    "Tổng số lượng quà tặng: 5 suất.",
+    "Mỗi khách hàng chỉ được áp dụng 1 chương trình ưu đãi.",
+    "Không áp dụng đồng thời 2 chương trình.",
+    "Quà tặng không quy đổi thành tiền mặt.",
+    "Chương trình kết thúc khi hết quà tặng.",
   ],
   href: "/#featured",
-  ctaLabel: "Xem mẫu 45k",
+  ctaLabel: "Xem ưu đãi",
 };
