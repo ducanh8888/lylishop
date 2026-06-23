@@ -13,15 +13,15 @@ import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd, productItemListJsonLd } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Móc khóa len handmade",
+  title: "Sản phẩm móc khóa len handmade",
   description:
-    "Khám phá các mẫu móc khóa len handmade và phụ kiện len của LyliShop. Xem giá, chi tiết sản phẩm và liên hệ đặt hàng qua Instagram, TikTok, Facebook hoặc Zalo.",
+    "Xem móc khóa len handmade, móc khóa thú mini và phụ kiện len cute tại LyliShop. Giá từ 45k, nhận chọn màu và đặt hàng qua Zalo/Facebook.",
   alternates: { canonical: "/products" },
   openGraph: {
     url: `${SITE.url}/products`,
-    title: "Móc khóa len handmade | LyliShop",
+    title: "Sản phẩm móc khóa len handmade | LyliShop",
     description:
-      "Móc khóa len handmade và phụ kiện len với đóng gói quà chỉn chu, có thể tùy chỉnh màu theo yêu cầu.",
+      "Móc khóa len handmade cute, phụ kiện len nhỏ xinh, giá từ 45k, có thể chọn màu và đặt nhanh qua Zalo/Facebook.",
     images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: "LyliShop products" }],
   },
 };

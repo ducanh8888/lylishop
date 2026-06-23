@@ -17,9 +17,9 @@ const PAGE_PATH = "/blog";
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
 
 export const metadata: Metadata = {
-  title: "Cẩm nang móc khóa len handmade",
+  title: "Cẩm nang móc khóa len handmade & quà tặng cute",
   description:
-    "Cẩm nang chọn móc khóa len handmade, quà handmade dễ thương, cách bảo quản phụ kiện len và gợi ý quà sinh nhật từ LyliShop.",
+    "Đọc cẩm nang chọn móc khóa len handmade, quà handmade dễ thương, cách bảo quản phụ kiện len và gợi ý quà sinh nhật handmade từ LyliShop.",
   keywords: [
     "móc khóa len handmade",
     "móc khóa handmade",
@@ -31,14 +31,14 @@ export const metadata: Metadata = {
   alternates: { canonical: PAGE_PATH },
   openGraph: {
     url: PAGE_URL,
-    title: "Cẩm nang móc khóa len handmade | LyliShop",
+    title: "Cẩm nang móc khóa len handmade & quà tặng cute | LyliShop",
     description:
       "Bài viết hướng dẫn chọn móc khóa len handmade, quà handmade và cách bảo quản phụ kiện len.",
     images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: "Cẩm nang LyliShop" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cẩm nang móc khóa len handmade | LyliShop",
+    title: "Cẩm nang móc khóa len handmade & quà tặng cute | LyliShop",
     description:
       "Gợi ý chọn quà handmade, móc khóa len mini và cách bảo quản phụ kiện len.",
     images: [SITE.twitterImage],

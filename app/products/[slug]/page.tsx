@@ -7,7 +7,7 @@ import { ArrowLeft, Camera, Sparkles } from "lucide-react";
 import { PRODUCTS, getProductBySlug } from "@/lib/products";
 import { SITE } from "@/lib/site";
 import { formatVnd } from "@/lib/format";
-import { breadcrumbJsonLd, productJsonLd } from "@/lib/schema";
+import { breadcrumbJsonLd, faqJsonLd, productJsonLd } from "@/lib/schema";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -28,18 +28,23 @@ export async function generateMetadata({
   const product = getProductBySlug(slug);
   if (!product) return {};
 
-  const title = product.name;
+  const title =
+    product.name.length <= 30
+      ? `${product.name} | Móc khóa len handmade LyliShop`
+      : `${product.name} | LyliShop`;
   const description = product.metaDescription;
   const url = `${SITE.url}/products/${product.slug}`;
 
   return {
-    title,
+    title: {
+      absolute: title,
+    },
     description,
     alternates: { canonical: `/products/${product.slug}` },
     openGraph: {
       type: "website",
       url,
-      title: `${title} | LyliShop`,
+      title,
       description,
       images: [
         {
@@ -52,7 +57,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | LyliShop`,
+      title,
       description,
       images: [product.image.src],
     },
@@ -65,10 +70,31 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product) notFound();
   const relatedProducts = PRODUCTS.filter((item) => item.slug !== product.slug).slice(0, 3);
   const productImages = product.images ?? [product.image];
+  const productFaqs = [
+    {
+      id: `${product.slug}-custom-color`,
+      question: `Có thể đặt ${product.name} theo màu riêng không?`,
+      answer:
+        "Có. Bạn có thể nhắn LyliShop màu mong muốn, tone màu yêu thích hoặc ảnh mẫu tham khảo để shop tư vấn trước khi làm.",
+    },
+    {
+      id: `${product.slug}-gift`,
+      question: `${product.name} có phù hợp làm quà tặng handmade không?`,
+      answer:
+        "Có. Sản phẩm nhỏ gọn, dễ treo balo hoặc túi xách, phù hợp làm quà sinh nhật, quà cảm ơn hoặc món quà nhỏ cho người thích đồ handmade.",
+    },
+    {
+      id: `${product.slug}-order`,
+      question: `Đặt ${product.name} tại LyliShop như thế nào?`,
+      answer:
+        "Bạn chọn mẫu trên website rồi nhắn Zalo hoặc Facebook. Shop sẽ xác nhận màu, số lượng, giá theo kích thước và thời gian hoàn thiện trước khi chốt đơn.",
+    },
+  ];
 
   return (
     <>
       <JsonLd data={productJsonLd(product)} />
+      <JsonLd data={faqJsonLd(productFaqs)} />
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", url: SITE.url },
@@ -197,10 +223,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg">
-                  <Link href="/#order" aria-label="Đến phần liên hệ đặt hàng">
-                    Liên hệ đặt hàng
+                  <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                    Nhắn Zalo để đặt hàng
                     <Sparkles className="h-4 w-4" aria-hidden="true" />
-                  </Link>
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/products">Xem thêm sản phẩm</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
@@ -215,6 +244,20 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </p>
             </div>
           </div>
+
+          <section className="mt-14 rounded-xl border border-border/70 bg-rose-50/70 p-6">
+            <h2 className="font-display text-2xl font-semibold tracking-tight">
+              Câu hỏi thường gặp về {product.name}
+            </h2>
+            <div className="mt-5 grid gap-4 md:grid-cols-3">
+              {productFaqs.map((item) => (
+                <div key={item.id} className="rounded-lg border border-border/70 bg-white/75 p-4">
+                  <h3 className="font-display text-base font-semibold">{item.question}</h3>
+                  <p className="mt-2 text-sm leading-7 text-muted-foreground">{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
 
           <section className="mt-14">
             <div className="mx-auto max-w-2xl text-center">

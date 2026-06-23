@@ -3,9 +3,11 @@ export const SITE = {
   domain: "lylishop.online",
   url: "https://lylishop.online",
   locale: "vi_VN",
-  title: "LyliShop | Móc khóa len handmade & phụ kiện len",
+  title: "Móc Khóa Len Handmade Cute | LyliShop",
+  brandDescription:
+    "Shop móc khóa len handmade cute, nhận làm móc khóa len theo yêu cầu, phù hợp làm quà tặng dễ thương cho học sinh, sinh viên và người yêu thích đồ handmade.",
   description:
-    "Khám phá móc khóa len handmade và phụ kiện len nhỏ xinh từ LyliShop. Len mềm cao cấp, đóng gói quà chỉn chu, có thể tùy chỉnh màu và đặt hàng qua tin nhắn.",
+    "Móc khóa len handmade cute từ LyliShop: phụ kiện len nhỏ xinh, đóng gói làm quà, nhận chọn màu theo yêu cầu và đặt nhanh qua Zalo/Facebook.",
   keywords: [
     "móc khóa len",
     "móc khoá len",
@@ -26,7 +28,8 @@ export const SITE = {
   themeColor: "#be185d",
   ogImage: "/og.png",
   twitterImage: "/twitter-card.png",
-  logo: "/logo-lylishop-v3.svg",
+  logo: "/apple-touch-icon-lylishop-v3.png",
+  phone: "0356839196",
   google: {
     analyticsMeasurementId: "G-MJ7EP9BPQH",
     adsId: "AW-18205425232",

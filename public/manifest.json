@@ -17,12 +17,6 @@
       "src": "/apple-touch-icon-lylishop-v3.png",
       "sizes": "180x180",
       "type": "image/png"
-    },
-    {
-      "src": "/logo-lylishop-v3.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
     }
   ]
 }

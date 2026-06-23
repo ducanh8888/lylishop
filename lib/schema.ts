@@ -4,6 +4,7 @@ import type { FaqItem } from "@/lib/faq";
 
 const organizationId = `${SITE.url}/#organization`;
 const websiteId = `${SITE.url}/#website`;
+const socialProfiles = [SITE.socials.facebook, SITE.socials.tiktok, SITE.socials.instagram];
 
 export function organizationJsonLd() {
   return {
@@ -16,7 +17,14 @@ export function organizationJsonLd() {
       "@type": "ImageObject",
       url: `${SITE.url}${SITE.logo}`,
     },
-    sameAs: Object.values(SITE.socials),
+    sameAs: socialProfiles,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: SITE.phone,
+      contactType: "customer service",
+      availableLanguage: ["vi-VN"],
+      areaServed: "VN",
+    },
   } as const;
 }
 

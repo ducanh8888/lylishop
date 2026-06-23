@@ -39,13 +39,13 @@ export function ContactSection() {
                 <Button asChild size="lg">
                   <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
                     <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                    Zalo
+                    Nhắn Zalo đặt hàng
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
                     <ThumbsUp className="h-4 w-4" aria-hidden="true" />
-                    Facebook
+                    Inbox Facebook
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">

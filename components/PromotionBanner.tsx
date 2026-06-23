@@ -42,7 +42,7 @@ export function PromotionBanner() {
             <article className="rounded-lg border border-rose-200/80 bg-rose-50/70 p-4">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-primary" aria-hidden="true" />
-                <h2 className="font-display text-sm font-bold">Ưu đãi 1</h2>
+                <p className="font-display text-sm font-bold">Ưu đãi 1</p>
               </div>
               <p className="mt-3 text-sm font-medium leading-6 text-foreground">
                 Mua 3 móc khóa len handmade bất kỳ
@@ -58,7 +58,7 @@ export function PromotionBanner() {
             <article className="rounded-lg border border-rose-200/80 bg-rose-50/70 p-4">
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-primary" aria-hidden="true" />
-                <h2 className="font-display text-sm font-bold">Ưu đãi 2</h2>
+                <p className="font-display text-sm font-bold">Ưu đãi 2</p>
               </div>
               <p className="mt-3 text-sm font-medium leading-6 text-foreground">
                 Rủ bạn mua cùng tại LyliShop
@@ -72,7 +72,7 @@ export function PromotionBanner() {
             </article>
 
             <div className="rounded-lg border border-border/70 bg-background/80 p-4">
-              <h2 className="font-display text-sm font-bold">Lưu ý</h2>
+              <p className="font-display text-sm font-bold">Lưu ý</p>
               <ul className="mt-3 grid gap-2 text-xs leading-5 text-muted-foreground">
                 {JUNE_PROMOTION.notes.map((note) => (
                   <li key={note} className="flex items-start gap-2">

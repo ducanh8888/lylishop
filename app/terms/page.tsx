@@ -4,17 +4,13 @@ import { Container } from "@/components/Container";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Điều khoản đặt hàng",
+  title: "Điều khoản đặt móc khóa len handmade online",
   description:
     "Điều khoản đặt hàng tại LyliShop khi khách chọn mẫu, tùy chỉnh màu, xác nhận giá, giao hàng và liên hệ đặt sản phẩm handmade.",
   alternates: { canonical: "/terms" },
-  robots: {
-    index: false,
-    follow: true,
-  },
   openGraph: {
     url: `${SITE.url}/terms`,
-    title: "Điều khoản đặt hàng | LyliShop",
+    title: "Điều khoản đặt móc khóa len handmade online | LyliShop",
     description: "Điều khoản khi đặt móc khóa len handmade và phụ kiện len từ LyliShop.",
   },
 };

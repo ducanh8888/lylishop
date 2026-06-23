@@ -6,9 +6,10 @@ import { SITE } from "@/lib/site";
 import { Container } from "@/components/Container";
 
 const FOOTER_LINKS: Array<{ label: string; href: string }> = [
+  { label: "Trang chủ", href: "/" },
+  { label: "Sản phẩm móc khóa len", href: "/products" },
   { label: "Móc khóa len", href: "/moc-khoa-len" },
   { label: "Mẫu nổi bật", href: "/#featured" },
-  { label: "Cẩm nang handmade", href: "/blog" },
   { label: "Hình ảnh", href: "/#gallery" },
   { label: "Đánh giá", href: "/#reviews" },
   { label: "Câu hỏi thường gặp", href: "/#faq" },
@@ -31,8 +32,7 @@ export function Footer() {
               <span className="font-display text-base font-semibold tracking-tight">{SITE.name}</span>
             </Link>
             <p className="mt-3 max-w-md text-sm text-muted-foreground">
-              Móc khóa len handmade cute để treo balo, túi xách hoặc làm quà tặng.
-              LyliShop nhận chọn màu theo yêu cầu, đóng gói xinh và giao hàng toàn quốc.
+              {SITE.brandDescription}
             </p>
 
             <div className="mt-5 flex items-center gap-2">
@@ -104,7 +104,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <h2 className="font-display text-sm font-semibold">Liên hệ</h2>
             <p className="mt-4 text-sm text-muted-foreground">Đặt hàng nhanh qua:</p>
-            <p className="mt-2 text-sm text-foreground/80">Zalo, Facebook, Instagram</p>
+            <p className="mt-2 text-sm text-foreground/80">Zalo {SITE.phone}, Facebook, Instagram</p>
             <p className="mt-2 text-sm text-muted-foreground">
               Shop xác nhận mẫu, giá và thời gian làm trước khi chốt đơn.
             </p>

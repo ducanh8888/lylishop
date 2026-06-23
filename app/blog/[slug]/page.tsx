@@ -17,6 +17,16 @@ export function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({ slug: post.slug }));
 }
 
+function sectionId(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[đĐ]/g, "d")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -123,8 +133,28 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <section className="bg-background py-14 sm:py-20">
         <Container>
           <div className="mx-auto max-w-3xl space-y-9">
+            <nav
+              aria-label="Mục lục bài viết"
+              className="rounded-lg border border-border/70 bg-white/70 p-5 shadow-sm"
+            >
+              <p className="font-display text-sm font-semibold uppercase tracking-wider text-primary/90">
+                Mục lục bài viết
+              </p>
+              <div className="mt-4 grid gap-2">
+                {post.sections.map((section) => (
+                  <Link
+                    key={section.heading}
+                    href={`#${sectionId(section.heading)}`}
+                    className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition hover:bg-rose-50 hover:text-primary"
+                  >
+                    {section.heading}
+                  </Link>
+                ))}
+              </div>
+            </nav>
+
             {post.sections.map((section) => (
-              <section key={section.heading}>
+              <section key={section.heading} id={sectionId(section.heading)} className="scroll-mt-24">
                 <h2 className="font-display text-2xl font-semibold tracking-tight">
                   {section.heading}
                 </h2>

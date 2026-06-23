@@ -4,17 +4,13 @@ import { Container } from "@/components/Container";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Chính sách bảo mật",
+  title: "Chính sách bảo mật thông tin đặt hàng handmade",
   description:
     "Chính sách bảo mật của LyliShop về cách xử lý tin nhắn, thông tin đặt hàng và dữ liệu cá nhân khi khách liên hệ đặt sản phẩm handmade.",
   alternates: { canonical: "/privacy" },
-  robots: {
-    index: false,
-    follow: true,
-  },
   openGraph: {
     url: `${SITE.url}/privacy`,
-    title: "Chính sách bảo mật | LyliShop",
+    title: "Chính sách bảo mật thông tin đặt hàng handmade | LyliShop",
     description: "Cách LyliShop xử lý tin nhắn, thông tin đặt hàng và dữ liệu cá nhân.",
   },
 };

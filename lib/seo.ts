@@ -56,8 +56,6 @@ export const DEFAULT_METADATA: Metadata = {
   icons: {
     icon: [
       { url: "/favicon-lylishop-v3-48.png", sizes: "48x48", type: "image/png" },
-      { url: SITE.logo, type: "image/svg+xml" },
-      { url: "/favicon-lylishop-v3.svg", type: "image/svg+xml" },
       { url: "/favicon-lylishop-v3-32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-lylishop-v3.ico", sizes: "any" },
     ],
