@@ -7,7 +7,6 @@ import { formatVnd } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { StarRating } from "@/components/StarRating";
 
 export function ProductCard({
   product,
@@ -62,7 +61,7 @@ export function ProductCard({
           </div>
 
           <div className="mt-4 flex items-center justify-between">
-            <StarRating rating={product.rating} />
+            <span className="text-sm text-muted-foreground">Xem chi tiết mẫu</span>
             <span className="inline-flex items-center gap-1 text-sm font-medium text-primary">
               Xem
               <ArrowUpRight

@@ -17,7 +17,6 @@ describe("HomePage", () => {
     expect(document.querySelector("#featured")).toBeTruthy();
     expect(document.querySelector("#why")).toBeTruthy();
     expect(document.querySelector("#gallery")).toBeTruthy();
-    expect(document.querySelector("#reviews")).toBeTruthy();
     expect(document.querySelector("#faq")).toBeTruthy();
     expect(document.querySelector("#order")).toBeTruthy();
   });

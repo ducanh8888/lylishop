@@ -11,7 +11,6 @@ const NAV_LINKS: Array<{ label: string; href: string }> = [
   { label: "Cẩm nang", href: "/blog" },
   { label: "Lý do chọn", href: "/#why" },
   { label: "Hình ảnh", href: "/#gallery" },
-  { label: "Đánh giá", href: "/#reviews" },
   { label: "Câu hỏi", href: "/#faq" },
   { label: "Đặt hàng", href: "/#order" },
 ];

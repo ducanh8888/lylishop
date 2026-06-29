@@ -124,11 +124,6 @@ export function productJsonLd(product: Product) {
         "@id": organizationId,
       },
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: product.rating.toFixed(1),
-      reviewCount: product.reviewCount,
-    },
   } as const;
 }
 

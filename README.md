@@ -31,7 +31,6 @@ Mở web local: `http://localhost:3000`
 - Next.js 15 (App Router) + TypeScript
 - TailwindCSS
 - shadcn/ui-style components (Radix + CVA)
-- Framer Motion
 - Lucide React
 - SEO: Metadata + OpenGraph/Twitter + robots + sitemap + JSON-LD
 - Test: Vitest + React Testing Library
@@ -57,12 +56,11 @@ lib/
   products.ts               # danh sách sản phẩm + giá + nội dung
   gallery.ts                # danh sách ảnh gallery
   faq.ts                    # FAQ
-  testimonials.ts           # đánh giá khách hàng
   seo.ts                    # default metadata (canonical/OG/Twitter/robots)
   schema.ts                 # JSON-LD (Organization/Product/FAQ/ItemList)
 
 public/
-  products/                 # ảnh sản phẩm bạn upload
+  product-assets/           # ảnh sản phẩm
   gallery/                  # ảnh gallery bạn upload
 ```
 
@@ -88,11 +86,10 @@ Mỗi sản phẩm có:
 - `shortDescription` / `longDescription`
 - `image.src` (đường dẫn ảnh trong `public/`)
 
-### 4.3 Gallery / FAQ / Reviews
+### 4.3 Gallery / FAQ
 
 - Gallery: `lib/gallery.ts`
 - FAQ: `lib/faq.ts`
-- Reviews: `lib/testimonials.ts`
 
 ---
 
@@ -100,18 +97,18 @@ Mỗi sản phẩm có:
 
 ### 5.1 Thư mục ảnh
 
-- Ảnh sản phẩm: `public/products/`
+- Ảnh sản phẩm: `public/product-assets/`
 - Ảnh gallery: `public/gallery/`
 
 ### 5.2 Tên file ảnh mặc định
 
 Website đang trỏ tới các file này (bạn có thể đổi trong `lib/products.ts` và `lib/gallery.ts`):
 
-- `public/products/crochet-bear-keychain.png`
-- `public/products/strawberry-yarn-charm.png`
-- `public/products/tulip-crochet-keychain.png`
-- `public/products/bunny-plush-charm.png`
-- `public/products/cat-paw-crochet-accessory.png`
+- `public/product-assets/crochet-bear-keychain.jpg`
+- `public/product-assets/strawberry-yarn-charm.jpg`
+- `public/product-assets/tulip-crochet-keychain.jpg`
+- `public/product-assets/bunny-plush-charm.jpg`
+- `public/product-assets/cat-paw-crochet-accessory.jpg`
 
 ### 5.3 Gợi ý tối ưu ảnh (để Lighthouse cao)
 

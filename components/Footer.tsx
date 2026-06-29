@@ -11,7 +11,6 @@ const FOOTER_LINKS: Array<{ label: string; href: string }> = [
   { label: "Móc khóa len", href: "/moc-khoa-len" },
   { label: "Mẫu nổi bật", href: "/#featured" },
   { label: "Hình ảnh", href: "/#gallery" },
-  { label: "Đánh giá", href: "/#reviews" },
   { label: "Câu hỏi thường gặp", href: "/#faq" },
   { label: "Liên hệ đặt hàng", href: "/#order" },
 ];

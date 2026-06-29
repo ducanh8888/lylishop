@@ -36,5 +36,7 @@ describe("SEO metadata", () => {
         priceCurrency: "VND",
       },
     });
+
+    expect(productJsonLd(PRODUCTS[0])).not.toHaveProperty("aggregateRating");
   });
 });

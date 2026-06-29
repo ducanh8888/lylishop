@@ -6,7 +6,6 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { FeaturedProductsSection } from "@/components/sections/FeaturedProductsSection";
 import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
 import { GallerySection } from "@/components/sections/GallerySection";
-import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
@@ -172,7 +171,6 @@ export default function HomePage() {
       <WhyChooseUsSection />
       <HomeSeoContentSection />
       <GallerySection />
-      <TestimonialsSection />
       <FaqSection />
       <section className="bg-background py-14 sm:py-20">
         <Container>

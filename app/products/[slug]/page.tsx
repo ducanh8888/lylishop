@@ -11,7 +11,6 @@ import { breadcrumbJsonLd, faqJsonLd, productJsonLd } from "@/lib/schema";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { StarRating } from "@/components/StarRating";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
@@ -180,8 +179,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <div className="rounded-full bg-primary/10 px-4 py-2 font-display text-base font-semibold">
                   {formatVnd(product.priceVnd)}
                 </div>
-                <StarRating rating={product.rating} />
-                <span className="text-sm text-muted-foreground">{product.reviewCount} đánh giá</span>
+                <span className="text-sm text-muted-foreground">
+                  Giá có thể thay đổi theo kích thước và độ chi tiết của mẫu đặt riêng.
+                </span>
               </div>
 
               <div className="mt-6 rounded-xl border border-border/70 bg-white/60 p-5 shadow-sm backdrop-blur-md">
