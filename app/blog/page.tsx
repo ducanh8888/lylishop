@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BLOG_INDEX_STRATEGY, INDEXABLE_BLOG_POSTS, getBlogCoverProduct } from "@/lib/blog";
+import { BLOG_INDEX_STRATEGY, BLOG_POSTS, getBlogCoverProduct } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/schema";
 
@@ -91,7 +91,7 @@ export default function BlogPage() {
       <section className="bg-background py-14 sm:py-20">
         <Container>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {INDEXABLE_BLOG_POSTS.map((post) => (
+            {BLOG_POSTS.map((post) => (
               <article
                 key={post.slug}
                 className="group flex h-full flex-col overflow-hidden rounded-lg border border-border/70 bg-white/70 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"

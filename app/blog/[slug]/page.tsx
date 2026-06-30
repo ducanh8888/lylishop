@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button";
 import {
   BLOG_INDEX_STRATEGY,
   BLOG_POSTS,
-  INDEXABLE_BLOG_POSTS,
   getBlogPostBySlug,
   getRelatedProductsForPost,
 } from "@/lib/blog";
@@ -50,7 +49,7 @@ export async function generateMetadata({
     keywords: post.keywords,
     alternates: { canonical: `/blog/${post.slug}` },
     robots: {
-      index: BLOG_INDEX_STRATEGY.index && post.indexable,
+      index: BLOG_INDEX_STRATEGY.index,
       follow: BLOG_INDEX_STRATEGY.follow,
     },
     openGraph: {
@@ -78,7 +77,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const relatedProducts = getRelatedProductsForPost(post);
   const url = `${SITE.url}/blog/${post.slug}`;
-  const relatedPosts = INDEXABLE_BLOG_POSTS.filter((item) => item.slug !== post.slug).slice(0, 3);
+  const relatedPosts = BLOG_POSTS.filter((item) => item.slug !== post.slug).slice(0, 3);
 
   return (
     <>

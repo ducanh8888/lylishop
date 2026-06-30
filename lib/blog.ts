@@ -14,7 +14,6 @@ export type BlogPost = {
   excerpt: string;
   description: string;
   keywords: string[];
-  indexable: boolean;
   datePublished: string;
   dateModified: string;
   readingTime: string;
@@ -43,7 +42,6 @@ export const BLOG_POSTS: BlogPost[] = [
       "quà tặng cá nhân",
       "đồ len thủ công",
     ],
-    indexable: false,
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
@@ -56,18 +54,18 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Phụ kiện len handmade tạo cảm giác riêng như thế nào?",
         body: [
-          "Móc khóa len handmade là phụ kiện nhỏ được móc thủ công bằng sợi len, sau đó gắn khoen để treo chìa khóa, balo, túi xách hoặc hộp bút. Điểm tạo cảm xúc của sản phẩm nằm ở form mềm, màu sắc dễ thương và cảm giác được làm riêng từng chiếc.",
-          "Khác với móc khóa sản xuất hàng loạt, mỗi mẫu handmade có thể có độ lệch nhỏ về đường móc, kích thước hoặc chi tiết. Đây cũng là lý do nhiều bạn chọn móc khóa len để làm quà tặng cá nhân.",
+          "Phụ kiện len handmade là món đồ nhỏ được móc thủ công bằng sợi len, sau đó gắn khoen để treo chìa khóa, balo, túi xách hoặc hộp bút. Điểm tạo cảm xúc của sản phẩm nằm ở form mềm, màu sắc dễ thương và cảm giác được làm riêng từng chiếc.",
+          "Khác với phụ kiện sản xuất hàng loạt, mỗi mẫu handmade có thể có độ lệch nhỏ về đường móc, kích thước hoặc chi tiết. Đây cũng là lý do nhiều bạn chọn đồ len nhỏ để làm quà tặng cá nhân.",
         ],
       },
       {
-        heading: "Móc khóa len phù hợp với ai?",
+        heading: "Phụ kiện len phù hợp với ai?",
         body: [
           "Sản phẩm hợp với học sinh, sinh viên, người thích đồ len thủ công, người thích phụ kiện cute hoặc đang tìm quà handmade dễ thương. Các mẫu nhỏ như thỏ, dâu tây, hoa tulip, bàn chân mèo thường dễ dùng hằng ngày và dễ phối với balo, túi tote.",
         ],
       },
       {
-        heading: "Nên chọn móc khóa len theo tiêu chí nào?",
+        heading: "Nên chọn phụ kiện len theo tiêu chí nào?",
         body: [
           "Bạn nên chọn theo mục đích dùng: treo balo nên ưu tiên mẫu chắc khoen, làm quà nên chọn màu hợp người nhận, còn chụp ảnh hoặc trang trí góc học tập có thể chọn mẫu có hình dáng nổi bật hơn.",
           "Tại LyliShop, bạn có thể nhắn shop để chọn màu len, phối chi tiết nhỏ và xác nhận thời gian làm trước khi chốt đơn.",
@@ -76,12 +74,12 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     faqs: [
       {
-        question: "Móc khóa len handmade có bền không?",
+        question: "Phụ kiện len handmade có bền không?",
         answer:
           "Có, nếu dùng đúng cách và tránh kéo mạnh phần khoen hoặc làm ướt lâu. Mẫu nhỏ thường phù hợp treo balo, chìa khóa, túi xách hoặc hộp bút.",
       },
       {
-        question: "Có thể đặt móc khóa len theo màu riêng không?",
+        question: "Có thể đặt phụ kiện len theo màu riêng không?",
         answer:
           "Có. Bạn có thể gửi màu mong muốn để LyliShop tư vấn phối màu và xác nhận trước khi làm.",
       },
@@ -100,7 +98,6 @@ export const BLOG_POSTS: BlogPost[] = [
       "quà handmade dễ thương",
       "quà sinh nhật nhỏ xinh",
     ],
-    indexable: true,
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "5 phút đọc",
@@ -156,7 +153,6 @@ export const BLOG_POSTS: BlogPost[] = [
       "quà handmade dễ thương",
       "phụ kiện handmade",
     ],
-    indexable: true,
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
@@ -212,7 +208,6 @@ export const BLOG_POSTS: BlogPost[] = [
       "đồ handmade dùng lâu",
       "giữ đồ len bền đẹp",
     ],
-    indexable: false,
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
@@ -225,7 +220,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Tránh kéo mạnh phần khoen và chi tiết nhỏ",
         body: [
-          "Móc khóa len được làm thủ công nên bạn nên hạn chế kéo mạnh vào tai, lá, nơ hoặc phần khoen. Khi tháo khỏi túi, hãy cầm vào khoen kim loại thay vì kéo phần thân len.",
+          "Phụ kiện len được làm thủ công nên bạn nên hạn chế kéo mạnh vào tai, lá, nơ hoặc phần khoen. Khi tháo khỏi túi, hãy cầm vào khoen kim loại thay vì kéo phần thân len.",
         ],
       },
       {
@@ -238,18 +233,18 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Cách giữ form khi dùng hằng ngày",
         body: [
-          "Hạn chế để móc khóa len bị đè nặng trong balo quá lâu. Khi không dùng, bạn có thể treo ở nơi khô thoáng để sản phẩm giữ dáng đẹp hơn.",
+          "Hạn chế để phụ kiện len bị đè nặng trong balo quá lâu. Khi không dùng, bạn có thể treo ở nơi khô thoáng để sản phẩm giữ dáng đẹp hơn.",
         ],
       },
     ],
     faqs: [
       {
-        question: "Móc khóa len có giặt được không?",
+        question: "Phụ kiện len có giặt được không?",
         answer:
           "Có thể làm sạch nhẹ, nhưng không nên ngâm hoặc vắt mạnh. Cách tốt nhất là lau/chấm nhẹ và phơi nơi thoáng mát.",
       },
       {
-        question: "Làm gì khi móc khóa len bị xù nhẹ?",
+        question: "Làm gì khi phụ kiện len bị xù nhẹ?",
         answer:
           "Bạn có thể dùng kéo nhỏ cắt phần xù nổi trên bề mặt, tránh kéo sợi len ra khỏi sản phẩm.",
       },
@@ -268,7 +263,6 @@ export const BLOG_POSTS: BlogPost[] = [
       "quà handmade tặng bạn gái",
       "quà handmade dễ thương",
     ],
-    indexable: true,
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "5 phút đọc",
@@ -312,8 +306,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-export const INDEXABLE_BLOG_POSTS = BLOG_POSTS.filter((post) => post.indexable);
-export const FEATURED_BLOG_POSTS = INDEXABLE_BLOG_POSTS.slice(0, 3);
+export const FEATURED_BLOG_POSTS = BLOG_POSTS.slice(0, 3);
 
 export function getBlogPostBySlug(slug: string) {
   return BLOG_POSTS.find((post) => post.slug === slug);

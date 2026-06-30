@@ -20,9 +20,9 @@ LyliShop already has a solid technical SEO base:
 - Images are local assets and rendered with `next/image`.
 - The site has a clear brand, product collection, footer links, CTA sections, FAQ, and social links.
 
-The highest-risk issue is trust/data integrity around reviews and ratings. `lib/products.ts` and `lib/testimonials.ts` contain rating, review count, and testimonial data, and `lib/schema.ts` emits `aggregateRating`. If these ratings/reviews are not verified real customer data, they should be removed from UI and Product structured data before further SEO work.
+The original highest-risk issue was trust/data integrity around reviews and ratings. Phase 0 removed the unverified rating/review/testimonial layer from runtime UI, product data, and Product structured data.
 
-The second major issue is strategy alignment. The user requirement says "khong tao blog", but the current repository already contains `/blog`, `/blog/[slug]`, and `lib/blog.ts`, and sitemap includes blog URLs. Because these URLs may already be indexed, they should not be deleted blindly. The team should decide whether to keep them as existing static "cam nang" pages, migrate their useful content into non-blog sections, or noindex/redirect them after checking Google Search Console.
+The second major issue was strategy alignment around existing `/blog` and `/blog/[slug]` URLs. Phase 5 now keeps blog as secondary informational/lifestyle content with low sitemap priority, while homepage, `/products`, `/moc-khoa-len`, and product detail pages remain the primary SEO surfaces.
 
 The third issue is topic cannibalization. Homepage, `/moc-khoa-len`, `/products`, and blog posts all target overlapping terms around "moc khoa len handmade". The implementation should define one intent per page:
 
@@ -30,15 +30,15 @@ The third issue is topic cannibalization. Homepage, `/moc-khoa-len`, `/products`
 - `/products`: product collection / commercial listing.
 - `/moc-khoa-len`: informational collection page or keyword-focused category guide.
 - Product detail pages: product-specific long-tail subpages.
-- Blog routes: only keep if existing indexed content is intentionally retained.
+- Blog routes: secondary informational/lifestyle layer, not the primary SEO funnel.
 
 ## Phase 0 Final Decision Addendum
 
 Status after Phase 0 final patch:
 
 - The unverified rating/review/testimonial layer is removed from runtime UI, product data, and Product JSON-LD. Product schema must not emit `aggregateRating` or `review` unless real verified review data is added later.
-- Product entities now carry explicit `category`, `tags`, `material`, `benefits`, and `giftFor` fields. These fields are rendered on product detail pages and reused by schema/related-product logic.
-- Related products are selected semantically from category/tag overlap instead of plain array order.
+- Product entities now carry a lean set of factual fields: `category`, `tags`, `material`, and `benefits`. Gift suitability is handled as plain page copy instead of a structured product field.
+- Related products use simple deterministic logic: same category first, then tag-overlap fallback.
 - Existing `/blog` and `/blog/[slug]` URLs are kept as legacy static guide content to avoid breaking live URLs. They remain indexable, but sitemap priority is intentionally lower than homepage, `/moc-khoa-len`, `/products`, and product detail pages. This is not approval to create a new blog program; it is a safe legacy URL strategy until Search Console data supports a redirect/noindex migration.
 - Homepage and product/category routes remain the primary SEO surfaces for moc khoa len handmade commercial intent.
 
@@ -117,12 +117,12 @@ Live checks on `https://lylishop.online` showed:
 | Area | Status | Summary |
 | --- | --- | --- |
 | Technical SEO | WARNING | Good foundation, but Twitter metadata inheritance, blog sitemap strategy, internal link targets, and route intent separation need cleanup. |
-| Product SEO | WARNING | Good product page base; missing structured `category`, `tags`, `material`, `benefits`, and tag-based related products. Rating/review trust issue is critical. |
+| Product SEO | PASS / WARNING | Product pages now use a lean model with `category`, `tags`, `material`, `benefits`, and simple related products. Slug mismatch should still not be changed without redirects. |
 | Homepage SEO | PASS / WARNING | Has one H1, CTA, FAQ, and long SEO content. Needs clearer page intent versus `/moc-khoa-len`. |
-| Schema | WARNING / FAIL | Good schema coverage, but `aggregateRating` is a fail if rating/review data is not verified. |
+| Schema | PASS / WARNING | Schema coverage is useful and Product JSON-LD is now lean. Keep it factual and do not reintroduce reviews/ratings without verified visible data. |
 | Semantic SEO | WARNING | Topic cluster exists but is not cleanly governed. |
 | Entity SEO | PASS / WARNING | Brand, domain, footer, social links, sameAs are mostly consistent. No fake address/email found. |
-| Accessibility | WARNING | Skip link, alt text, ARIA labels mostly exist. Some English labels and rating semantics should be localized/verified. |
+| Accessibility | WARNING | Skip link, alt text, ARIA labels mostly exist. Skip link localization and mobile contrast can still be polished. |
 | Performance | PASS / WARNING | Local images, `next/image`, cache headers, and server components are good. OG/Twitter assets and duplicate thumbnails can be improved. |
 | AI Optimization | WARNING | Good structured data and context, but data trust and topic overlap reduce machine-readability. |
 
@@ -286,20 +286,15 @@ Good:
 - Product detail pages have H1, description, highlights, CTA, FAQ, related products.
 - Product images are local and rendered with `next/image`.
 
-Issues:
+Remaining issues:
 
-- Product type lacks `category`, `tags`, `material`, `benefits`, and `giftFor` as structured fields.
-- Related products are selected by array order instead of semantic relationship.
-- Rating and review count exist without visible proof of verification.
-- Product schema emits `aggregateRating`.
-- Product detail page renders the first image as the main image and then includes the same image again in thumbnails when multiple images exist.
 - Product slug `crochet-bear-keychain` does not match the product name "tho con".
+- Product data should stay lean; do not add gift/review/rating fields unless real visible data exists.
 
 Recommended actions:
 
-- Add verified product fields only when data is real.
-- Remove or verify rating/review fields.
-- Build related product logic using tags/category.
+- Keep verified product fields only when data is real.
+- Keep related products simple: same category first, then tag overlap fallback.
 - Avoid slug changes unless redirect plan is approved.
 
 ## 8. Homepage SEO Audit
@@ -405,13 +400,11 @@ Good:
 Issues:
 
 - Skip link text is English: "Skip to content".
-- `StarRating` default ARIA label is English: `Rating X out of 5`.
-- If ratings are removed, `StarRating` usage should also be removed or repurposed.
 - Contrast should be checked visually on mobile after changes.
 
 Recommended actions:
 
-- Localize skip link and rating labels.
+- Localize skip link.
 - Keep native controls.
 - Validate keyboard navigation on mobile menu and FAQ.
 
@@ -593,35 +586,95 @@ Tasks:
 | Keep public robots index/follow. | P1 | XS | Low | Medium |
 | Add tests for route-level metadata where practical. | P2 | S | Low | Medium |
 
-### Phase 2: Structured Data Cleanup
+### Phase 2: Lean Schema Cleanup Only
 
 Goal:
 
-Ensure JSON-LD contains only true, visible, and supportable data.
+Keep structured data clean, factual, and easy to audit without building a schema governance system.
 
 Reason:
 
-Invalid or unsupported structured data can hurt eligibility for rich results and trust.
+Small static ecommerce sites get the most SEO value from simple, accurate JSON-LD that matches visible page content. Unsupported review/rating data and hidden enrichment fields create policy and trust risk.
 
-Files likely changed:
+Files changed:
 
 - `lib/schema.ts`
-- `app/products/[slug]/page.tsx`
 - `app/products/page.tsx`
 - `app/moc-khoa-len/page.tsx`
 - `tests/seo-metadata.test.ts`
 
 Risk:
 
-Medium.
+Low.
 
 SEO impact:
 
-High.
+High. Cleaner structured data improves machine understanding and avoids unsupported rich-result claims.
 
 UX impact:
 
+None. Schema changes do not alter visible UI.
+
+Performance impact:
+
+Neutral to slightly positive because JSON-LD payloads are smaller.
+
+Migration needed:
+
+No.
+
+Redirect needed:
+
+No.
+
+Google index impact:
+
+Positive for trust and clarity. Rich-result display may become simpler because no review/rating data is emitted.
+
+Implemented status:
+
+- Product JSON-LD now emits only supportable basics: `name`, `description`, `image`, `brand`, and valid `offers`.
+- Product schema no longer emits `aggregateRating`, `review`, `additionalProperty`, derived trust fields, category, material, benefits, or gift suitability.
+- CollectionPage/ItemList schema remains simple and only lists visible product entries.
+- Organization keeps real brand/social/contact data only; no address/email/SearchAction was added.
+- No schema validation framework or schema regression suite was introduced.
+
+Tasks:
+
+| Task | Priority | Complexity | Risk | Expected impact |
+| --- | --- | --- | --- | --- |
+| Keep Product JSON-LD limited to visible/supportable basics. | P0 | S | Low | High |
+| Keep valid `offers` only while real prices exist in product data. | P0 | XS | Low | High |
+| Keep Organization/WebSite/Breadcrumb/FAQ/CollectionPage helpers as simple functions. | P1 | S | Low | Medium |
+| Avoid schema governance layers, hidden enrichment, fake reviews, and fake ratings. | P0 | XS | Low | High |
+
+### Phase 3: Minimal Product SEO Model
+
+Goal:
+
+Improve product SEO with the smallest useful product data model.
+
+Reason:
+
+Product pages need enough structure for clear copy, filtering of related items, and Google understanding. They do not need an ontology, semantic graph engine, or recommendation framework.
+
+Files changed:
+
+- `lib/products.ts`
+- `app/products/[slug]/page.tsx`
+- `tests/seo-metadata.test.ts`
+
+Risk:
+
 Low.
+
+SEO impact:
+
+Medium to high. Product pages now expose clearer category, tags, material, benefits, and related products while staying maintainable.
+
+UX impact:
+
+Medium. Product detail pages remain readable and still show material, benefits, and gift-oriented copy.
 
 Performance impact:
 
@@ -629,114 +682,63 @@ Neutral.
 
 Migration needed:
 
-No.
+Type/content-only change. No data migration.
 
 Redirect needed:
 
-No.
+No. Product slugs remain unchanged.
 
 Google index impact:
 
-May change rich result display. Trust/compliance improves.
+Positive if factual content remains stable. No URL churn.
+
+Implemented status:
+
+- Product type keeps `category`, `tags`, `material`, and `benefits`.
+- `giftFor` was removed as a structured field; gift suitability is rendered as normal copy on product detail pages.
+- Related products use simple deterministic logic: same category first, then tag-overlap fallback, with a default limit of 3.
+- No semantic graph, ontology, or dependency-based recommendation system was added.
 
 Tasks:
 
 | Task | Priority | Complexity | Risk | Expected impact |
 | --- | --- | --- | --- | --- |
-| Remove `aggregateRating` unless ratings/reviews are verified. | P0 | S | Medium | High |
-| Ensure Product `offers` exists only where real price is known. | P0 | S | Low | High |
-| Add/adjust CollectionPage schema for `/products` if visible content supports it. | P1 | M | Low | Medium |
-| Keep WebSite schema without SearchAction. | P0 | XS | Low | Medium |
-| Keep Organization without address/email. | P0 | XS | Low | Medium |
-| Add schema tests to prevent fake ratings being reintroduced. | P1 | S | Low | High |
+| Keep `category` required for every product. | P1 | XS | Low | Medium |
+| Keep `tags` as a simple string array. | P1 | XS | Low | Medium |
+| Keep `material` and `benefits` only because they are visible factual product content. | P1 | S | Low | Medium |
+| Keep related products simple: same category first, then tag overlap fallback. | P1 | S | Low | Medium |
+| Do not rename product slugs without a dedicated redirect plan. | P0 | XS | Medium | High |
 
-### Phase 3: Product SEO Data Model
-
-Goal:
-
-Make product pages more structured, semantically rich, and easier to maintain.
-
-Reason:
-
-Product data is currently good but not structured enough for rich onpage sections and semantic related products.
-
-Files likely changed:
-
-- `lib/products.ts`
-- `app/products/[slug]/page.tsx`
-- `components/ProductCard.tsx`
-- `tests/product-card.test.tsx`
-
-Risk:
-
-Medium.
-
-SEO impact:
-
-High.
-
-UX impact:
-
-High.
-
-Performance impact:
-
-Low positive if related rendering is cleaner.
-
-Migration needed:
-
-Type/content migration only.
-
-Redirect needed:
-
-No, unless slugs are changed.
-
-Google index impact:
-
-Positive if content remains factual and URLs remain stable.
-
-Tasks:
-
-| Task | Priority | Complexity | Risk | Expected impact |
-| --- | --- | --- | --- | --- |
-| Add `category` to Product type. | P1 | S | Low | Medium |
-| Add `tags` or `keywords` to Product type. | P1 | S | Low | High |
-| Add real `material`, `benefits`, and `giftFor` fields if data is confirmed. | P1 | M | Low | High |
-| Render product detail sections for benefits, material, gift suitability, and ordering. | P1 | M | Low | High |
-| Build related products by tag/category instead of array order. | P1 | S | Low | Medium |
-| Analyze slug mismatch before any URL rename. | P1 | M | Medium | Medium |
-
-### Phase 4: Topic Cluster and Internal Linking
+### Phase 4: Simple Silo Internal Linking
 
 Goal:
 
-Clarify the role of homepage, `/products`, `/moc-khoa-len`, and product details without creating a new blog.
+Clarify site architecture around three core SEO hubs without over-optimization.
 
 Reason:
 
-The current site has good content but overlapping targets.
+Google should understand one clear role per core route: brand, commercial collection, and informational guide. This can be done with normal internal links and anchor sections, not scoring systems.
 
-Files likely changed:
+Files changed:
 
 - `app/page.tsx`
 - `app/products/page.tsx`
 - `app/moc-khoa-len/page.tsx`
 - `app/products/[slug]/page.tsx`
-- `components/Navbar.tsx`
-- `components/Footer.tsx`
+- `components/sections/HeroSection.tsx`
 - `components/sections/FeaturedProductsSection.tsx`
 
 Risk:
 
-Medium.
+Low.
 
 SEO impact:
 
-High.
+High. The main crawl path and page intent are clearer.
 
 UX impact:
 
-Medium.
+Medium. Users get clearer routes to shop, learn, and compare products.
 
 Performance impact:
 
@@ -748,57 +750,64 @@ No.
 
 Redirect needed:
 
-Only if existing `/blog` strategy changes.
+No.
 
 Google index impact:
 
-Positive if intent separation is clear. Potential volatility if blog URLs are changed.
+Positive through clearer internal linking and intent separation.
+
+Implemented status:
+
+- Homepage links to `/products` and `/moc-khoa-len`.
+- `/products` links back to homepage, links to `/moc-khoa-len`, and lists product detail links.
+- `/moc-khoa-len` acts as the informational pillar and includes simple anchor navigation for what it is, how to choose, gift usage, and classification.
+- Product detail pages link to `/products`, `/moc-khoa-len`, and simple related products.
+- No deep multi-page silo system, link scoring system, or automated anchor optimization was added.
 
 Tasks:
 
 | Task | Priority | Complexity | Risk | Expected impact |
 | --- | --- | --- | --- | --- |
-| Point main nav "San pham" to `/products`. | P1 | XS | Low | Medium |
-| Keep a separate homepage anchor for featured products if needed. | P2 | XS | Low | Low |
-| Make homepage the brand/pillar page. | P1 | M | Medium | High |
-| Make `/products` the commercial product collection. | P1 | M | Low | High |
-| Make `/moc-khoa-len` the informational/category guide page or consolidate after analysis. | P1 | M | Medium | High |
-| Add contextual links from homepage to `/products` and selected product detail pages. | P1 | S | Low | Medium |
-| Add product detail links back to `/products` and related products. | P1 | S | Low | Medium |
+| Keep `/` as brand/emotional intent. | P1 | S | Low | High |
+| Keep `/products` as commercial collection intent. | P1 | S | Low | High |
+| Keep `/moc-khoa-len` as informational pillar intent. | P1 | S | Low | High |
+| Keep pillar anchors for what it is, how to choose, gift usage, and classification. | P1 | S | Low | Medium |
+| Keep product detail internal links to collection, guide, and related products. | P1 | S | Low | Medium |
 
-### Phase 5: Existing Blog Route Decision
+### Phase 5: Blog Strategy Simplification
 
 Goal:
 
-Resolve the conflict between current code and the "no blog" requirement safely.
+Remove ambiguity from the blog strategy while preserving existing URLs.
 
 Reason:
 
-The repository already has `/blog` and blog post routes. Removing them without analysis can cause 404s and ranking loss.
+The repository already has `/blog` and `/blog/[slug]`. Deleting or redirecting them without Search Console data would add unnecessary URL risk. The lean option is to keep blog as low-priority secondary content and keep primary SEO authority on the three core hubs.
 
-Files likely changed depending on decision:
+Chosen option:
 
+Option A - keep blog as secondary informational/lifestyle content.
+
+Files changed:
+
+- `lib/blog.ts`
 - `app/blog/page.tsx`
 - `app/blog/[slug]/page.tsx`
-- `lib/blog.ts`
 - `app/sitemap.ts`
-- `components/Navbar.tsx`
 - `app/page.tsx`
-- `app/products/page.tsx`
 - `app/moc-khoa-len/page.tsx`
-- `next.config.ts` or `middleware.ts` if redirects are needed
 
 Risk:
 
-High.
+Low.
 
 SEO impact:
 
-High.
+Medium. Blog no longer competes with the primary `/moc-khoa-len` guide and remains useful as supporting content.
 
 UX impact:
 
-Medium.
+Low to medium. Existing blog URLs continue to work.
 
 Performance impact:
 
@@ -806,36 +815,33 @@ Neutral.
 
 Migration needed:
 
-Content migration may be needed if consolidating guide content into homepage or `/moc-khoa-len`.
+No.
 
 Redirect needed:
 
-Yes if blog URLs are removed.
+No. Existing blog URLs are preserved.
 
 Google index impact:
 
-High.
+Stable. Blog remains indexable with low sitemap priority, while homepage, `/products`, `/moc-khoa-len`, and product pages stay primary.
 
-Options:
+Implemented status:
 
-1. Keep `/blog` as existing static "cam nang" content.
-   - Lowest URL risk.
-   - Conflicts semantically with no-blog requirement.
-   - Requires keeping sitemap and internal links intentional.
+- Blog is kept as secondary inspiration/lifestyle content.
+- Blog metadata and visible copy are softened away from targeting the main "moc khoa len" keyword.
+- Blog links softly to `/products` and homepage.
+- Sitemap includes `/blog` and blog posts with low priority.
+- No per-post index engine, dynamic blog classification system, redirect system, or noindex framework was added.
 
-2. Rebrand `/blog` internally as `/cam-nang` with redirects.
-   - Medium risk.
-   - Requires 308 redirects from `/blog/*` to `/cam-nang/*`.
-   - Still similar to blog unless framed as static guide pages.
+Tasks:
 
-3. Consolidate blog content into `/moc-khoa-len` and noindex/redirect blog URLs.
-   - Highest content architecture clarity.
-   - Highest index volatility.
-   - Needs GSC check first.
-
-Recommended:
-
-Do not delete `/blog` in the first implementation PR. First check Google Search Console. If traffic/index value is low, consolidate content into `/moc-khoa-len` and add redirects/noindex in a dedicated PR.
+| Task | Priority | Complexity | Risk | Expected impact |
+| --- | --- | --- | --- | --- |
+| Keep `/blog` and `/blog/[slug]` live and indexable. | P1 | XS | Low | Medium |
+| Keep blog sitemap priority lower than core hubs and product pages. | P1 | XS | Low | Medium |
+| Keep blog copy informational/lifestyle, not primary keyword targeting. | P1 | S | Low | Medium |
+| Keep soft blog CTAs to `/products` and homepage. | P1 | XS | Low | Medium |
+| Do not add per-post index classification or automated blog SEO rules. | P0 | XS | Low | High |
 
 ### Phase 6: Image and Core Web Vitals Optimization
 
@@ -909,7 +915,6 @@ Accessibility supports users, search quality, and AI interpretation.
 Files likely changed:
 
 - `components/SkipToContent.tsx`
-- `components/StarRating.tsx`
 - `components/Navbar.tsx`
 - `components/Footer.tsx`
 - `styles/globals.css`
@@ -968,7 +973,7 @@ Files likely changed:
 - `tests/image-assets.test.ts`
 - `tests/homepage.test.tsx`
 - `tests/products-page.test.tsx`
-- potential new schema/sitemap tests
+- existing lightweight route/sitemap tests
 
 Risk:
 
@@ -1003,8 +1008,7 @@ Tasks:
 | Task | Priority | Complexity | Risk | Expected impact |
 | --- | --- | --- | --- | --- |
 | Update README to match `public/product-assets/`. | P2 | XS | Low | Low |
-| Add schema tests for no fake aggregate ratings. | P1 | S | Low | High |
-| Add sitemap tests for intentional routes. | P1 | S | Low | High |
+| Keep existing lightweight metadata/sitemap checks; do not add a schema testing framework. | P1 | XS | Low | Medium |
 | Add product count/image asset tests if not already sufficient. | P2 | XS | Low | Medium |
 | Run `npm run test`. | P0 | S | Low | High |
 | Run `npm run build`. | P0 | M | Low | High |
@@ -1018,7 +1022,7 @@ Includes:
 
 - Verify or remove ratings/reviews/testimonials.
 - Remove `aggregateRating` if unverified.
-- Add tests preventing unverified ratings.
+- Keep Product JSON-LD minimal and aligned with visible product content.
 
 Why first:
 
@@ -1041,9 +1045,10 @@ Low risk, high SEO ROI.
 
 Includes:
 
-- Add category/tags/material/benefits/gift fields if real.
+- Keep category/tags/material/benefits as the minimal product SEO model.
+- Keep gift suitability as plain product-page copy, not a structured product field.
 - Improve product detail sections.
-- Related products by tags.
+- Related products by same category first, then tag overlap fallback.
 
 Why third:
 
@@ -1055,11 +1060,12 @@ Includes:
 
 - Nav link cleanup.
 - Homepage/products/moc-khoa-len intent separation.
-- Blog decision implementation if approved.
+- Simple three-hub silo: `/`, `/products`, `/moc-khoa-len`.
+- Blog as low-priority supporting content.
 
 Why fourth:
 
-Requires strategic decision but delivers strong semantic SEO value.
+Delivers semantic SEO value without adding a deep silo system.
 
 ### PR 5: Performance and Accessibility Polish
 
@@ -1086,19 +1092,19 @@ Phase 1: Metadata and route SEO normalization
 
 Phase 2: Structured data cleanup
 
-↓ depends on rating/review verification
+↓ keep schema factual and minimal
 
 Phase 3: Product SEO data model
 
-↓ depends on product data confirmation
+↓ keep product fields lean and visible
 
 Phase 4: Topic cluster and internal linking
 
-↓ depends on blog and page-intent decision
+↓ establish three core hubs
 
-Phase 5: Existing blog route decision
+Phase 5: Blog strategy simplification
 
-↓ may require redirects/noindex/content migration
+↓ keep existing blog URLs as secondary low-priority content
 
 Phase 6: Image and Core Web Vitals optimization
 
@@ -1115,8 +1121,8 @@ Final validation before deployment.
 ## 18. Open Questions for Owner
 
 1. Are all product prices in `lib/products.ts` real and current?
-2. Are `rating`, `reviewCount`, and testimonials real customer data?
-3. Should existing `/blog` remain live/indexed, or should content be consolidated into product/category pages?
+2. If real customer reviews are added later, where will they be visibly displayed and verified before schema support is reconsidered?
+3. Should blog URLs remain secondary inspiration content long term, or should a future Search Console review plan redirects later?
 4. Is the product at `/products/crochet-bear-keychain` intentionally a rabbit product despite the bear slug?
 5. Is the June promotion still active after June 2026, or should it be time-bound/removed?
 6. Should LyliShop add real About/Contact pages later, without fake address/email?

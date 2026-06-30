@@ -92,33 +92,7 @@ export function productJsonLd(product: Product) {
     "@id": `${url}#product`,
     name: product.name,
     description: product.longDescription,
-    url,
     image: images.map((image) => `${SITE.url}${image.src}`),
-    sku: product.slug,
-    category: product.category,
-    material: product.material,
-    additionalProperty: [
-      {
-        "@type": "PropertyValue",
-        name: "Kiểu sản phẩm",
-        value: product.category,
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Kỹ thuật",
-        value: "Crochet",
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Phù hợp làm quà cho",
-        value: product.giftFor.join(", "),
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Lợi ích",
-        value: product.benefits.join(", "),
-      },
-    ],
     brand: {
       "@type": "Brand",
       name: SITE.name,
@@ -129,10 +103,6 @@ export function productJsonLd(product: Product) {
       priceCurrency: "VND",
       price: product.priceVnd.toString(),
       availability: "https://schema.org/InStock",
-      itemCondition: "https://schema.org/NewCondition",
-      seller: {
-        "@id": organizationId,
-      },
     },
   } as const;
 }
@@ -151,7 +121,6 @@ export function productItemListJsonLd(products: Product[]) {
         name: p.name,
         url: `${SITE.url}/products/${p.slug}`,
         image: `${SITE.url}${p.image.src}`,
-        category: p.category,
       },
     })),
   } as const;
@@ -162,13 +131,11 @@ export function collectionPageJsonLd({
   description,
   url,
   products,
-  keywords,
 }: {
   name: string;
   description: string;
   url: string;
   products: Product[];
-  keywords: string[];
 }) {
   return {
     "@context": "https://schema.org",
@@ -184,10 +151,6 @@ export function collectionPageJsonLd({
     publisher: {
       "@id": organizationId,
     },
-    about: keywords.map((keyword) => ({
-      "@type": "Thing",
-      name: keyword,
-    })),
     mainEntity: {
       "@type": "ItemList",
       name,
@@ -200,14 +163,6 @@ export function collectionPageJsonLd({
           name: p.name,
           url: `${SITE.url}/products/${p.slug}`,
           image: `${SITE.url}${p.image.src}`,
-          category: p.category,
-          material: p.material,
-          offers: {
-            "@type": "Offer",
-            priceCurrency: "VND",
-            price: p.priceVnd.toString(),
-            availability: "https://schema.org/InStock",
-          },
         },
       })),
     },

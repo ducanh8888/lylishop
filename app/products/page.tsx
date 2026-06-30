@@ -42,12 +42,6 @@ export default function ProductsPage() {
             "Danh sách sản phẩm móc khóa len handmade, móc khóa thú mini và phụ kiện len cute tại LyliShop.",
           url: `${SITE.url}/products`,
           products: PRODUCTS,
-          keywords: [
-            "móc khóa len handmade",
-            "móc khóa len cute",
-            "móc khóa crochet handmade",
-            "phụ kiện len cute",
-          ],
         })}
       />
       <JsonLd

@@ -164,7 +164,6 @@ export default function MocKhoaLenPage() {
             "Bộ sưu tập móc khóa len handmade, móc khóa thú len và quà tặng crochet nhỏ xinh tại LyliShop.",
           url: PAGE_URL,
           products: PRODUCTS,
-          keywords: KEYWORDS,
         })}
       />
       <JsonLd data={faqJsonLd(FAQ)} />

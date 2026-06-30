@@ -12,7 +12,6 @@ export type Product = {
   metaDescription: string;
   material: string;
   benefits: string[];
-  giftFor: string[];
   image: {
     src: string;
     alt: string;
@@ -34,11 +33,6 @@ const DEFAULT_BENEFITS = [
   "Treo chìa khóa, balo, túi xách hoặc hộp bút",
   "Có thể trao đổi màu sắc và chi tiết nhỏ trước khi làm",
   "Phù hợp làm quà tặng handmade nhỏ xinh",
-];
-const DEFAULT_GIFT_FOR = [
-  "học sinh, sinh viên",
-  "bạn bè hoặc người thân",
-  "người yêu thích đồ len handmade",
 ];
 
 const SIZE_AND_PRICE_NOTE = `Kích thước:
@@ -92,7 +86,6 @@ export const PRODUCTS: Product[] = [
       "Móc khóa len thỏ con handmade bằng len mềm, kèm khoen vàng chắc chắn, phù hợp treo túi, chìa khóa hoặc làm quà tặng nhỏ xinh.",
     material: DEFAULT_MATERIAL,
     benefits: ["Tạo hình thỏ nhỏ xinh, dễ treo hằng ngày", ...DEFAULT_BENEFITS],
-    giftFor: DEFAULT_GIFT_FOR,
     image: {
       src: "/product-assets/crochet-bear-keychain.jpg",
       alt: "Móc khóa len thỏ con handmade với khoen vàng trên nền hồng nhạt",
@@ -121,7 +114,6 @@ export const PRODUCTS: Product[] = [
       "Móc khóa len dâu tây handmade nhỏ gọn, thêu hạt tỉ mỉ, dễ treo túi, ví hoặc chìa khóa và có thể tùy chỉnh màu theo yêu cầu.",
     material: DEFAULT_MATERIAL,
     benefits: ["Tạo hình dâu tây nhỏ gọn, màu sắc ngọt ngào", ...DEFAULT_BENEFITS],
-    giftFor: DEFAULT_GIFT_FOR,
     image: {
       src: "/product-assets/strawberry-yarn-charm.jpg",
       alt: "Móc khóa len dâu tây handmade trên nền hồng phấn",
@@ -150,7 +142,6 @@ export const PRODUCTS: Product[] = [
       "Móc khóa len hoa tulip handmade dáng gọn, màu dịu, phù hợp treo balo, túi tote, hộp bút hoặc làm quà tặng tinh tế.",
     material: DEFAULT_MATERIAL,
     benefits: ["Dáng hoa tulip gọn, dễ phối với balo hoặc túi tote", ...DEFAULT_BENEFITS],
-    giftFor: DEFAULT_GIFT_FOR,
     image: {
       src: "/product-assets/tulip-crochet-keychain.jpg",
       alt: "Móc khóa len hoa tulip handmade màu hồng trên nền trắng hồng",
@@ -179,7 +170,6 @@ export const PRODUCTS: Product[] = [
       "Móc khóa thú len thỏ bông handmade mềm tay, tai dài đáng yêu, phù hợp treo túi, balo, chìa khóa hoặc tặng bạn bè.",
     material: DEFAULT_MATERIAL,
     benefits: ["Tạo hình thỏ tai dài mềm mại, nổi bật khi treo túi", ...DEFAULT_BENEFITS],
-    giftFor: DEFAULT_GIFT_FOR,
     image: {
       src: "/product-assets/bunny-plush-charm.jpg",
       alt: "Móc khóa thú len thỏ bông handmade trên nền hồng nhạt",
@@ -208,7 +198,6 @@ export const PRODUCTS: Product[] = [
       "Móc khóa len bàn chân mèo handmade bằng len mềm, thêu đệm chân dễ thương, hợp treo chìa khóa, túi mini hoặc dây điện thoại.",
     material: DEFAULT_MATERIAL,
     benefits: ["Chi tiết đệm chân mèo thêu nổi bật, dễ kẹp và dễ treo", ...DEFAULT_BENEFITS],
-    giftFor: DEFAULT_GIFT_FOR,
     image: {
       src: "/product-assets/cat-paw-crochet-accessory.jpg",
       alt: "Móc khóa len bàn chân mèo handmade với chi tiết đệm chân",
@@ -237,7 +226,6 @@ export const PRODUCTS: Product[] = [
       "Móc khóa thú mini size S đồng giá 45k tại LyliShop, handmade bằng len mềm, phù hợp treo balo, túi xách hoặc làm quà tặng dễ thương.",
     material: DEFAULT_MATERIAL,
     benefits: ["Nhiều mẫu thú mini size S dễ chọn theo nhóm", ...DEFAULT_BENEFITS],
-    giftFor: ["nhóm bạn", ...DEFAULT_GIFT_FOR],
     image: {
       src: "/product-assets/set-6-mau-cute-2.webp",
       alt: "Móc khóa thú mini size S đồng giá 45k ảnh đại diện",
@@ -281,7 +269,6 @@ export const PRODUCTS: Product[] = [
       "Mẫu móc khóa len handmade đồng giá 45k tại LyliShop, nhận chọn màu, đóng gói xinh và có ưu đãi tháng 6 số lượng giới hạn.",
     material: DEFAULT_MATERIAL,
     benefits: ["Nhiều mẫu đồng giá dễ chọn làm quà nhỏ", ...DEFAULT_BENEFITS],
-    giftFor: ["bạn bè, người yêu hoặc nhóm bạn", ...DEFAULT_GIFT_FOR],
     image: {
       src: "/product-assets/set-6-mau-qua-tang-1.webp",
       alt: "Mẫu móc khóa len handmade đồng giá 45k ảnh đại diện",
@@ -325,7 +312,6 @@ export const PRODUCTS: Product[] = [
       "Set móc khóa len handmade 10 mẫu mix, giá từ 45k size S, có size M và L, phù hợp đặt theo nhóm, quà lớp hoặc quà handmade dễ thương.",
     material: DEFAULT_MATERIAL,
     benefits: ["Set nhiều mẫu phù hợp đặt theo nhóm hoặc làm quà lớp", ...DEFAULT_BENEFITS],
-    giftFor: ["nhóm bạn, quà lớp", ...DEFAULT_GIFT_FOR],
     image: {
       src: "/product-assets/set-10-mau-mix-1.webp",
       alt: "Set móc khóa len handmade 10 mẫu mix ảnh đại diện",
@@ -378,16 +364,17 @@ export function getProductBySlug(slug: string) {
 }
 
 export function getRelatedProducts(product: Product, limit = 3) {
-  return PRODUCTS
-    .filter((candidate) => candidate.slug !== product.slug)
-    .map((candidate, index) => {
-      const sharedTags = candidate.tags.filter((tag) => product.tags.includes(tag)).length;
-      const sameCategory = candidate.category === product.category ? 2 : 0;
-      const score = sameCategory + sharedTags;
-
-      return { product: candidate, score, index };
-    })
-    .sort((a, b) => b.score - a.score || a.index - b.index)
-    .slice(0, limit)
+  const candidates = PRODUCTS.filter((candidate) => candidate.slug !== product.slug);
+  const sameCategory = candidates.filter((candidate) => candidate.category === product.category);
+  const fallbackByTags = candidates
+    .filter((candidate) => candidate.category !== product.category)
+    .map((candidate, index) => ({
+      product: candidate,
+      sharedTags: candidate.tags.filter((tag) => product.tags.includes(tag)).length,
+      index,
+    }))
+    .sort((a, b) => b.sharedTags - a.sharedTags || a.index - b.index)
     .map((item) => item.product);
+
+  return [...sameCategory, ...fallbackByTags].slice(0, limit);
 }

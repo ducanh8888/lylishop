@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { SITE } from "@/lib/site";
 import { PRODUCTS } from "@/lib/products";
-import { BLOG_INDEX_STRATEGY, INDEXABLE_BLOG_POSTS } from "@/lib/blog";
+import { BLOG_INDEX_STRATEGY, BLOG_POSTS } from "@/lib/blog";
 
 const SITE_LAST_MODIFIED = new Date("2026-06-30T00:00:00.000Z");
 
@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           changeFrequency: BLOG_INDEX_STRATEGY.changeFrequency,
           priority: BLOG_INDEX_STRATEGY.collectionPriority,
         },
-        ...INDEXABLE_BLOG_POSTS.map((post) => ({
+        ...BLOG_POSTS.map((post) => ({
           url: `${SITE.url}/blog/${post.slug}`,
           lastModified: new Date(`${post.dateModified}T00:00:00.000Z`),
           changeFrequency: BLOG_INDEX_STRATEGY.changeFrequency,

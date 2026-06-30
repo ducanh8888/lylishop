@@ -206,11 +206,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </div>
                 <div>
                   <h2 className="font-display text-base font-semibold">Phù hợp làm quà</h2>
-                  <ul className="mt-2 grid gap-1 text-sm leading-6 text-muted-foreground">
-                    {product.giftFor.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    Món quà nhỏ cho bạn bè, người thân hoặc người thích phụ kiện handmade.
+                  </p>
                 </div>
                 <div>
                   <h2 className="font-display text-base font-semibold">Lợi ích</h2>
