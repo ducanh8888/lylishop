@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BLOG_INDEX_STRATEGY, BLOG_POSTS, getBlogCoverProduct } from "@/lib/blog";
+import { BLOG_POSTS } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/schema";
 
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: PAGE_PATH },
   robots: {
-    index: BLOG_INDEX_STRATEGY.index,
-    follow: BLOG_INDEX_STRATEGY.follow,
+    index: true,
+    follow: true,
   },
   openGraph: {
     url: PAGE_URL,
@@ -78,12 +78,6 @@ export default function BlogPage() {
             <Button asChild variant="outline">
               <Link href="/">Về LyliShop</Link>
             </Button>
-            <Button asChild>
-              <Link href="/products">
-                Xem sản phẩm
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </Button>
           </div>
         </Container>
       </section>
@@ -102,10 +96,10 @@ export default function BlogPage() {
                   aria-label={`Đọc bài viết ${post.title}`}
                 >
                   <Image
-                    src={getBlogCoverProduct(post).image.src}
-                    alt={getBlogCoverProduct(post).image.alt}
-                    width={getBlogCoverProduct(post).image.width}
-                    height={getBlogCoverProduct(post).image.height}
+                    src={SITE.ogImage}
+                    alt="Cảm hứng quà handmade LyliShop"
+                    width={1200}
+                    height={630}
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     loading="lazy"

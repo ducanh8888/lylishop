@@ -82,8 +82,43 @@ export function faqJsonLd(items: FaqItem[]) {
   } as const;
 }
 
+function productUrl(product: Product) {
+  return `${SITE.url}/products/${product.slug}`;
+}
+
+function productOfferJsonLd(product: Product) {
+  const url = productUrl(product);
+
+  return {
+    "@type": "Offer",
+    url,
+    priceCurrency: "VND",
+    price: product.priceVnd.toString(),
+    availability: "https://schema.org/InStock",
+  } as const;
+}
+
+function productListItemJsonLd(product: Product) {
+  const url = productUrl(product);
+
+  return {
+    "@type": "Product",
+    "@id": `${url}#product`,
+    name: product.name,
+    description: product.shortDescription,
+    url,
+    image: [`${SITE.url}${product.image.src}`],
+    category: product.category,
+    brand: {
+      "@type": "Brand",
+      name: SITE.name,
+    },
+    offers: productOfferJsonLd(product),
+  } as const;
+}
+
 export function productJsonLd(product: Product) {
-  const url = `${SITE.url}/products/${product.slug}`;
+  const url = productUrl(product);
   const images = product.images ?? [product.image];
 
   return {
@@ -92,18 +127,15 @@ export function productJsonLd(product: Product) {
     "@id": `${url}#product`,
     name: product.name,
     description: product.longDescription,
+    url,
     image: images.map((image) => `${SITE.url}${image.src}`),
+    category: product.category,
+    material: product.material,
     brand: {
       "@type": "Brand",
       name: SITE.name,
     },
-    offers: {
-      "@type": "Offer",
-      url,
-      priceCurrency: "VND",
-      price: product.priceVnd.toString(),
-      availability: "https://schema.org/InStock",
-    },
+    offers: productOfferJsonLd(product),
   } as const;
 }
 
@@ -115,13 +147,7 @@ export function productItemListJsonLd(products: Product[]) {
     itemListElement: products.map((p, idx) => ({
       "@type": "ListItem",
       position: idx + 1,
-      item: {
-        "@type": "Product",
-        "@id": `${SITE.url}/products/${p.slug}#product`,
-        name: p.name,
-        url: `${SITE.url}/products/${p.slug}`,
-        image: `${SITE.url}${p.image.src}`,
-      },
+      item: productListItemJsonLd(p),
     })),
   } as const;
 }
@@ -157,13 +183,7 @@ export function collectionPageJsonLd({
       itemListElement: products.map((p, idx) => ({
         "@type": "ListItem",
         position: idx + 1,
-        item: {
-          "@type": "Product",
-          "@id": `${SITE.url}/products/${p.slug}#product`,
-          name: p.name,
-          url: `${SITE.url}/products/${p.slug}`,
-          image: `${SITE.url}${p.image.src}`,
-        },
+        item: productListItemJsonLd(p),
       })),
     },
   } as const;

@@ -1,13 +1,3 @@
-import { PRODUCTS } from "@/lib/products";
-
-export const BLOG_INDEX_STRATEGY = {
-  index: true,
-  follow: true,
-  collectionPriority: 0.35,
-  postPriority: 0.3,
-  changeFrequency: "yearly",
-} as const;
-
 export type BlogPost = {
   slug: string;
   title: string;
@@ -17,7 +7,6 @@ export type BlogPost = {
   datePublished: string;
   dateModified: string;
   readingTime: string;
-  relatedProductSlugs: string[];
   sections: Array<{
     heading: string;
     body: string[];
@@ -30,7 +19,7 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    slug: "moc-khoa-len-handmade-la-gi",
+    slug: "phu-kien-len-handmade-la-gi",
     title: "Phụ kiện len handmade vì sao được thích làm quà?",
     excerpt:
       "Một góc nhìn nhẹ nhàng về cảm giác cá nhân của phụ kiện len handmade và lý do nhiều bạn thích chọn làm quà nhỏ.",
@@ -45,11 +34,6 @@ export const BLOG_POSTS: BlogPost[] = [
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
-    relatedProductSlugs: [
-      "crochet-bear-keychain",
-      "bunny-plush-charm",
-      "cat-paw-crochet-accessory",
-    ],
     sections: [
       {
         heading: "Phụ kiện len handmade tạo cảm giác riêng như thế nào?",
@@ -101,11 +85,6 @@ export const BLOG_POSTS: BlogPost[] = [
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "5 phút đọc",
-    relatedProductSlugs: [
-      "strawberry-yarn-charm",
-      "tulip-crochet-keychain",
-      "bunny-plush-charm",
-    ],
     sections: [
       {
         heading: "Vì sao quà handmade dễ tạo thiện cảm?",
@@ -156,11 +135,6 @@ export const BLOG_POSTS: BlogPost[] = [
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
-    relatedProductSlugs: [
-      "crochet-bear-keychain",
-      "tulip-crochet-keychain",
-      "strawberry-yarn-charm",
-    ],
     sections: [
       {
         heading: "Quà handmade thể hiện sự quan tâm",
@@ -196,7 +170,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
   },
   {
-    slug: "cach-bao-quan-moc-khoa-len",
+    slug: "cach-bao-quan-phu-kien-len",
     title: "Cách giữ phụ kiện len handmade dùng lâu hơn",
     excerpt:
       "Gợi ý giữ phụ kiện len sạch, ít xù và bền form khi dùng hằng ngày.",
@@ -211,11 +185,6 @@ export const BLOG_POSTS: BlogPost[] = [
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
-    relatedProductSlugs: [
-      "cat-paw-crochet-accessory",
-      "bunny-plush-charm",
-      "crochet-bear-keychain",
-    ],
     sections: [
       {
         heading: "Tránh kéo mạnh phần khoen và chi tiết nhỏ",
@@ -266,11 +235,6 @@ export const BLOG_POSTS: BlogPost[] = [
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "5 phút đọc",
-    relatedProductSlugs: [
-      "tulip-crochet-keychain",
-      "strawberry-yarn-charm",
-      "cat-paw-crochet-accessory",
-    ],
     sections: [
       {
         heading: "Chọn quà sinh nhật handmade theo mức độ thân",
@@ -306,18 +270,6 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-export const FEATURED_BLOG_POSTS = BLOG_POSTS.slice(0, 3);
-
 export function getBlogPostBySlug(slug: string) {
   return BLOG_POSTS.find((post) => post.slug === slug);
-}
-
-export function getRelatedProductsForPost(post: BlogPost) {
-  return post.relatedProductSlugs
-    .map((slug) => PRODUCTS.find((product) => product.slug === slug))
-    .filter((product): product is NonNullable<typeof product> => Boolean(product));
-}
-
-export function getBlogCoverProduct(post: BlogPost) {
-  return getRelatedProductsForPost(post)[0] ?? PRODUCTS[0];
 }

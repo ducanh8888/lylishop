@@ -10,7 +10,6 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PRODUCTS } from "@/lib/products";
-import { FEATURED_BLOG_POSTS } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import {
   breadcrumbJsonLd,
@@ -400,37 +399,6 @@ export default function MocKhoaLenPage() {
 
       <section className="bg-rose-50 py-14 sm:py-20">
         <Container>
-          <div className="mb-14 rounded-lg border border-border/70 bg-white/70 p-6 shadow-sm">
-            <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-              <div>
-                <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-                  Cảm hứng
-                </p>
-                <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight">
-                  Câu chuyện quà handmade nhỏ xinh
-                </h2>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                  Các bài viết này thiên về cảm hứng tặng quà, cách giữ phụ kiện len bền đẹp
-                  và những gợi ý nhẹ nhàng trước khi chọn món quà nhỏ.
-                </p>
-                <Button asChild variant="outline" className="mt-5">
-                  <Link href="/blog">Xem cảm hứng quà handmade</Link>
-                </Button>
-              </div>
-              <div className="grid gap-3">
-                {FEATURED_BLOG_POSTS.map((post) => (
-                  <Link
-                    key={post.slug}
-                    href={`/blog/${post.slug}`}
-                    className="rounded-md border border-border/70 bg-background/80 p-4 text-sm font-medium transition hover:text-primary hover:shadow-sm"
-                  >
-                    {post.title}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-
           <SectionHeading
             eyebrow="Câu hỏi"
             title="Câu hỏi về móc khóa len"

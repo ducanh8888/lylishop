@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 const NAV_LINKS: Array<{ label: string; href: string }> = [
   { label: "Móc khóa len", href: "/moc-khoa-len" },
   { label: "Sản phẩm", href: "/products" },
-  { label: "Cẩm nang", href: "/blog" },
   { label: "Lý do chọn", href: "/#why" },
   { label: "Hình ảnh", href: "/#gallery" },
   { label: "Câu hỏi", href: "/#faq" },

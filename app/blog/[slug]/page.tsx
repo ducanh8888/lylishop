@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container } from "@/components/Container";
 import { JsonLd } from "@/components/JsonLd";
-import { ProductCard } from "@/components/ProductCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  BLOG_INDEX_STRATEGY,
   BLOG_POSTS,
   getBlogPostBySlug,
-  getRelatedProductsForPost,
 } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/schema";
@@ -49,8 +46,8 @@ export async function generateMetadata({
     keywords: post.keywords,
     alternates: { canonical: `/blog/${post.slug}` },
     robots: {
-      index: BLOG_INDEX_STRATEGY.index,
-      follow: BLOG_INDEX_STRATEGY.follow,
+      index: true,
+      follow: true,
     },
     openGraph: {
       type: "article",
@@ -75,7 +72,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = getBlogPostBySlug(slug);
   if (!post) notFound();
 
-  const relatedProducts = getRelatedProductsForPost(post);
   const url = `${SITE.url}/blog/${post.slug}`;
   const relatedPosts = BLOG_POSTS.filter((item) => item.slug !== post.slug).slice(0, 3);
 
@@ -189,48 +185,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
             </section>
 
-            <section className="rounded-lg border border-border/70 bg-white/70 p-6 shadow-sm">
-              <h2 className="font-display text-xl font-semibold">Muốn chọn mẫu phù hợp?</h2>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                Bạn có thể xem sản phẩm đang có hoặc quay về LyliShop để hiểu thêm phong cách
-                handmade của shop trước khi nhắn tư vấn màu, kích thước và mẫu phù hợp.
-              </p>
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <Button asChild>
-                  <Link href="/products">
-                    Xem sản phẩm
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline">
-                  <Link href="/">Về LyliShop</Link>
-                </Button>
-                <Button asChild variant="outline">
-                  <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
-                    <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                    Nhắn Zalo
-                  </a>
-                </Button>
-              </div>
-            </section>
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-rose-50 py-14 sm:py-20">
-        <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-              Gợi ý liên quan
-            </p>
-            <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-              Gợi ý sản phẩm phù hợp với chủ đề này
-            </h2>
-          </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {relatedProducts.map((product) => (
-              <ProductCard key={product.slug} product={product} />
-            ))}
           </div>
         </Container>
       </section>
