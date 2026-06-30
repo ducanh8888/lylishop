@@ -18,13 +18,13 @@ export function FinalCtaSection() {
           </FadeUp>
           <FadeUp delay={0.06}>
             <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-              Thấy mẫu nào xinh? Nhắn LyliShop để chọn màu và đặt làm riêng cho bạn nhé.
+              Thấy mẫu móc khóa len nào xinh? Nhắn LyliShop để chọn màu và đặt số lượng phù hợp nhé.
             </h2>
           </FadeUp>
           <FadeUp delay={0.12}>
             <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
-              Shop sẽ tư vấn mẫu, xác nhận giá, thời gian làm và phí giao hàng trước khi chốt đơn.
-              Bạn chỉ cần gửi mẫu thích và màu mong muốn.
+              Shop sẽ tư vấn mẫu móc khóa len, xác nhận giá, thời gian làm và phí giao hàng trước khi chốt đơn.
+              Bạn chỉ cần gửi mẫu thích, màu mong muốn và số lượng cần đặt.
             </p>
           </FadeUp>
           <FadeUp delay={0.18}>

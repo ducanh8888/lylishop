@@ -12,22 +12,22 @@ import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Sản phẩm móc khóa len handmade",
+  title: "Móc khóa len handmade giá tốt, đặt số lượng",
   description:
-    "Xem móc khóa len handmade, móc khóa thú mini và phụ kiện len cute tại LyliShop. Giá từ 45k, nhận chọn màu và đặt hàng qua Zalo/Facebook.",
+    "Xem móc khóa len handmade giá tốt tại LyliShop. Có mẫu đồng giá từ 45k, nhận chọn màu, đặt số lượng và tư vấn qua Zalo/Facebook trên toàn Việt Nam.",
   alternates: { canonical: "/products" },
   openGraph: {
     url: `${SITE.url}/products`,
-    title: "Sản phẩm móc khóa len handmade | LyliShop",
+    title: "Móc khóa len handmade giá tốt, đặt số lượng | LyliShop",
     description:
-      "Móc khóa len handmade cute, phụ kiện len nhỏ xinh, giá từ 45k, có thể chọn màu và đặt nhanh qua Zalo/Facebook.",
+      "Móc khóa len handmade cute, giá từ 45k, có thể chọn màu, đặt theo nhóm và đặt số lượng qua Zalo/Facebook.",
     images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: "LyliShop products" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sản phẩm móc khóa len handmade | LyliShop",
+    title: "Móc khóa len handmade giá tốt | LyliShop",
     description:
-      "Xem các mẫu móc khóa len handmade cute, phụ kiện len nhỏ xinh và cách đặt hàng qua Zalo/Facebook tại LyliShop.",
+      "Xem các mẫu móc khóa len handmade cute, đồng giá từ 45k và cách đặt hàng qua Zalo/Facebook tại LyliShop.",
     images: [SITE.twitterImage],
   },
 };
@@ -37,9 +37,9 @@ export default function ProductsPage() {
     <>
       <JsonLd
         data={collectionPageJsonLd({
-          name: "Sản phẩm móc khóa len handmade",
+          name: "Móc khóa len handmade giá tốt",
           description:
-            "Danh sách sản phẩm móc khóa len handmade, móc khóa thú mini và phụ kiện len cute tại LyliShop.",
+            "Danh sách sản phẩm móc khóa len handmade, mẫu đồng giá từ 45k, móc khóa thú mini và phụ kiện len cute tại LyliShop.",
           url: `${SITE.url}/products`,
           products: PRODUCTS,
         })}
@@ -61,17 +61,17 @@ export default function ProductsPage() {
           />
           <SectionHeading
             as="h1"
-            eyebrow="Sản phẩm"
-            title="Móc khóa len & phụ kiện handmade"
-            description="Nhỏ xinh, dễ tặng và được làm thủ công tỉ mỉ. Chọn sản phẩm để xem chi tiết và cách liên hệ đặt hàng."
+            eyebrow="Móc khóa len"
+            title="Móc khóa len handmade giá tốt, đặt số lượng"
+            description="Nhỏ xinh, dễ tặng và được làm thủ công tỉ mỉ. Chọn mẫu móc khóa len để xem giá, mô tả và cách liên hệ đặt hàng."
           />
 
           <div className="mx-auto mt-6 max-w-2xl text-center text-sm leading-6 text-muted-foreground">
             <p>
-              Nếu bạn đang tìm thông tin đầy đủ về móc khóa len, móc khóa crochet,
-              móc khóa thú len và cách chọn quà tặng handmade, xem trang tổng hợp
-              móc khóa len của LyliShop. Bạn cũng có thể quay về trang chủ LyliShop
-              để xem câu chuyện thương hiệu và cách shop nhận đặt mẫu theo yêu cầu.
+              Nếu bạn đang tìm móc khóa len giá tốt, móc khóa len đồng giá từ 45k,
+              móc khóa thú len hoặc mẫu đặt số lượng, hãy xem từng sản phẩm bên dưới.
+              Bạn cũng có thể mở trang tổng hợp móc khóa len để so sánh chất liệu,
+              mục đích dùng và cách chọn quà handmade phù hợp.
             </p>
             <div className="mt-4 flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild variant="outline">
@@ -93,11 +93,11 @@ export default function ProductsPage() {
             <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
               <div>
                 <h2 className="font-display text-xl font-semibold tracking-tight">
-                  Cần chọn mẫu trước khi nhắn shop?
+                  Cần chọn móc khóa len đồng giá hoặc đặt số lượng?
                 </h2>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                  Nếu bạn chưa chắc nên chọn mẫu nào, hãy xem trang hướng dẫn móc khóa len
-                  để so sánh chất liệu, mục đích dùng và kiểu quà tặng phù hợp.
+                  Nếu bạn chưa chắc nên chọn mẫu móc khóa len nào, hãy xem trang hướng dẫn
+                  để so sánh chất liệu, mục đích dùng, mức giá và kiểu quà tặng phù hợp.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">

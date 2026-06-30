@@ -186,7 +186,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
 
               <div className="mt-6 rounded-xl border border-border/70 bg-white/60 p-5 shadow-sm backdrop-blur-md">
-                <h2 className="font-display text-base font-semibold">Điểm nổi bật</h2>
+                <h2 className="font-display text-base font-semibold">Điểm nổi bật của {product.name}</h2>
                 <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
                   {product.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-2">
@@ -199,19 +199,19 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               <div className="mt-4 grid gap-4 rounded-xl border border-border/70 bg-white/60 p-5 shadow-sm backdrop-blur-md sm:grid-cols-3">
                 <div>
-                  <h2 className="font-display text-base font-semibold">Chất liệu</h2>
+                  <h2 className="font-display text-base font-semibold">Chất liệu móc khóa len</h2>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
                     {product.material}
                   </p>
                 </div>
                 <div>
-                  <h2 className="font-display text-base font-semibold">Phù hợp làm quà</h2>
+                  <h2 className="font-display text-base font-semibold">Móc khóa len phù hợp làm quà</h2>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
                     Món quà nhỏ cho bạn bè, người thân hoặc người thích phụ kiện handmade.
                   </p>
                 </div>
                 <div>
-                  <h2 className="font-display text-base font-semibold">Lợi ích</h2>
+                  <h2 className="font-display text-base font-semibold">Lợi ích khi đặt móc khóa len</h2>
                   <ul className="mt-2 grid gap-1 text-sm leading-6 text-muted-foreground">
                     {product.benefits.slice(0, 3).map((item) => (
                       <li key={item}>{item}</li>
@@ -300,7 +300,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 Có thể bạn cũng thích
               </p>
               <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-                Mẫu móc khóa len liên quan
+                Móc khóa len liên quan
               </h2>
               <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
                 Xem thêm các mẫu móc khóa len handmade khác để dễ chọn quà hoặc phối theo

@@ -14,9 +14,9 @@ export function FeaturedProductsSection() {
     <section id="featured" className="bg-background py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Được yêu thích"
-          title="10 mã sản phẩm được yêu thích nhất Lyli Shop"
-          description="Những mẫu móc khóa len handmade cute để treo balo, túi xách hoặc làm quà tặng nhỏ xinh. Thích mẫu nào, bạn có thể nhắn shop để chọn màu theo ý thích."
+          eyebrow="Móc khóa len giá tốt"
+          title="Móc khóa len đồng giá từ 45k, dễ đặt số lượng"
+          description="Những mẫu móc khóa len handmade cute để treo balo, túi xách, làm quà lớp hoặc đặt theo nhóm. Thích mẫu nào, bạn có thể nhắn shop để chọn màu và số lượng phù hợp."
         />
 
         <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -29,7 +29,7 @@ export function FeaturedProductsSection() {
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 text-center">
           <p className="max-w-xl text-sm text-muted-foreground">
-            Thích mẫu nào? Nhắn LyliShop để chọn màu, kiểm tra thời gian làm và chốt đơn nhanh nhé.
+            Cần đặt móc khóa len số lượng nhiều? Nhắn LyliShop để chọn màu, kiểm tra thời gian làm và chốt đơn nhanh nhé.
           </p>
           <Button asChild variant="outline" size="lg">
             <Link href="/products" aria-label="Xem tất cả sản phẩm móc khóa len handmade">

@@ -219,7 +219,7 @@ export default function MocKhoaLenPage() {
             </div>
 
             <div className="grid gap-3 rounded-xl border border-border/70 bg-white/70 p-5 shadow-sm backdrop-blur-md">
-              <h2 className="font-display text-lg font-semibold">Thông tin nhanh</h2>
+              <h2 className="font-display text-lg font-semibold">Thông tin nhanh về móc khóa len</h2>
               <dl className="grid gap-3 text-sm">
                 <div className="flex items-start justify-between gap-4">
                   <dt className="text-muted-foreground">Khoảng giá</dt>

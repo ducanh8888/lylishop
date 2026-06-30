@@ -11,8 +11,8 @@ export function GallerySection() {
       <Container>
         <SectionHeading
           eyebrow="Gallery"
-          title="Những góc nhỏ của LyliShop"
-          description="Một vài khung hình về chất len, cách đóng gói và cảm giác mềm mại của đồ handmade."
+          title="Hình ảnh móc khóa len và đóng gói LyliShop"
+          description="Một vài khung hình về chất len, cách đóng gói và cảm giác mềm mại của móc khóa len handmade."
         />
 
         <FadeUp>

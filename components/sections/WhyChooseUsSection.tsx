@@ -13,27 +13,27 @@ import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 
 const REASONS = [
   {
-    title: "Thủ công tỉ mỉ",
+    title: "Móc khóa len thủ công tỉ mỉ",
     description: "Từng sản phẩm được làm bằng tay, hợp để tặng hoặc tự dùng mỗi ngày.",
     icon: HeartHandshake,
   },
   {
-    title: "Len cao cấp",
+    title: "Len cao cấp cho móc khóa",
     description: "Mềm tay, form gọn, dễ treo balo, túi xách hoặc chìa khóa.",
     icon: Sparkles,
   },
   {
-    title: "Đóng gói quà chỉn chu",
+    title: "Đóng gói quà móc khóa len",
     description: "Gói xinh, sạch đẹp, phù hợp làm quà sinh nhật hoặc quà bất ngờ.",
     icon: PackageCheck,
   },
   {
-    title: "Tùy chỉnh theo yêu cầu",
+    title: "Tùy chỉnh màu móc khóa len",
     description: "Chọn tone màu, thêm nơ, hoa hoặc chi tiết nhỏ theo gu của bạn.",
     icon: Palette,
   },
   {
-    title: "Hỗ trợ đơn hàng rõ ràng",
+    title: "Hỗ trợ đơn móc khóa len rõ ràng",
     description: "Shop xác nhận mẫu, giá, thời gian làm và phí giao hàng trước khi chốt.",
     icon: Truck,
   },

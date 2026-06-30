@@ -23,14 +23,14 @@ export function ContactSection() {
       <Container>
         <SectionHeading
           eyebrow="Đặt hàng"
-          title="Đặt hàng rất đơn giản: chỉ cần nhắn shop"
-          description="Bạn chọn mẫu, gửi màu mong muốn và số lượng. LyliShop sẽ tư vấn, xác nhận giá, thời gian làm và phí giao hàng trước khi chốt đơn."
+          title="Đặt móc khóa len rất đơn giản: chỉ cần nhắn shop"
+          description="Bạn chọn mẫu móc khóa len, gửi màu mong muốn và số lượng. LyliShop sẽ tư vấn, xác nhận giá, thời gian làm và phí giao hàng trước khi chốt đơn."
         />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           <FadeUp>
             <Card className="h-full border-border/70 bg-white/60 p-6 shadow-sm backdrop-blur-md">
-              <h3 className="font-display text-lg font-semibold">Kênh liên hệ</h3>
+              <h3 className="font-display text-lg font-semibold">Kênh đặt móc khóa len</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 Shop phản hồi nhanh, hỗ trợ chọn màu và xác nhận mẫu trước khi làm.
               </p>
@@ -80,7 +80,7 @@ export function ContactSection() {
 
           <FadeUp delay={0.06}>
             <Card className="h-full border-border/70 bg-white/60 p-6 shadow-sm backdrop-blur-md">
-              <h3 className="font-display text-lg font-semibold">Mẫu tin nhắn</h3>
+              <h3 className="font-display text-lg font-semibold">Mẫu tin nhắn đặt móc khóa len</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 Sao chép mẫu ngắn này để bắt đầu. Thông tin nhận hàng có thể gửi sau khi shop xác nhận mẫu.
               </p>

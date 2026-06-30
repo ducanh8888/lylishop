@@ -10,8 +10,8 @@ export function FaqSection() {
       <Container>
         <SectionHeading
           eyebrow="Câu hỏi"
-          title="Trả lời nhanh"
-          description="Thông tin về giao hàng, tùy chỉnh, đóng gói quà và cách liên hệ đặt hàng."
+          title="Câu hỏi thường gặp về móc khóa len"
+          description="Thông tin về giao hàng, tùy chỉnh màu, đóng gói quà và cách liên hệ đặt móc khóa len."
         />
 
         <div className="mx-auto mt-10 max-w-3xl rounded-lg border border-border/70 bg-white/60 p-6 shadow-sm backdrop-blur-md">

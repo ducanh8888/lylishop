@@ -294,57 +294,57 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "set-moc-khoa-len-10-mau-mix",
-    name: "10 mã sản phẩm được yêu thích nhất Lyli Shop",
-    category: "Set móc khóa len handmade",
-    tags: ["set 10 mẫu", "móc khóa len theo nhóm", "quà lớp", "móc khóa len cute"],
+    name: "Móc khóa len đồng giá từ 45k",
+    category: "Set móc khóa len đồng giá",
+    tags: ["móc khóa len đồng giá từ 45k", "móc khóa len giá tốt", "đặt móc khóa len số lượng", "móc khóa len cute"],
     priceVnd: 45000,
     shortDescription:
-      "Set móc khóa len handmade 10 mẫu mix, phù hợp đặt theo nhóm, quà lớp hoặc bộ sưu tập phụ kiện len.",
-    longDescription: productDescriptionWithTieredPrice("Set móc khóa len handmade 10 mẫu mix", [
+      "Móc khóa len handmade đồng giá từ 45k, 10 mẫu mix phù hợp đặt theo nhóm, quà lớp hoặc đặt số lượng.",
+    longDescription: productDescriptionWithTieredPrice("Móc khóa len đồng giá từ 45k", [
       "Handmade 100%, đan thủ công từng mũi len.",
-      "Gồm 10 mẫu móc khóa len mix nhiều kiểu dáng, phù hợp đặt theo nhóm hoặc làm quà số lượng nhiều.",
+      "Gồm 10 mẫu móc khóa len mix nhiều kiểu dáng, phù hợp đặt theo nhóm, quà lớp hoặc làm quà số lượng nhiều.",
       "Len Milk cotton, bền, giữ form tốt và hạn chế xù lông khi sử dụng đúng cách.",
       "Khoen móc kim loại chắc chắn, thích hợp treo chìa khóa, túi xách, balo hoặc hộp bút.",
-      "Phù hợp làm quà sinh nhật, quà lớp, quà cảm ơn hoặc bộ sưu tập móc khóa len mini.",
-      "Có thể lựa chọn tone màu, size và một số chi tiết nhỏ theo yêu cầu.",
+      "Phù hợp cho khách muốn chọn móc khóa len giá tốt, đồng giá size S và dễ đặt số lượng trên toàn Việt Nam.",
+      "Có thể lựa chọn tone màu, size, số lượng và một số chi tiết nhỏ theo yêu cầu.",
     ]),
     metaDescription:
-      "Set móc khóa len handmade 10 mẫu mix, giá từ 45k size S, có size M và L, phù hợp đặt theo nhóm, quà lớp hoặc quà handmade dễ thương.",
+      "Móc khóa len đồng giá từ 45k tại LyliShop, 10 mẫu mix handmade, phù hợp đặt số lượng, quà lớp, quà nhóm và nhận tư vấn màu trên toàn Việt Nam.",
     material: DEFAULT_MATERIAL,
-    benefits: ["Set nhiều mẫu phù hợp đặt theo nhóm hoặc làm quà lớp", ...DEFAULT_BENEFITS],
+    benefits: ["Giá tốt từ 45k, dễ đặt theo nhóm hoặc làm quà lớp", ...DEFAULT_BENEFITS],
     image: {
       src: "/product-assets/set-10-mau-mix-1.webp",
-      alt: "Set móc khóa len handmade 10 mẫu mix ảnh đại diện",
+      alt: "Móc khóa len đồng giá từ 45k set 10 mẫu mix handmade",
       width: 1200,
       height: 628,
     },
     images: [
       {
         src: "/product-assets/set-10-mau-mix-1.webp",
-        alt: "Ảnh 1 set móc khóa len handmade 10 mẫu mix",
+        alt: "Ảnh 1 móc khóa len đồng giá từ 45k set 10 mẫu mix",
         width: 1200,
         height: 628,
       },
       {
         src: "/product-assets/set-10-mau-mix-4.webp",
-        alt: "Ảnh 2 set móc khóa len handmade 10 mẫu mix",
+        alt: "Ảnh 2 móc khóa len đồng giá từ 45k đặt số lượng",
         width: 900,
         height: 1200,
       },
       {
         src: "/product-assets/set-10-mau-mix-2.webp",
-        alt: "Ảnh 3 set móc khóa len handmade 10 mẫu mix",
+        alt: "Ảnh 3 móc khóa len handmade giá tốt từ 45k",
         width: 900,
         height: 1200,
       },
       {
         src: "/product-assets/set-10-mau-mix-3.webp",
-        alt: "Ảnh 4 set móc khóa len handmade 10 mẫu mix",
+        alt: "Ảnh 4 móc khóa len đồng giá từ 45k nhiều mẫu",
         width: 900,
         height: 1200,
       },
     ],
-    highlights: ["Gồm 10 mẫu", "Hợp đặt theo nhóm", "Giá từ 45k"],
+    highlights: ["Đồng giá từ 45k", "Hợp đặt số lượng", "10 mẫu mix dễ chọn"],
   },
 ];
 
