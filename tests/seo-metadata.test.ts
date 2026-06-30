@@ -2,6 +2,8 @@ import { DEFAULT_METADATA } from "@/lib/seo";
 import { productJsonLd, websiteJsonLd } from "@/lib/schema";
 import { PRODUCTS, getRelatedProducts } from "@/lib/products";
 import { SITE } from "@/lib/site";
+import sitemap from "@/app/sitemap";
+import { BLOG_POSTS, INDEXABLE_BLOG_POSTS } from "@/lib/blog";
 
 describe("SEO metadata", () => {
   it("uses the correct metadata base and canonical", () => {
@@ -56,5 +58,24 @@ describe("SEO metadata", () => {
     });
     expect(relatedProducts).toHaveLength(3);
     expect(relatedProducts.every((item) => item.slug !== product.slug)).toBe(true);
+  });
+
+  it("keeps sitemap priorities aligned with the topical silo", () => {
+    const entries = sitemap();
+    const byUrl = new Map(entries.map((entry) => [entry.url, entry]));
+
+    expect(byUrl.get(`${SITE.url}/`)?.priority).toBe(1);
+    expect(byUrl.get(`${SITE.url}/products`)?.priority).toBe(0.9);
+    expect(byUrl.get(`${SITE.url}/moc-khoa-len`)?.priority).toBe(0.9);
+    expect(byUrl.get(`${SITE.url}/products/${PRODUCTS[0].slug}`)?.priority).toBe(0.72);
+    expect(byUrl.get(`${SITE.url}/blog`)?.priority).toBeLessThan(0.5);
+
+    for (const post of INDEXABLE_BLOG_POSTS) {
+      expect(byUrl.has(`${SITE.url}/blog/${post.slug}`)).toBe(true);
+    }
+
+    for (const post of BLOG_POSTS.filter((item) => !item.indexable)) {
+      expect(byUrl.has(`${SITE.url}/blog/${post.slug}`)).toBe(false);
+    }
   });
 });

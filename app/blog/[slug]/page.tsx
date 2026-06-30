@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import {
   BLOG_INDEX_STRATEGY,
   BLOG_POSTS,
+  INDEXABLE_BLOG_POSTS,
   getBlogPostBySlug,
   getRelatedProductsForPost,
 } from "@/lib/blog";
@@ -49,7 +50,7 @@ export async function generateMetadata({
     keywords: post.keywords,
     alternates: { canonical: `/blog/${post.slug}` },
     robots: {
-      index: BLOG_INDEX_STRATEGY.index,
+      index: BLOG_INDEX_STRATEGY.index && post.indexable,
       follow: BLOG_INDEX_STRATEGY.follow,
     },
     openGraph: {
@@ -77,7 +78,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const relatedProducts = getRelatedProductsForPost(post);
   const url = `${SITE.url}/blog/${post.slug}`;
-  const relatedPosts = BLOG_POSTS.filter((item) => item.slug !== post.slug).slice(0, 3);
+  const relatedPosts = INDEXABLE_BLOG_POSTS.filter((item) => item.slug !== post.slug).slice(0, 3);
 
   return (
     <>
@@ -192,15 +193,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <section className="rounded-lg border border-border/70 bg-white/70 p-6 shadow-sm">
               <h2 className="font-display text-xl font-semibold">Muốn chọn mẫu phù hợp?</h2>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                Bạn có thể xem bộ sưu tập móc khóa len hoặc nhắn LyliShop để được tư vấn màu,
-                kích thước và mẫu hợp với người nhận.
+                Bạn có thể xem sản phẩm đang có hoặc quay về LyliShop để hiểu thêm phong cách
+                handmade của shop trước khi nhắn tư vấn màu, kích thước và mẫu phù hợp.
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                 <Button asChild>
-                  <Link href="/moc-khoa-len">
-                    Xem móc khóa len
+                  <Link href="/products">
+                    Xem sản phẩm
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/">Về LyliShop</Link>
                 </Button>
                 <Button asChild variant="outline">
                   <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
@@ -221,7 +225,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               Gợi ý liên quan
             </p>
             <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-              Mẫu móc khóa len hợp với chủ đề này
+              Gợi ý sản phẩm phù hợp với chủ đề này
             </h2>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -32,12 +32,15 @@ export function FeaturedProductsSection() {
             Thích mẫu nào? Nhắn LyliShop để chọn màu, kiểm tra thời gian làm và chốt đơn nhanh nhé.
           </p>
           <Button asChild variant="outline" size="lg">
-            <Link href="/moc-khoa-len" aria-label="Xem bộ sưu tập móc khóa len">
-              Xem thêm mẫu móc khóa len
+            <Link href="/products" aria-label="Xem tất cả sản phẩm móc khóa len handmade">
+              Xem tất cả sản phẩm
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </Button>
           <div className="flex flex-col gap-3 sm:flex-row">
+            <Button asChild variant="outline" size="lg">
+              <Link href="/moc-khoa-len">Cách chọn móc khóa len</Link>
+            </Button>
             <Button asChild size="lg">
               <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
                 Nhắn Zalo để chọn màu

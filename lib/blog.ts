@@ -14,6 +14,7 @@ export type BlogPost = {
   excerpt: string;
   description: string;
   keywords: string[];
+  indexable: boolean;
   datePublished: string;
   dateModified: string;
   readingTime: string;
@@ -31,17 +32,18 @@ export type BlogPost = {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "moc-khoa-len-handmade-la-gi",
-    title: "Móc khóa len handmade là gì? Vì sao được thích làm quà?",
+    title: "Phụ kiện len handmade vì sao được thích làm quà?",
     excerpt:
-      "Giải thích ngắn gọn về móc khóa len handmade, điểm khác với phụ kiện sản xuất hàng loạt và cách chọn mẫu phù hợp.",
+      "Một góc nhìn nhẹ nhàng về cảm giác cá nhân của phụ kiện len handmade và lý do nhiều bạn thích chọn làm quà nhỏ.",
     description:
-      "Tìm hiểu móc khóa len handmade là gì, ưu điểm, cách chọn mẫu và gợi ý mua móc khóa len handmade tại LyliShop.",
+      "Cảm hứng chọn phụ kiện len handmade làm quà nhỏ: sự cá nhân, màu sắc riêng và cảm giác được chuẩn bị có tâm.",
     keywords: [
-      "móc khóa len handmade",
-      "móc khóa handmade",
       "phụ kiện len handmade",
-      "móc khóa len mini",
+      "quà handmade nhỏ xinh",
+      "quà tặng cá nhân",
+      "đồ len thủ công",
     ],
+    indexable: false,
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
@@ -52,7 +54,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "Móc khóa len handmade là gì?",
+        heading: "Phụ kiện len handmade tạo cảm giác riêng như thế nào?",
         body: [
           "Móc khóa len handmade là phụ kiện nhỏ được móc thủ công bằng sợi len, sau đó gắn khoen để treo chìa khóa, balo, túi xách hoặc hộp bút. Điểm tạo cảm xúc của sản phẩm nằm ở form mềm, màu sắc dễ thương và cảm giác được làm riêng từng chiếc.",
           "Khác với móc khóa sản xuất hàng loạt, mỗi mẫu handmade có thể có độ lệch nhỏ về đường móc, kích thước hoặc chi tiết. Đây cũng là lý do nhiều bạn chọn móc khóa len để làm quà tặng cá nhân.",
@@ -89,15 +91,16 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "qua-handmade-tang-ban-gai",
     title: "Gợi ý quà handmade tặng bạn gái nhỏ xinh, dễ thương",
     excerpt:
-      "Các tiêu chí chọn quà handmade tặng bạn gái và gợi ý móc khóa len phù hợp cho sinh nhật, kỷ niệm hoặc món quà bất ngờ.",
+      "Các tiêu chí chọn quà handmade tặng bạn gái và gợi ý phụ kiện len mini phù hợp cho sinh nhật, kỷ niệm hoặc món quà bất ngờ.",
     description:
-      "Gợi ý quà handmade tặng bạn gái: móc khóa len handmade, phụ kiện len mini và cách chọn mẫu dễ thương, vừa túi tiền.",
+      "Gợi ý quà handmade tặng bạn gái: phụ kiện len mini và cách chọn món quà nhỏ dễ thương, vừa túi tiền.",
     keywords: [
       "quà handmade tặng bạn gái",
       "quà tặng handmade",
       "quà handmade dễ thương",
-      "móc khóa len làm quà sinh nhật",
+      "quà sinh nhật nhỏ xinh",
     ],
+    indexable: true,
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "5 phút đọc",
@@ -110,7 +113,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Vì sao quà handmade dễ tạo thiện cảm?",
         body: [
-          "Quà handmade thường tạo cảm giác có sự chuẩn bị và quan tâm hơn một món đồ mua vội. Với nhóm quà nhỏ như móc khóa len, người nhận có thể dùng hằng ngày nên món quà dễ được nhớ tới.",
+          "Quà handmade thường tạo cảm giác có sự chuẩn bị và quan tâm hơn một món đồ mua vội. Với nhóm phụ kiện len nhỏ, người nhận có thể dùng hằng ngày nên món quà dễ được nhớ tới.",
           "Nếu bạn chưa biết chọn gì quá lớn, một món phụ kiện len handmade nhỏ xinh là lựa chọn an toàn, dễ thương và không gây áp lực về giá trị vật chất.",
         ],
       },
@@ -121,17 +124,17 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       {
-        heading: "Khi nào nên tặng móc khóa len?",
+        heading: "Khi nào nên tặng phụ kiện len nhỏ?",
         body: [
-          "Móc khóa len phù hợp làm quà sinh nhật, quà cảm ơn, quà kỷ niệm nhỏ hoặc món quà bất ngờ sau giờ học. Vì kích thước nhỏ, sản phẩm cũng dễ gửi kèm thiệp hoặc hộp quà.",
+          "Phụ kiện len nhỏ phù hợp làm quà sinh nhật, quà cảm ơn, quà kỷ niệm nhỏ hoặc món quà bất ngờ sau giờ học. Vì kích thước nhỏ, sản phẩm cũng dễ gửi kèm thiệp hoặc hộp quà.",
         ],
       },
     ],
     faqs: [
       {
-        question: "Móc khóa len có hợp làm quà sinh nhật không?",
+        question: "Phụ kiện len nhỏ có hợp làm quà sinh nhật không?",
         answer:
-          "Có. Móc khóa len nhỏ, dễ thương, dùng được hằng ngày và có thể chọn màu theo sở thích người nhận.",
+          "Có. Phụ kiện len nhỏ dễ thương, dùng được hằng ngày và có thể chọn màu theo sở thích người nhận.",
       },
       {
         question: "Nên chọn mẫu nào nếu chưa biết sở thích người nhận?",
@@ -146,13 +149,14 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Quà handmade thường được yêu thích vì mang cảm giác cá nhân, có thời gian làm và dễ gắn với kỷ niệm.",
     description:
-      "Ý nghĩa quà handmade và lý do móc khóa len handmade là lựa chọn quà tặng nhỏ xinh cho bạn bè, người yêu, người thân.",
+      "Ý nghĩa quà handmade và lý do phụ kiện len nhỏ xinh phù hợp làm quà cho bạn bè, người yêu, người thân.",
     keywords: [
       "ý nghĩa quà handmade",
       "quà tặng handmade",
       "quà handmade dễ thương",
-      "móc khóa handmade",
+      "phụ kiện handmade",
     ],
+    indexable: true,
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
@@ -166,13 +170,13 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "Quà handmade thể hiện sự quan tâm",
         body: [
           "Một món quà handmade không cần quá đắt để có ý nghĩa. Giá trị của nó nằm ở cảm giác được chọn lựa, được làm thủ công và có thể cá nhân hóa theo người nhận.",
-          "Với móc khóa len, bạn có thể chọn màu yêu thích, kiểu dáng dễ thương hoặc chi tiết nhỏ gắn với sở thích của người nhận.",
+          "Với phụ kiện len mini, bạn có thể chọn màu yêu thích, kiểu dáng dễ thương hoặc chi tiết nhỏ gắn với sở thích của người nhận.",
         ],
       },
       {
         heading: "Quà nhỏ nhưng dùng được hằng ngày",
         body: [
-          "Móc khóa len có thể treo balo, túi, chìa khóa hoặc trang trí góc học tập. Khi món quà xuất hiện trong đời sống hằng ngày, nó tạo cảm giác thân thuộc hơn một món đồ chỉ để cất giữ.",
+          "Phụ kiện len mini có thể treo balo, túi, chìa khóa hoặc trang trí góc học tập. Khi món quà xuất hiện trong đời sống hằng ngày, nó tạo cảm giác thân thuộc hơn một món đồ chỉ để cất giữ.",
         ],
       },
       {
@@ -189,7 +193,7 @@ export const BLOG_POSTS: BlogPost[] = [
           "Không. Quà handmade thường được yêu thích vì sự tinh tế, cá nhân hóa và cảm giác được chuẩn bị cẩn thận.",
       },
       {
-        question: "Móc khóa len có phù hợp tặng bạn thân không?",
+        question: "Phụ kiện len mini có phù hợp tặng bạn thân không?",
         answer:
           "Phù hợp, đặc biệt nếu bạn chọn mẫu theo màu yêu thích hoặc tính cách của bạn thân.",
       },
@@ -197,17 +201,18 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "cach-bao-quan-moc-khoa-len",
-    title: "Cách bảo quản móc khóa len handmade để dùng lâu hơn",
+    title: "Cách giữ phụ kiện len handmade dùng lâu hơn",
     excerpt:
-      "Hướng dẫn giữ móc khóa len sạch, ít xù và bền form khi treo balo, túi xách hoặc chìa khóa hằng ngày.",
+      "Gợi ý giữ phụ kiện len sạch, ít xù và bền form khi dùng hằng ngày.",
     description:
-      "Cách bảo quản móc khóa len handmade: vệ sinh nhẹ, phơi đúng cách, tránh kéo mạnh và giữ form khi sử dụng.",
+      "Cách giữ phụ kiện len handmade bền đẹp: vệ sinh nhẹ, phơi đúng cách, tránh kéo mạnh và giữ form khi sử dụng.",
     keywords: [
-      "cách bảo quản móc khóa len",
-      "móc khóa len handmade",
+      "cách bảo quản phụ kiện len",
       "phụ kiện len handmade",
-      "móc khóa len mini",
+      "đồ handmade dùng lâu",
+      "giữ đồ len bền đẹp",
     ],
+    indexable: false,
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
@@ -256,13 +261,14 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Gợi ý chọn quà sinh nhật handmade vừa dễ thương, vừa thiết thực cho học sinh, sinh viên và người thích phụ kiện nhỏ.",
     description:
-      "Gợi ý quà sinh nhật handmade như móc khóa len, phụ kiện len mini và cách chọn quà theo phong cách người nhận.",
+      "Gợi ý quà sinh nhật handmade như phụ kiện len mini và cách chọn quà theo phong cách người nhận.",
     keywords: [
       "quà sinh nhật handmade",
-      "móc khóa len làm quà sinh nhật",
+      "quà handmade nhỏ xinh",
       "quà handmade tặng bạn gái",
       "quà handmade dễ thương",
     ],
+    indexable: true,
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "5 phút đọc",
@@ -279,9 +285,9 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       {
-        heading: "Móc khóa len là lựa chọn dễ tặng",
+        heading: "Phụ kiện len mini là lựa chọn dễ tặng",
         body: [
-          "Móc khóa len handmade có giá dễ chọn, kích thước nhỏ, dễ đóng gói và người nhận có thể dùng ngay. Đây là lựa chọn hợp với học sinh, sinh viên hoặc người thích đồ cute.",
+          "Phụ kiện len handmade mini có giá dễ chọn, kích thước nhỏ, dễ đóng gói và người nhận có thể dùng ngay. Đây là lựa chọn hợp với học sinh, sinh viên hoặc người thích đồ cute.",
         ],
       },
       {
@@ -306,7 +312,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-export const FEATURED_BLOG_POSTS = BLOG_POSTS.slice(0, 3);
+export const INDEXABLE_BLOG_POSTS = BLOG_POSTS.filter((post) => post.indexable);
+export const FEATURED_BLOG_POSTS = INDEXABLE_BLOG_POSTS.slice(0, 3);
 
 export function getBlogPostBySlug(slug: string) {
   return BLOG_POSTS.find((post) => post.slug === slug);

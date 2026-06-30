@@ -8,9 +8,8 @@ import { Button } from "@/components/ui/button";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PRODUCTS } from "@/lib/products";
-import { FEATURED_BLOG_POSTS } from "@/lib/blog";
 import { SITE } from "@/lib/site";
-import { breadcrumbJsonLd, productItemListJsonLd } from "@/lib/schema";
+import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Sản phẩm móc khóa len handmade",
@@ -36,7 +35,21 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return (
     <>
-      <JsonLd data={productItemListJsonLd(PRODUCTS)} />
+      <JsonLd
+        data={collectionPageJsonLd({
+          name: "Sản phẩm móc khóa len handmade",
+          description:
+            "Danh sách sản phẩm móc khóa len handmade, móc khóa thú mini và phụ kiện len cute tại LyliShop.",
+          url: `${SITE.url}/products`,
+          products: PRODUCTS,
+          keywords: [
+            "móc khóa len handmade",
+            "móc khóa len cute",
+            "móc khóa crochet handmade",
+            "phụ kiện len cute",
+          ],
+        })}
+      />
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", url: SITE.url },
@@ -63,11 +76,15 @@ export default function ProductsPage() {
             <p>
               Nếu bạn đang tìm thông tin đầy đủ về móc khóa len, móc khóa crochet,
               móc khóa thú len và cách chọn quà tặng handmade, xem trang tổng hợp
-              móc khóa len của LyliShop.
+              móc khóa len của LyliShop. Bạn cũng có thể quay về trang chủ LyliShop
+              để xem câu chuyện thương hiệu và cách shop nhận đặt mẫu theo yêu cầu.
             </p>
-            <div className="mt-4">
+            <div className="mt-4 flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild variant="outline">
                 <Link href="/moc-khoa-len">Xem hướng dẫn chọn móc khóa len</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/">Về LyliShop</Link>
               </Button>
             </div>
           </div>
@@ -79,29 +96,23 @@ export default function ProductsPage() {
           </div>
 
           <div className="mt-14 rounded-lg border border-border/70 bg-rose-50 p-6">
-            <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
               <div>
                 <h2 className="font-display text-xl font-semibold tracking-tight">
-                  Cẩm nang chọn móc khóa len handmade
+                  Cần chọn mẫu trước khi nhắn shop?
                 </h2>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                  Tìm hiểu cách chọn quà handmade, cách bảo quản móc khóa len và gợi ý mẫu
-                  phù hợp trước khi nhắn shop đặt hàng.
+                  Nếu bạn chưa chắc nên chọn mẫu nào, hãy xem trang hướng dẫn móc khóa len
+                  để so sánh chất liệu, mục đích dùng và kiểu quà tặng phù hợp.
                 </p>
-                <Button asChild variant="outline" className="mt-5">
-                  <Link href="/blog">Xem cẩm nang</Link>
-                </Button>
               </div>
-              <div className="grid gap-3">
-                {FEATURED_BLOG_POSTS.map((post) => (
-                  <Link
-                    key={post.slug}
-                    href={`/blog/${post.slug}`}
-                    className="rounded-md border border-border/70 bg-white/70 p-4 text-sm font-medium transition hover:text-primary hover:shadow-sm"
-                  >
-                    {post.title}
-                  </Link>
-                ))}
+              <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+                <Button asChild>
+                  <Link href="/moc-khoa-len">Xem hướng dẫn chọn mẫu</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/#order">Liên hệ đặt hàng</Link>
+                </Button>
               </div>
             </div>
           </div>

@@ -150,6 +150,9 @@ function HomeSeoContentSection() {
             <Button asChild variant="outline">
               <Link href="/products">Xem các mẫu móc khóa len</Link>
             </Button>
+            <Button asChild variant="outline">
+              <Link href="/moc-khoa-len">Đọc hướng dẫn chọn mẫu</Link>
+            </Button>
           </div>
         </div>
       </Container>
@@ -177,18 +180,18 @@ export default function HomePage() {
           <div className="grid gap-8 rounded-lg border border-border/70 bg-rose-50 p-6 shadow-sm lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
               <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-                Cẩm nang
+                Cảm hứng LyliShop
               </p>
               <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-                Cách chọn móc khóa len handmade làm quà
+                Những ý tưởng quà handmade nhỏ xinh
               </h2>
               <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">
-                Đọc thêm các gợi ý chọn quà handmade, cách bảo quản móc khóa len và cách chọn
-                mẫu phù hợp trước khi nhắn LyliShop đặt hàng.
+                Đọc thêm các câu chuyện nhẹ nhàng về quà handmade, cách giữ phụ kiện len bền đẹp
+                và cảm hứng chọn món quà nhỏ có dấu ấn riêng.
               </p>
               <Button asChild className="mt-5">
                 <Link href="/blog">
-                  Xem cẩm nang
+                  Xem cảm hứng
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>

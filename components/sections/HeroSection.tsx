@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HeartHandshake, MessageCircle, Package, Palette, Sparkles, ThumbsUp } from "lucide-react";
+import { HeartHandshake, MessageCircle, Package, Palette, Sparkles } from "lucide-react";
 
 import { SITE } from "@/lib/site";
 import { FEATURED_PRODUCTS } from "@/lib/products";
@@ -51,14 +51,11 @@ export function HeroSection() {
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
-                    <ThumbsUp className="h-4 w-4" aria-hidden="true" />
-                    Inbox Facebook
-                  </a>
+                  <Link href="/products">Xem sản phẩm</Link>
                 </Button>
                 <Button asChild size="lg" variant="ghost">
-                  <Link href="#featured" aria-label="Xem sản phẩm nổi bật">
-                    Xem mẫu cute
+                  <Link href="/moc-khoa-len">
+                    Cách chọn mẫu
                     <Sparkles className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>

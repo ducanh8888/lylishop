@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BLOG_INDEX_STRATEGY, BLOG_POSTS, getBlogCoverProduct } from "@/lib/blog";
+import { BLOG_INDEX_STRATEGY, INDEXABLE_BLOG_POSTS, getBlogCoverProduct } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/schema";
 
@@ -17,16 +17,15 @@ const PAGE_PATH = "/blog";
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
 
 export const metadata: Metadata = {
-  title: "Cẩm nang móc khóa len handmade & quà tặng cute",
+  title: "Cảm hứng quà handmade nhỏ xinh",
   description:
-    "Đọc cẩm nang chọn móc khóa len handmade, quà handmade dễ thương, cách bảo quản phụ kiện len và gợi ý quà sinh nhật handmade từ LyliShop.",
+    "Cảm hứng chọn quà handmade nhỏ xinh, cách giữ phụ kiện len bền đẹp và những gợi ý tặng quà dễ thương từ LyliShop.",
   keywords: [
-    "móc khóa len handmade",
-    "móc khóa handmade",
+    "cảm hứng quà handmade",
     "quà handmade dễ thương",
     "quà tặng handmade",
     "phụ kiện len handmade",
-    "móc khóa len làm quà sinh nhật",
+    "quà sinh nhật handmade",
   ],
   alternates: { canonical: PAGE_PATH },
   robots: {
@@ -35,16 +34,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: PAGE_URL,
-    title: "Cẩm nang móc khóa len handmade & quà tặng cute | LyliShop",
+    title: "Cảm hứng quà handmade nhỏ xinh | LyliShop",
     description:
-      "Bài viết hướng dẫn chọn móc khóa len handmade, quà handmade và cách bảo quản phụ kiện len.",
+      "Các bài viết cảm hứng về quà handmade, phụ kiện len và cách giữ món quà nhỏ luôn xinh.",
     images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: "Cẩm nang LyliShop" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cẩm nang móc khóa len handmade & quà tặng cute | LyliShop",
+    title: "Cảm hứng quà handmade nhỏ xinh | LyliShop",
     description:
-      "Gợi ý chọn quà handmade, móc khóa len mini và cách bảo quản phụ kiện len.",
+      "Gợi ý chọn quà handmade, phụ kiện len nhỏ xinh và cách giữ món quà bền đẹp.",
     images: [SITE.twitterImage],
   },
 };
@@ -72,16 +71,27 @@ export default function BlogPage() {
           <SectionHeading
             as="h1"
             eyebrow="Cẩm nang LyliShop"
-            title="Bài viết về móc khóa len handmade và quà tặng nhỏ xinh"
-            description="Tổng hợp kiến thức giúp bạn chọn móc khóa len, quà handmade dễ thương và cách bảo quản phụ kiện len để dùng lâu hơn."
+            title="Cảm hứng quà handmade nhỏ xinh"
+            description="Những gợi ý nhẹ nhàng về quà handmade, phụ kiện len và cách chọn món quà có cảm xúc riêng."
           />
+          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+            <Button asChild variant="outline">
+              <Link href="/">Về LyliShop</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/products">
+                Xem sản phẩm
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
         </Container>
       </section>
 
       <section className="bg-background py-14 sm:py-20">
         <Container>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {BLOG_POSTS.map((post) => (
+            {INDEXABLE_BLOG_POSTS.map((post) => (
               <article
                 key={post.slug}
                 className="group flex h-full flex-col overflow-hidden rounded-lg border border-border/70 bg-white/70 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"

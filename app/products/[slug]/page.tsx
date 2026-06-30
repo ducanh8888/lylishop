@@ -69,6 +69,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product) notFound();
   const relatedProducts = getRelatedProducts(product);
   const productImages = product.images ?? [product.image];
+  const thumbnailImages = productImages.slice(1);
   const productFaqs = [
     {
       id: `${product.slug}-custom-color`,
@@ -97,7 +98,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", url: SITE.url },
-          { name: "Móc khóa len", url: `${SITE.url}/moc-khoa-len` },
+          { name: "Sản phẩm", url: `${SITE.url}/products` },
           { name: product.name, url: `${SITE.url}/products/${product.slug}` },
         ])}
       />
@@ -106,7 +107,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <Breadcrumbs
             items={[
               { label: "Trang chủ", href: "/" },
-              { label: "Móc khóa len", href: "/moc-khoa-len" },
+              { label: "Sản phẩm", href: "/products" },
               { label: product.name },
             ]}
             className="mb-5"
@@ -142,9 +143,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </div>
               </div>
 
-              {productImages.length > 1 ? (
+              {thumbnailImages.length > 0 ? (
                 <div className="grid grid-cols-2 gap-3">
-                  {productImages.map((image, index) => (
+                  {thumbnailImages.map((image) => (
                     <div
                       key={image.src}
                       className="overflow-hidden rounded-lg border border-border/70 bg-white/60 shadow-sm"
@@ -156,7 +157,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                           width={image.width}
                           height={image.height}
                           className="h-full w-full object-cover"
-                          loading={index === 0 ? "eager" : "lazy"}
+                          loading="lazy"
                           quality={55}
                           sizes="(max-width: 1024px) 50vw, 250px"
                         />
@@ -263,6 +264,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <Link href="/products">Xem thêm sản phẩm</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/moc-khoa-len">Cách chọn móc khóa len</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">

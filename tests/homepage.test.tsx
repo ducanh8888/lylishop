@@ -11,7 +11,8 @@ describe("HomePage", () => {
     ).toBeInTheDocument();
 
     expect(screen.getAllByRole("link", { name: /nhắn zalo/i }).length).toBeGreaterThan(0);
-    expect(screen.getByRole("link", { name: /xem cẩm nang/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /xem cảm hứng/i })).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: /xem sản phẩm/i }).length).toBeGreaterThan(0);
 
     // Sections present
     expect(document.querySelector("#featured")).toBeTruthy();

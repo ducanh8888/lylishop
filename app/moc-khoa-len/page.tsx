@@ -16,7 +16,6 @@ import {
   breadcrumbJsonLd,
   collectionPageJsonLd,
   faqJsonLd,
-  productItemListJsonLd,
 } from "@/lib/schema";
 import { formatVnd } from "@/lib/format";
 
@@ -36,6 +35,13 @@ const KEYWORDS = [
   "thú len handmade",
   "móc khóa len mini",
   "móc khóa len làm quà",
+];
+
+const PILLAR_NAV = [
+  { href: "#moc-khoa-len-la-gi", label: "Móc khóa len là gì" },
+  { href: "#cach-chon-moc-khoa-len", label: "Cách chọn móc khóa len" },
+  { href: "#moc-khoa-len-lam-qua", label: "Móc khóa len làm quà" },
+  { href: "#phan-loai-moc-khoa-len", label: "Phân loại móc khóa len" },
 ];
 
 const FAQ = [
@@ -161,7 +167,6 @@ export default function MocKhoaLenPage() {
           keywords: KEYWORDS,
         })}
       />
-      <JsonLd data={productItemListJsonLd(PRODUCTS)} />
       <JsonLd data={faqJsonLd(FAQ)} />
       <JsonLd
         data={breadcrumbJsonLd([
@@ -170,7 +175,10 @@ export default function MocKhoaLenPage() {
         ])}
       />
 
-      <section className="bg-gradient-to-b from-white to-rose-50 py-10 sm:py-14">
+      <section
+        id="moc-khoa-len-la-gi"
+        className="scroll-mt-24 bg-gradient-to-b from-white to-rose-50 py-10 sm:py-14"
+      >
         <Container>
           <Breadcrumbs
             items={[
@@ -198,10 +206,13 @@ export default function MocKhoaLenPage() {
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg">
-                  <Link href="#collection">
+                  <Link href="#phan-loai-moc-khoa-len">
                     Xem mẫu móc khóa len
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/products">Xem sản phẩm</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <Link href="/#order">Liên hệ đặt hàng</Link>
@@ -236,13 +247,45 @@ export default function MocKhoaLenPage() {
         </Container>
       </section>
 
-      <section id="collection" className="bg-background py-14 sm:py-20">
+      <section className="bg-background py-8">
+        <Container>
+          <nav
+            aria-label="Mục lục móc khóa len"
+            className="mx-auto flex max-w-4xl flex-wrap justify-center gap-2 rounded-lg border border-border/70 bg-white/70 p-3 text-sm shadow-sm"
+          >
+            {PILLAR_NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-md px-3 py-2 font-medium text-foreground/80 transition hover:bg-rose-50 hover:text-primary"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </Container>
+      </section>
+
+      <section
+        id="phan-loai-moc-khoa-len"
+        className="scroll-mt-24 bg-background py-14 sm:py-20"
+      >
         <Container>
           <SectionHeading
             eyebrow="Bộ sưu tập"
-            title="Các mẫu móc khóa len tại LyliShop"
+            title="Phân loại móc khóa len tại LyliShop"
             description="Chọn mẫu bạn thích để xem mô tả, giá và cách liên hệ đặt hàng. Các mẫu đều có thể trao đổi thêm về màu sắc trước khi làm."
           />
+
+          <div className="mx-auto mt-5 max-w-2xl text-center text-sm leading-6 text-muted-foreground">
+            <p>
+              Nếu bạn đã biết kiểu móc khóa len muốn đặt, hãy xem toàn bộ
+              <Link href="/products" className="font-medium text-primary hover:underline">
+                {" "}sản phẩm móc khóa len handmade
+              </Link>
+              {" "}để chọn mẫu và nhắn shop xác nhận màu, size, thời gian làm.
+            </p>
+          </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {PRODUCTS.map((product) => (
@@ -252,7 +295,10 @@ export default function MocKhoaLenPage() {
         </Container>
       </section>
 
-      <section className="bg-rose-50 py-14 sm:py-20">
+      <section
+        id="moc-khoa-len-lam-qua"
+        className="scroll-mt-24 bg-rose-50 py-14 sm:py-20"
+      >
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
             <div>
@@ -267,6 +313,13 @@ export default function MocKhoaLenPage() {
                 handmade thường đến từ người muốn tìm một món phụ kiện nhỏ nhưng có cảm
                 giác riêng. Vì vậy LyliShop tập trung vào mẫu nhỏ gọn, dễ dùng hằng ngày
                 và có thể cá nhân hóa bằng màu sắc.
+              </p>
+              <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">
+                Khi đã xác định người nhận và phong cách màu, bạn có thể
+                <Link href="/products" className="font-medium text-primary hover:underline">
+                  {" "}xem các mẫu móc khóa len
+                </Link>
+                {" "}để chọn sản phẩm phù hợp hơn.
               </p>
             </div>
 
@@ -287,7 +340,10 @@ export default function MocKhoaLenPage() {
         </Container>
       </section>
 
-      <section className="bg-background py-14 sm:py-20">
+      <section
+        id="cach-chon-moc-khoa-len"
+        className="scroll-mt-24 bg-background py-14 sm:py-20"
+      >
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             <div>
@@ -295,7 +351,7 @@ export default function MocKhoaLenPage() {
                 Chất liệu và hoàn thiện
               </p>
               <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-                Móc khóa crochet bằng len mềm
+                Cách chọn móc khóa len handmade
               </h2>
               <div className="mt-4 space-y-4 text-sm leading-7 text-muted-foreground sm:text-base">
                 <p>
@@ -308,6 +364,14 @@ export default function MocKhoaLenPage() {
                   Khi đặt tại LyliShop, bạn có thể gửi màu mong muốn hoặc ảnh tham khảo
                   để shop tư vấn cách phối phù hợp. Các chi tiết nhỏ như tai, nơ, lá,
                   đệm chân hoặc màu khoen được xác nhận trước khi làm.
+                </p>
+                <p>
+                  Nếu bạn muốn so sánh nhiều mẫu theo giá, hình dáng và mục đích dùng,
+                  hãy mở trang
+                  <Link href="/products" className="font-medium text-primary hover:underline">
+                    {" "}sản phẩm móc khóa len
+                  </Link>
+                  {" "}rồi chọn từng mẫu để xem mô tả chi tiết.
                 </p>
               </div>
             </div>
@@ -341,17 +405,17 @@ export default function MocKhoaLenPage() {
             <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
               <div>
                 <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-                  Cẩm nang
+                  Cảm hứng
                 </p>
                 <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight">
-                  Hướng dẫn chọn quà handmade và móc khóa len
+                  Câu chuyện quà handmade nhỏ xinh
                 </h2>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                  Các bài viết này giúp bạn hiểu móc khóa len handmade là gì, chọn quà
-                  sinh nhật handmade ra sao và bảo quản phụ kiện len thế nào để dùng lâu hơn.
+                  Các bài viết này thiên về cảm hứng tặng quà, cách giữ phụ kiện len bền đẹp
+                  và những gợi ý nhẹ nhàng trước khi chọn món quà nhỏ.
                 </p>
                 <Button asChild variant="outline" className="mt-5">
-                  <Link href="/blog">Xem tất cả bài viết</Link>
+                  <Link href="/blog">Xem cảm hứng quà handmade</Link>
                 </Button>
               </div>
               <div className="grid gap-3">
