@@ -67,7 +67,7 @@ const FAQ = [
     id: "gia-moc-khoa-len",
     question: "Giá móc khóa len handmade tại LyliShop là bao nhiêu?",
     answer:
-      "Các mẫu hiện có nằm trong khoảng 59.000 đến 99.000 đồng tùy kích thước, độ chi tiết và thời gian hoàn thiện. Giá cụ thể được hiển thị ở từng sản phẩm.",
+      "Các mẫu hiện có có giá từ 45.000 đồng tùy kích thước, độ chi tiết và thời gian hoàn thiện. Giá cụ thể được hiển thị ở từng sản phẩm.",
   },
   {
     id: "dat-hang-nhu-the-nao",

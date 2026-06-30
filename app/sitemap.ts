@@ -2,10 +2,26 @@ import type { MetadataRoute } from "next";
 
 import { SITE } from "@/lib/site";
 import { PRODUCTS } from "@/lib/products";
-import { BLOG_POSTS } from "@/lib/blog";
+import { BLOG_INDEX_STRATEGY, BLOG_POSTS } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  const blogRoutes: MetadataRoute.Sitemap = BLOG_INDEX_STRATEGY.index
+    ? [
+        {
+          url: `${SITE.url}/blog`,
+          lastModified: now,
+          changeFrequency: BLOG_INDEX_STRATEGY.changeFrequency,
+          priority: BLOG_INDEX_STRATEGY.collectionPriority,
+        },
+        ...BLOG_POSTS.map((post) => ({
+          url: `${SITE.url}/blog/${post.slug}`,
+          lastModified: now,
+          changeFrequency: BLOG_INDEX_STRATEGY.changeFrequency,
+          priority: BLOG_INDEX_STRATEGY.postPriority,
+        })),
+      ]
+    : [];
 
   const routes: MetadataRoute.Sitemap = [
     {
@@ -27,12 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
-      url: `${SITE.url}/blog`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
       url: `${SITE.url}/privacy`,
       lastModified: now,
       changeFrequency: "yearly",
@@ -50,12 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    ...BLOG_POSTS.map((post) => ({
-      url: `${SITE.url}/blog/${post.slug}`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.75,
-    })),
+    ...blogRoutes,
   ];
 
   return routes;

@@ -95,18 +95,28 @@ export function productJsonLd(product: Product) {
     url,
     image: images.map((image) => `${SITE.url}${image.src}`),
     sku: product.slug,
-    category: "Móc khóa len handmade",
-    material: "Len mềm",
+    category: product.category,
+    material: product.material,
     additionalProperty: [
       {
         "@type": "PropertyValue",
         name: "Kiểu sản phẩm",
-        value: "Móc khóa len handmade",
+        value: product.category,
       },
       {
         "@type": "PropertyValue",
         name: "Kỹ thuật",
         value: "Crochet",
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Phù hợp làm quà cho",
+        value: product.giftFor.join(", "),
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Lợi ích",
+        value: product.benefits.join(", "),
       },
     ],
     brand: {
@@ -141,6 +151,7 @@ export function productItemListJsonLd(products: Product[]) {
         name: p.name,
         url: `${SITE.url}/products/${p.slug}`,
         image: `${SITE.url}${p.image.src}`,
+        category: p.category,
       },
     })),
   } as const;
@@ -189,6 +200,8 @@ export function collectionPageJsonLd({
           name: p.name,
           url: `${SITE.url}/products/${p.slug}`,
           image: `${SITE.url}${p.image.src}`,
+          category: p.category,
+          material: p.material,
           offers: {
             "@type": "Offer",
             priceCurrency: "VND",

@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     title: "Điều khoản đặt móc khóa len handmade online | LyliShop",
     description: "Điều khoản khi đặt móc khóa len handmade và phụ kiện len từ LyliShop.",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Điều khoản đặt móc khóa len handmade online | LyliShop",
+    description: "Điều khoản khi đặt móc khóa len handmade và phụ kiện len từ LyliShop.",
+    images: [SITE.twitterImage],
+  },
 };
 
 export default function TermsPage() {

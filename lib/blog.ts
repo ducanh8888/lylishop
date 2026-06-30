@@ -1,5 +1,13 @@
 import { PRODUCTS } from "@/lib/products";
 
+export const BLOG_INDEX_STRATEGY = {
+  index: true,
+  follow: true,
+  collectionPriority: 0.35,
+  postPriority: 0.3,
+  changeFrequency: "yearly",
+} as const;
+
 export type BlogPost = {
   slug: string;
   title: string;

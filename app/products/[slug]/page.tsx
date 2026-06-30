@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Camera, Sparkles } from "lucide-react";
 
-import { PRODUCTS, getProductBySlug } from "@/lib/products";
+import { PRODUCTS, getProductBySlug, getRelatedProducts } from "@/lib/products";
 import { SITE } from "@/lib/site";
 import { formatVnd } from "@/lib/format";
 import { breadcrumbJsonLd, faqJsonLd, productJsonLd } from "@/lib/schema";
@@ -67,7 +67,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) notFound();
-  const relatedProducts = PRODUCTS.filter((item) => item.slug !== product.slug).slice(0, 3);
+  const relatedProducts = getRelatedProducts(product);
   const productImages = product.images ?? [product.image];
   const productFaqs = [
     {
@@ -119,7 +119,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </Link>
             </Button>
             <div className="hidden items-center gap-2 sm:flex">
-              <Badge variant="pink">handmade</Badge>
+              <Badge variant="pink">{product.category}</Badge>
               <Badge variant="secondary">Đóng gói làm quà</Badge>
             </div>
           </div>
@@ -194,6 +194,39 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              <div className="mt-4 grid gap-4 rounded-xl border border-border/70 bg-white/60 p-5 shadow-sm backdrop-blur-md sm:grid-cols-3">
+                <div>
+                  <h2 className="font-display text-base font-semibold">Chất liệu</h2>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    {product.material}
+                  </p>
+                </div>
+                <div>
+                  <h2 className="font-display text-base font-semibold">Phù hợp làm quà</h2>
+                  <ul className="mt-2 grid gap-1 text-sm leading-6 text-muted-foreground">
+                    {product.giftFor.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h2 className="font-display text-base font-semibold">Lợi ích</h2>
+                  <ul className="mt-2 grid gap-1 text-sm leading-6 text-muted-foreground">
+                    {product.benefits.slice(0, 3).map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {product.tags.map((tag) => (
+                  <Badge key={tag} variant="secondary">
+                    {tag}
+                  </Badge>
+                ))}
               </div>
 
               {product.promotion ? (

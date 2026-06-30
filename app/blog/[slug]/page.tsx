@@ -9,7 +9,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { ProductCard } from "@/components/ProductCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BLOG_POSTS, getBlogPostBySlug, getRelatedProductsForPost } from "@/lib/blog";
+import {
+  BLOG_INDEX_STRATEGY,
+  BLOG_POSTS,
+  getBlogPostBySlug,
+  getRelatedProductsForPost,
+} from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/schema";
 
@@ -43,6 +48,10 @@ export async function generateMetadata({
     description: post.description,
     keywords: post.keywords,
     alternates: { canonical: `/blog/${post.slug}` },
+    robots: {
+      index: BLOG_INDEX_STRATEGY.index,
+      follow: BLOG_INDEX_STRATEGY.follow,
+    },
     openGraph: {
       type: "article",
       url,

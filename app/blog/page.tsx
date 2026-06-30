@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BLOG_POSTS, getBlogCoverProduct } from "@/lib/blog";
+import { BLOG_INDEX_STRATEGY, BLOG_POSTS, getBlogCoverProduct } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/schema";
 
@@ -29,6 +29,10 @@ export const metadata: Metadata = {
     "móc khóa len làm quà sinh nhật",
   ],
   alternates: { canonical: PAGE_PATH },
+  robots: {
+    index: BLOG_INDEX_STRATEGY.index,
+    follow: BLOG_INDEX_STRATEGY.follow,
+  },
   openGraph: {
     url: PAGE_URL,
     title: "Cẩm nang móc khóa len handmade & quà tặng cute | LyliShop",

@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     title: "Chính sách bảo mật thông tin đặt hàng handmade | LyliShop",
     description: "Cách LyliShop xử lý tin nhắn, thông tin đặt hàng và dữ liệu cá nhân.",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chính sách bảo mật thông tin đặt hàng handmade | LyliShop",
+    description: "Cách LyliShop xử lý tin nhắn, thông tin đặt hàng và dữ liệu cá nhân.",
+    images: [SITE.twitterImage],
+  },
 };
 
 export default function PrivacyPage() {

@@ -1,6 +1,6 @@
 import { DEFAULT_METADATA } from "@/lib/seo";
 import { productJsonLd, websiteJsonLd } from "@/lib/schema";
-import { PRODUCTS } from "@/lib/products";
+import { PRODUCTS, getRelatedProducts } from "@/lib/products";
 import { SITE } from "@/lib/site";
 
 describe("SEO metadata", () => {
@@ -38,5 +38,23 @@ describe("SEO metadata", () => {
     });
 
     expect(productJsonLd(PRODUCTS[0])).not.toHaveProperty("aggregateRating");
+  });
+
+  it("uses explicit product entity fields for SEO and semantic related products", () => {
+    const product = PRODUCTS[0];
+    const schema = productJsonLd(product);
+    const relatedProducts = getRelatedProducts(product);
+
+    expect(product.category).toBeTruthy();
+    expect(product.tags.length).toBeGreaterThan(0);
+    expect(product.material).toContain("Len");
+    expect(product.benefits.length).toBeGreaterThan(0);
+    expect(product.giftFor.length).toBeGreaterThan(0);
+    expect(schema).toMatchObject({
+      category: product.category,
+      material: product.material,
+    });
+    expect(relatedProducts).toHaveLength(3);
+    expect(relatedProducts.every((item) => item.slug !== product.slug)).toBe(true);
   });
 });

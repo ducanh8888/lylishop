@@ -32,6 +32,16 @@ The third issue is topic cannibalization. Homepage, `/moc-khoa-len`, `/products`
 - Product detail pages: product-specific long-tail subpages.
 - Blog routes: only keep if existing indexed content is intentionally retained.
 
+## Phase 0 Final Decision Addendum
+
+Status after Phase 0 final patch:
+
+- The unverified rating/review/testimonial layer is removed from runtime UI, product data, and Product JSON-LD. Product schema must not emit `aggregateRating` or `review` unless real verified review data is added later.
+- Product entities now carry explicit `category`, `tags`, `material`, `benefits`, and `giftFor` fields. These fields are rendered on product detail pages and reused by schema/related-product logic.
+- Related products are selected semantically from category/tag overlap instead of plain array order.
+- Existing `/blog` and `/blog/[slug]` URLs are kept as legacy static guide content to avoid breaking live URLs. They remain indexable, but sitemap priority is intentionally lower than homepage, `/moc-khoa-len`, `/products`, and product detail pages. This is not approval to create a new blog program; it is a safe legacy URL strategy until Search Console data supports a redirect/noindex migration.
+- Homepage and product/category routes remain the primary SEO surfaces for moc khoa len handmade commercial intent.
+
 ## 2. Repository Areas Audited
 
 The following areas were reviewed:

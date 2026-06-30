@@ -55,7 +55,7 @@ export function ProductCard({
                 {formatVnd(product.priceVnd)}
               </div>
               <Badge variant="pink" className="mt-1">
-                handmade
+                {product.category}
               </Badge>
             </div>
           </div>

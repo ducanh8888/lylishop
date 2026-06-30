@@ -24,6 +24,13 @@ export const metadata: Metadata = {
       "Móc khóa len handmade cute, phụ kiện len nhỏ xinh, giá từ 45k, có thể chọn màu và đặt nhanh qua Zalo/Facebook.",
     images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: "LyliShop products" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sản phẩm móc khóa len handmade | LyliShop",
+    description:
+      "Xem các mẫu móc khóa len handmade cute, phụ kiện len nhỏ xinh và cách đặt hàng qua Zalo/Facebook tại LyliShop.",
+    images: [SITE.twitterImage],
+  },
 };
 
 export default function ProductsPage() {
