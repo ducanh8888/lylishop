@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Camera, Sparkles } from "lucide-react";
+import { ArrowLeft, Camera, MessageCircle, PackageCheck, Ruler, ThumbsUp } from "lucide-react";
 
 import { PRODUCTS, getProductBySlug, getRelatedProducts } from "@/lib/products";
 import { SITE } from "@/lib/site";
@@ -11,6 +11,7 @@ import { breadcrumbJsonLd, faqJsonLd, productJsonLd } from "@/lib/schema";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ProductCard } from "@/components/ProductCard";
@@ -121,7 +122,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           { name: product.name, url: `${SITE.url}/products/${product.slug}` },
         ])}
       />
-      <section className="bg-background py-10 sm:py-14">
+      <section className="bg-gradient-to-b from-white to-background py-10 sm:py-14 lg:py-16">
         <Container>
           <Breadcrumbs
             items={[
@@ -131,6 +132,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             ]}
             className="mb-5"
           />
+
           <div className="flex items-center justify-between gap-3">
             <Button asChild variant="ghost">
               <Link href="/products" aria-label="Quay lại cửa hàng LyliShop">
@@ -146,7 +148,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
           <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:items-start">
             <div className="grid gap-4">
-              <div className="overflow-hidden rounded-xl border border-border/70 bg-white/60 shadow-sm backdrop-blur-md">
+              <div className="overflow-hidden rounded-2xl border border-border/70 bg-white/70 shadow-sm backdrop-blur-md">
                 <div className="relative aspect-square bg-gradient-to-b from-white to-rose-50">
                   <Image
                     src={productImages[0].src}
@@ -163,11 +165,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
 
               {thumbnailImages.length > 0 ? (
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-3 gap-3">
                   {thumbnailImages.map((image) => (
                     <div
                       key={image.src}
-                      className="overflow-hidden rounded-lg border border-border/70 bg-white/60 shadow-sm"
+                      className="overflow-hidden rounded-lg border border-border/70 bg-white/70 shadow-sm"
                     >
                       <div className="relative aspect-square bg-gradient-to-b from-white to-rose-50">
                         <Image
@@ -184,16 +186,29 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     </div>
                   ))}
                 </div>
-              ) : null}
+              ) : (
+                <div
+                  role="img"
+                  aria-label={`Khung ảnh bổ sung của ${product.name}`}
+                  className="flex aspect-[4/1] items-center justify-center rounded-lg border border-dashed border-primary/25 bg-white/70 text-sm text-muted-foreground shadow-sm"
+                >
+                  Ảnh bổ sung sẽ được cập nhật khi có hình thật.
+                </div>
+              )}
             </div>
 
             <div>
+              <div className="mb-4 flex flex-wrap gap-2 sm:hidden">
+                <Badge variant="pink">{product.category}</Badge>
+                <Badge variant="secondary">Đóng gói làm quà</Badge>
+              </div>
+              <h2 className="sr-only">Thông tin sản phẩm</h2>
               <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
                 {product.name}
               </h1>
-              <div className="mt-3 whitespace-pre-line text-base leading-7 text-muted-foreground">
-                {product.longDescription}
-              </div>
+              <p className="mt-3 text-base leading-7 text-muted-foreground sm:text-lg">
+                {product.shortDescription}
+              </p>
 
               <div className="mt-5 flex flex-wrap items-center gap-3">
                 <div className="rounded-full bg-primary/10 px-4 py-2 font-display text-base font-semibold">
@@ -204,8 +219,33 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </span>
               </div>
 
-              <div className="mt-6 rounded-xl border border-border/70 bg-white/60 p-5 shadow-sm backdrop-blur-md">
-                <h2 className="font-display text-base font-semibold">Điểm nổi bật của {product.name}</h2>
+              <Card className="mt-6 bg-white/70 p-5 shadow-sm backdrop-blur-md">
+                <div className="grid gap-4 sm:grid-cols-3">
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                      Danh mục
+                    </p>
+                    <p className="mt-1 text-sm font-medium text-foreground">{product.category}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                      Chất liệu
+                    </p>
+                    <p className="mt-1 text-sm font-medium text-foreground">{product.material}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                      Kích thước
+                    </p>
+                    <p className="mt-1 text-sm font-medium text-foreground">
+                      Xác nhận theo mẫu/size khi liên hệ
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="mt-4 bg-white/70 p-5 shadow-sm backdrop-blur-md">
+                <h2 className="font-display text-base font-semibold">Điểm nổi bật</h2>
                 <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
                   {product.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-2">
@@ -214,30 +254,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              <div className="mt-4 grid gap-4 rounded-xl border border-border/70 bg-white/60 p-5 shadow-sm backdrop-blur-md sm:grid-cols-3">
-                <div>
-                  <h2 className="font-display text-base font-semibold">Chất liệu móc khóa len</h2>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {product.material}
-                  </p>
-                </div>
-                <div>
-                  <h2 className="font-display text-base font-semibold">Móc khóa len phù hợp làm quà</h2>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    Món quà nhỏ cho bạn bè, người thân hoặc người thích phụ kiện handmade.
-                  </p>
-                </div>
-                <div>
-                  <h2 className="font-display text-base font-semibold">Lợi ích khi đặt móc khóa len</h2>
-                  <ul className="mt-2 grid gap-1 text-sm leading-6 text-muted-foreground">
-                    {product.benefits.slice(0, 3).map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              </Card>
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {product.tags.map((tag) => (
@@ -272,43 +289,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </div>
               ) : null}
 
-              <div className="mt-6 rounded-xl border border-border/70 bg-white/60 p-5 shadow-sm backdrop-blur-md">
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-                      Quy trình đặt hàng
-                    </p>
-                    <h2 className="mt-1 font-display text-lg font-semibold text-foreground">
-                      Đặt {product.name} qua tin nhắn trong 3 bước
-                    </h2>
-                  </div>
-                  <Badge variant="pink">Shop xác nhận trước khi làm</Badge>
-                </div>
-
-                <ol className="mt-5 grid gap-4 sm:grid-cols-3">
-                  {ORDER_STEPS.map((step, index) => (
-                    <li key={step.title} className="flex gap-3">
-                      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-sm font-semibold text-primary">
-                        {index + 1}
-                      </span>
-                      <span>
-                        <span className="block text-sm font-medium text-foreground">
-                          {step.title}
-                        </span>
-                        <span className="mt-1 block text-sm leading-6 text-muted-foreground">
-                          {step.description}
-                        </span>
-                      </span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg">
                   <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
-                    Nhắn Zalo để đặt hàng
-                    <Sparkles className="h-4 w-4" aria-hidden="true" />
+                    <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                    Liên hệ Zalo
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
@@ -333,22 +318,91 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </p>
             </div>
           </div>
+        </Container>
+      </section>
 
-          <section className="mt-14 rounded-xl border border-border/70 bg-rose-50/70 p-6">
-            <h2 className="font-display text-2xl font-semibold tracking-tight">
+      <section className="bg-background py-14 sm:py-20">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-[1fr_0.78fr]">
+            <div>
+              <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                Mô tả
+              </p>
+              <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                Chi tiết về {product.name}
+              </h2>
+              <div className="mt-5 whitespace-pre-line rounded-2xl border border-border/70 bg-white/70 p-5 text-base leading-8 text-muted-foreground shadow-sm sm:p-6">
+                {product.longDescription}
+              </div>
+            </div>
+
+            <div className="grid gap-5">
+              <Card className="bg-white/70 p-5 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <PackageCheck className="h-5 w-5 text-primary" aria-hidden="true" />
+                  <h3 className="font-display text-lg font-semibold">Phù hợp sử dụng</h3>
+                </div>
+                <ul className="mt-4 grid gap-2 text-sm leading-6 text-muted-foreground">
+                  {product.benefits.slice(0, 3).map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+
+              <Card className="bg-white/70 p-5 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <Ruler className="h-5 w-5 text-primary" aria-hidden="true" />
+                  <h3 className="font-display text-lg font-semibold">Quy trình liên hệ</h3>
+                </div>
+                <ol className="mt-4 grid gap-4">
+                  {ORDER_STEPS.map((step, index) => (
+                    <li key={step.title} className="flex gap-3">
+                      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-sm font-semibold text-primary">
+                        {index + 1}
+                      </span>
+                      <span>
+                        <span className="block text-sm font-medium text-foreground">{step.title}</span>
+                        <span className="mt-1 block text-sm leading-6 text-muted-foreground">
+                          {step.description}
+                        </span>
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </Card>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-white py-14 sm:py-20">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+              FAQ
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
               Câu hỏi thường gặp về {product.name}
             </h2>
-            <div className="mt-5 grid gap-4 md:grid-cols-3">
-              {productFaqs.map((item) => (
-                <div key={item.id} className="rounded-lg border border-border/70 bg-white/75 p-4">
-                  <h3 className="font-display text-base font-semibold">{item.question}</h3>
-                  <p className="mt-2 text-sm leading-7 text-muted-foreground">{item.answer}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          </div>
+          <div className="mx-auto mt-8 max-w-3xl divide-y divide-border/70 rounded-2xl border border-border/70 bg-background/70 p-5 shadow-sm">
+            {productFaqs.map((item) => (
+              <details key={item.id} className="group py-4 first:pt-0 last:pb-0">
+                <summary className="cursor-pointer list-none font-display text-base font-semibold marker:hidden [&::-webkit-details-marker]:hidden">
+                  {item.question}
+                </summary>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </Container>
+      </section>
 
-          <section className="mt-14">
+      <section className="bg-background py-14 sm:py-20">
+        <Container>
             <div className="mx-auto max-w-2xl text-center">
               <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
                 Có thể bạn cũng thích
@@ -366,7 +420,43 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <ProductCard key={item.slug} product={item} />
               ))}
             </div>
-          </section>
+        </Container>
+      </section>
+
+      <section className="bg-white py-14 sm:py-20">
+        <Container>
+          <div className="rounded-2xl border border-border/70 bg-rose-50/80 p-6 text-center shadow-sm sm:p-8">
+            <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+              Liên hệ LyliShop
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+              Muốn chọn màu hoặc hỏi thêm về mẫu này?
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+              Gửi LyliShop tên sản phẩm hoặc ảnh mẫu bạn thích. Shop sẽ phản hồi qua
+              kênh bạn chọn, không xử lý thanh toán trực tiếp trên website.
+            </p>
+            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+              <Button asChild>
+                <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  Liên hệ Zalo
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
+                  <ThumbsUp className="h-4 w-4" aria-hidden="true" />
+                  Facebook
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
+                  <Camera className="h-4 w-4" aria-hidden="true" />
+                  Instagram
+                </a>
+              </Button>
+            </div>
+          </div>
         </Container>
       </section>
     </>
