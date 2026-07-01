@@ -7,7 +7,8 @@ No image should be generated in this phase. This plan defines what images are ne
 - Use LyliShop product assets or new original photos.
 - Do not use reference-site images.
 - Do not copy competitor composition exactly.
-- Use LyliShop palette: warm cream, rose, soft pink, yarn brown accents.
+- Use the owner-provided original logo palette only: `#7a3b17`, `#fffcf7`, `#fbefe5`, `#f6e4e3`, `#e9f1ea`, `#c2c3d2`, `#ffffff`, `#000000`.
+- Do not introduce rose/pink/brown token names unless the owner approves them as brand tokens.
 - Images should leave negative space for text when used as hero/section backgrounds.
 - Prefer real product photos over abstract illustrations.
 
@@ -15,7 +16,7 @@ No image should be generated in this phase. This plan defines what images are ne
 
 | Placement | Size | Type | Notes |
 | --- | --- | --- | --- |
-| Homepage hero | 1920x1080 or 1600x1200 | Lifestyle/product | Crochet keychains on soft warm setup, right side product focus, left negative space. |
+| Homepage hero | 1920x1080 or 1600x1200 | Lifestyle/product | Crochet keychains on a logo-neutral setup, right side product focus, left negative space. |
 | Category banner | 1600x900 | Collection flatlay | Multiple keychains grouped by use case. |
 | Product primary | 1200x1200 | Product | Clean background, full product visible. |
 | Product lifestyle | 1200x900 | Usage | Product hanging on tote/balo/keys. |
@@ -32,37 +33,37 @@ No image should be generated in this phase. This plan defines what images are ne
 
 GPT Image prompt:
 
-> A warm cream and soft rose product photography scene for a handmade crochet keychain brand, several cute yarn keychains arranged on the right side, natural soft daylight, clean negative space on the left for website headline, cozy handmade table setting, no text, no logo, original composition, high detail, realistic product photography.
+> A soft neutral product photography scene for a handmade crochet keychain brand, using the LyliShop original logo palette direction with deep logo-brown accents and pale light surfaces, several cute yarn keychains arranged on the right side, natural soft daylight, clean negative space on the left for website headline, cozy handmade table setting, no text, no logo, original composition, high detail, realistic product photography.
 
 Midjourney prompt:
 
-> handmade crochet keychains, warm cream background, soft rose accents, product cluster on right, empty space on left, natural daylight, cozy craft table, realistic product photography, no text, no watermark --ar 16:9
+> handmade crochet keychains, pale off-white background, deep logo-brown accents, product cluster on right, empty space on left, natural daylight, cozy craft table, realistic product photography, no text, no watermark --ar 16:9
 
 Flux prompt:
 
-> Realistic website hero photo, cute handmade yarn keychains on a warm cream surface, soft pink props, right-weighted composition, large clean empty area for copy, gentle shadows, handmade gift mood, no text.
+> Realistic website hero photo, cute handmade yarn keychains on a pale logo-neutral surface, subtle original-logo accent colors, right-weighted composition, large clean empty area for copy, gentle shadows, handmade gift mood, no text.
 
 Ideogram prompt:
 
-> Product photography hero background for handmade crochet keychains, warm cream and rose palette, keychains on right, empty copy space on left, cozy gift feeling, no words.
+> Product photography hero background for handmade crochet keychains, palette inspired only by the original LyliShop logo colors, keychains on right, empty copy space on left, cozy gift feeling, no words.
 
 ### Category Banner
 
 Prompt:
 
-> Flatlay of multiple handmade crochet keychains grouped by gift use: birthday gift, daily bag charm, friend pair, group order. Warm cream background, soft rose accents, clear spacing, realistic, no text, no copied brand.
+> Flatlay of multiple handmade crochet keychains grouped by gift use: birthday gift, daily bag charm, friend pair, group order. Pale off-white background, subtle original-logo accent colors, clear spacing, realistic, no text, no copied brand.
 
 ### Product Primary
 
 Prompt:
 
-> Single handmade crochet keychain centered on clean warm cream background, full product visible, soft natural shadow, high detail yarn texture, square ecommerce product photo, no text.
+> Single handmade crochet keychain centered on a clean pale neutral background, full product visible, soft natural shadow, high detail yarn texture, square ecommerce product photo, no text.
 
 ### Product Lifestyle
 
 Prompt:
 
-> Handmade crochet keychain attached to a tote bag or backpack zipper, soft daylight, young feminine lifestyle, warm cream and rose styling, product clearly visible, no face focus, no text.
+> Handmade crochet keychain attached to a tote bag or backpack zipper, soft daylight, young feminine lifestyle, original-logo neutral styling, product clearly visible, no face focus, no text.
 
 ### Process Image
 
@@ -74,7 +75,7 @@ Prompt:
 
 Prompt:
 
-> Small handmade crochet keychain gift packaging, neat kraft/cream wrapping with soft rose ribbon, product partly visible, gift-ready feeling, warm daylight, no text or logo.
+> Small handmade crochet keychain gift packaging, neat kraft/off-white wrapping with a restrained accent ribbon matching the original logo palette, product partly visible, gift-ready feeling, warm daylight, no text or logo.
 
 ### Review / Customer Proof Image
 
@@ -88,7 +89,7 @@ Use only real customer photos. If no real photo:
 
 Gift guide:
 
-> Editorial flatlay of small handmade yarn gifts, birthday card, soft pastel colors, warm cream background, gentle negative space, no text.
+> Editorial flatlay of small handmade yarn gifts, birthday card, soft pastel colors aligned with the original LyliShop logo palette, pale neutral background, gentle negative space, no text.
 
 Care guide:
 
@@ -96,7 +97,7 @@ Care guide:
 
 Color guide:
 
-> Yarn color palette swatches beside cute handmade keychains, warm cream background, organized grid, no text.
+> Yarn color palette swatches beside cute handmade keychains, pale neutral background, organized grid, no text.
 
 ## Alt Text Formula
 
@@ -131,4 +132,3 @@ Avoid:
 - [x] Performance requirements defined.
 - [ ] Produce/source real original images.
 - [ ] Optimize generated/photographed assets before committing.
-

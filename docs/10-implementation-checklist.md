@@ -11,7 +11,7 @@ Use this as the working checklist after each phase. Do not mark a phase complete
 - [x] Audit reference about/contact/tracking.
 - [x] Check reference robots/sitemap.
 - [x] Extract reference meta/schema samples.
-- [x] Read LyliShop logo SVG and current palette.
+- [x] Read owner-provided original LyliShop logo SVG and extract actual visual colors.
 - [ ] Optional: browser screenshot audit on desktop/mobile.
 
 ## Phase 2 - SEO Audit
@@ -119,4 +119,3 @@ Use this as the working checklist after each phase. Do not mark a phase complete
 - [ ] Do not add cart/checkout unless business model changes.
 - [ ] Keep content written for LyliShop voice.
 - [ ] Keep images original.
-

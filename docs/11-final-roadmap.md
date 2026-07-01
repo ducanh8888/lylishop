@@ -190,7 +190,7 @@ Performance:
 Brand:
 
 - Copy sells emotion and gift value.
-- Colors align with LyliShop logo/current palette.
+- Colors align with the owner-provided original LyliShop logo SVG; runtime color changes require approval before implementation.
 - Images are original.
 
 ## Final Checklist
@@ -206,4 +206,3 @@ Brand:
 - [x] Implementation checklist created.
 - [x] Final roadmap created.
 - [ ] Begin P1 implementation in a separate code pass.
-

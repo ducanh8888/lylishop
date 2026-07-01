@@ -45,7 +45,7 @@ Tailwind:
 
 - Responsive two-column grid.
 - Stable image aspect ratio.
-- Use warm cream and rose tokens.
+- Use owner-approved logo-derived tokens only; primary direction comes from `#7a3b17` with light supporting surfaces from the original SVG.
 
 Accessibility:
 
@@ -297,4 +297,3 @@ Rules:
 - [x] Props/state/server-client rules defined.
 - [x] Accessibility/SEO/performance rules defined.
 - [ ] Create components only when implementation reaches that section.
-

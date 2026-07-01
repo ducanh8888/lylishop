@@ -24,26 +24,29 @@ LyliShop should keep its own Next.js static/message-commerce model. It should no
 
 ## Brand And Color Findings
 
-Logo source read from `public/logo-lylishop-v3.svg`.
+Logo source corrected from the owner-provided original file: `D:\Downloads\Lyli (2)\tiktoklylishop.svg`.
 
 Logo file facts:
 
-- SVG contains a warm background fill `#fffcf7`.
-- The embedded raster logo/icon has dominant warm cream tones and yarn-brown accents.
-- Current LyliShop CSS already uses a rose primary: `#be185d`, soft pink background `#fdf2f8`, secondary `#f472b6`.
+- Visual color attributes found in the SVG are: `#7a3b17`, `#fffcf7`, `#fbefe5`, `#f6e4e3`, `#e9f1ea`, `#c2c3d2`, `#ffffff`, `#000000`.
+- The strongest brand color in the original logo is `#7a3b17`.
+- Light tones such as `#fffcf7`, `#fbefe5`, `#f6e4e3`, `#e9f1ea`, and `#c2c3d2` should be treated as supporting neutrals/accent surfaces, not as a new invented theme.
+- Any colors currently present in the website code must not be treated as brand truth unless they match the owner-approved logo or are explicitly approved later.
 
-Recommended LyliShop palette derived from logo and current code, not from competitor:
+Corrected LyliShop color source of truth:
 
 | Role | Token | Hex | Reason |
 | --- | --- | --- | --- |
-| Primary CTA | Lyli Rose | `#be185d` | Already in `SITE.themeColor`; strong enough for CTA contrast. |
-| Soft background | Lyli Blush | `#fdf2f8` | Existing warm pink page background; fits handmade/gift mood. |
-| Secondary | Petal Pink | `#f472b6` | Existing secondary; use for badges/highlights, not entire page. |
-| Logo cream | Warm Cream | `#fffcf7` | Direct from logo SVG; use for hero/card surfaces. |
-| Yarn accent | Yarn Brown | `#704010` | Extracted from logo raster; use sparingly for craft/story accents. |
+| Primary brand | Logo Brown | `#7a3b17` | Direct visual fill from the original SVG; should anchor brand text, key accents, and approved CTA direction. |
+| Light surface | Logo Light 1 | `#fffcf7` | Direct visual fill from the original SVG; suitable for soft backgrounds if contrast is preserved. |
+| Light surface | Logo Light 2 | `#fbefe5` | Direct visual fill from the original SVG; suitable for supporting surfaces and image direction. |
+| Light surface | Logo Light 3 | `#f6e4e3` | Direct visual fill from the original SVG; use carefully as a supporting neutral/accent. |
+| Pale accent | Logo Pale Green | `#e9f1ea` | Direct visual fill from the original SVG; possible gentle contrast surface. |
+| Pale accent | Logo Pale Blue | `#c2c3d2` | Direct visual fill from the original SVG; possible secondary accent if it passes contrast checks. |
+| Base | White/Black | `#ffffff` / `#000000` | Direct visual fills; use for contrast, text, and accessibility where appropriate. |
 | Text | Ink | `#111827` or current foreground | Maintains readability and serious trust. |
 
-Recommendation: keep the current rose system, add warm cream/yarn-brown as supporting brand accents. Do not move to a one-note pink site.
+Correction note: the earlier rose/pink palette was an incorrect inference from current code and has been removed from this blueprint. Do not change runtime colors until the owner approves a logo-derived token update.
 
 ## Competitor Crawl Coverage
 
@@ -426,8 +429,7 @@ LyliShop blueprint:
 - [x] Crawled home, shop, category, product, blog, about, contact, tracking.
 - [x] Checked sitemap and robots.
 - [x] Extracted meta/canonical/schema signals for representative routes.
-- [x] Read LyliShop logo SVG and current CSS palette.
+- [x] Corrected logo source to the owner-provided original SVG and extracted only visual color attributes.
 - [x] Identified competitor strengths to learn.
 - [x] Identified competitor weaknesses LyliShop can improve.
 - [ ] Visual screenshot audit in browser, optional before final implementation.
-
