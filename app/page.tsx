@@ -494,15 +494,15 @@ function ContactSection() {
     },
   ];
   const productOptions = [
-    "Móc khóa Mini",
-    "Móc khóa Size S",
-    "Móc khóa Size M",
-    "Móc khóa Size L",
-    "Hoa len",
-    "Thú bông len",
-    "Khác",
+    { icon: "🧶", label: "Móc khóa Mini" },
+    { icon: "🔑", label: "Móc khóa Size S" },
+    { icon: "🎁", label: "Móc khóa Size M" },
+    { icon: "✨", label: "Móc khóa Size L" },
+    { icon: "🌷", label: "Hoa len" },
+    { icon: "🧸", label: "Thú bông len" },
+    { icon: "💬", label: "Khác" },
   ];
-  const colorOptions = ["💜 Tím Pastel", "🩷 Hồng Pastel", "💙 Xanh Pastel", "🤍 Trắng", "🤎 Kem", "🌈 Khác"];
+  const colorOptions = ["🟣 Tím Pastel", "🩷 Hồng Pastel", "💙 Xanh Pastel", "🤍 Trắng", "🤎 Kem", "🌈 Khác"];
 
   return (
     <section id="contact" className="scroll-mt-24 bg-white py-14 sm:py-20 lg:py-24">
@@ -616,16 +616,21 @@ function ContactSection() {
                 <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
                   {productOptions.map((option) => (
                     <label
-                      key={option}
-                      className="flex min-h-11 items-center gap-2 rounded-md border border-border/70 bg-white/75 px-3 py-2 text-sm shadow-sm transition hover:bg-white"
+                      key={option.label}
+                      className="group cursor-pointer"
                     >
                       <input
                         type="checkbox"
                         name="product"
-                        value={option}
-                        className="h-4 w-4 rounded border-border text-primary"
+                        value={option.label}
+                        className="peer sr-only"
                       />
-                      <span>{option}</span>
+                      <span className="flex min-h-20 flex-col justify-center gap-2 rounded-md border border-border/70 bg-white/75 px-4 py-3 text-sm shadow-sm transition hover:-translate-y-0.5 hover:border-primary/30 hover:bg-white hover:shadow-md peer-focus-visible:ring-2 peer-focus-visible:ring-primary/20 peer-checked:border-primary/40 peer-checked:bg-primary/10">
+                        <span className="text-xl" aria-hidden="true">
+                          {option.icon}
+                        </span>
+                        <span className="font-medium leading-snug">{option.label}</span>
+                      </span>
                     </label>
                   ))}
                 </div>
@@ -637,15 +642,17 @@ function ContactSection() {
                   {colorOptions.map((option) => (
                     <label
                       key={option}
-                      className="inline-flex min-h-10 items-center gap-2 rounded-full border border-border/70 bg-white/75 px-4 py-2 text-sm shadow-sm transition hover:bg-white"
+                      className="cursor-pointer"
                     >
                       <input
                         type="checkbox"
                         name="color"
                         value={option}
-                        className="h-4 w-4 rounded border-border text-primary"
+                        className="peer sr-only"
                       />
-                      <span>{option}</span>
+                      <span className="inline-flex min-h-10 items-center rounded-full border border-border/70 bg-white/75 px-4 py-2 text-sm shadow-sm transition hover:-translate-y-0.5 hover:border-primary/30 hover:bg-white hover:shadow-md peer-focus-visible:ring-2 peer-focus-visible:ring-primary/20 peer-checked:border-primary/40 peer-checked:bg-primary/10">
+                        {option}
+                      </span>
                     </label>
                   ))}
                 </div>
@@ -670,6 +677,9 @@ function ContactSection() {
                   Đặt hàng qua Zalo
                 </a>
               </Button>
+              <p className="text-sm leading-6 text-muted-foreground">
+                LyliShop sẽ phản hồi trong thời gian sớm nhất.
+              </p>
             </div>
           </Card>
         </div>
