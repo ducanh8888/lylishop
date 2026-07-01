@@ -249,7 +249,7 @@ export default function MocKhoaLenPage() {
                   <Link href="/products">Xem sản phẩm</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <Link href="/#order">Liên hệ đặt hàng</Link>
+                  <Link href="/#contact">Liên hệ đặt hàng</Link>
                 </Button>
               </div>
             </div>
@@ -335,7 +335,7 @@ export default function MocKhoaLenPage() {
                 </h2>
               </div>
               <Button asChild variant="outline">
-                <Link href="/#order">Nhắn shop tư vấn mẫu</Link>
+                <Link href="/#contact">Nhắn shop tư vấn mẫu</Link>
               </Button>
             </div>
 

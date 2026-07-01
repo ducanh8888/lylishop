@@ -424,7 +424,7 @@ const ABOUT_CARDS = [
 
 function AboutSection() {
   return (
-    <section id="about" className="bg-background py-14 sm:py-20 lg:py-24">
+    <section id="about" className="scroll-mt-24 bg-background py-14 sm:py-20 lg:py-24">
       <Container>
         <SectionTitle
           eyebrow="Giới thiệu"
@@ -494,7 +494,7 @@ function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="bg-white py-14 sm:py-20 lg:py-24">
+    <section id="contact" className="scroll-mt-24 bg-white py-14 sm:py-20 lg:py-24">
       <span id="order" className="sr-only" aria-hidden="true" />
       <Container>
         <SectionTitle

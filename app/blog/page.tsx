@@ -63,7 +63,7 @@ export default function BlogPage() {
           <Breadcrumbs
             items={[
               { label: "Trang chủ", href: "/" },
-              { label: "Cẩm nang" },
+              { label: "Tin tức" },
             ]}
             className="mb-6"
           />
@@ -76,7 +76,13 @@ export default function BlogPage() {
           />
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
             <Button asChild variant="outline">
-              <Link href="/">Về LyliShop</Link>
+              <Link href="/products">Xem cửa hàng</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/#about">Giới thiệu LyliShop</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/#contact">Liên hệ LyliShop</Link>
             </Button>
           </div>
         </Container>

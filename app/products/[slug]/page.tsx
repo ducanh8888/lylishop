@@ -126,16 +126,16 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <Breadcrumbs
             items={[
               { label: "Trang chủ", href: "/" },
-              { label: "Sản phẩm", href: "/products" },
+              { label: "Cửa hàng", href: "/products" },
               { label: product.name },
             ]}
             className="mb-5"
           />
           <div className="flex items-center justify-between gap-3">
             <Button asChild variant="ghost">
-              <Link href="/moc-khoa-len" aria-label="Quay lại bộ sưu tập móc khóa len">
+              <Link href="/products" aria-label="Quay lại cửa hàng LyliShop">
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                Móc khóa len
+                Cửa hàng
               </Link>
             </Button>
             <div className="hidden items-center gap-2 sm:flex">
@@ -316,6 +316,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <Link href="/moc-khoa-len">Cách chọn móc khóa len</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/blog">Tin tức quà handmade</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">

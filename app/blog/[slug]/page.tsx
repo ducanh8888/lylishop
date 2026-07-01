@@ -101,16 +101,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <Breadcrumbs
             items={[
               { label: "Trang chủ", href: "/" },
-              { label: "Cẩm nang", href: "/blog" },
+              { label: "Tin tức", href: "/blog" },
               { label: post.title },
             ]}
             className="mb-6"
           />
 
           <Button asChild variant="ghost">
-            <Link href="/blog" aria-label="Quay lại cẩm nang LyliShop">
+            <Link href="/blog" aria-label="Quay lại tin tức LyliShop">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-              Cẩm nang
+              Tin tức
             </Link>
           </Button>
 
@@ -209,6 +209,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {item.title}
               </Link>
             ))}
+          </div>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <Button asChild variant="outline">
+              <Link href="/products">Xem cửa hàng</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/#contact">Liên hệ LyliShop</Link>
+            </Button>
           </div>
         </Container>
       </section>

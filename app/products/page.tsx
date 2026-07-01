@@ -90,7 +90,7 @@ export default function ProductsPage() {
           <Breadcrumbs
             items={[
               { label: "Trang chủ", href: "/" },
-              { label: "Sản phẩm" },
+              { label: "Cửa hàng" },
             ]}
             className="mb-6"
           />
@@ -186,7 +186,7 @@ export default function ProductsPage() {
                   <Link href="/moc-khoa-len">Xem hướng dẫn chọn mẫu</Link>
                 </Button>
                 <Button asChild variant="outline">
-                  <Link href="/#order">Liên hệ đặt hàng</Link>
+                  <Link href="/#contact">Liên hệ đặt hàng</Link>
                 </Button>
               </div>
             </div>

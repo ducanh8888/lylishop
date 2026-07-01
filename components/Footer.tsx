@@ -7,10 +7,11 @@ import { Container } from "@/components/Container";
 
 const FOOTER_LINKS: Array<{ label: string; href: string }> = [
   { label: "Trang chủ", href: "/" },
-  { label: "Tin tức", href: "/blog" },
   { label: "Cửa hàng", href: "/products" },
+  { label: "Tin tức", href: "/blog" },
   { label: "Giới thiệu", href: "/#about" },
   { label: "Liên hệ", href: "/#contact" },
+  { label: "Móc khóa len", href: "/moc-khoa-len" },
 ];
 
 const POLICY_LINKS: Array<{ label: string; href: string }> = [
@@ -94,15 +95,29 @@ export function Footer() {
           <div>
             <h2 className="font-display text-sm font-semibold">Thông tin liên hệ</h2>
             <div className="mt-4 grid gap-3 text-sm leading-6 text-muted-foreground">
-              <p className="flex items-center gap-2 text-foreground/80">
+              <a
+                href={`tel:${SITE.phone}`}
+                className="flex items-center gap-2 text-foreground/80 hover:text-foreground"
+              >
                 <Phone className="h-4 w-4 text-primary" aria-hidden="true" />
                 {SITE.phone}
-              </p>
+              </a>
               <p>Email: Cập nhật sau</p>
               <p className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" aria-hidden="true" />
                 Google Maps: Cập nhật sau
               </p>
+              <div className="grid gap-1">
+                <a href={SITE.socials.facebook} target="_blank" rel="noreferrer" className="hover:text-foreground">
+                  Facebook LyliShop
+                </a>
+                <a href={SITE.socials.instagram} target="_blank" rel="noreferrer" className="hover:text-foreground">
+                  Instagram LyliShop
+                </a>
+                <a href={SITE.socials.zalo} target="_blank" rel="noreferrer" className="hover:text-foreground">
+                  Zalo LyliShop
+                </a>
+              </div>
               <p>Facebook, Instagram và Zalo là kênh liên hệ đặt hàng chính.</p>
             </div>
           </div>

@@ -1,14 +1,25 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, MessageCircle } from "lucide-react";
 
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-const NAV_LINKS: Array<{ label: string; href: string }> = [
-  { label: "Trang chủ", href: "/" },
-  { label: "Tin tức", href: "/blog" },
-  { label: "Cửa hàng", href: "/products" },
+const NAV_LINKS: Array<{
+  label: string;
+  href: string;
+  isActive?: (pathname: string) => boolean;
+}> = [
+  { label: "Trang chủ", href: "/", isActive: (pathname) => pathname === "/" },
+  {
+    label: "Cửa hàng",
+    href: "/products",
+    isActive: (pathname) => pathname.startsWith("/products") || pathname === "/moc-khoa-len",
+  },
+  { label: "Tin tức", href: "/blog", isActive: (pathname) => pathname.startsWith("/blog") },
   { label: "Giới thiệu", href: "/#about" },
   { label: "Liên hệ", href: "/#contact" },
 ];
@@ -21,18 +32,28 @@ const primaryAction =
   "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90";
 
 function NavLinks({ className }: { className?: string }) {
+  const pathname = usePathname();
+
   return (
     <ul className={cn("flex items-center gap-1", className)} aria-label="Điều hướng chính">
-      {NAV_LINKS.map((l) => (
-        <li key={l.href}>
-          <Link
-            href={l.href}
-            className="inline-flex h-9 items-center rounded-md px-3 text-sm font-medium text-foreground/80 transition hover:bg-accent hover:text-foreground"
-          >
-            {l.label}
-          </Link>
-        </li>
-      ))}
+      {NAV_LINKS.map((l) => {
+        const isActive = l.isActive?.(pathname) ?? false;
+
+        return (
+          <li key={l.href}>
+            <Link
+              href={l.href}
+              aria-current={isActive ? "page" : undefined}
+              className={cn(
+                "inline-flex h-9 items-center rounded-md px-3 text-sm font-medium text-foreground/80 transition hover:bg-accent hover:text-foreground",
+                isActive && "bg-accent text-foreground"
+              )}
+            >
+              {l.label}
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   );
 }
