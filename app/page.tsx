@@ -6,8 +6,10 @@ import {
   Camera,
   Gift,
   HeartHandshake,
+  Mail,
+  MapPin,
   MessageCircle,
-  PackageCheck,
+  Phone,
   Sparkles,
   Star,
   ThumbsUp,
@@ -101,7 +103,7 @@ const REVIEWS = [
 
 const FEATURED_ARTICLES = [
   {
-    title: "Móc khóa len handmade - Món quà nhỏ mang ý nghĩa lớn",
+    title: "Móc khóa len handmade – Món quà nhỏ mang ý nghĩa lớn",
     description:
       "Vì sao một món quà nhỏ, mềm tay và có thể chọn màu lại dễ gắn với kỷ niệm của người nhận.",
     date: "16/06/2026",
@@ -166,24 +168,24 @@ function ImagePlaceholder({
 
 function HeroSection() {
   return (
-    <section className="bg-gradient-to-b from-white to-background py-14 sm:py-20">
+    <section className="bg-gradient-to-b from-white to-background py-16 sm:py-20 lg:py-24">
       <Container>
-        <div className="grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
-          <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-white/80 px-4 py-2 text-sm font-medium text-foreground shadow-sm">
+        <div className="grid items-center gap-10 rounded-[28px] border border-border/70 bg-white/65 p-5 shadow-sm backdrop-blur-md sm:p-8 lg:grid-cols-[1.02fr_0.98fr] lg:p-10">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-sm">
               <Gift className="h-4 w-4 text-primary" aria-hidden="true" />
               Móc khóa len handmade, đặt qua tin nhắn
             </div>
 
-            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            <h1 className="mt-5 max-w-xl font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
               Móc khóa len handmade cute cho những món quà nhỏ có cảm xúc.
             </h1>
-            <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
               LyliShop làm phụ kiện len nhỏ xinh, có thể trao đổi màu sắc và đóng gói gọn gàng
               để bạn tặng bạn thân, người yêu hoặc tự thưởng cho mình.
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Button asChild size="lg">
                 <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
@@ -191,17 +193,25 @@ function HeroSection() {
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
-                  <ThumbsUp className="h-4 w-4" aria-hidden="true" />
-                  Facebook
-                </a>
+                <Link href="#categories">
+                  Xem danh mục
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                  <Camera className="h-4 w-4" aria-hidden="true" />
-                  Instagram
-                </a>
-              </Button>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3 text-sm text-muted-foreground">
+              <a href={SITE.socials.facebook} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-1.5 transition hover:text-foreground">
+                <ThumbsUp className="h-4 w-4 text-primary" aria-hidden="true" />
+                Facebook
+              </a>
+              <a href={SITE.socials.instagram} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-1.5 transition hover:text-foreground">
+                <Camera className="h-4 w-4 text-primary" aria-hidden="true" />
+                Instagram
+              </a>
+              <span className="inline-flex items-center rounded-full border border-border/70 bg-background/70 px-3 py-1.5">
+                Không checkout trên website
+              </span>
             </div>
           </div>
 
@@ -214,7 +224,7 @@ function HeroSection() {
               />
               <div className="grid gap-3 p-4 sm:grid-cols-3">
                 {["Handmade", "Chọn màu", "Gói quà"].map((item) => (
-                  <div key={item} className="rounded-md border border-border/70 bg-white/70 px-3 py-2 text-center text-sm font-medium">
+                  <div key={item} className="rounded-md border border-border/70 bg-white/70 px-3 py-2 text-center text-sm font-medium shadow-sm">
                     {item}
                   </div>
                 ))}
@@ -229,7 +239,7 @@ function HeroSection() {
 
 function CategorySection() {
   return (
-    <section id="categories" className="bg-background py-14 sm:py-20">
+    <section id="categories" className="bg-background py-14 sm:py-20 lg:py-24">
       <Container>
         <SectionTitle
           eyebrow="Danh mục sản phẩm"
@@ -237,17 +247,16 @@ function CategorySection() {
           description="Các nhóm sản phẩm được sắp xếp để bạn dễ chọn size, kiểu dáng và mục đích tặng."
         />
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {CATEGORY_ITEMS.map((category) => (
-            <Card key={category.title} className="group overflow-hidden bg-white/70 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
-              <ImagePlaceholder label={`Khung ảnh danh mục ${category.title}`} className="aspect-[4/3] rounded-b-none border-x-0 border-t-0" />
-              <div className="p-5">
-                <h3 className="font-display text-lg font-semibold tracking-tight">{category.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">{category.description}</p>
-                <Button asChild variant="outline" className="mt-5 w-full">
+            <Card key={category.title} className="group flex h-full flex-col overflow-hidden bg-white/75 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
+              <ImagePlaceholder label={`Khung ảnh danh mục ${category.title}`} className="aspect-[4/3] rounded-b-none border-x-0 border-t-0 xl:aspect-square" />
+              <div className="flex flex-1 flex-col p-4">
+                <h3 className="font-display text-base font-semibold leading-snug tracking-tight">{category.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">{category.description}</p>
+                <Button asChild variant="outline" size="sm" className="mt-4 w-full">
                   <Link href="/products">
                     Xem sản phẩm
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
               </div>
@@ -263,7 +272,7 @@ function FeaturedProductsSection() {
   const products = FEATURED_PRODUCTS.slice(0, 6);
 
   return (
-    <section id="featured" className="bg-white py-14 sm:py-20">
+    <section id="featured" className="bg-white py-14 sm:py-20 lg:py-24">
       <Container>
         <SectionTitle
           eyebrow="Sản phẩm bán chạy"
@@ -310,22 +319,22 @@ function FeaturedProductsSection() {
 
 function ReviewSection() {
   return (
-    <section id="reviews" className="bg-background py-14 sm:py-20">
+    <section id="reviews" className="bg-background py-14 sm:py-20 lg:py-24">
       <Container>
         <SectionTitle
           eyebrow="Đánh giá khách hàng"
-          title="Khu vực phản hồi sau khi xác nhận nội dung thật"
-          description="LyliShop chỉ hiển thị phản hồi đã được xác nhận, tránh tạo đánh giá giả hoặc gây hiểu nhầm."
+          title="Phản hồi thật sẽ được cập nhật rõ ràng"
+          description="Section review được giữ sẵn theo đúng hành trình mua hàng, nhưng nội dung chỉ dùng phản hồi đã được khách cho phép hiển thị."
         />
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {REVIEWS.map((review) => (
-            <Card key={review.name} className="bg-white/70 p-5 shadow-sm">
+            <Card key={review.name} className="flex h-full flex-col bg-white/75 p-5 shadow-sm">
               <div className="flex items-center gap-3">
                 <div
                   role="img"
                   aria-label={`Avatar placeholder của ${review.name}`}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-dashed border-primary/30 bg-background text-primary"
+                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-dashed border-primary/30 bg-background text-primary"
                 >
                   <HeartHandshake className="h-5 w-5" aria-hidden="true" />
                 </div>
@@ -339,7 +348,7 @@ function ReviewSection() {
                   <Star key={index} className="h-4 w-4 fill-current" aria-hidden="true" />
                 ))}
               </div>
-              <p className="mt-4 text-sm leading-6 text-muted-foreground">{review.content}</p>
+              <p className="mt-4 flex-1 text-sm leading-6 text-muted-foreground">{review.content}</p>
             </Card>
           ))}
         </div>
@@ -350,7 +359,7 @@ function ReviewSection() {
 
 function NewsSection() {
   return (
-    <section id="news" className="bg-white py-14 sm:py-20">
+    <section id="news" className="bg-white py-14 sm:py-20 lg:py-24">
       <Container>
         <SectionTitle
           eyebrow="Tin tức"
@@ -360,9 +369,9 @@ function NewsSection() {
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {FEATURED_ARTICLES.map((article) => (
-            <Card key={article.title} className="group overflow-hidden bg-background/70 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
+            <Card key={article.title} className="group flex h-full flex-col overflow-hidden bg-background/70 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
               <ImagePlaceholder label={`Khung ảnh bài viết ${article.title}`} className="aspect-[16/9] rounded-b-none border-x-0 border-t-0" />
-              <div className="p-5">
+              <div className="flex flex-1 flex-col p-5">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <CalendarDays className="h-4 w-4 text-primary" aria-hidden="true" />
                   <span>{article.date}</span>
@@ -370,8 +379,8 @@ function NewsSection() {
                 <h3 className="mt-3 font-display text-xl font-semibold leading-tight tracking-tight">
                   {article.title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">{article.description}</p>
-                <Button asChild variant="outline" className="mt-5">
+                <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{article.description}</p>
+                <Button asChild variant="outline" className="mt-5 w-fit">
                   <Link href={article.href}>
                     Đọc thêm
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -392,43 +401,149 @@ function NewsSection() {
   );
 }
 
-function ContactCtaSection() {
+const ABOUT_CARDS = [
+  {
+    title: "Sứ mệnh",
+    description:
+      "Tạo ra những món phụ kiện len nhỏ xinh, dễ tặng và có cảm giác được chuẩn bị riêng cho người nhận.",
+    icon: HeartHandshake,
+  },
+  {
+    title: "Giá trị cốt lõi",
+    description:
+      "Làm thủ công chỉn chu, tư vấn rõ ràng và giữ trải nghiệm đặt hàng nhẹ nhàng qua tin nhắn.",
+    icon: Sparkles,
+  },
+  {
+    title: "Định vị thương hiệu",
+    description:
+      "LyliShop là shop móc khóa len handmade dành cho người thích quà nhỏ, dễ thương và có ý nghĩa.",
+    icon: Gift,
+  },
+];
+
+function AboutSection() {
   return (
-    <section id="order" className="bg-background py-14 sm:py-20">
+    <section id="about" className="bg-background py-14 sm:py-20 lg:py-24">
       <Container>
-        <Card className="bg-white/75 p-6 shadow-sm sm:p-8">
-          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-                Liên hệ đặt hàng
-              </p>
-              <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-                Chọn mẫu xong, nhắn LyliShop để xác nhận màu và thời gian làm.
-              </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
-                Website chỉ giới thiệu sản phẩm. Đơn hàng được chốt qua Facebook, Zalo hoặc Instagram
-                sau khi shop xác nhận mẫu, giá và thông tin giao hàng.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <Button asChild size="lg">
-                <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
-                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                  Zalo
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
-                  Facebook
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                  Instagram
-                </a>
-              </Button>
-            </div>
-          </div>
+        <SectionTitle
+          eyebrow="Giới thiệu"
+          title="LyliShop làm những món quà len nhỏ để người nhận nhớ lâu hơn"
+          description="LyliShop tập trung vào móc khóa len handmade, hoa len và thú bông len nhỏ xinh. Mỗi sản phẩm được tư vấn qua tin nhắn để khách có thể chọn mẫu, màu và cách đóng gói phù hợp."
+        />
+
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {ABOUT_CARDS.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Card key={item.title} className="h-full bg-white/75 p-6 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <h3 className="mt-4 font-display text-lg font-semibold tracking-tight">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  {item.description}
+                </p>
+              </Card>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function ContactSection() {
+  const contactItems = [
+    {
+      label: "Facebook",
+      value: "Fanpage LyliShop",
+      href: SITE.socials.facebook,
+      icon: ThumbsUp,
+    },
+    {
+      label: "Instagram",
+      value: "@lylishopstr",
+      href: SITE.socials.instagram,
+      icon: Camera,
+    },
+    {
+      label: "Zalo",
+      value: SITE.phone,
+      href: SITE.socials.zalo,
+      icon: MessageCircle,
+    },
+    {
+      label: "Điện thoại",
+      value: SITE.phone,
+      href: `tel:${SITE.phone}`,
+      icon: Phone,
+    },
+    {
+      label: "Email",
+      value: "Cập nhật sau",
+      icon: Mail,
+    },
+    {
+      label: "Google Maps",
+      value: "Cập nhật sau",
+      icon: MapPin,
+    },
+  ];
+
+  return (
+    <section id="contact" className="bg-white py-14 sm:py-20 lg:py-24">
+      <span id="order" className="sr-only" aria-hidden="true" />
+      <Container>
+        <SectionTitle
+          eyebrow="Liên hệ"
+          title="Nhắn LyliShop qua kênh bạn tiện nhất"
+          description="Website chỉ giới thiệu sản phẩm. LyliShop tư vấn mẫu, màu, giá và thời gian hoàn thiện qua Facebook, Instagram hoặc Zalo."
+        />
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {contactItems.map((item) => {
+            const Icon = item.icon;
+            const content = (
+              <>
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <div>
+                  <h3 className="font-display text-base font-semibold">{item.label}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{item.value}</p>
+                </div>
+              </>
+            );
+
+            return item.href ? (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                className="flex min-h-24 items-center gap-4 rounded-lg border border-border/70 bg-background/70 p-5 shadow-sm transition hover:-translate-y-0.5 hover:bg-background hover:shadow-md"
+              >
+                {content}
+              </a>
+            ) : (
+              <div
+                key={item.label}
+                className="flex min-h-24 items-center gap-4 rounded-lg border border-border/70 bg-background/70 p-5 shadow-sm"
+              >
+                {content}
+              </div>
+            );
+          })}
+        </div>
+
+        <Card className="mt-8 bg-background/70 p-5 text-center shadow-sm">
+          <p className="text-sm leading-6 text-muted-foreground">
+            Không có giỏ hàng, không có checkout và không đặt hàng trực tiếp trên website.
+            Khách chọn mẫu rồi nhắn shop để được xác nhận thông tin trước khi làm.
+          </p>
         </Card>
       </Container>
     </section>
@@ -448,7 +563,8 @@ export default function HomePage() {
       <FeaturedProductsSection />
       <ReviewSection />
       <NewsSection />
-      <ContactCtaSection />
+      <AboutSection />
+      <ContactSection />
     </>
   );
 }

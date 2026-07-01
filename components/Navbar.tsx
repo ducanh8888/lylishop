@@ -10,7 +10,7 @@ const NAV_LINKS: Array<{ label: string; href: string }> = [
   { label: "Tin tức", href: "/blog" },
   { label: "Cửa hàng", href: "/products" },
   { label: "Giới thiệu", href: "/#about" },
-  { label: "Liên hệ", href: "/#order" },
+  { label: "Liên hệ", href: "/#contact" },
 ];
 
 const actionBase =
