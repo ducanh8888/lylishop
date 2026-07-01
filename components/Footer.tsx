@@ -1,31 +1,31 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Camera, MessageCircle, Music2, ThumbsUp } from "lucide-react";
+import { Camera, MapPin, MessageCircle, Phone, ThumbsUp } from "lucide-react";
 
 import { SITE } from "@/lib/site";
 import { Container } from "@/components/Container";
 
 const FOOTER_LINKS: Array<{ label: string; href: string }> = [
   { label: "Trang chủ", href: "/" },
-  { label: "Sản phẩm móc khóa len", href: "/products" },
-  { label: "Móc khóa len", href: "/moc-khoa-len" },
-  { label: "Mẫu nổi bật", href: "/#featured" },
-  { label: "Hình ảnh", href: "/#gallery" },
-  { label: "Câu hỏi thường gặp", href: "/#faq" },
-  { label: "Liên hệ đặt hàng", href: "/#order" },
+  { label: "Tin tức", href: "/blog" },
+  { label: "Cửa hàng", href: "/products" },
+  { label: "Giới thiệu", href: "/#about" },
+  { label: "Liên hệ", href: "/#order" },
 ];
 
 const POLICY_LINKS: Array<{ label: string; href: string }> = [
-  { label: "Chính sách bảo mật", href: "/privacy" },
+  { label: "Chính sách đổi trả", href: "/terms" },
+  { label: "Chính sách vận chuyển", href: "/terms" },
   { label: "Điều khoản", href: "/terms" },
+  { label: "Chính sách bảo mật", href: "/privacy" },
 ];
 
 export function Footer() {
   return (
     <footer className="border-t border-border/70 bg-background">
       <Container className="py-12">
-        <div className="grid gap-10 md:grid-cols-12">
-          <div className="md:col-span-5">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div>
             <Link href="/" className="flex items-center gap-2" aria-label="LyliShop homepage">
               <Image src={SITE.logo} alt="LyliShop logo" width={28} height={28} />
               <span className="font-display text-base font-semibold tracking-tight">{SITE.name}</span>
@@ -67,15 +67,15 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border/70 bg-background/70 text-foreground/80 shadow-sm transition hover:bg-accent hover:text-foreground"
-                aria-label="TikTok LyliShop"
+                aria-label="Google Maps LyliShop đang cập nhật"
               >
-                <Music2 className="h-4 w-4" />
+                <MapPin className="h-4 w-4" />
               </a>
             </div>
           </div>
 
-          <div className="md:col-span-3">
-            <h2 className="font-display text-sm font-semibold">Liên kết nhanh</h2>
+          <div>
+            <h2 className="font-display text-sm font-semibold">Danh mục</h2>
             <ul className="mt-4 grid gap-2">
               {FOOTER_LINKS.map((l) => (
                 <li key={l.href}>
@@ -87,7 +87,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-2">
+          <div>
             <h2 className="font-display text-sm font-semibold">Chính sách</h2>
             <ul className="mt-4 grid gap-2">
               {POLICY_LINKS.map((l) => (
@@ -100,13 +100,17 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-2">
-            <h2 className="font-display text-sm font-semibold">Liên hệ</h2>
-            <p className="mt-4 text-sm text-muted-foreground">Đặt hàng nhanh qua:</p>
-            <p className="mt-2 text-sm text-foreground/80">Zalo {SITE.phone}, Facebook, Instagram</p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Shop xác nhận mẫu, giá và thời gian làm trước khi chốt đơn.
-            </p>
+          <div>
+            <h2 className="font-display text-sm font-semibold">Thông tin liên hệ</h2>
+            <div className="mt-4 grid gap-3 text-sm text-muted-foreground">
+              <p className="flex items-center gap-2 text-foreground/80">
+                <Phone className="h-4 w-4 text-primary" aria-hidden="true" />
+                {SITE.phone}
+              </p>
+              <p>Email: Cập nhật sau</p>
+              <p>Google Maps: Cập nhật sau</p>
+              <p>Facebook, Instagram và Zalo là kênh liên hệ đặt hàng chính.</p>
+            </div>
           </div>
         </div>
 
