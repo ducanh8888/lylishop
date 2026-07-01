@@ -1,20 +1,40 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { Camera, MessageCircle, ThumbsUp } from "lucide-react";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container } from "@/components/Container";
 import { JsonLd } from "@/components/JsonLd";
-import { SectionHeading } from "@/components/SectionHeading";
-import { Badge } from "@/components/ui/badge";
+import { BlogCard } from "@/components/blog/BlogCard";
+import { BlogHero } from "@/components/blog/BlogHero";
+import { BlogSidebar } from "@/components/blog/BlogSidebar";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { BLOG_POSTS } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/schema";
 
 const PAGE_PATH = "/blog";
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
+
+const BLOG_TOPICS = [
+  {
+    title: "Quà tặng handmade",
+    description: "Gợi ý chọn món quà nhỏ, dễ thương và có cảm xúc riêng.",
+  },
+  {
+    title: "Phụ kiện len",
+    description: "Cách hiểu và chọn phụ kiện len phù hợp với người dùng hằng ngày.",
+  },
+  {
+    title: "Chăm sóc đồ len",
+    description: "Mẹo giữ phụ kiện handmade sạch, bền form và dùng lâu hơn.",
+  },
+  {
+    title: "Câu chuyện sản phẩm",
+    description: "Những góc nhìn nhẹ nhàng về ý nghĩa món quà thủ công.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Cảm hứng quà handmade nhỏ xinh",
@@ -58,7 +78,7 @@ export default function BlogPage() {
         ])}
       />
 
-      <section className="bg-gradient-to-b from-white to-rose-50 py-10 sm:py-14">
+      <section className="bg-gradient-to-b from-white to-background py-10 sm:py-14 lg:py-16">
         <Container>
           <Breadcrumbs
             items={[
@@ -68,83 +88,129 @@ export default function BlogPage() {
             className="mb-6"
           />
 
-          <SectionHeading
-            as="h1"
+          <BlogHero
             eyebrow="Cẩm nang LyliShop"
             title="Cảm hứng quà handmade nhỏ xinh"
             description="Những gợi ý nhẹ nhàng về quà handmade, phụ kiện len và cách chọn món quà có cảm xúc riêng."
+            primaryHref="#blog-posts"
+            primaryLabel="Đọc bài mới"
+            secondaryHref="#blog-topics"
+            secondaryLabel="Xem chủ đề"
           />
-          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button asChild variant="outline">
-              <Link href="/products">Xem cửa hàng</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/#about">Giới thiệu LyliShop</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/#contact">Liên hệ LyliShop</Link>
-            </Button>
+        </Container>
+      </section>
+
+      <section className="bg-background py-14 sm:py-20" aria-labelledby="blog-intro-title">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+            <div>
+              <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                Blog LyliShop
+              </p>
+              <h2
+                id="blog-intro-title"
+                className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl"
+              >
+                Một góc nhỏ để chọn quà handmade dễ hơn.
+              </h2>
+            </div>
+            <p className="text-sm leading-7 text-muted-foreground sm:text-base">
+              Blog tập trung vào cách chọn móc khóa len, quà handmade, phụ kiện len
+              và những mẹo giữ món quà nhỏ luôn xinh. Nội dung được viết ngắn, dễ đọc
+              và dẫn người mua về kênh liên hệ phù hợp khi cần tư vấn mẫu.
+            </p>
           </div>
         </Container>
       </section>
 
-      <section className="bg-background py-14 sm:py-20">
+      <section id="blog-topics" className="bg-white py-14 sm:py-20">
         <Container>
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {BLOG_POSTS.map((post) => (
-              <article
-                key={post.slug}
-                className="group flex h-full flex-col overflow-hidden rounded-lg border border-border/70 bg-white/70 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
-              >
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+              Danh mục bài viết
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+              Chọn chủ đề bạn đang quan tâm
+            </h2>
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {BLOG_TOPICS.map((topic) => (
+              <Card key={topic.title} className="h-full bg-background/70 p-5 shadow-sm">
+                <h3 className="font-display text-lg font-semibold tracking-tight">
+                  {topic.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  {topic.description}
+                </p>
                 <Link
-                  href={`/blog/${post.slug}`}
-                  className="relative block aspect-[4/3] overflow-hidden bg-gradient-to-b from-white to-rose-50"
-                  aria-label={`Đọc bài viết ${post.title}`}
+                  href="#blog-posts"
+                  className="mt-4 inline-flex text-sm font-medium text-primary hover:underline"
                 >
-                  <Image
-                    src={SITE.ogImage}
-                    alt="Cảm hứng quà handmade LyliShop"
-                    width={1200}
-                    height={630}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    loading="lazy"
-                    quality={58}
-                  />
-                  <div className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-foreground shadow-sm backdrop-blur">
-                    {post.readingTime}
-                  </div>
+                  Xem bài viết
                 </Link>
-
-                <div className="flex flex-1 flex-col p-5">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <BookOpen className="h-4 w-4 text-primary" aria-hidden="true" />
-                    <span>Cẩm nang handmade</span>
-                  </div>
-                  <h2 className="mt-3 font-display text-xl font-semibold leading-tight tracking-tight">
-                    <Link href={`/blog/${post.slug}`} className="hover:text-primary">
-                      {post.title}
-                    </Link>
-                  </h2>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{post.excerpt}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {post.keywords.slice(0, 3).map((keyword) => (
-                      <Badge key={keyword} variant="secondary">
-                        {keyword}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="mt-auto pt-5">
-                    <Button asChild variant="outline">
-                      <Link href={`/blog/${post.slug}`}>
-                        Đọc bài viết
-                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </article>
+              </Card>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      <section id="blog-posts" className="bg-background py-14 sm:py-20">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
+            <div>
+              <div className="mb-8">
+                <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                  Danh sách bài viết
+                </p>
+                <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                  Bài viết mới từ LyliShop
+                </h2>
+              </div>
+              <div className="grid gap-5 md:grid-cols-2">
+                {BLOG_POSTS.map((post) => (
+                  <BlogCard key={post.slug} post={post} />
+                ))}
+              </div>
+            </div>
+
+            <BlogSidebar posts={BLOG_POSTS} />
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-white py-14 sm:py-20">
+        <Container>
+          <div className="rounded-2xl border border-border/70 bg-rose-50/80 p-6 text-center shadow-sm sm:p-8">
+            <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+              Cần gợi ý quà?
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+              Nhắn LyliShop qua kênh bạn tiện nhất.
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+              Gửi shop dịp tặng, người nhận và màu bạn thích. LyliShop sẽ gợi ý mẫu
+              handmade phù hợp qua Facebook, Instagram hoặc Zalo.
+            </p>
+            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+              <Button asChild>
+                <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  Zalo
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
+                  <ThumbsUp className="h-4 w-4" aria-hidden="true" />
+                  Facebook
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
+                  <Camera className="h-4 w-4" aria-hidden="true" />
+                  Instagram
+                </a>
+              </Button>
+            </div>
           </div>
         </Container>
       </section>

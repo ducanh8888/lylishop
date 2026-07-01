@@ -1,13 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import {
+  ArrowLeft,
+  CalendarDays,
+  Camera,
+  Clock3,
+  MessageCircle,
+  Sparkles,
+  ThumbsUp,
+} from "lucide-react";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container } from "@/components/Container";
 import { JsonLd } from "@/components/JsonLd";
+import { BlogSidebar } from "@/components/blog/BlogSidebar";
+import { RelatedPosts } from "@/components/blog/RelatedPosts";
+import { formatBlogDate } from "@/components/blog/BlogCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import {
   BLOG_POSTS,
   getBlogPostBySlug,
@@ -96,7 +108,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         ])}
       />
 
-      <article className="bg-gradient-to-b from-white to-rose-50 py-10 sm:py-14">
+      <article className="bg-gradient-to-b from-white to-background py-10 sm:py-14 lg:py-16">
         <Container>
           <Breadcrumbs
             items={[
@@ -114,109 +126,140 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </Link>
           </Button>
 
-          <div className="mx-auto mt-6 max-w-3xl text-center">
-            <div className="flex flex-wrap justify-center gap-2">
-              {post.keywords.slice(0, 4).map((keyword) => (
-                <Badge key={keyword} variant="pink">
-                  {keyword}
-                </Badge>
-              ))}
+          <div className="mt-6 grid gap-8 rounded-2xl border border-border/70 bg-white/70 p-5 shadow-sm backdrop-blur-md sm:p-8 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
+            <div>
+              <div className="flex flex-wrap gap-2">
+                {post.keywords.slice(0, 4).map((keyword) => (
+                  <Badge key={keyword} variant="pink">
+                    {keyword}
+                  </Badge>
+                ))}
+              </div>
+              <h1 className="mt-5 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                {post.title}
+              </h1>
+              <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+                {post.excerpt}
+              </p>
+              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+                <span className="inline-flex items-center gap-2">
+                  <CalendarDays className="h-4 w-4 text-primary" aria-hidden="true" />
+                  Cập nhật {formatBlogDate(post.dateModified)}
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Clock3 className="h-4 w-4 text-primary" aria-hidden="true" />
+                  {post.readingTime}
+                </span>
+              </div>
             </div>
-            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-              {post.title}
-            </h1>
-            <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-              {post.excerpt}
-            </p>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Cập nhật {post.dateModified} · {post.readingTime}
-            </p>
+
+            <Card className="overflow-hidden bg-background/70 p-4 shadow-md">
+              <div
+                role="img"
+                aria-label={`Banner bài viết ${post.title}`}
+                className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-primary/25 bg-gradient-to-b from-white to-rose-50"
+              >
+                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/20 bg-white/80 text-primary shadow-sm">
+                  <Sparkles className="h-6 w-6" aria-hidden="true" />
+                </div>
+              </div>
+            </Card>
           </div>
         </Container>
       </article>
 
       <section className="bg-background py-14 sm:py-20">
         <Container>
-          <div className="mx-auto max-w-3xl space-y-9">
-            <nav
-              aria-label="Mục lục bài viết"
-              className="rounded-lg border border-border/70 bg-white/70 p-5 shadow-sm"
-            >
-              <p className="font-display text-sm font-semibold uppercase tracking-wider text-primary/90">
-                Mục lục bài viết
-              </p>
-              <div className="mt-4 grid gap-2">
-                {post.sections.map((section) => (
-                  <Link
-                    key={section.heading}
-                    href={`#${sectionId(section.heading)}`}
-                    className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition hover:bg-rose-50 hover:text-primary"
-                  >
-                    {section.heading}
-                  </Link>
-                ))}
-              </div>
-            </nav>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
+            <div className="space-y-9">
+              <nav
+                aria-label="Mục lục bài viết"
+                className="rounded-lg border border-border/70 bg-white/70 p-5 shadow-sm"
+              >
+                <p className="font-display text-sm font-semibold uppercase tracking-wider text-primary/90">
+                  Mục lục bài viết
+                </p>
+                <div className="mt-4 grid gap-2">
+                  {post.sections.map((section) => (
+                    <Link
+                      key={section.heading}
+                      href={`#${sectionId(section.heading)}`}
+                      className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition hover:bg-rose-50 hover:text-primary"
+                    >
+                      {section.heading}
+                    </Link>
+                  ))}
+                </div>
+              </nav>
 
-            {post.sections.map((section) => (
-              <section key={section.heading} id={sectionId(section.heading)} className="scroll-mt-24">
-                <h2 className="font-display text-2xl font-semibold tracking-tight">
-                  {section.heading}
-                </h2>
-                <div className="mt-4 space-y-4 text-base leading-8 text-muted-foreground">
-                  {section.body.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+              {post.sections.map((section) => (
+                <section key={section.heading} id={sectionId(section.heading)} className="scroll-mt-24">
+                  <h2 className="font-display text-2xl font-semibold tracking-tight">
+                    {section.heading}
+                  </h2>
+                  <div className="mt-4 space-y-4 text-base leading-8 text-muted-foreground">
+                    {section.body.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
+                </section>
+              ))}
+
+              <section className="rounded-lg border border-border/70 bg-rose-50/80 p-6 shadow-sm">
+                <h2 className="font-display text-xl font-semibold">Câu hỏi thường gặp</h2>
+                <div className="mt-4 divide-y divide-border/70">
+                  {post.faqs.map((item) => (
+                    <details key={item.question} className="group py-4 first:pt-0 last:pb-0">
+                      <summary className="cursor-pointer list-none font-medium marker:hidden [&::-webkit-details-marker]:hidden">
+                        {item.question}
+                      </summary>
+                      <p className="mt-2 text-sm leading-7 text-muted-foreground">{item.answer}</p>
+                    </details>
                   ))}
                 </div>
               </section>
-            ))}
+            </div>
 
-            <section className="rounded-lg border border-border/70 bg-rose-50 p-6">
-              <h2 className="font-display text-xl font-semibold">Câu hỏi thường gặp</h2>
-              <div className="mt-4 divide-y divide-border/70">
-                {post.faqs.map((item) => (
-                  <details key={item.question} className="group py-4 first:pt-0 last:pb-0">
-                    <summary className="cursor-pointer list-none font-medium marker:hidden [&::-webkit-details-marker]:hidden">
-                      {item.question}
-                    </summary>
-                    <p className="mt-2 text-sm leading-7 text-muted-foreground">{item.answer}</p>
-                  </details>
-                ))}
-              </div>
-            </section>
-
+            <BlogSidebar posts={BLOG_POSTS} currentSlug={post.slug} />
           </div>
         </Container>
       </section>
 
-      <section className="bg-background py-14 sm:py-20">
+      <RelatedPosts posts={relatedPosts} />
+
+      <section className="bg-white py-14 sm:py-20">
         <Container>
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="rounded-2xl border border-border/70 bg-rose-50/80 p-6 text-center shadow-sm sm:p-8">
             <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-              Đọc tiếp
+              Liên hệ LyliShop
             </p>
             <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-              Bài viết liên quan
+              Muốn xem mẫu handmade phù hợp với bài viết này?
             </h2>
-          </div>
-          <div className="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-3">
-            {relatedPosts.map((item) => (
-              <Link
-                key={item.slug}
-                href={`/blog/${item.slug}`}
-                className="rounded-lg border border-border/70 bg-white/70 p-4 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:text-primary hover:shadow-md"
-              >
-                {item.title}
-              </Link>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button asChild variant="outline">
-              <Link href="/products">Xem cửa hàng</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/#contact">Liên hệ LyliShop</Link>
-            </Button>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+              Nhắn LyliShop qua kênh bạn tiện nhất để được gợi ý mẫu, màu và cách
+              chọn quà handmade theo nhu cầu.
+            </p>
+            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+              <Button asChild>
+                <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  Zalo
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
+                  <ThumbsUp className="h-4 w-4" aria-hidden="true" />
+                  Facebook
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
+                  <Camera className="h-4 w-4" aria-hidden="true" />
+                  Instagram
+                </a>
+              </Button>
+            </div>
           </div>
         </Container>
       </section>
