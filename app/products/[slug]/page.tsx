@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ProductCard } from "@/components/ProductCard";
 
 const ORDER_STEPS = [
   {
@@ -359,16 +360,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </div>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {relatedProducts.map((item) => (
-                <Link
-                  key={item.slug}
-                  href={`/products/${item.slug}`}
-                  className="rounded-lg border border-border/70 bg-white/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-                >
-                  <span className="font-display text-base font-semibold">{item.name}</span>
-                  <span className="mt-2 block text-sm leading-6 text-muted-foreground">
-                    {item.shortDescription}
-                  </span>
-                </Link>
+                <ProductCard key={item.slug} product={item} />
               ))}
             </div>
           </section>
