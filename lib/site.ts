@@ -30,6 +30,7 @@ export const SITE = {
   twitterImage: "/twitter-card.png",
   logo: "/apple-touch-icon-lylishop-v3.png",
   phone: "0356839196",
+  email: "lylishopstr@gmail.com",
   google: {
     analyticsMeasurementId: "G-MJ7EP9BPQH",
     adsId: "AW-18205425232",

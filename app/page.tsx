@@ -459,19 +459,19 @@ function ContactSection() {
   const contactItems = [
     {
       label: "Facebook",
-      value: "Fanpage LyliShop",
+      value: "Theo dõi LyliShop.",
       href: SITE.socials.facebook,
       icon: ThumbsUp,
     },
     {
       label: "Instagram",
-      value: "@lylishopstr",
+      value: "Xem hình ảnh sản phẩm.",
       href: SITE.socials.instagram,
       icon: Camera,
     },
     {
       label: "Zalo",
-      value: SITE.phone,
+      value: "Tư vấn nhanh.",
       href: SITE.socials.zalo,
       icon: MessageCircle,
     },
@@ -483,15 +483,26 @@ function ContactSection() {
     },
     {
       label: "Email",
-      value: "Cập nhật sau",
+      value: SITE.email,
+      href: `mailto:${SITE.email}`,
       icon: Mail,
     },
     {
       label: "Google Maps",
-      value: "Cập nhật sau",
+      value: "Xem vị trí.",
       icon: MapPin,
     },
   ];
+  const productOptions = [
+    "Móc khóa Mini",
+    "Móc khóa Size S",
+    "Móc khóa Size M",
+    "Móc khóa Size L",
+    "Hoa len",
+    "Thú bông len",
+    "Khác",
+  ];
+  const colorOptions = ["💜 Tím Pastel", "🩷 Hồng Pastel", "💙 Xanh Pastel", "🤍 Trắng", "🤎 Kem", "🌈 Khác"];
 
   return (
     <section id="contact" className="scroll-mt-24 bg-white py-14 sm:py-20 lg:py-24">
@@ -499,52 +510,169 @@ function ContactSection() {
       <Container>
         <SectionTitle
           eyebrow="Liên hệ"
-          title="Nhắn LyliShop qua kênh bạn tiện nhất"
-          description="Website chỉ giới thiệu sản phẩm. LyliShop tư vấn mẫu, màu, giá và thời gian hoàn thiện qua Facebook, Instagram hoặc Zalo."
+          title="Liên hệ & Đặt hàng"
+          description="Bạn cần tư vấn hoặc muốn đặt móc khóa handmade theo yêu cầu? LyliShop luôn sẵn sàng hỗ trợ bạn qua các kênh liên hệ dưới đây."
         />
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {contactItems.map((item) => {
-            const Icon = item.icon;
-            const content = (
-              <>
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <div>
-                  <h3 className="font-display text-base font-semibold">{item.label}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{item.value}</p>
-                </div>
-              </>
-            );
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-[0.8fr_1.2fr]">
+          <Card className="h-full bg-background/70 p-5 shadow-sm sm:p-6">
+            <h3 className="font-display text-xl font-semibold tracking-tight">
+              Thông tin liên hệ
+            </h3>
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              {contactItems.map((item) => {
+                const Icon = item.icon;
+                const content = (
+                  <>
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-primary/10 text-primary">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <h4 className="font-display text-sm font-semibold leading-tight">
+                        {item.label}
+                      </h4>
+                      <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                        {item.value}
+                      </p>
+                    </div>
+                  </>
+                );
 
-            return item.href ? (
-              <a
-                key={item.label}
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                className="flex min-h-24 items-center gap-4 rounded-lg border border-border/70 bg-background/70 p-5 shadow-sm transition hover:-translate-y-0.5 hover:bg-background hover:shadow-md"
-              >
-                {content}
-              </a>
-            ) : (
-              <div
-                key={item.label}
-                className="flex min-h-24 items-center gap-4 rounded-lg border border-border/70 bg-background/70 p-5 shadow-sm"
-              >
-                {content}
+                return item.href ? (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                    className="flex min-h-32 flex-col gap-3 rounded-lg border border-border/70 bg-white/75 p-4 shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <div
+                    key={item.label}
+                    className="flex min-h-32 flex-col gap-3 rounded-lg border border-border/70 bg-white/75 p-4 shadow-sm"
+                  >
+                    {content}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-5 overflow-hidden rounded-lg border border-border/70 bg-white/75 shadow-sm">
+              <div className="border-b border-border/70 px-5 py-4">
+                <h4 className="font-display text-base font-semibold">Google Maps</h4>
               </div>
-            );
-          })}
-        </div>
+              <div
+                role="img"
+                aria-label="Khung placeholder Google Maps LyliShop"
+                className="flex min-h-[300px] items-center justify-center bg-gradient-to-b from-white to-rose-50 p-6 text-center"
+              >
+                <p className="max-w-xs text-sm leading-6 text-muted-foreground">
+                  Tại đây sẽ hiển thị bản đồ cửa hàng.
+                </p>
+              </div>
+            </div>
+          </Card>
 
-        <Card className="mt-8 bg-background/70 p-5 text-center shadow-sm">
-          <p className="text-sm leading-6 text-muted-foreground">
-            Không có giỏ hàng, không có checkout và không đặt hàng trực tiếp trên website.
-            Khách chọn mẫu rồi nhắn shop để được xác nhận thông tin trước khi làm.
-          </p>
-        </Card>
+          <Card className="h-full bg-background/70 p-5 shadow-sm sm:p-6">
+            <h3 className="font-display text-xl font-semibold tracking-tight">
+              Đặt hàng nhanh
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              Form này chỉ giúp bạn chuẩn bị thông tin trước khi nhắn LyliShop qua Zalo.
+              Website không lưu dữ liệu và không xử lý thanh toán.
+            </p>
+
+            <div className="mt-6 grid gap-5">
+              <div className="grid gap-2">
+                <label htmlFor="contact-name" className="text-sm font-medium">
+                  Họ và tên
+                </label>
+                <input
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  placeholder="Nhập tên của bạn"
+                  className="h-11 rounded-md border border-input bg-white px-4 text-sm shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
+                />
+              </div>
+
+              <div className="grid gap-2">
+                <label htmlFor="contact-phone" className="text-sm font-medium">
+                  Số điện thoại
+                </label>
+                <input
+                  id="contact-phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="Nhập số điện thoại"
+                  className="h-11 rounded-md border border-input bg-white px-4 text-sm shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
+                />
+              </div>
+
+              <fieldset className="grid gap-3">
+                <legend className="text-sm font-medium">Sản phẩm muốn đặt</legend>
+                <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                  {productOptions.map((option) => (
+                    <label
+                      key={option}
+                      className="flex min-h-11 items-center gap-2 rounded-md border border-border/70 bg-white/75 px-3 py-2 text-sm shadow-sm transition hover:bg-white"
+                    >
+                      <input
+                        type="checkbox"
+                        name="product"
+                        value={option}
+                        className="h-4 w-4 rounded border-border text-primary"
+                      />
+                      <span>{option}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              <fieldset className="grid gap-3">
+                <legend className="text-sm font-medium">Màu sắc yêu thích</legend>
+                <div className="flex flex-wrap gap-2">
+                  {colorOptions.map((option) => (
+                    <label
+                      key={option}
+                      className="inline-flex min-h-10 items-center gap-2 rounded-full border border-border/70 bg-white/75 px-4 py-2 text-sm shadow-sm transition hover:bg-white"
+                    >
+                      <input
+                        type="checkbox"
+                        name="color"
+                        value={option}
+                        className="h-4 w-4 rounded border-border text-primary"
+                      />
+                      <span>{option}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              <div className="grid gap-2">
+                <label htmlFor="contact-note" className="text-sm font-medium">
+                  Ghi chú
+                </label>
+                <textarea
+                  id="contact-note"
+                  name="note"
+                  placeholder="Ví dụ: số lượng, dịp tặng, màu muốn phối, ngày cần nhận..."
+                  rows={5}
+                  className="resize-none rounded-md border border-input bg-white px-4 py-3 text-sm leading-6 shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
+                />
+              </div>
+
+              <Button asChild size="lg" className="w-full sm:w-fit">
+                <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  Đặt hàng qua Zalo
+                </a>
+              </Button>
+            </div>
+          </Card>
+        </div>
       </Container>
     </section>
   );

@@ -102,7 +102,9 @@ export function Footer() {
                 <Phone className="h-4 w-4 text-primary" aria-hidden="true" />
                 {SITE.phone}
               </a>
-              <p>Email: Cập nhật sau</p>
+              <a href={`mailto:${SITE.email}`} className="hover:text-foreground">
+                Email: {SITE.email}
+              </a>
               <p className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" aria-hidden="true" />
                 Google Maps: Cập nhật sau
