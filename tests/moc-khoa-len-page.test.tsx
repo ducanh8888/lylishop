@@ -18,6 +18,10 @@ describe("MocKhoaLenPage", () => {
       "href",
       "#moc-khoa-len-la-gi"
     );
+    expect(screen.getByRole("link", { name: /gợi ý chọn nhanh/i })).toHaveAttribute(
+      "href",
+      "#goi-y-chon-nhanh"
+    );
     expect(screen.getByRole("link", { name: /cách chọn móc khóa len/i })).toHaveAttribute(
       "href",
       "#cach-chon-moc-khoa-len"
@@ -29,6 +33,13 @@ describe("MocKhoaLenPage", () => {
     expect(screen.getByRole("link", { name: /phân loại móc khóa len/i })).toHaveAttribute(
       "href",
       "#phan-loai-moc-khoa-len"
+    );
+    expect(
+      screen.getByRole("heading", { name: /chọn móc khóa len theo nhu cầu/i })
+    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /xem set đồng giá/i })).toHaveAttribute(
+      "href",
+      "/products/set-moc-khoa-len-10-mau-mix"
     );
 
     for (const product of PRODUCTS) {

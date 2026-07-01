@@ -14,6 +14,24 @@ import { Badge } from "@/components/ui/badge";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
+const ORDER_STEPS = [
+  {
+    title: "Chọn mẫu, màu và số lượng",
+    description:
+      "Bạn gửi mẫu đang xem, màu mong muốn, size và số lượng cần đặt để shop kiểm tra nhanh.",
+  },
+  {
+    title: "Shop xác nhận trước khi làm",
+    description:
+      "LyliShop báo lại giá theo kích thước, thời gian hoàn thiện và phí giao hàng dự kiến.",
+  },
+  {
+    title: "Chốt đơn qua tin nhắn",
+    description:
+      "Sau khi thống nhất mẫu, shop mới bắt đầu làm và cập nhật thông tin giao hàng cho bạn.",
+  },
+];
+
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
@@ -252,6 +270,38 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   </p>
                 </div>
               ) : null}
+
+              <div className="mt-6 rounded-xl border border-border/70 bg-white/60 p-5 shadow-sm backdrop-blur-md">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                      Quy trình đặt hàng
+                    </p>
+                    <h2 className="mt-1 font-display text-lg font-semibold text-foreground">
+                      Đặt {product.name} qua tin nhắn trong 3 bước
+                    </h2>
+                  </div>
+                  <Badge variant="pink">Shop xác nhận trước khi làm</Badge>
+                </div>
+
+                <ol className="mt-5 grid gap-4 sm:grid-cols-3">
+                  {ORDER_STEPS.map((step, index) => (
+                    <li key={step.title} className="flex gap-3">
+                      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-sm font-semibold text-primary">
+                        {index + 1}
+                      </span>
+                      <span>
+                        <span className="block text-sm font-medium text-foreground">
+                          {step.title}
+                        </span>
+                        <span className="mt-1 block text-sm leading-6 text-muted-foreground">
+                          {step.description}
+                        </span>
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg">

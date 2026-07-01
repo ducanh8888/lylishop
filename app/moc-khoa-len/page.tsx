@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Gift, Palette, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Gift,
+  Palette,
+  ShieldCheck,
+  ShoppingBag,
+  Users,
+} from "lucide-react";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container } from "@/components/Container";
@@ -38,6 +46,7 @@ const KEYWORDS = [
 
 const PILLAR_NAV = [
   { href: "#moc-khoa-len-la-gi", label: "Móc khóa len là gì" },
+  { href: "#goi-y-chon-nhanh", label: "Gợi ý chọn nhanh" },
   { href: "#cach-chon-moc-khoa-len", label: "Cách chọn móc khóa len" },
   { href: "#moc-khoa-len-lam-qua", label: "Móc khóa len làm quà" },
   { href: "#phan-loai-moc-khoa-len", label: "Phân loại móc khóa len" },
@@ -97,6 +106,33 @@ const useCases = [
     title: "Đặt theo màu và chi tiết riêng",
     description:
       "Có thể tùy chỉnh màu len, phối màu tai/thân/hoa hoặc thêm chi tiết nhỏ theo sở thích.",
+  },
+];
+
+const quickChoiceGuides = [
+  {
+    icon: Gift,
+    title: "Tặng bạn bè hoặc người thương",
+    description:
+      "Ưu tiên mẫu nhỏ xinh, màu dễ thương và có thể đóng gói gọn để trao quà ngay.",
+    href: "/products/set-moc-khoa-len-6-mau-qua-tang",
+    cta: "Xem mẫu làm quà",
+  },
+  {
+    icon: ShoppingBag,
+    title: "Treo balo, túi xách mỗi ngày",
+    description:
+      "Chọn form gọn, khoen chắc và màu dễ phối để dùng thường xuyên khi đi học, đi làm.",
+    href: "/products/set-moc-khoa-len-6-mau-cute",
+    cta: "Xem mẫu mini",
+  },
+  {
+    icon: Users,
+    title: "Đặt theo nhóm hoặc số lượng",
+    description:
+      "Chọn nhóm đồng giá từ 45k để dễ thống nhất ngân sách, màu sắc và số lượng.",
+    href: "/products/set-moc-khoa-len-10-mau-mix",
+    cta: "Xem set đồng giá",
   },
 ];
 
@@ -283,6 +319,52 @@ export default function MocKhoaLenPage() {
               </Link>
               {" "}để chọn mẫu và nhắn shop xác nhận màu, size, thời gian làm.
             </p>
+          </div>
+
+          <div
+            id="goi-y-chon-nhanh"
+            className="mx-auto mt-8 max-w-5xl scroll-mt-24 rounded-xl border border-border/70 bg-rose-50/70 p-5 shadow-sm"
+          >
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                  Gợi ý chọn nhanh
+                </p>
+                <h2 className="mt-1 font-display text-xl font-semibold tracking-tight text-foreground">
+                  Chọn móc khóa len theo nhu cầu của bạn
+                </h2>
+              </div>
+              <Button asChild variant="outline">
+                <Link href="/#order">Nhắn shop tư vấn mẫu</Link>
+              </Button>
+            </div>
+
+            <div className="mt-5 grid gap-4 lg:grid-cols-3">
+              {quickChoiceGuides.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <article
+                    key={item.title}
+                    className="rounded-lg border border-border/70 bg-white/80 p-4 shadow-sm"
+                  >
+                    <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
+                    <h3 className="mt-3 font-display text-base font-semibold">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                      {item.description}
+                    </p>
+                    <Link
+                      href={item.href}
+                      className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                    >
+                      {item.cta}
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  </article>
+                );
+              })}
+            </div>
           </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
