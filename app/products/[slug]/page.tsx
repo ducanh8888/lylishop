@@ -345,13 +345,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <Link href="/products">Xem thêm sản phẩm</Link>
+                  <Link href="/products">Xem thêm móc khóa len</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <Link href="/moc-khoa-len">Cách chọn móc khóa len</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <Link href="/blog">Tin tức quà handmade</Link>
+                  <Link href="/blog">Đọc thêm về quà handmade</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
@@ -423,8 +423,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </Card>
 
               {relatedBlogPosts.length > 0 ? (
-                <Card className="bg-white/70 p-5 shadow-sm">
-                  <h3 className="font-display text-lg font-semibold">Đọc thêm</h3>
+                <Card
+                  aria-labelledby="product-related-posts-title"
+                  className="bg-white/70 p-5 shadow-sm"
+                >
+                  <h3 id="product-related-posts-title" className="font-display text-lg font-semibold">
+                    Đọc thêm về móc khóa len handmade
+                  </h3>
                   <div className="mt-4 grid gap-3">
                     {relatedBlogPosts.map((post) => (
                       <Link

@@ -165,7 +165,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         ])}
       />
 
-      <article className="bg-gradient-to-b from-white to-background py-10 sm:py-14 lg:py-16">
+      <section
+        aria-labelledby="blog-post-title"
+        className="bg-gradient-to-b from-white to-background py-10 sm:py-14 lg:py-16"
+      >
         <Container>
           <Breadcrumbs
             items={[
@@ -192,7 +195,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </Badge>
                 ))}
               </div>
-              <h1 className="mt-5 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              <h1
+                id="blog-post-title"
+                className="mt-5 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl"
+              >
                 {post.title}
               </h1>
               <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
@@ -223,7 +229,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </Card>
           </div>
         </Container>
-      </article>
+      </section>
 
       <section className="bg-background py-14 sm:py-20">
         <Container>
@@ -253,10 +259,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
               <BlogContent sections={post.sections} />
 
-              <section className="rounded-xl border border-border/70 bg-white/75 p-5 shadow-sm">
-                <p className="font-display text-sm font-semibold uppercase tracking-wider text-primary/90">
+              <section
+                aria-labelledby="blog-context-links-title"
+                className="rounded-xl border border-border/70 bg-white/75 p-5 shadow-sm"
+              >
+                <h2
+                  id="blog-context-links-title"
+                  className="font-display text-sm font-semibold uppercase tracking-wider text-primary/90"
+                >
                   Gợi ý đọc tiếp
-                </p>
+                </h2>
                 <div className="mt-3 grid gap-3 text-sm leading-7 text-muted-foreground">
                   <p>
                     Nếu bạn muốn đối chiếu bài viết với sản phẩm thực tế, hãy{" "}
@@ -317,7 +329,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button asChild variant="outline">
-                <Link href="/products">Xem bộ sưu tập</Link>
+                <Link href="/products">Xem móc khóa len handmade</Link>
               </Button>
               <Button asChild variant="outline">
                 <Link href="/moc-khoa-len">Cẩm nang móc khóa len</Link>

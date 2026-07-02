@@ -399,18 +399,19 @@ export default function MocKhoaLenPage() {
               </div>
               <div className="mt-5 grid gap-3 md:grid-cols-2">
                 {RELATED_BLOG_POSTS.map((post) => (
-                  <Link
+                  <article
                     key={post.slug}
-                    href={`/blog/${post.slug}`}
                     className="rounded-lg border border-border/70 bg-background/70 p-4 text-sm leading-6 transition hover:border-primary/30 hover:bg-rose-50"
                   >
-                    <span className="font-display text-base font-semibold text-foreground">
-                      {post.title}
-                    </span>
-                    <span className="mt-2 block text-muted-foreground">
+                    <h3 className="font-display text-base font-semibold text-foreground">
+                      <Link href={`/blog/${post.slug}`} className="hover:text-primary">
+                        {post.title}
+                      </Link>
+                    </h3>
+                    <p className="mt-2 text-muted-foreground">
                       {post.excerpt}
-                    </span>
-                  </Link>
+                    </p>
+                  </article>
                 ))}
               </div>
             </div>

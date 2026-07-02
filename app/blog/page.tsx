@@ -115,8 +115,11 @@ export default function BlogPage() {
               </h2>
             </div>
             <p className="text-sm leading-7 text-muted-foreground sm:text-base">
-              Blog tập trung vào cách chọn móc khóa len, quà handmade, phụ kiện len
-              và những mẹo giữ món quà nhỏ luôn xinh. Nội dung được viết ngắn, dễ đọc
+              Blog tập trung vào{" "}
+              <Link href="/moc-khoa-len" className="font-medium text-primary hover:underline">
+                cách chọn móc khóa len
+              </Link>
+              , quà handmade, phụ kiện len và những mẹo giữ món quà nhỏ luôn xinh. Nội dung được viết ngắn, dễ đọc
               và dẫn người mua về kênh liên hệ phù hợp khi cần tư vấn mẫu.
             </p>
           </div>
