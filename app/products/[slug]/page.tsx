@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Camera, MessageCircle, PackageCheck, Ruler, ThumbsUp } from "lucide-react";
 
 import { PRODUCTS, getProductBySlug, getRelatedProducts } from "@/lib/products";
+import { BLOG_POSTS } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { formatVnd } from "@/lib/format";
 import { breadcrumbJsonLd, faqJsonLd, productJsonLd } from "@/lib/schema";
@@ -33,6 +34,53 @@ const ORDER_STEPS = [
       "Sau khi thống nhất mẫu, shop mới bắt đầu làm và cập nhật thông tin giao hàng cho bạn.",
   },
 ];
+
+function normalizeText(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[đĐ]/g, "d")
+    .toLowerCase();
+}
+
+function getSearchTerms(value: string) {
+  const ignored = new Set([
+    "cho",
+    "cua",
+    "cac",
+    "voi",
+    "the",
+    "hang",
+    "handmade",
+    "lylishop",
+  ]);
+
+  return normalizeText(value)
+    .split(/[^a-z0-9]+/)
+    .filter((term) => term.length > 2 && !ignored.has(term));
+}
+
+function getRelatedBlogPosts(product: NonNullable<ReturnType<typeof getProductBySlug>>, limit = 2) {
+  const productTerms = getSearchTerms(
+    [product.name, product.category, product.shortDescription, ...product.tags, ...product.benefits].join(" ")
+  );
+
+  return BLOG_POSTS.map((post, index) => {
+    const postText = normalizeText(
+      [post.title, post.excerpt, post.description, ...post.keywords].join(" ")
+    );
+    const score = productTerms.reduce(
+      (total, term) => total + (postText.includes(term) ? 1 : 0),
+      0
+    );
+
+    return { post, score, index };
+  })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, limit)
+    .map((item) => item.post);
+}
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -88,6 +136,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = getProductBySlug(slug);
   if (!product) notFound();
   const relatedProducts = getRelatedProducts(product);
+  const relatedBlogPosts = getRelatedBlogPosts(product);
   const productImages = product.images ?? [product.image];
   const thumbnailImages = productImages.slice(1);
   const productFaqs = [
@@ -372,6 +421,23 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   ))}
                 </ol>
               </Card>
+
+              {relatedBlogPosts.length > 0 ? (
+                <Card className="bg-white/70 p-5 shadow-sm">
+                  <h3 className="font-display text-lg font-semibold">Đọc thêm</h3>
+                  <div className="mt-4 grid gap-3">
+                    {relatedBlogPosts.map((post) => (
+                      <Link
+                        key={post.slug}
+                        href={`/blog/${post.slug}`}
+                        className="rounded-md border border-border/70 bg-background/60 p-3 text-sm font-medium leading-6 transition hover:border-primary/30 hover:bg-rose-50 hover:text-primary"
+                      >
+                        {post.title}
+                      </Link>
+                    ))}
+                  </div>
+                </Card>
+              ) : null}
             </div>
           </div>
         </Container>

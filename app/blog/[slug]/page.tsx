@@ -26,6 +26,7 @@ import {
   BLOG_POSTS,
   getBlogPostBySlug,
 } from "@/lib/blog";
+import { PRODUCTS } from "@/lib/products";
 import { SITE } from "@/lib/site";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/schema";
 
@@ -41,6 +42,58 @@ function sectionId(value: string) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+}
+
+function normalizeText(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[đĐ]/g, "d")
+    .toLowerCase();
+}
+
+function getPillarAnchor(post: { title: string; keywords: string[] }) {
+  const text = normalizeText(`${post.title} ${post.keywords.join(" ")}`);
+
+  if (text.includes("bao quan") || text.includes("ben")) {
+    return "xem thêm cách chọn móc khóa len dùng lâu hơn";
+  }
+
+  if (text.includes("sinh nhat") || text.includes("tang") || text.includes("qua")) {
+    return "tham khảo thêm các gợi ý móc khóa len làm quà";
+  }
+
+  if (text.includes("handmade")) {
+    return "tìm hiểu thêm về móc khóa len handmade";
+  }
+
+  return "xem thêm cẩm nang móc khóa len";
+}
+
+function getRelevantProduct(post: { title: string; excerpt: string; keywords: string[] }) {
+  const text = normalizeText(`${post.title} ${post.excerpt} ${post.keywords.join(" ")}`);
+
+  const scoredProducts = PRODUCTS.map((product, index) => {
+    const productText = normalizeText(
+      [product.name, product.category, product.shortDescription, ...product.tags].join(" ")
+    );
+    let score = 0;
+
+    if (text.includes("qua") && productText.includes("qua")) score += 5;
+    if (text.includes("sinh nhat") && productText.includes("qua")) score += 4;
+    if (text.includes("ban gai") && productText.includes("cute")) score += 3;
+    if (text.includes("hoa") && productText.includes("hoa")) score += 4;
+    if (text.includes("dau") && productText.includes("dau")) score += 4;
+    if (text.includes("tho") && productText.includes("tho")) score += 4;
+    if (text.includes("phu kien") && productText.includes("phu kien")) score += 3;
+    if (text.includes("bao quan") || text.includes("ben")) score += product.benefits.length;
+
+    return { product, score, index };
+  })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || a.index - b.index);
+
+  return scoredProducts[0]?.product;
 }
 
 export async function generateMetadata({
@@ -88,6 +141,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const url = `${SITE.url}/blog/${post.slug}`;
   const relatedPosts = BLOG_POSTS.filter((item) => item.slug !== post.slug).slice(0, 3);
+  const relevantProduct = getRelevantProduct(post);
+  const pillarAnchor = getPillarAnchor(post);
 
   return (
     <>
@@ -198,6 +253,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
               <BlogContent sections={post.sections} />
 
+              <section className="rounded-xl border border-border/70 bg-white/75 p-5 shadow-sm">
+                <p className="font-display text-sm font-semibold uppercase tracking-wider text-primary/90">
+                  Gợi ý đọc tiếp
+                </p>
+                <div className="mt-3 grid gap-3 text-sm leading-7 text-muted-foreground">
+                  <p>
+                    Nếu bạn muốn đối chiếu bài viết với sản phẩm thực tế, hãy{" "}
+                    <Link href="/moc-khoa-len" className="font-medium text-primary hover:underline">
+                      {pillarAnchor}
+                    </Link>
+                    {" "}trước khi chọn mẫu.
+                  </p>
+                  {relevantProduct ? (
+                    <p>
+                      Với nhu cầu gần với nội dung này, bạn cũng có thể xem mẫu{" "}
+                      <Link
+                        href={`/products/${relevantProduct.slug}`}
+                        className="font-medium text-primary hover:underline"
+                      >
+                        {relevantProduct.name}
+                      </Link>
+                      {" "}để hình dung kiểu dáng, chất liệu và cách liên hệ đặt hàng.
+                    </p>
+                  ) : null}
+                </div>
+              </section>
+
               <section className="rounded-xl border border-border/70 bg-rose-50/80 p-6 shadow-sm sm:p-7">
                 <h2 className="font-display text-xl font-semibold">Câu hỏi thường gặp</h2>
                 <div className="mt-5 divide-y divide-border/70">
@@ -233,7 +315,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               Nhắn LyliShop qua kênh bạn tiện nhất để được gợi ý mẫu, màu và cách
               chọn quà handmade theo nhu cầu.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button asChild variant="outline">
+                <Link href="/products">Xem bộ sưu tập</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/moc-khoa-len">Cẩm nang móc khóa len</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/#contact">Liên hệ tư vấn</Link>
+              </Button>
               <Button asChild>
                 <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />

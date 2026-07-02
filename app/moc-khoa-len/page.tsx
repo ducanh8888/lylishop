@@ -17,6 +17,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { BLOG_POSTS } from "@/lib/blog";
 import { PRODUCTS } from "@/lib/products";
 import { SITE } from "@/lib/site";
 import {
@@ -156,6 +157,14 @@ const trustSignals = [
       "Đơn hàng được gói gọn gàng, sạch đẹp, phù hợp gửi thẳng cho người nhận hoặc tự tay trao quà.",
   },
 ];
+
+const RELATED_BLOG_POSTS = BLOG_POSTS.filter((post) =>
+  post.keywords.some((keyword) =>
+    ["móc", "len", "handmade", "quà", "phụ kiện"].some((term) =>
+      keyword.toLowerCase().includes(term)
+    )
+  )
+).slice(0, 4);
 
 export const metadata: Metadata = {
   title: "Móc khóa len handmade cute, dễ thương làm quà",
@@ -372,6 +381,40 @@ export default function MocKhoaLenPage() {
               <ProductCard key={product.slug} product={product} />
             ))}
           </div>
+
+          {RELATED_BLOG_POSTS.length > 0 ? (
+            <div className="mt-12 rounded-xl border border-border/70 bg-white/70 p-5 shadow-sm sm:p-6">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                    Tìm hiểu thêm
+                  </p>
+                  <h2 className="mt-1 font-display text-xl font-semibold tracking-tight">
+                    Bài viết liên quan về quà handmade và phụ kiện len
+                  </h2>
+                </div>
+                <Button asChild variant="outline">
+                  <Link href="/blog">Xem cẩm nang LyliShop</Link>
+                </Button>
+              </div>
+              <div className="mt-5 grid gap-3 md:grid-cols-2">
+                {RELATED_BLOG_POSTS.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="rounded-lg border border-border/70 bg-background/70 p-4 text-sm leading-6 transition hover:border-primary/30 hover:bg-rose-50"
+                  >
+                    <span className="font-display text-base font-semibold text-foreground">
+                      {post.title}
+                    </span>
+                    <span className="mt-2 block text-muted-foreground">
+                      {post.excerpt}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </Container>
       </section>
 

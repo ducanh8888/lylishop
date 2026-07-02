@@ -312,6 +312,15 @@ function FeaturedProductsSection() {
             </Card>
           ))}
         </div>
+
+        <div className="mt-8 text-center">
+          <Button asChild variant="outline">
+            <Link href="/moc-khoa-len">
+              Tìm hiểu cách chọn móc khóa len
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </Button>
+        </div>
       </Container>
     </section>
   );
