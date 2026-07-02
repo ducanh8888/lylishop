@@ -168,7 +168,7 @@ export default function BlogPage() {
               </div>
               <div className="grid gap-5 md:grid-cols-2">
                 {BLOG_POSTS.map((post) => (
-                  <BlogCard key={post.slug} post={post} />
+                  <BlogCard key={post.slug} post={post} headingLevel="h3" />
                 ))}
               </div>
             </div>

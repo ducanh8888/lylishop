@@ -202,7 +202,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <Badge variant="pink">{product.category}</Badge>
                 <Badge variant="secondary">Đóng gói làm quà</Badge>
               </div>
-              <h2 className="sr-only">Thông tin sản phẩm</h2>
               <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
                 {product.name}
               </h1>
@@ -391,7 +390,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div className="mx-auto mt-8 max-w-3xl divide-y divide-border/70 rounded-2xl border border-border/70 bg-background/70 p-5 shadow-sm">
             {productFaqs.map((item) => (
               <details key={item.id} className="group py-4 first:pt-0 last:pb-0">
-                <summary className="cursor-pointer list-none font-display text-base font-semibold marker:hidden [&::-webkit-details-marker]:hidden">
+                <summary className="cursor-pointer list-none rounded-md font-display text-base font-semibold marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background [&::-webkit-details-marker]:hidden">
                   {item.question}
                 </summary>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.answer}</p>

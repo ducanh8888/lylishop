@@ -20,7 +20,7 @@ export function FaqSection() {
               key={it.id}
               className="group border-b border-border/70 py-4 first:pt-0 last:border-b-0 last:pb-0"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-sm font-medium text-foreground marker:hidden [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-md text-left text-sm font-medium text-foreground marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background [&::-webkit-details-marker]:hidden">
                 <span>{it.question}</span>
                 <ChevronDown
                   className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180"
