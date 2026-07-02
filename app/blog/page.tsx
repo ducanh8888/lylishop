@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BLOG_POSTS } from "@/lib/blog";
 import { SITE } from "@/lib/site";
-import { breadcrumbJsonLd } from "@/lib/schema";
+import { blogJsonLd, breadcrumbJsonLd } from "@/lib/schema";
 
 const PAGE_PATH = "/blog";
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
@@ -71,6 +71,15 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <>
+      <JsonLd
+        data={blogJsonLd({
+          name: "Cảm hứng quà handmade nhỏ xinh",
+          description:
+            "Các bài viết cảm hứng về quà handmade, phụ kiện len và cách giữ món quà nhỏ luôn xinh.",
+          url: PAGE_URL,
+          posts: BLOG_POSTS,
+        })}
+      />
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", url: SITE.url },

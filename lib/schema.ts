@@ -1,5 +1,6 @@
 import { SITE } from "@/lib/site";
 import type { Product } from "@/lib/products";
+import type { BlogPost } from "@/lib/blog";
 import type { FaqItem } from "@/lib/faq";
 
 const organizationId = `${SITE.url}/#organization`;
@@ -95,6 +96,14 @@ function productUrl(product: Product) {
   return `${SITE.url}/products/${product.slug}`;
 }
 
+function productSku(product: Product) {
+  return `LYLI-${product.slug.toUpperCase().replace(/[^A-Z0-9]+/g, "-")}`;
+}
+
+function blogPostUrl(post: BlogPost) {
+  return `${SITE.url}/blog/${post.slug}`;
+}
+
 function productOfferJsonLd(product: Product) {
   const url = productUrl(product);
 
@@ -114,6 +123,7 @@ function productListItemJsonLd(product: Product) {
     "@type": "Product",
     "@id": `${url}#product`,
     name: product.name,
+    sku: productSku(product),
     description: product.shortDescription,
     url,
     image: [`${SITE.url}${product.image.src}`],
@@ -135,6 +145,7 @@ export function productJsonLd(product: Product) {
     "@type": "Product",
     "@id": `${url}#product`,
     name: product.name,
+    sku: productSku(product),
     description: product.longDescription,
     url,
     image: images.map((image) => `${SITE.url}${image.src}`),
@@ -195,6 +206,53 @@ export function collectionPageJsonLd({
         item: productListItemJsonLd(p),
       })),
     },
+  } as const;
+}
+
+export function blogJsonLd({
+  name,
+  description,
+  url,
+  posts,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  posts: BlogPost[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${url}#blog`,
+    name,
+    description,
+    url,
+    inLanguage: "vi-VN",
+    isPartOf: {
+      "@id": websiteId,
+    },
+    publisher: {
+      "@id": organizationId,
+    },
+    blogPost: posts.map((post) => {
+      const postUrl = blogPostUrl(post);
+
+      return {
+        "@type": "BlogPosting",
+        "@id": `${postUrl}#article`,
+        headline: post.title,
+        description: post.description,
+        url: postUrl,
+        datePublished: post.datePublished,
+        dateModified: post.dateModified,
+        author: {
+          "@id": organizationId,
+        },
+        publisher: {
+          "@id": organizationId,
+        },
+      };
+    }),
   } as const;
 }
 
