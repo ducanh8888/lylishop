@@ -56,10 +56,24 @@ export default function TermsPage() {
               Shop sẽ gửi mã vận đơn và thông tin theo dõi khi có.
             </p>
 
+            <h2>Đổi trả và chỉnh sửa</h2>
+            <p>
+              Vì sản phẩm được làm thủ công và có thể tùy chỉnh theo yêu cầu, LyliShop sẽ trao đổi kỹ mẫu, màu
+              và chi tiết trước khi bắt đầu làm. Nếu sản phẩm giao đến bị lỗi do quá trình hoàn thiện hoặc sai
+              thông tin đã xác nhận qua tin nhắn, bạn hãy liên hệ shop sớm để được hỗ trợ kiểm tra và đề xuất
+              phương án phù hợp.
+            </p>
+
             <h2>Đặt hàng</h2>
             <p>
               Đơn hàng được đặt qua tin nhắn Instagram, TikTok, Facebook hoặc Zalo. Đơn được xác
               nhận khi hai bên thống nhất mẫu, giá và thông tin nhận hàng qua tin nhắn.
+            </p>
+
+            <h2>Thời gian phản hồi</h2>
+            <p>
+              LyliShop ưu tiên phản hồi qua Zalo, Facebook và Instagram. Nếu cần tư vấn gấp về mẫu, màu hoặc
+              thời gian nhận hàng, bạn có thể gửi kèm ảnh mẫu, số lượng và ngày cần nhận để shop kiểm tra nhanh hơn.
             </p>
           </div>
         </article>

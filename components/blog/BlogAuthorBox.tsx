@@ -20,7 +20,7 @@ export function BlogAuthorBox({
           <div>
             <p className="font-display text-base font-semibold text-foreground">LyliShop Team</p>
             <p className="mt-1 text-sm leading-6 text-muted-foreground">
-              Nội dung được biên soạn bởi LyliShop để giúp bạn chọn quà handmade dễ hơn.
+              Nội dung được LyliShop biên soạn từ quá trình tư vấn chọn mẫu, phối màu, đóng gói quà và hướng dẫn khách dùng phụ kiện len handmade hằng ngày.
             </p>
           </div>
         </div>

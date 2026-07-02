@@ -82,22 +82,25 @@ const CATEGORY_ITEMS = [
 
 const REVIEWS = [
   {
-    name: "Khách hàng LyliShop",
-    date: "Cập nhật sau",
+    name: "Phản hồi sau khi nhận hàng",
+    date: "Đang tổng hợp từ phản hồi thật",
+    status: "Chưa công bố đánh giá sao",
     content:
-      "Khu vực này dành cho phản hồi thật của khách hàng sau khi shop xác nhận quyền hiển thị.",
+      "LyliShop chỉ hiển thị review khi khách đã đồng ý cho phép dùng nội dung hoặc hình ảnh. Shop không tự tạo đánh giá giả để làm đẹp website.",
   },
   {
-    name: "Khách đặt quà",
-    date: "Cập nhật sau",
+    name: "Trải nghiệm tư vấn",
+    date: "Đang chờ nội dung đã xác nhận",
+    status: "Minh bạch nguồn phản hồi",
     content:
-      "Review về chất lượng, đóng gói và trải nghiệm tư vấn sẽ được thêm bằng nội dung đã được xác nhận.",
+      "Các phản hồi về tư vấn mẫu, chọn màu, đóng gói và thời gian chuẩn bị sẽ được cập nhật bằng nội dung thật từ kênh Facebook, Instagram hoặc Zalo.",
   },
   {
-    name: "Khách chọn màu riêng",
-    date: "Cập nhật sau",
+    name: "Hình ảnh khách gửi",
+    date: "Cần quyền hiển thị trước khi đăng",
+    status: "Ưu tiên quyền riêng tư",
     content:
-      "LyliShop sẽ cập nhật phản hồi thật để người mua mới có thêm căn cứ trước khi liên hệ đặt hàng.",
+      "Với ảnh sản phẩm khách đã nhận, LyliShop sẽ che thông tin cá nhân và chỉ đăng khi khách đồng ý. Đây là cách shop giữ phần social proof đáng tin hơn.",
   },
 ];
 
@@ -352,10 +355,9 @@ function ReviewSection() {
                   <p className="text-xs text-muted-foreground">{review.date}</p>
                 </div>
               </div>
-              <div className="mt-4 flex gap-1 text-primary" aria-label="5 trên 5 sao">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Star key={index} className="h-4 w-4 fill-current" aria-hidden="true" />
-                ))}
+              <div className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-1.5 text-xs font-medium text-muted-foreground" aria-label={review.status}>
+                <Star className="h-4 w-4 text-primary" aria-hidden="true" />
+                <span>{review.status}</span>
               </div>
               <p className="mt-4 flex-1 text-sm leading-6 text-muted-foreground">{review.content}</p>
             </Card>
@@ -430,6 +432,24 @@ const ABOUT_CARDS = [
   },
 ];
 
+const HANDMADE_PROCESS = [
+  {
+    title: "Trao đổi mẫu",
+    description:
+      "LyliShop hỏi rõ mẫu, tone màu, dịp tặng và số lượng để tránh làm sai mong muốn của khách.",
+  },
+  {
+    title: "Móc và hoàn thiện",
+    description:
+      "Sản phẩm được móc thủ công, chỉnh chi tiết nhỏ, gắn khoen và kiểm tra form trước khi đóng gói.",
+  },
+  {
+    title: "Kiểm tra, đóng gói",
+    description:
+      "Shop kiểm tra lại sản phẩm, gói gọn theo phong cách quà tặng và xác nhận thông tin giao hàng qua tin nhắn.",
+  },
+];
+
 function AboutSection() {
   return (
     <section id="about" className="scroll-mt-24 bg-background py-14 sm:py-20 lg:py-24">
@@ -476,6 +496,30 @@ function AboutSection() {
             </div>
           </Card>
         </div>
+
+        <Card className="mt-8 bg-white/75 p-6 shadow-sm sm:p-7">
+          <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+            Quy trình thực hiện
+          </p>
+          <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight">
+            Quy trình handmade tại LyliShop
+          </h3>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
+            Mỗi đơn được chuẩn bị theo tin nhắn trao đổi với khách, từ chọn màu đến kiểm tra thành phẩm.
+            Quy trình này giúp người mua biết rõ shop đang làm gì trước khi chốt đơn qua mạng xã hội.
+          </p>
+          <ol className="mt-6 grid gap-4 md:grid-cols-3">
+            {HANDMADE_PROCESS.map((step, index) => (
+              <li key={step.title} className="rounded-lg border border-border/70 bg-background/70 p-4">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-sm font-semibold text-primary">
+                  {index + 1}
+                </span>
+                <h4 className="mt-3 font-display text-base font-semibold">{step.title}</h4>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{step.description}</p>
+              </li>
+            ))}
+          </ol>
+        </Card>
 
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {ABOUT_CARDS.map((item) => {
@@ -565,7 +609,7 @@ function ContactSection() {
     },
     {
       label: "Google Maps",
-      value: "Xem vị trí.",
+      value: "Shop hiện tư vấn và chốt đơn online.",
       icon: MapPin,
     },
   ];
@@ -645,7 +689,7 @@ function ContactSection() {
                 className="flex min-h-[300px] items-center justify-center bg-gradient-to-b from-white to-rose-50 p-6 text-center"
               >
                 <p className="max-w-xs text-sm leading-6 text-muted-foreground">
-                  Tại đây sẽ hiển thị bản đồ cửa hàng.
+                  LyliShop hiện chốt đơn online qua Facebook, Instagram và Zalo. Khung bản đồ sẽ được thay bằng địa chỉ công khai khi shop có điểm nhận/gửi phù hợp.
                 </p>
               </div>
             </div>
@@ -756,7 +800,7 @@ function ContactSection() {
                 </a>
               </Button>
               <p className="text-sm leading-6 text-muted-foreground">
-                LyliShop sẽ phản hồi trong thời gian sớm nhất.
+                LyliShop sẽ phản hồi sớm nhất qua kênh bạn chọn; nếu cần gấp, hãy ưu tiên Zalo hoặc điện thoại.
               </p>
             </div>
           </Card>

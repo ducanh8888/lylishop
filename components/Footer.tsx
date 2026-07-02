@@ -107,7 +107,7 @@ export function Footer() {
               </a>
               <p className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" aria-hidden="true" />
-                Google Maps: Cập nhật sau
+                LyliShop hiện tư vấn và chốt đơn online; bản đồ sẽ cập nhật khi có điểm nhận/gửi công khai.
               </p>
               <div className="grid gap-1">
                 <a href={SITE.socials.facebook} target="_blank" rel="noreferrer" className="hover:text-foreground">
@@ -120,7 +120,7 @@ export function Footer() {
                   Zalo LyliShop
                 </a>
               </div>
-              <p>Facebook, Instagram và Zalo là kênh liên hệ đặt hàng chính.</p>
+              <p>Facebook, Instagram và Zalo là kênh liên hệ đặt hàng chính. Shop thường phản hồi sớm nhất qua Zalo hoặc điện thoại.</p>
             </div>
           </div>
         </div>

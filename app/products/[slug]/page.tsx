@@ -35,6 +35,13 @@ const ORDER_STEPS = [
   },
 ];
 
+const CARE_TIPS = [
+  "Cầm vào khoen kim loại khi tháo khỏi túi hoặc balo, hạn chế kéo mạnh phần thân len.",
+  "Nếu bám bụi nhẹ, dùng khăn khô mềm hoặc chổi lông mềm để làm sạch bề mặt.",
+  "Tránh ngâm nước lâu, vắt mạnh hoặc để sản phẩm bị đè nặng trong balo quá lâu.",
+  "Khi không sử dụng, nên treo ở nơi khô thoáng để sản phẩm giữ form tốt hơn.",
+];
+
 function normalizeText(value: string) {
   return value
     .normalize("NFD")
@@ -392,6 +399,24 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </div>
                 <ul className="mt-4 grid gap-2 text-sm leading-6 text-muted-foreground">
                   {product.benefits.slice(0, 3).map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+
+              <Card className="bg-white/70 p-5 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <PackageCheck className="h-5 w-5 text-primary" aria-hidden="true" />
+                  <h3 className="font-display text-lg font-semibold">Lưu ý sử dụng & bảo quản</h3>
+                </div>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                  Móc khóa len handmade bền hơn khi được dùng nhẹ tay và giữ khô thoáng. LyliShop khuyên bạn lưu ý:
+                </p>
+                <ul className="mt-4 grid gap-2 text-sm leading-6 text-muted-foreground">
+                  {CARE_TIPS.map((item) => (
                     <li key={item} className="flex items-start gap-2">
                       <span className="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-primary" />
                       <span>{item}</span>

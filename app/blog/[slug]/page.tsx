@@ -237,6 +237,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <div className="space-y-10">
               <BlogAuthorBox dateModified={post.dateModified} readingTime={post.readingTime} />
 
+              <Card className="bg-white/75 p-5 shadow-sm">
+                <p className="font-display text-sm font-semibold uppercase tracking-wider text-primary/90">
+                  Kinh nghiệm từ LyliShop
+                </p>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                  Các gợi ý trong bài được đặt trong bối cảnh tư vấn sản phẩm handmade: chọn màu theo người nhận,
+                  kiểm tra độ chắc của khoen, giữ form len khi sử dụng và chuẩn bị quà gọn gàng trước khi gửi.
+                  Với trường hợp cần mẫu riêng, LyliShop luôn khuyên khách trao đổi trước qua tin nhắn để xác nhận
+                  chi tiết thay vì đặt hàng vội.
+                </p>
+              </Card>
+
               <nav
                 aria-label="Mục lục bài viết"
                 className="rounded-xl border border-border/70 bg-white/75 p-5 shadow-sm"
