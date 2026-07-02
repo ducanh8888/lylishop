@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -7,7 +8,6 @@ import {
   Camera,
   Clock3,
   MessageCircle,
-  Sparkles,
   ThumbsUp,
 } from "lucide-react";
 
@@ -217,14 +217,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
 
             <Card className="overflow-hidden bg-background/70 p-4 shadow-md">
-              <div
-                role="img"
-                aria-label={`Banner bài viết ${post.title}`}
-                className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-primary/25 bg-gradient-to-b from-white to-rose-50"
-              >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/20 bg-white/80 text-primary shadow-sm">
-                  <Sparkles className="h-6 w-6" aria-hidden="true" />
-                </div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-primary/10 bg-gradient-to-b from-white to-rose-50">
+                <Image
+                  src={post.image.src}
+                  alt={post.image.alt}
+                  width={post.image.width}
+                  height={post.image.height}
+                  className="h-full w-full object-cover"
+                  priority
+                  fetchPriority="high"
+                  quality={75}
+                  sizes="(max-width: 1024px) 100vw, 520px"
+                />
               </div>
             </Card>
           </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Camera, MessageCircle, Sparkles, ThumbsUp } from "lucide-react";
+import { ArrowRight, Camera, MessageCircle, ThumbsUp } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -66,6 +67,47 @@ const PRODUCT_CATEGORIES = [
     description: "Dáng mềm, dễ thương, hợp người thích phụ kiện handmade.",
   },
 ];
+
+const SHOP_HERO_IMAGE = {
+  src: "/images/homepage/lylishop-hero-handmade-keychains.webp",
+  alt: "Nhieu mau moc khoa len handmade cua LyliShop",
+  width: 1200,
+  height: 960,
+} as const;
+
+const PRODUCT_CATEGORY_IMAGES = [
+  {
+    src: "/images/categories/moc-khoa-mini.webp",
+    alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
+    width: 900,
+    height: 900,
+  },
+  {
+    src: "/images/categories/moc-khoa-size-s.webp",
+    alt: "Moc khoa len size S nhieu mau de thuong",
+    width: 900,
+    height: 900,
+  },
+  {
+    src: "/images/categories/moc-khoa-size-m.webp",
+    alt: "Moc khoa len size M handmade tren khay tre",
+    width: 900,
+    height: 900,
+  },
+  null,
+  {
+    src: "/images/categories/hoa-len.webp",
+    alt: "Bo hoa len handmade nhieu mau",
+    width: 900,
+    height: 900,
+  },
+  {
+    src: "/images/categories/thu-bong-len.webp",
+    alt: "Thu bong len handmade mau hong",
+    width: 900,
+    height: 900,
+  },
+] as const;
 
 export default function ProductsPage() {
   return (
@@ -148,14 +190,18 @@ export default function ProductsPage() {
             </div>
 
             <Card className="overflow-hidden bg-background/70 p-4 shadow-md">
-              <div
-                role="img"
-                aria-label="Khung ảnh hero cửa hàng LyliShop"
-                className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-primary/25 bg-gradient-to-b from-white to-rose-50"
-              >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/20 bg-white/80 text-primary shadow-sm">
-                  <Sparkles className="h-6 w-6" aria-hidden="true" />
-                </div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-primary/10 bg-gradient-to-b from-white to-rose-50">
+                <Image
+                  src={SHOP_HERO_IMAGE.src}
+                  alt={SHOP_HERO_IMAGE.alt}
+                  width={SHOP_HERO_IMAGE.width}
+                  height={SHOP_HERO_IMAGE.height}
+                  className="h-full w-full object-cover"
+                  priority
+                  fetchPriority="high"
+                  quality={75}
+                  sizes="(max-width: 1024px) 100vw, 520px"
+                />
               </div>
               <div className="grid gap-3 pt-4 sm:grid-cols-3">
                 <div className="rounded-md border border-border/70 bg-white/75 px-3 py-2 text-center shadow-sm">
@@ -195,7 +241,10 @@ export default function ProductsPage() {
           </div>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-            {PRODUCT_CATEGORIES.map((category) => (
+            {PRODUCT_CATEGORIES.map((category, index) => {
+              const image = PRODUCT_CATEGORY_IMAGES[index];
+
+              return (
               <Card
                 key={category.title}
                 className="group flex h-full flex-col overflow-hidden bg-white/75 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg"
@@ -204,11 +253,26 @@ export default function ProductsPage() {
                   href="#product-grid"
                   className="flex h-full flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
-                  <div className="flex aspect-[4/3] items-center justify-center border-b border-border/70 bg-gradient-to-b from-white to-rose-50 xl:aspect-square">
-                    <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-primary/20 bg-background/80 font-display text-lg font-semibold text-primary shadow-sm">
-                      {category.label}
-                    </span>
-                  </div>
+                  {image ? (
+                    <div className="relative aspect-[4/3] overflow-hidden border-b border-border/70 bg-gradient-to-b from-white to-rose-50 xl:aspect-square">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        width={image.width}
+                        height={image.height}
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 16vw"
+                        loading="lazy"
+                        quality={55}
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex aspect-[4/3] items-center justify-center border-b border-border/70 bg-gradient-to-b from-white to-rose-50 xl:aspect-square">
+                      <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-primary/20 bg-background/80 font-display text-lg font-semibold text-primary shadow-sm">
+                        {category.label}
+                      </span>
+                    </div>
+                  )}
                   <div className="flex flex-1 flex-col p-4">
                     <h3 className="font-display text-base font-semibold leading-snug tracking-tight">
                       {category.title}
@@ -223,7 +287,8 @@ export default function ProductsPage() {
                   </div>
                 </Link>
               </Card>
-            ))}
+              );
+            })}
           </div>
         </Container>
       </section>

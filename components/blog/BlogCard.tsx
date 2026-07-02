@@ -24,6 +24,12 @@ export function BlogCard({
   headingLevel?: "h2" | "h3";
 }) {
   const Heading = headingLevel;
+  const image = post.image ?? {
+    src: SITE.ogImage,
+    alt: post.title,
+    width: 1200,
+    height: 630,
+  };
 
   return (
     <Card className="group flex h-full flex-col overflow-hidden bg-white/75 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
@@ -33,10 +39,10 @@ export function BlogCard({
         aria-label={`Đọc bài viết ${post.title}`}
       >
         <Image
-          src={SITE.ogImage}
-          alt={post.title}
-          width={1200}
-          height={630}
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           loading="lazy"

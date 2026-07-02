@@ -36,6 +36,13 @@ const BLOG_TOPICS = [
   },
 ];
 
+const BLOG_HERO_IMAGE = {
+  src: "/images/og/lylishop-blog-og.webp",
+  alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
+  width: 1200,
+  height: 630,
+} as const;
+
 export const metadata: Metadata = {
   title: "Cảm hứng quà handmade nhỏ xinh",
   description:
@@ -105,6 +112,8 @@ export default function BlogPage() {
             primaryLabel="Đọc bài mới"
             secondaryHref="#blog-topics"
             secondaryLabel="Xem chủ đề"
+            image={BLOG_HERO_IMAGE}
+            priority
           />
         </Container>
       </section>

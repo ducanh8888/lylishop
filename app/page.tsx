@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -79,6 +80,70 @@ const CATEGORY_ITEMS = [
     description: "Dáng mềm, dễ thương, hợp người thích phụ kiện handmade.",
   },
 ];
+
+const CATEGORY_IMAGES = [
+  {
+    src: "/images/categories/moc-khoa-mini.webp",
+    alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
+    width: 900,
+    height: 900,
+  },
+  {
+    src: "/images/categories/moc-khoa-size-s.webp",
+    alt: "Moc khoa len size S nhieu mau de thuong",
+    width: 900,
+    height: 900,
+  },
+  {
+    src: "/images/categories/moc-khoa-size-m.webp",
+    alt: "Moc khoa len size M handmade tren khay tre",
+    width: 900,
+    height: 900,
+  },
+  null,
+  {
+    src: "/images/categories/hoa-len.webp",
+    alt: "Bo hoa len handmade nhieu mau",
+    width: 900,
+    height: 900,
+  },
+  {
+    src: "/images/categories/thu-bong-len.webp",
+    alt: "Thu bong len handmade mau hong",
+    width: 900,
+    height: 900,
+  },
+] as const;
+
+const HOMEPAGE_IMAGES = {
+  hero: {
+    src: "/images/homepage/lylishop-hero-handmade-keychains.webp",
+    alt: "Nhieu mau moc khoa len handmade cua LyliShop",
+    width: 1200,
+    height: 960,
+  },
+  about: {
+    src: "/images/homepage/lylishop-about-handmade-workshop.webp",
+    alt: "Nhieu mau moc khoa len mini duoc chuan bi tai LyliShop",
+    width: 1200,
+    height: 900,
+  },
+} as const;
+
+const FEATURED_ARTICLE_IMAGES = [
+  {
+    src: "/images/blog/moc-khoa-mini-hang-tang-lylishop.webp",
+    alt: "Nhieu mau moc khoa len handmade lam qua tang nho",
+    width: 1200,
+    height: 900,
+  },
+  {
+    src: "/images/blog/hoa-len-bo-hoa-handmade.webp",
+    alt: "Bo hoa len handmade dung lam qua tang",
+    width: 1200,
+    height: 900,
+  },
+] as const;
 
 const REVIEWS = [
   {
@@ -221,10 +286,19 @@ function HeroSection() {
           <div className="relative">
             <div className="absolute -inset-4 rounded-[28px] border border-primary/10 bg-white/40" />
             <Card className="relative overflow-hidden bg-white/75 p-4 shadow-lg backdrop-blur-md">
-              <ImagePlaceholder
-                label="Khung ảnh hero LyliShop dành cho hình móc khóa len handmade"
-                className="aspect-[5/4]"
-              />
+              <div className="relative aspect-[5/4] overflow-hidden rounded-lg border border-primary/10 bg-gradient-to-b from-white to-rose-50">
+                <Image
+                  src={HOMEPAGE_IMAGES.hero.src}
+                  alt={HOMEPAGE_IMAGES.hero.alt}
+                  width={HOMEPAGE_IMAGES.hero.width}
+                  height={HOMEPAGE_IMAGES.hero.height}
+                  className="h-full w-full object-cover"
+                  priority
+                  fetchPriority="high"
+                  quality={75}
+                  sizes="(max-width: 1024px) 100vw, 560px"
+                />
+              </div>
               <div className="grid gap-3 p-4 sm:grid-cols-3">
                 {["Handmade", "Chọn màu", "Gói quà"].map((item) => (
                   <div key={item} className="rounded-md border border-border/70 bg-white/70 px-3 py-2 text-center text-sm font-medium shadow-sm">
@@ -251,9 +325,27 @@ function CategorySection() {
         />
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-          {CATEGORY_ITEMS.map((category) => (
+          {CATEGORY_ITEMS.map((category, index) => {
+            const image = CATEGORY_IMAGES[index];
+
+            return (
             <Card key={category.title} className="group flex h-full flex-col overflow-hidden bg-white/75 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
-              <ImagePlaceholder label={`Khung ảnh danh mục ${category.title}`} className="aspect-[4/3] rounded-b-none border-x-0 border-t-0 xl:aspect-square" />
+              {image ? (
+                <div className="relative aspect-[4/3] overflow-hidden border-b border-border/70 bg-gradient-to-b from-white to-rose-50 xl:aspect-square">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 16vw"
+                    loading="lazy"
+                    quality={55}
+                  />
+                </div>
+              ) : (
+                <ImagePlaceholder label={`Khung ảnh danh mục ${category.title}`} className="aspect-[4/3] rounded-b-none border-x-0 border-t-0 xl:aspect-square" />
+              )}
               <div className="flex flex-1 flex-col p-4">
                 <h3 className="font-display text-base font-semibold leading-snug tracking-tight">{category.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">{category.description}</p>
@@ -264,7 +356,8 @@ function CategorySection() {
                 </Button>
               </div>
             </Card>
-          ))}
+            );
+          })}
         </div>
       </Container>
     </section>
@@ -286,7 +379,18 @@ function FeaturedProductsSection() {
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
             <Card key={product.slug} className="group flex h-full flex-col overflow-hidden bg-background/70 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
-              <ImagePlaceholder label={`Khung ảnh sản phẩm ${product.name}`} className="aspect-square rounded-b-none border-x-0 border-t-0" />
+              <div className="relative aspect-square overflow-hidden border-b border-border/70 bg-gradient-to-b from-white to-rose-50">
+                <Image
+                  src={product.image.src}
+                  alt={product.image.alt}
+                  width={product.image.width}
+                  height={product.image.height}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  loading="lazy"
+                  quality={55}
+                />
+              </div>
               <div className="flex flex-1 flex-col p-5">
                 <h3 className="font-display text-lg font-semibold leading-tight tracking-tight">
                   {product.name}
@@ -379,9 +483,23 @@ function NewsSection() {
         />
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {FEATURED_ARTICLES.map((article) => (
+          {FEATURED_ARTICLES.map((article, index) => {
+            const image = FEATURED_ARTICLE_IMAGES[index];
+
+            return (
             <Card key={article.title} className="group flex h-full flex-col overflow-hidden bg-background/70 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
-              <ImagePlaceholder label={`Khung ảnh bài viết ${article.title}`} className="aspect-[16/9] rounded-b-none border-x-0 border-t-0" />
+              <div className="relative aspect-[16/9] overflow-hidden border-b border-border/70 bg-gradient-to-b from-white to-rose-50">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                  quality={58}
+                />
+              </div>
               <div className="flex flex-1 flex-col p-5">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <CalendarDays className="h-4 w-4 text-primary" aria-hidden="true" />
@@ -399,7 +517,8 @@ function NewsSection() {
                 </Button>
               </div>
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-10 text-center">
@@ -461,19 +580,17 @@ function AboutSection() {
         />
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div
-            role="img"
-            aria-label="Hình ảnh thương hiệu LyliShop"
-            className="flex aspect-[4/3] items-center justify-center rounded-2xl border border-dashed border-primary/25 bg-gradient-to-b from-white to-rose-50 p-6 text-center shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-500"
-          >
-            <div>
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-primary/20 bg-white/80 text-primary shadow-sm">
-                <Sparkles className="h-6 w-6" aria-hidden="true" />
-              </div>
-              <p className="mt-4 font-display text-base font-semibold text-foreground">
-                Hình ảnh thương hiệu LyliShop
-              </p>
-            </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-primary/10 bg-gradient-to-b from-white to-rose-50 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-500">
+            <Image
+              src={HOMEPAGE_IMAGES.about.src}
+              alt={HOMEPAGE_IMAGES.about.alt}
+              width={HOMEPAGE_IMAGES.about.width}
+              height={HOMEPAGE_IMAGES.about.height}
+              className="h-full w-full object-cover"
+              sizes="(max-width: 1024px) 100vw, 520px"
+              loading="lazy"
+              quality={75}
+            />
           </div>
 
           <Card className="bg-white/75 p-6 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-500 sm:p-7">

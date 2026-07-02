@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, Sparkles } from "lucide-react";
 
@@ -12,6 +13,8 @@ export function BlogHero({
   primaryLabel,
   secondaryHref,
   secondaryLabel,
+  image,
+  priority = false,
 }: {
   eyebrow: string;
   title: string;
@@ -20,6 +23,13 @@ export function BlogHero({
   primaryLabel?: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  image?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  priority?: boolean;
 }) {
   return (
     <div className="grid gap-8 rounded-2xl border border-border/70 bg-white/70 p-5 shadow-sm backdrop-blur-md sm:p-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
@@ -52,15 +62,32 @@ export function BlogHero({
       </div>
 
       <Card className="overflow-hidden bg-background/70 p-4 shadow-md">
-        <div
-          role="img"
-          aria-label="Khung ảnh chủ đề Blog LyliShop"
-          className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-primary/25 bg-gradient-to-b from-white to-rose-50"
-        >
-          <div className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/20 bg-white/80 text-primary shadow-sm">
-            <Sparkles className="h-6 w-6" aria-hidden="true" />
+        {image ? (
+          <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-primary/10 bg-gradient-to-b from-white to-rose-50">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              className="h-full w-full object-cover"
+              priority={priority}
+              fetchPriority={priority ? "high" : undefined}
+              loading={priority ? undefined : "lazy"}
+              quality={75}
+              sizes="(max-width: 1024px) 100vw, 520px"
+            />
           </div>
-        </div>
+        ) : (
+          <div
+            role="img"
+            aria-label="Khung ảnh chủ đề Blog LyliShop"
+            className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-primary/25 bg-gradient-to-b from-white to-rose-50"
+          >
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/20 bg-white/80 text-primary shadow-sm">
+              <Sparkles className="h-6 w-6" aria-hidden="true" />
+            </div>
+          </div>
+        )}
         <div className="grid gap-3 pt-4 sm:grid-cols-3">
           {["Quà tặng", "Đồ len", "Cảm hứng"].map((item) => (
             <div

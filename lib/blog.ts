@@ -43,6 +43,12 @@ export type BlogPost = {
   datePublished: string;
   dateModified: string;
   readingTime: string;
+  image: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
   sections: Array<{
     heading: string;
     body?: string[];
@@ -71,6 +77,12 @@ export const BLOG_POSTS: BlogPost[] = [
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
+    image: {
+      src: "/images/blog/moc-khoa-mini-hang-tang-lylishop.webp",
+      alt: "Bo moc khoa len mini nhieu mau dang chuan bi tai LyliShop",
+      width: 1200,
+      height: 900,
+    },
     sections: [
       {
         heading: "Phụ kiện len handmade tạo cảm giác riêng như thế nào?",
@@ -163,6 +175,12 @@ export const BLOG_POSTS: BlogPost[] = [
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "5 phút đọc",
+    image: {
+      src: "/images/blog/hoa-len-bo-hoa-handmade.webp",
+      alt: "Bo hoa len handmade dung lam qua tang",
+      width: 1200,
+      height: 900,
+    },
     sections: [
       {
         heading: "Vì sao quà handmade dễ tạo thiện cảm?",
@@ -255,6 +273,12 @@ export const BLOG_POSTS: BlogPost[] = [
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
+    image: {
+      src: "/images/blog/moc-khoa-mini-hang-tang-lylishop.webp",
+      alt: "Nhieu mau moc khoa len handmade lam qua tang nho",
+      width: 1200,
+      height: 900,
+    },
     sections: [
       {
         heading: "Quà handmade thể hiện sự quan tâm",
@@ -346,6 +370,12 @@ export const BLOG_POSTS: BlogPost[] = [
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "4 phút đọc",
+    image: {
+      src: "/images/blog/quy-trinh-moc-khoa-mini-phoi.webp",
+      alt: "Moc khoa len mini trong qua trinh chuan bi",
+      width: 1200,
+      height: 900,
+    },
     sections: [
       {
         heading: "Tránh kéo mạnh phần khoen và chi tiết nhỏ",
@@ -438,6 +468,12 @@ export const BLOG_POSTS: BlogPost[] = [
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     readingTime: "5 phút đọc",
+    image: {
+      src: "/images/blog/quy-trinh-moc-khoa-size-m-ga-vang.webp",
+      alt: "Nhieu moc khoa len size M dang duoc chuan bi",
+      width: 1200,
+      height: 900,
+    },
     sections: [
       {
         heading: "Chọn quà sinh nhật handmade theo mức độ thân",

@@ -49,6 +49,10 @@ const nextConfig: NextConfig = {
         headers: longTermImageCache,
       },
       {
+        source: "/images/:path*",
+        headers: longTermImageCache,
+      },
+      {
         source: "/product-assets/:path*",
         headers: longTermImageCache,
       },
