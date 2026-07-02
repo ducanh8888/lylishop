@@ -16,7 +16,15 @@ function formatBlogDate(value: string) {
   }).format(new Date(value));
 }
 
-export function BlogCard({ post }: { post: BlogPost }) {
+export function BlogCard({
+  post,
+  headingLevel = "h2",
+}: {
+  post: BlogPost;
+  headingLevel?: "h2" | "h3";
+}) {
+  const Heading = headingLevel;
+
   return (
     <Card className="group flex h-full flex-col overflow-hidden bg-white/75 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
       <Link
@@ -51,11 +59,11 @@ export function BlogCard({ post }: { post: BlogPost }) {
           </span>
         </div>
 
-        <h2 className="mt-3 font-display text-xl font-semibold leading-tight tracking-tight">
+        <Heading className="mt-3 font-display text-xl font-semibold leading-tight tracking-tight">
           <Link href={`/blog/${post.slug}`} className="transition hover:text-primary">
             {post.title}
           </Link>
-        </h2>
+        </Heading>
         <p className="mt-3 text-sm leading-6 text-muted-foreground">{post.excerpt}</p>
 
         <div className="mt-4 flex flex-wrap gap-2">

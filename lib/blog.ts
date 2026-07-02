@@ -1,3 +1,39 @@
+export type BlogContentBlock =
+  | {
+      type: "paragraph";
+      text: string;
+    }
+  | {
+      type: "list";
+      items: string[];
+      ordered?: boolean;
+    }
+  | {
+      type: "table";
+      caption?: string;
+      headers: string[];
+      rows: string[][];
+    }
+  | {
+      type: "quote";
+      quote: string;
+      cite?: string;
+    }
+  | {
+      type: "callout";
+      tone: "info" | "tip" | "warning";
+      title?: string;
+      body: string;
+    }
+  | {
+      type: "image";
+      src: string;
+      alt: string;
+      width: number;
+      height: number;
+      caption?: string;
+    };
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -9,7 +45,8 @@ export type BlogPost = {
   readingTime: string;
   sections: Array<{
     heading: string;
-    body: string[];
+    body?: string[];
+    blocks?: BlogContentBlock[];
   }>;
   faqs: Array<{
     question: string;

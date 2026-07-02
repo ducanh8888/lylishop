@@ -20,9 +20,9 @@ export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
-            <BlogCard key={post.slug} post={post} />
+            <BlogCard key={post.slug} post={post} headingLevel="h3" />
           ))}
         </div>
       </Container>
