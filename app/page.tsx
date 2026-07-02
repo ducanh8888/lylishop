@@ -352,7 +352,7 @@ function ReviewSection() {
                   <p className="text-xs text-muted-foreground">{review.date}</p>
                 </div>
               </div>
-              <div className="mt-4 flex gap-1 text-primary" aria-label="Khu vực số sao đánh giá">
+              <div className="mt-4 flex gap-1 text-primary" aria-label="5 trên 5 sao">
                 {Array.from({ length: 5 }).map((_, index) => (
                   <Star key={index} className="h-4 w-4 fill-current" aria-hidden="true" />
                 ))}
@@ -669,6 +669,7 @@ function ContactSection() {
                   id="contact-name"
                   name="name"
                   type="text"
+                  autoComplete="name"
                   placeholder="Nhập tên của bạn"
                   className="h-11 rounded-md border border-input bg-white px-4 text-sm shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
                 />
@@ -682,6 +683,7 @@ function ContactSection() {
                   id="contact-phone"
                   name="phone"
                   type="tel"
+                  autoComplete="tel"
                   placeholder="Nhập số điện thoại"
                   className="h-11 rounded-md border border-input bg-white px-4 text-sm shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
                 />

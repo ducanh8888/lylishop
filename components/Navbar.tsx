@@ -45,7 +45,7 @@ function NavLinks({ className }: { className?: string }) {
               href={l.href}
               aria-current={isActive ? "page" : undefined}
               className={cn(
-                "inline-flex h-9 items-center rounded-md px-3 text-sm font-medium text-foreground/80 transition hover:bg-accent hover:text-foreground",
+                "inline-flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-foreground/80 transition hover:bg-accent hover:text-foreground md:h-9 md:min-h-0",
                 isActive && "bg-accent text-foreground"
               )}
             >
@@ -63,7 +63,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/75 backdrop-blur-md">
       <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto] items-center gap-3 px-4 sm:px-6 md:grid-cols-[1fr_auto_1fr]">
         <Link href="/" className="flex items-center gap-2" aria-label={`${SITE.name} homepage`}>
-          <Image src={SITE.logo} alt="LyliShop logo" width={28} height={28} sizes="28px" priority />
+          <Image src={SITE.logo} alt="LyliShop logo" width={28} height={28} sizes="28px" />
           <span className="font-display text-base font-semibold tracking-tight">
             {SITE.name}
           </span>
@@ -79,7 +79,7 @@ export function Navbar() {
             target="_blank"
             rel="noreferrer"
             aria-label="Liên hệ đặt hàng qua Zalo"
-            className={cn(actionBase, primaryAction, "hidden h-10 px-4 py-2 sm:inline-flex")}
+            className={cn(actionBase, primaryAction, "hidden h-11 px-4 py-2 sm:inline-flex")}
           >
             <MessageCircle className="h-4 w-4" aria-hidden="true" />
             Liên hệ
@@ -90,7 +90,7 @@ export function Navbar() {
               className={cn(
                 actionBase,
                 outlineAction,
-                "h-10 w-10 cursor-pointer list-none [&::-webkit-details-marker]:hidden"
+                "h-11 w-11 cursor-pointer list-none [&::-webkit-details-marker]:hidden"
               )}
               aria-label="Mở menu"
             >
@@ -98,7 +98,9 @@ export function Navbar() {
             </summary>
 
             <div className="absolute right-0 top-12 w-[min(92vw,20rem)] rounded-lg border border-border/70 bg-background/95 p-4 shadow-xl backdrop-blur-md">
-              <NavLinks className="flex-col items-start gap-1" />
+              <nav aria-label="Điều hướng chính trên mobile">
+                <NavLinks className="flex-col items-start gap-1" />
+              </nav>
               <div className="mt-4 grid gap-2">
                 <a
                   href={SITE.socials.zalo}
