@@ -487,7 +487,8 @@ function AboutSection() {
               <p>
                 LyliShop tập trung vào móc khóa len, hoa len và thú bông len nhỏ xinh.
                 Mỗi sản phẩm được làm thủ công để người mua có thể chọn món quà gần
-                với sở thích và câu chuyện của người nhận.
+                với sở thích và câu chuyện của người nhận. Shop hoạt động theo mô hình
+                handmade theo đơn, không sản xuất hàng loạt.
               </p>
               <p>
                 Shop ưu tiên cách tư vấn rõ ràng, nhẹ nhàng và gần gũi để khách dễ

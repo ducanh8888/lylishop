@@ -17,7 +17,10 @@ export function organizationJsonLd() {
     "@type": "Organization",
     "@id": organizationId,
     name: SITE.name,
+    alternateName: "Lyli Shop",
     url: SITE.url,
+    description: SITE.brandDescription,
+    knowsAbout: ["móc khóa len handmade", "crochet", "quà handmade", "phụ kiện len"],
     logo: {
       "@type": "ImageObject",
       url: `${SITE.url}${SITE.logo}`,
