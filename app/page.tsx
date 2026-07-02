@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -23,6 +22,7 @@ import { Card } from "@/components/ui/card";
 import { formatVnd } from "@/lib/format";
 import { BLOG_POSTS } from "@/lib/blog";
 import { FEATURED_PRODUCTS } from "@/lib/products";
+import { createPageMetadata, HOME_OG_IMAGE } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import {
   homePageJsonLd,
@@ -31,28 +31,16 @@ import {
   websiteJsonLd,
 } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "Móc Khóa Len Handmade Cute | LyliShop",
-  },
+export const metadata = createPageMetadata({
+  title: "Móc Khóa Len Handmade Cute | LyliShop",
+  absoluteTitle: true,
   description:
     "LyliShop bán móc khóa len handmade cute, nhận làm móc khóa len theo yêu cầu, phù hợp làm quà tặng handmade dễ thương cho học sinh, sinh viên.",
-  alternates: { canonical: "/" },
-  openGraph: {
-    url: SITE.url,
-    title: "Móc Khóa Len Handmade Cute | LyliShop",
-    description:
-      "Móc khóa len handmade cute, phụ kiện len nhỏ xinh, nhận chọn màu theo yêu cầu và đặt nhanh qua Zalo/Facebook.",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "LyliShop móc khóa len handmade cute" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Móc Khóa Len Handmade Cute | LyliShop",
-    description:
-      "Móc khóa len handmade cute, phụ kiện len nhỏ xinh, nhận chọn màu theo yêu cầu và đặt nhanh qua Zalo/Facebook.",
-    images: ["/twitter-card.png"],
-  },
-};
+  canonical: "/",
+  image: HOME_OG_IMAGE,
+  ogDescription:
+    "Móc khóa len handmade cute, phụ kiện len nhỏ xinh, nhận chọn màu theo yêu cầu và đặt nhanh qua Zalo/Facebook.",
+});
 
 const CATEGORY_ITEMS = [
   {

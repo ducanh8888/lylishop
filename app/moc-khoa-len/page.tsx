@@ -19,6 +19,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BLOG_POSTS } from "@/lib/blog";
 import { PRODUCTS } from "@/lib/products";
+import { createPageMetadata, HOME_OG_IMAGE } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import {
   breadcrumbJsonLd,
@@ -241,34 +242,16 @@ const RELATED_BLOG_POSTS = BLOG_POSTS.filter((post) =>
   )
 ).slice(0, 4);
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Móc khóa len handmade cute, dễ thương làm quà",
   description:
     "Mua móc khóa len handmade nhỏ xinh tại LyliShop: móc khóa thú len, móc khóa crochet, quà tặng handmade dễ thương, có thể tùy chỉnh màu.",
   keywords: KEYWORDS,
-  alternates: { canonical: PAGE_PATH },
-  openGraph: {
-    url: PAGE_URL,
-    title: "Móc khóa len handmade cute, dễ thương làm quà | LyliShop",
-    description:
-      "Bộ sưu tập móc khóa len handmade, móc khóa thú len và quà tặng crochet nhỏ xinh từ LyliShop.",
-    images: [
-      {
-        url: SITE.ogImage,
-        width: 1200,
-        height: 630,
-        alt: "Móc khóa len handmade LyliShop",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Móc khóa len handmade cute | LyliShop",
-    description:
-      "Móc khóa len handmade nhỏ xinh, có thể tùy chỉnh màu và đặt hàng qua mạng xã hội.",
-    images: [SITE.twitterImage],
-  },
-};
+  canonical: PAGE_PATH,
+  image: HOME_OG_IMAGE,
+  ogDescription:
+    "Bộ sưu tập móc khóa len handmade, móc khóa thú len và quà tặng crochet nhỏ xinh từ LyliShop.",
+});
 
 export default function MocKhoaLenPage() {
   const minPrice = Math.min(...PRODUCTS.map((p) => p.priceVnd));

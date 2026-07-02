@@ -6,6 +6,7 @@ import { ArrowLeft, Camera, MessageCircle, PackageCheck, Ruler, ThumbsUp } from 
 
 import { PRODUCTS, getProductBySlug, getRelatedProducts } from "@/lib/products";
 import { BLOG_POSTS } from "@/lib/blog";
+import { createPageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { formatVnd } from "@/lib/format";
 import { breadcrumbJsonLd, faqJsonLd, productJsonLd } from "@/lib/schema";
@@ -89,6 +90,16 @@ function getRelatedBlogPosts(product: NonNullable<ReturnType<typeof getProductBy
     .map((item) => item.post);
 }
 
+function getProductMetadataTitle(product: NonNullable<ReturnType<typeof getProductBySlug>>) {
+  if (product.slug === "set-moc-khoa-len-10-mau-mix") {
+    return "Móc khóa len từ 45k, 10 mẫu mix | LyliShop";
+  }
+
+  return product.name.length <= 30
+    ? `${product.name} | Móc khóa len handmade LyliShop`
+    : `${product.name} | LyliShop`;
+}
+
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
@@ -102,40 +113,21 @@ export async function generateMetadata({
   const product = getProductBySlug(slug);
   if (!product) return {};
 
-  const title =
-    product.name.length <= 30
-      ? `${product.name} | Móc khóa len handmade LyliShop`
-      : `${product.name} | LyliShop`;
+  const title = getProductMetadataTitle(product);
   const description = product.metaDescription;
-  const url = `${SITE.url}/products/${product.slug}`;
 
-  return {
-    title: {
-      absolute: title,
-    },
+  return createPageMetadata({
+    title,
+    absoluteTitle: true,
     description,
-    alternates: { canonical: `/products/${product.slug}` },
-    openGraph: {
-      type: "website",
-      url,
-      title,
-      description,
-      images: [
-        {
-          url: product.image.src,
-          width: product.image.width,
-          height: product.image.height,
-          alt: product.image.alt,
-        },
-      ],
+    canonical: `/products/${product.slug}`,
+    image: {
+      url: product.image.src,
+      width: product.image.width,
+      height: product.image.height,
+      alt: product.image.alt,
     },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [product.image.src],
-    },
-  };
+  });
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {

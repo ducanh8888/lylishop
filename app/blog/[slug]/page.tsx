@@ -27,6 +27,7 @@ import {
   getBlogPostBySlug,
 } from "@/lib/blog";
 import { PRODUCTS } from "@/lib/products";
+import { BLOG_OG_IMAGE, createPageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/schema";
 
@@ -96,6 +97,11 @@ function getRelevantProduct(post: { title: string; excerpt: string; keywords: st
   return scoredProducts[0]?.product;
 }
 
+const BLOG_METADATA_TITLES: Record<string, string> = {
+  "qua-handmade-tang-ban-gai": "Gợi ý quà handmade tặng bạn gái nhỏ xinh",
+  "qua-sinh-nhat-handmade": "Quà sinh nhật handmade nhỏ xinh, dễ chọn",
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -105,33 +111,30 @@ export async function generateMetadata({
   const post = getBlogPostBySlug(slug);
   if (!post) return {};
 
-  const url = `${SITE.url}/blog/${post.slug}`;
+  const title = BLOG_METADATA_TITLES[post.slug] ?? post.title;
+  const image = post.image
+    ? {
+        url: post.image.src,
+        width: post.image.width,
+        height: post.image.height,
+        alt: post.image.alt,
+      }
+    : BLOG_OG_IMAGE;
 
-  return {
-    title: post.title,
+  return createPageMetadata({
+    title,
     description: post.description,
     keywords: post.keywords,
-    alternates: { canonical: `/blog/${post.slug}` },
+    canonical: `/blog/${post.slug}`,
     robots: {
       index: true,
       follow: true,
     },
-    openGraph: {
-      type: "article",
-      url,
-      title: `${post.title} | LyliShop`,
-      description: post.description,
-      publishedTime: post.datePublished,
-      modifiedTime: post.dateModified,
-      images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: post.title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${post.title} | LyliShop`,
-      description: post.description,
-      images: [SITE.twitterImage],
-    },
-  };
+    image,
+    type: "article",
+    publishedTime: post.datePublished,
+    modifiedTime: post.dateModified,
+  });
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {

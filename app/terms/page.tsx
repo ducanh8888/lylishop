@@ -1,25 +1,16 @@
 import type { Metadata } from "next";
 
 import { Container } from "@/components/Container";
-import { SITE } from "@/lib/site";
+import { createPageMetadata, HOME_OG_IMAGE } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Điều khoản đặt móc khóa len handmade online",
   description:
     "Điều khoản đặt hàng tại LyliShop khi khách chọn mẫu, tùy chỉnh màu, xác nhận giá, giao hàng và liên hệ đặt sản phẩm handmade.",
-  alternates: { canonical: "/terms" },
-  openGraph: {
-    url: `${SITE.url}/terms`,
-    title: "Điều khoản đặt móc khóa len handmade online | LyliShop",
-    description: "Điều khoản khi đặt móc khóa len handmade và phụ kiện len từ LyliShop.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Điều khoản đặt móc khóa len handmade online | LyliShop",
-    description: "Điều khoản khi đặt móc khóa len handmade và phụ kiện len từ LyliShop.",
-    images: [SITE.twitterImage],
-  },
-};
+  canonical: "/terms",
+  image: HOME_OG_IMAGE,
+  ogDescription: "Điều khoản khi đặt móc khóa len handmade và phụ kiện len từ LyliShop.",
+});
 
 export default function TermsPage() {
   return (

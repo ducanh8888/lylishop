@@ -11,6 +11,7 @@ import { BlogSidebar } from "@/components/blog/BlogSidebar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BLOG_POSTS } from "@/lib/blog";
+import { BLOG_OG_IMAGE, createPageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { blogJsonLd, breadcrumbJsonLd } from "@/lib/schema";
 
@@ -43,7 +44,7 @@ const BLOG_HERO_IMAGE = {
   height: 630,
 } as const;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Cảm hứng quà handmade nhỏ xinh",
   description:
     "Cảm hứng chọn quà handmade nhỏ xinh, cách giữ phụ kiện len bền đẹp và những gợi ý tặng quà dễ thương từ LyliShop.",
@@ -54,26 +55,15 @@ export const metadata: Metadata = {
     "phụ kiện len handmade",
     "quà sinh nhật handmade",
   ],
-  alternates: { canonical: PAGE_PATH },
+  canonical: PAGE_PATH,
   robots: {
     index: true,
     follow: true,
   },
-  openGraph: {
-    url: PAGE_URL,
-    title: "Cảm hứng quà handmade nhỏ xinh | LyliShop",
-    description:
-      "Các bài viết cảm hứng về quà handmade, phụ kiện len và cách giữ món quà nhỏ luôn xinh.",
-    images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: "Cẩm nang LyliShop" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Cảm hứng quà handmade nhỏ xinh | LyliShop",
-    description:
-      "Gợi ý chọn quà handmade, phụ kiện len nhỏ xinh và cách giữ món quà bền đẹp.",
-    images: [SITE.twitterImage],
-  },
-};
+  image: BLOG_OG_IMAGE,
+  ogDescription:
+    "Các bài viết cảm hứng về quà handmade, phụ kiện len và cách giữ món quà nhỏ luôn xinh.",
+});
 
 export default function BlogPage() {
   return (

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Camera, MessageCircle, ThumbsUp } from "lucide-react";
@@ -11,29 +10,19 @@ import { Card } from "@/components/ui/card";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PRODUCTS } from "@/lib/products";
+import { createPageMetadata, HOME_OG_IMAGE } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Móc khóa len handmade giá tốt, đặt số lượng",
   description:
     "Xem móc khóa len handmade giá tốt tại LyliShop. Có mẫu đồng giá từ 45k, nhận chọn màu, đặt số lượng và tư vấn qua Zalo/Facebook trên toàn Việt Nam.",
-  alternates: { canonical: "/products" },
-  openGraph: {
-    url: `${SITE.url}/products`,
-    title: "Móc khóa len handmade giá tốt, đặt số lượng | LyliShop",
-    description:
-      "Móc khóa len handmade cute, giá từ 45k, có thể chọn màu, đặt theo nhóm và đặt số lượng qua Zalo/Facebook.",
-    images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: "LyliShop products" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Móc khóa len handmade giá tốt | LyliShop",
-    description:
-      "Xem các mẫu móc khóa len handmade cute, đồng giá từ 45k và cách đặt hàng qua Zalo/Facebook tại LyliShop.",
-    images: [SITE.twitterImage],
-  },
-};
+  canonical: "/products",
+  image: HOME_OG_IMAGE,
+  ogDescription:
+    "Móc khóa len handmade cute, giá từ 45k, có thể chọn màu, đặt theo nhóm và đặt số lượng qua Zalo/Facebook.",
+});
 
 const PRODUCT_CATEGORIES = [
   {

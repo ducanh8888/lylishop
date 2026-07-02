@@ -1,25 +1,16 @@
 import type { Metadata } from "next";
 
 import { Container } from "@/components/Container";
-import { SITE } from "@/lib/site";
+import { createPageMetadata, HOME_OG_IMAGE } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Chính sách bảo mật thông tin đặt hàng handmade",
   description:
     "Chính sách bảo mật của LyliShop về cách xử lý tin nhắn, thông tin đặt hàng và dữ liệu cá nhân khi khách liên hệ đặt sản phẩm handmade.",
-  alternates: { canonical: "/privacy" },
-  openGraph: {
-    url: `${SITE.url}/privacy`,
-    title: "Chính sách bảo mật thông tin đặt hàng handmade | LyliShop",
-    description: "Cách LyliShop xử lý tin nhắn, thông tin đặt hàng và dữ liệu cá nhân.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Chính sách bảo mật thông tin đặt hàng handmade | LyliShop",
-    description: "Cách LyliShop xử lý tin nhắn, thông tin đặt hàng và dữ liệu cá nhân.",
-    images: [SITE.twitterImage],
-  },
-};
+  canonical: "/privacy",
+  image: HOME_OG_IMAGE,
+  ogDescription: "Cách LyliShop xử lý tin nhắn, thông tin đặt hàng và dữ liệu cá nhân.",
+});
 
 export default function PrivacyPage() {
   return (
