@@ -103,7 +103,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", url: SITE.url },
-          { name: "Cẩm nang", url: `${SITE.url}/blog` },
+          { name: "Tin tức", url: `${SITE.url}/blog` },
           { name: post.title, url },
         ])}
       />

@@ -74,7 +74,7 @@ export default function BlogPage() {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", url: SITE.url },
-          { name: "Cẩm nang", url: PAGE_URL },
+          { name: "Tin tức", url: PAGE_URL },
         ])}
       />
 

@@ -4,7 +4,7 @@ import { SITE } from "@/lib/site";
 import { PRODUCTS } from "@/lib/products";
 import { BLOG_POSTS } from "@/lib/blog";
 
-const SITE_LAST_MODIFIED = new Date("2026-06-30T00:00:00.000Z");
+const SITE_LAST_MODIFIED = new Date("2026-07-02T00:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [
@@ -47,14 +47,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${SITE.url}/blog`,
       lastModified: SITE_LAST_MODIFIED,
-      changeFrequency: "yearly",
-      priority: 0.25,
+      changeFrequency: "weekly",
+      priority: 0.7,
     },
     ...BLOG_POSTS.map((post) => ({
       url: `${SITE.url}/blog/${post.slug}`,
       lastModified: new Date(`${post.dateModified}T00:00:00.000Z`),
-      changeFrequency: "yearly" as const,
-      priority: 0.2,
+      changeFrequency: "monthly" as const,
+      priority: 0.55,
     })),
   ];
 

@@ -405,19 +405,18 @@ const ABOUT_CARDS = [
   {
     title: "Sứ mệnh",
     description:
-      "Tạo ra những món phụ kiện len nhỏ xinh, dễ tặng và có cảm giác được chuẩn bị riêng cho người nhận.",
+      "Mang đến những món quà handmade được tạo nên từ sự tỉ mỉ và chân thành, giúp mỗi sản phẩm đều mang ý nghĩa riêng dành cho người nhận.",
     icon: HeartHandshake,
   },
   {
     title: "Giá trị cốt lõi",
-    description:
-      "Làm thủ công chỉn chu, tư vấn rõ ràng và giữ trải nghiệm đặt hàng nhẹ nhàng qua tin nhắn.",
+    values: ["Handmade tỉ mỉ", "Chất lượng", "Thân thiện", "Luôn lắng nghe khách hàng"],
     icon: Sparkles,
   },
   {
     title: "Định vị thương hiệu",
     description:
-      "LyliShop là shop móc khóa len handmade dành cho người thích quà nhỏ, dễ thương và có ý nghĩa.",
+      "LyliShop hướng đến hình ảnh một thương hiệu phụ kiện len handmade trẻ trung, tinh tế và gần gũi, phù hợp với những ai yêu thích sự dễ thương và các món quà mang dấu ấn cá nhân.",
     icon: Gift,
   },
 ];
@@ -428,11 +427,48 @@ function AboutSection() {
       <Container>
         <SectionTitle
           eyebrow="Giới thiệu"
-          title="LyliShop làm những món quà len nhỏ để người nhận nhớ lâu hơn"
-          description="LyliShop tập trung vào móc khóa len handmade, hoa len và thú bông len nhỏ xinh. Mỗi sản phẩm được tư vấn qua tin nhắn để khách có thể chọn mẫu, màu và cách đóng gói phù hợp."
+          title="Giới thiệu LyliShop"
+          description="LyliShop mang đến những sản phẩm handmade được móc hoàn toàn thủ công, phù hợp làm quà tặng và phụ kiện cá nhân với phong cách dễ thương, tinh tế và mang dấu ấn riêng."
         />
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div
+            role="img"
+            aria-label="Hình ảnh thương hiệu LyliShop"
+            className="flex aspect-[4/3] items-center justify-center rounded-2xl border border-dashed border-primary/25 bg-gradient-to-b from-white to-rose-50 p-6 text-center shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-500"
+          >
+            <div>
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-primary/20 bg-white/80 text-primary shadow-sm">
+                <Sparkles className="h-6 w-6" aria-hidden="true" />
+              </div>
+              <p className="mt-4 font-display text-base font-semibold text-foreground">
+                Hình ảnh thương hiệu LyliShop
+              </p>
+            </div>
+          </div>
+
+          <Card className="bg-white/75 p-6 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-500 sm:p-7">
+            <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+              Câu chuyện nhỏ
+            </p>
+            <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight">
+              Những món quà len được chuẩn bị bằng sự tỉ mỉ.
+            </h3>
+            <div className="mt-4 space-y-3 text-sm leading-7 text-muted-foreground sm:text-base">
+              <p>
+                LyliShop tập trung vào móc khóa len, hoa len và thú bông len nhỏ xinh.
+                Mỗi sản phẩm được làm thủ công để người mua có thể chọn món quà gần
+                với sở thích và câu chuyện của người nhận.
+              </p>
+              <p>
+                Shop ưu tiên cách tư vấn rõ ràng, nhẹ nhàng và gần gũi để khách dễ
+                chọn mẫu, màu sắc và cách đóng gói phù hợp trước khi liên hệ đặt hàng.
+              </p>
+            </div>
+          </Card>
+        </div>
+
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
           {ABOUT_CARDS.map((item) => {
             const Icon = item.icon;
             return (
@@ -443,13 +479,44 @@ function AboutSection() {
                 <h3 className="mt-4 font-display text-lg font-semibold tracking-tight">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  {item.description}
-                </p>
+                {item.values ? (
+                  <ul className="mt-3 grid gap-2 text-left text-sm leading-6 text-muted-foreground">
+                    {item.values.map((value) => (
+                      <li key={value} className="flex items-start gap-2">
+                        <span className="text-primary" aria-hidden="true">✔</span>
+                        <span>{value}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    {item.description}
+                  </p>
+                )}
               </Card>
             );
           })}
         </div>
+
+        <Card className="mt-8 bg-rose-50/80 p-6 text-center shadow-sm sm:p-8">
+          <h3 className="font-display text-2xl font-semibold tracking-tight">
+            Bạn đã tìm được mẫu yêu thích?
+          </h3>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+            Liên hệ LyliShop để được tư vấn và lựa chọn mẫu phù hợp.
+          </p>
+          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+            <Button asChild>
+              <Link href="/products">
+                🟣 Xem cửa hàng
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/#contact">💬 Liên hệ ngay</Link>
+            </Button>
+          </div>
+        </Card>
       </Container>
     </section>
   );

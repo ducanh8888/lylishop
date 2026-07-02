@@ -25,7 +25,7 @@ const NAV_LINKS: Array<{
 ];
 
 const actionBase =
-  "inline-flex touch-manipulation items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none";
+  "inline-flex touch-manipulation items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 const outlineAction =
   "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground";
 const primaryAction =
@@ -63,7 +63,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/75 backdrop-blur-md">
       <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto] items-center gap-3 px-4 sm:px-6 md:grid-cols-[1fr_auto_1fr]">
         <Link href="/" className="flex items-center gap-2" aria-label={`${SITE.name} homepage`}>
-          <Image src={SITE.logo} alt="LyliShop logo" width={28} height={28} />
+          <Image src={SITE.logo} alt="LyliShop logo" width={28} height={28} sizes="28px" priority />
           <span className="font-display text-base font-semibold tracking-tight">
             {SITE.name}
           </span>

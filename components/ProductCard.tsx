@@ -24,7 +24,7 @@ export function ProductCard({
     >
       <Link
         href={`/products/${product.slug}`}
-        className="flex h-full w-full flex-col focus-visible:outline-none"
+        className="flex h-full w-full flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         aria-label={`Xem chi tiết ${product.name}`}
       >
         <div className="relative aspect-square overflow-hidden bg-gradient-to-b from-white to-rose-50">
@@ -34,7 +34,7 @@ export function ProductCard({
             width={product.image.width}
             height={product.image.height}
             className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
             loading="lazy"
             quality={55}
           />

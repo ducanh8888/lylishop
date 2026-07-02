@@ -118,7 +118,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", url: SITE.url },
-          { name: "Sản phẩm", url: `${SITE.url}/products` },
+          { name: "Cửa hàng", url: `${SITE.url}/products` },
           { name: product.name, url: `${SITE.url}/products/${product.slug}` },
         ])}
       />

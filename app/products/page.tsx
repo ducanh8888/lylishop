@@ -82,7 +82,7 @@ export default function ProductsPage() {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", url: SITE.url },
-          { name: "Sản phẩm", url: `${SITE.url}/products` },
+          { name: "Cửa hàng", url: `${SITE.url}/products` },
         ])}
       />
 
@@ -200,7 +200,10 @@ export default function ProductsPage() {
                 key={category.title}
                 className="group flex h-full flex-col overflow-hidden bg-white/75 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg"
               >
-                <Link href="#product-grid" className="flex h-full flex-col focus-visible:outline-none">
+                <Link
+                  href="#product-grid"
+                  className="flex h-full flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
                   <div className="flex aspect-[4/3] items-center justify-center border-b border-border/70 bg-gradient-to-b from-white to-rose-50 xl:aspect-square">
                     <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-primary/20 bg-background/80 font-display text-lg font-semibold text-primary shadow-sm">
                       {category.label}

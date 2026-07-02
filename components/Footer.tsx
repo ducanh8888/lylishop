@@ -28,7 +28,7 @@ export function Footer() {
         <div className="grid gap-9 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_0.9fr_1.1fr]">
           <div>
             <Link href="/" className="flex items-center gap-2" aria-label="LyliShop homepage">
-              <Image src={SITE.logo} alt="LyliShop logo" width={28} height={28} />
+              <Image src={SITE.logo} alt="LyliShop logo" width={28} height={28} sizes="28px" loading="lazy" />
               <span className="font-display text-base font-semibold tracking-tight">{SITE.name}</span>
             </Link>
             <p className="mt-4 max-w-md text-sm leading-6 text-muted-foreground">
@@ -43,7 +43,7 @@ export function Footer() {
                 className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border/70 bg-background/70 text-foreground/80 shadow-sm transition hover:bg-accent hover:text-foreground"
                 aria-label="Zalo LyliShop"
               >
-                <MessageCircle className="h-4 w-4" />
+                <MessageCircle className="h-4 w-4" aria-hidden="true" />
               </a>
               <a
                 href={SITE.socials.facebook}
@@ -52,7 +52,7 @@ export function Footer() {
                 className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border/70 bg-background/70 text-foreground/80 shadow-sm transition hover:bg-accent hover:text-foreground"
                 aria-label="Facebook LyliShop"
               >
-                <ThumbsUp className="h-4 w-4" />
+                <ThumbsUp className="h-4 w-4" aria-hidden="true" />
               </a>
               <a
                 href={SITE.socials.instagram}
@@ -61,7 +61,7 @@ export function Footer() {
                 className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border/70 bg-background/70 text-foreground/80 shadow-sm transition hover:bg-accent hover:text-foreground"
                 aria-label="Instagram LyliShop"
               >
-                <Camera className="h-4 w-4" />
+                <Camera className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
           </div>
