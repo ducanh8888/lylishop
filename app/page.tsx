@@ -336,7 +336,7 @@ function ReviewSection() {
         <SectionTitle
           eyebrow="Đánh giá khách hàng"
           title="Phản hồi thật sẽ được cập nhật rõ ràng"
-          description="Section review được giữ sẵn theo đúng hành trình mua hàng, nhưng nội dung chỉ dùng phản hồi đã được khách cho phép hiển thị."
+          description="LyliShop chỉ đăng phản hồi đã được khách cho phép hiển thị, ưu tiên sự minh bạch hơn là tạo đánh giá không có nguồn xác nhận."
         />
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -375,7 +375,7 @@ function NewsSection() {
         <SectionTitle
           eyebrow="Tin tức"
           title="Cẩm nang quà handmade nhỏ xinh"
-          description="Hai bài viết nổi bật giúp người mua hiểu thêm về ý nghĩa món quà và cách chọn móc khóa len."
+          description="Các bài viết giúp bạn hiểu cách chọn quà, bảo quản phụ kiện len và chuẩn bị thông tin trước khi nhắn shop tư vấn."
         />
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -556,7 +556,7 @@ function AboutSection() {
             Bạn đã tìm được mẫu yêu thích?
           </h3>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
-            Liên hệ LyliShop để được tư vấn và lựa chọn mẫu phù hợp.
+            Xem thêm mẫu đang có hoặc nhắn LyliShop màu, số lượng và ngày cần nhận để shop tư vấn phù hợp hơn.
           </p>
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
             <Button asChild>

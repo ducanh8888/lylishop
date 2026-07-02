@@ -48,6 +48,7 @@ const KEYWORDS = [
 const PILLAR_NAV = [
   { href: "#moc-khoa-len-la-gi", label: "Móc khóa len là gì" },
   { href: "#goi-y-chon-nhanh", label: "Gợi ý chọn nhanh" },
+  { href: "#bang-chon-size", label: "Chọn size" },
   { href: "#cach-chon-moc-khoa-len", label: "Cách chọn móc khóa len" },
   { href: "#moc-khoa-len-lam-qua", label: "Móc khóa len làm quà" },
   { href: "#phan-loai-moc-khoa-len", label: "Phân loại móc khóa len" },
@@ -85,10 +86,22 @@ const FAQ = [
       "Các mẫu hiện có có giá từ 45.000 đồng tùy kích thước, độ chi tiết và thời gian hoàn thiện. Giá cụ thể được hiển thị ở từng sản phẩm.",
   },
   {
+    id: "nen-chon-size-nao",
+    question: "Nên chọn móc khóa len size S, M hay L?",
+    answer:
+      "Size S hợp treo hằng ngày và đặt theo nhóm; size M hợp khi muốn mẫu nổi bật hơn trên balo hoặc túi tote; size L phù hợp với mẫu nhiều chi tiết hoặc quà muốn tạo điểm nhấn rõ.",
+  },
+  {
     id: "dat-hang-nhu-the-nao",
     question: "Đặt móc khóa len tại LyliShop như thế nào?",
     answer:
       "Bạn chọn mẫu trên website rồi nhắn LyliShop qua Instagram, TikTok, Facebook hoặc Zalo. Shop sẽ xác nhận sản phẩm, màu mong muốn, số lượng, thời gian làm và thông tin giao hàng.",
+  },
+  {
+    id: "can-gui-gi-khi-dat-mau-rieng",
+    question: "Cần gửi gì khi muốn đặt mẫu theo màu riêng?",
+    answer:
+      "Bạn nên gửi tên mẫu, màu mong muốn, số lượng, ngày cần nhận và chi tiết muốn thêm nếu có. Shop sẽ xác nhận lại trước khi bắt đầu làm.",
   },
 ];
 
@@ -134,6 +147,68 @@ const quickChoiceGuides = [
       "Chọn nhóm đồng giá từ 45k để dễ thống nhất ngân sách, màu sắc và số lượng.",
     href: "/products/set-moc-khoa-len-10-mau-mix",
     cta: "Xem set đồng giá",
+  },
+];
+
+const sizeGuideRows = [
+  {
+    size: "Size S",
+    range: "6-7 cm",
+    price: "Từ 45k",
+    bestFor: "Treo hằng ngày, quà nhóm, quà lớp, món nhỏ dễ dùng",
+  },
+  {
+    size: "Size M",
+    range: "8-10 cm",
+    price: "Từ 59k",
+    bestFor: "Muốn mẫu nổi bật hơn trên balo, túi tote hoặc hộp bút",
+  },
+  {
+    size: "Size L",
+    range: "10-12 cm",
+    price: "Từ 69k",
+    bestFor: "Mẫu nhiều chi tiết hoặc món quà muốn tạo điểm nhấn rõ",
+  },
+];
+
+const recipientGuideRows = [
+  {
+    recipient: "Bạn cùng lớp, đồng nghiệp",
+    suggestion: "Mẫu mini size S hoặc móc khóa đồng giá",
+    reason: "Dễ chọn số lượng, không quá riêng tư và phù hợp dùng hằng ngày",
+  },
+  {
+    recipient: "Bạn thân",
+    suggestion: "Dâu tây, bàn chân mèo, thú len mini",
+    reason: "Có chi tiết dễ thương, dễ chọn theo tính cách hoặc màu yêu thích",
+  },
+  {
+    recipient: "Người yêu",
+    suggestion: "Thỏ con, thỏ bông, hoa tulip",
+    reason: "Có cảm giác được chọn riêng và hợp làm quà nhỏ có ý nghĩa",
+  },
+  {
+    recipient: "Nhóm bạn hoặc lớp",
+    suggestion: "Set móc khóa len đồng giá từ 45k",
+    reason: "Dễ thống nhất ngân sách, size và số lượng trước khi đặt",
+  },
+];
+
+const purposeGuideRows = [
+  {
+    purpose: "Treo balo hoặc túi mỗi ngày",
+    suggestion: "Form gọn, khoen chắc, size S hoặc M",
+    note: "Hạn chế chọn mẫu có quá nhiều chi tiết nhô nếu thường xuyên để trong balo",
+  },
+  {
+    purpose: "Làm quà sinh nhật",
+    suggestion: "Mẫu theo màu người nhận thích",
+    note: "Nên nhắn shop ngày cần nhận để kiểm tra thời gian chuẩn bị",
+  },
+  {
+    purpose: "Đặt số lượng",
+    suggestion: "Set đồng giá, cùng size hoặc cùng tone màu",
+    note: "Gửi số lượng từng mẫu giúp shop tư vấn nhanh hơn",
   },
 ];
 
@@ -376,6 +451,49 @@ export default function MocKhoaLenPage() {
             </div>
           </div>
 
+          <div
+            id="bang-chon-size"
+            className="mt-10 scroll-mt-24 rounded-xl border border-border/70 bg-white/70 p-5 shadow-sm sm:p-6"
+          >
+            <div className="max-w-3xl">
+              <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                Bảng chọn size
+              </p>
+              <h2 className="mt-1 font-display text-xl font-semibold tracking-tight text-foreground">
+                Chọn size móc khóa len theo cách bạn sẽ sử dụng
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Kích thước và giá dưới đây lấy từ thông tin sản phẩm hiện có của LyliShop.
+                Giá thực tế vẫn được shop xác nhận lại theo độ chi tiết của mẫu trước khi làm.
+              </p>
+            </div>
+
+            <div className="mt-5 overflow-hidden rounded-lg border border-border/70 bg-background/70">
+              <div className="overflow-x-auto">
+                <table className="min-w-full border-collapse text-left text-sm">
+                  <thead className="bg-rose-50/90 text-foreground">
+                    <tr>
+                      <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">Size</th>
+                      <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">Kích thước</th>
+                      <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">Giá tham khảo</th>
+                      <th scope="col" className="px-4 py-3 font-semibold">Nên chọn khi</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border/70">
+                    {sizeGuideRows.map((row) => (
+                      <tr key={row.size} className="align-top">
+                        <td className="whitespace-nowrap px-4 py-3 font-medium text-foreground">{row.size}</td>
+                        <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">{row.range}</td>
+                        <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">{row.price}</td>
+                        <td className="min-w-64 px-4 py-3 leading-6 text-muted-foreground">{row.bestFor}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {PRODUCTS.map((product) => (
               <ProductCard key={product.slug} product={product} />
@@ -459,6 +577,64 @@ export default function MocKhoaLenPage() {
                   </p>
                 </article>
               ))}
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            <div className="rounded-xl border border-border/70 bg-white/70 p-5 shadow-sm">
+              <h3 className="font-display text-lg font-semibold">
+                Chọn theo người nhận
+              </h3>
+              <div className="mt-4 overflow-hidden rounded-lg border border-border/70 bg-background/70">
+                <div className="overflow-x-auto">
+                  <table className="min-w-full border-collapse text-left text-sm">
+                    <thead className="bg-rose-50/90 text-foreground">
+                      <tr>
+                        <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">Người nhận</th>
+                        <th scope="col" className="px-4 py-3 font-semibold">Gợi ý</th>
+                        <th scope="col" className="px-4 py-3 font-semibold">Lý do</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border/70">
+                      {recipientGuideRows.map((row) => (
+                        <tr key={row.recipient} className="align-top">
+                          <td className="min-w-40 px-4 py-3 font-medium text-foreground">{row.recipient}</td>
+                          <td className="min-w-44 px-4 py-3 text-muted-foreground">{row.suggestion}</td>
+                          <td className="min-w-56 px-4 py-3 leading-6 text-muted-foreground">{row.reason}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-border/70 bg-white/70 p-5 shadow-sm">
+              <h3 className="font-display text-lg font-semibold">
+                Chọn theo nhu cầu
+              </h3>
+              <div className="mt-4 overflow-hidden rounded-lg border border-border/70 bg-background/70">
+                <div className="overflow-x-auto">
+                  <table className="min-w-full border-collapse text-left text-sm">
+                    <thead className="bg-rose-50/90 text-foreground">
+                      <tr>
+                        <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">Nhu cầu</th>
+                        <th scope="col" className="px-4 py-3 font-semibold">Nên ưu tiên</th>
+                        <th scope="col" className="px-4 py-3 font-semibold">Lưu ý</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border/70">
+                      {purposeGuideRows.map((row) => (
+                        <tr key={row.purpose} className="align-top">
+                          <td className="min-w-44 px-4 py-3 font-medium text-foreground">{row.purpose}</td>
+                          <td className="min-w-44 px-4 py-3 text-muted-foreground">{row.suggestion}</td>
+                          <td className="min-w-56 px-4 py-3 leading-6 text-muted-foreground">{row.note}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </Container>
