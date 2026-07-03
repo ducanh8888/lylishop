@@ -2,6 +2,7 @@ import { SITE } from "@/lib/site";
 import type { Product } from "@/lib/products";
 import type { BlogPost } from "@/lib/blog";
 import type { FaqItem } from "@/lib/faq";
+import { BLOG_OG_IMAGE, HOME_OG_IMAGE, type SeoImage } from "@/lib/seo";
 
 const organizationId = `${SITE.url}/#organization`;
 const websiteId = `${SITE.url}/#website`;
@@ -11,6 +12,21 @@ const socialProfiles = [
   SITE.socials.instagram,
   SITE.socials.zalo,
 ];
+
+type SchemaImage = {
+  src?: string;
+  url?: string;
+};
+
+function absoluteImageUrl(image: SchemaImage | undefined, fallback: SeoImage) {
+  const source = image?.src ?? image?.url ?? fallback.url;
+
+  if (source.startsWith("http://") || source.startsWith("https://")) {
+    return source;
+  }
+
+  return new URL(source, SITE.url).toString();
+}
 
 export function organizationJsonLd() {
   return {
@@ -69,9 +85,9 @@ export function homePageJsonLd() {
     },
     primaryImageOfPage: {
       "@type": "ImageObject",
-      url: `${SITE.url}${SITE.ogImage}`,
-      width: 1200,
-      height: 630,
+      url: absoluteImageUrl(HOME_OG_IMAGE, HOME_OG_IMAGE),
+      width: HOME_OG_IMAGE.width,
+      height: HOME_OG_IMAGE.height,
     },
   } as const;
 }
@@ -243,6 +259,7 @@ export function blogJsonLd({
         headline: post.title,
         description: post.description,
         url: postUrl,
+        image: [absoluteImageUrl(post.image, BLOG_OG_IMAGE)],
         datePublished: post.datePublished,
         dateModified: post.dateModified,
         author: {
@@ -263,6 +280,7 @@ export function articleJsonLd({
   datePublished,
   dateModified,
   keywords,
+  image,
 }: {
   title: string;
   description: string;
@@ -270,6 +288,7 @@ export function articleJsonLd({
   datePublished: string;
   dateModified: string;
   keywords: string[];
+  image?: SchemaImage;
 }) {
   return {
     "@context": "https://schema.org",
@@ -282,7 +301,7 @@ export function articleJsonLd({
     datePublished,
     dateModified,
     keywords,
-    image: [`${SITE.url}${SITE.ogImage}`],
+    image: [absoluteImageUrl(image, BLOG_OG_IMAGE)],
     isPartOf: {
       "@id": websiteId,
     },

@@ -161,7 +161,7 @@ export default function ProductsPage() {
                   href={SITE.socials.facebook}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/80 px-3 py-1.5 transition hover:text-foreground"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border/70 bg-background/80 px-3 py-1.5 transition hover:text-foreground"
                 >
                   <ThumbsUp className="h-4 w-4 text-primary" aria-hidden="true" />
                   Facebook
@@ -170,7 +170,7 @@ export default function ProductsPage() {
                   href={SITE.socials.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/80 px-3 py-1.5 transition hover:text-foreground"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border/70 bg-background/80 px-3 py-1.5 transition hover:text-foreground"
                 >
                   <Camera className="h-4 w-4 text-primary" aria-hidden="true" />
                   Instagram

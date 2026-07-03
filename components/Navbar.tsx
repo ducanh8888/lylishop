@@ -69,7 +69,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex">
+        <nav className="hidden md:flex" aria-label="Điều hướng chính">
           <NavLinks />
         </nav>
 

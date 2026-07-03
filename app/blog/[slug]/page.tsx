@@ -157,6 +157,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           datePublished: post.datePublished,
           dateModified: post.dateModified,
           keywords: post.keywords,
+          image: post.image,
         })}
       />
       <JsonLd data={faqJsonLd(post.faqs.map((item, index) => ({ id: `${post.slug}-${index}`, ...item })))} />
