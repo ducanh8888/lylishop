@@ -1,5 +1,5 @@
 import type { Promotion } from "@/lib/promotions";
-import { JUNE_PROMOTION } from "@/lib/promotions";
+import { ACTIVE_PROMOTION } from "@/lib/promotions";
 
 export type Product = {
   slug: string;
@@ -276,8 +276,8 @@ export const PRODUCTS: Product[] = [
         height: 1000,
       }
     ],
-    highlights: ["Đồng giá 45k size S", "Mẫu thú mini", "Có ưu đãi tháng 6"],
-    promotion: JUNE_PROMOTION,
+    highlights: ["Đồng giá 45k size S", "Mẫu thú mini", "Có ưu đãi hiện hành"],
+    promotion: ACTIVE_PROMOTION,
   },
   {
     slug: "set-moc-khoa-len-6-mau-qua-tang",
@@ -295,7 +295,7 @@ export const PRODUCTS: Product[] = [
       "Shop xác nhận mẫu, size, số lượng và thời gian hoàn thiện trước khi chốt đơn qua tin nhắn.",
     ]),
     metaDescription:
-      "Mẫu móc khóa len handmade đồng giá 45k tại LyliShop, nhận chọn màu, đóng gói xinh và có ưu đãi tháng 6 số lượng giới hạn.",
+      "Mẫu móc khóa len handmade đồng giá 45k tại LyliShop, nhận chọn màu, đóng gói xinh và có ưu đãi hiện hành số lượng giới hạn.",
     material: DEFAULT_MATERIAL,
     benefits: ["Nhiều mẫu đồng giá dễ chọn làm quà nhỏ", ...DEFAULT_BENEFITS],
     image: {
@@ -324,8 +324,8 @@ export const PRODUCTS: Product[] = [
         height: 1200,
       }
     ],
-    highlights: ["Đồng giá 45k", "Hợp làm quà", "Có ưu đãi tháng 6"],
-    promotion: JUNE_PROMOTION,
+    highlights: ["Đồng giá 45k", "Hợp làm quà", "Có ưu đãi hiện hành"],
+    promotion: ACTIVE_PROMOTION,
   },
   {
     slug: "set-moc-khoa-len-10-mau-mix",

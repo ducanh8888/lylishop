@@ -8,7 +8,7 @@ export type Promotion = {
   ctaLabel: string;
 };
 
-export const JUNE_PROMOTION: Promotion = {
+export const ACTIVE_PROMOTION: Promotion = {
   title: "CHỈ 5 SUẤT QUÀ TẶNG",
   eyebrow: "Ưu đãi móc khóa len handmade",
   summary:

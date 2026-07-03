@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { ChevronDown, Gift, Sparkles, Users } from "lucide-react";
 
-import { JUNE_PROMOTION } from "@/lib/promotions";
+import { ACTIVE_PROMOTION } from "@/lib/promotions";
 
 export function PromotionBanner() {
   return (
     <section
       className="animate-in fade-in duration-500 border-b border-rose-200/80 bg-gradient-to-r from-rose-50 via-white to-pink-50"
-      aria-label={JUNE_PROMOTION.title}
+      aria-label={ACTIVE_PROMOTION.title}
     >
       <details className="group">
         <summary className="mx-auto flex max-w-6xl cursor-pointer list-none flex-col gap-3 px-4 py-3 marker:hidden sm:px-6 lg:flex-row lg:items-center lg:justify-between [&::-webkit-details-marker]:hidden">
@@ -29,7 +29,7 @@ export function PromotionBanner() {
           </div>
 
           <span className="inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-md border border-primary/20 bg-white/85 px-3 text-sm font-semibold text-foreground shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:text-primary group-open:text-primary">
-            {JUNE_PROMOTION.ctaLabel}
+            {ACTIVE_PROMOTION.ctaLabel}
             <ChevronDown
               className="h-4 w-4 transition-transform group-open:rotate-180"
               aria-hidden="true"
@@ -74,7 +74,7 @@ export function PromotionBanner() {
             <div className="rounded-lg border border-border/70 bg-background/80 p-4">
               <p className="font-display text-sm font-bold">Lưu ý</p>
               <ul className="mt-3 grid gap-2 text-xs leading-5 text-muted-foreground">
-                {JUNE_PROMOTION.notes.map((note) => (
+                {ACTIVE_PROMOTION.notes.map((note) => (
                   <li key={note} className="flex items-start gap-2">
                     <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
                     <span>{note}</span>
@@ -82,7 +82,7 @@ export function PromotionBanner() {
                 ))}
               </ul>
               <Link
-                href={JUNE_PROMOTION.href}
+                href={ACTIVE_PROMOTION.href}
                 className="mt-4 inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition hover:-translate-y-0.5 hover:bg-primary/90"
               >
                 Xem sản phẩm ưu đãi

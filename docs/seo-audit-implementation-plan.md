@@ -1124,7 +1124,7 @@ Final validation before deployment.
 2. If real customer reviews are added later, where will they be visibly displayed and verified before schema support is reconsidered?
 3. Should blog URLs remain secondary inspiration content long term, or should a future Search Console review plan redirects later?
 4. Is the product at `/products/crochet-bear-keychain` intentionally a rabbit product despite the bear slug?
-5. Is the June promotion still active after June 2026, or should it be time-bound/removed?
+5. Is the current promotion still active, or should it be time-bound/removed?
 6. Should LyliShop add real About/Contact pages later, without fake address/email?
 7. Should product image source of truth remain `public/product-assets/`, replacing old README references to `public/products/`?
 
