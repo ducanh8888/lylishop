@@ -1,10 +1,26 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Camera, MessageCircle, PackageCheck, Ruler, ThumbsUp } from "lucide-react";
+import {
+  ArrowLeft,
+  Camera,
+  CheckCircle2,
+  Gift,
+  MessageCircle,
+  PackageCheck,
+  Palette,
+  Ruler,
+  ThumbsUp,
+} from "lucide-react";
 
-import { PRODUCTS, getProductBySlug, getRelatedProducts } from "@/lib/products";
+import type { ProductGroup } from "@/lib/products";
+import {
+  PRODUCTS,
+  getProductBySlug,
+  getProductGroup,
+  getProductInformation,
+  getRelatedProducts,
+} from "@/lib/products";
 import { BLOG_POSTS } from "@/lib/blog";
 import { createPageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
@@ -17,6 +33,8 @@ import { Card } from "@/components/ui/card";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ProductCard } from "@/components/ProductCard";
+import { ProductImageGallery } from "@/components/products/ProductImageGallery";
+import { ProductOrderPanel } from "@/components/products/ProductOrderPanel";
 
 const ORDER_STEPS = [
   {
@@ -42,6 +60,47 @@ const CARE_TIPS = [
   "Tránh ngâm nước lâu, vắt mạnh hoặc để sản phẩm bị đè nặng trong balo quá lâu.",
   "Khi không sử dụng, nên treo ở nơi khô thoáng để sản phẩm giữ form tốt hơn.",
 ];
+
+const PRODUCT_DETAIL_HIGHLIGHTS = [
+  { label: "Handmade 100%", icon: PackageCheck },
+  { label: "Len Milk Cotton", icon: CheckCircle2 },
+  { label: "Có thể chọn màu", icon: Palette },
+  { label: "Nhận làm theo yêu cầu", icon: MessageCircle },
+  { label: "Phù hợp làm quà tặng", icon: Gift },
+];
+
+const PRODUCT_ORDER_FLOW = [
+  "Chọn mẫu",
+  "Chọn màu",
+  "Gửi ghi chú nếu cần",
+  "Nhắn Zalo để xác nhận",
+];
+
+const PRODUCT_PREPARE_CHECKLIST = [
+  "Muốn giống mẫu",
+  "Muốn đổi màu",
+  "Muốn làm theo ảnh",
+  "Muốn có thiệp",
+  "Muốn gói quà",
+];
+
+const LYLISHOP_COMMITMENTS = [
+  "Handmade 100%",
+  "Sử dụng len Milk Cotton",
+  "Có thể chọn màu",
+  "Có thể đặt theo yêu cầu",
+  "Kiểm tra sản phẩm trước khi giao",
+  "Hỗ trợ tư vấn trước khi đặt",
+];
+
+const RELATED_BLOG_TERMS_BY_GROUP: Record<ProductGroup, string[]> = {
+  mini: ["móc khóa mini", "quà handmade nhỏ", "quà tặng cá nhân", "phụ kiện len handmade"],
+  "size-s": ["móc khóa handmade", "móc khóa len", "phụ kiện len handmade", "quà handmade nhỏ"],
+  "size-m": ["móc khóa len", "quà handmade", "đặt móc khóa len số lượng", "phụ kiện len handmade"],
+  "size-l": ["móc khóa len", "treo balo", "quà handmade", "phụ kiện len handmade"],
+  flower: ["hoa len", "hoa tulip", "bó hoa", "quà handmade"],
+  plush: ["thú bông len", "móc khóa thú len", "quà handmade", "phụ kiện len handmade"],
+};
 
 function normalizeText(value: string) {
   return value
@@ -69,20 +128,45 @@ function getSearchTerms(value: string) {
 }
 
 function getRelatedBlogPosts(product: NonNullable<ReturnType<typeof getProductBySlug>>, limit = 2) {
+  const productGroup = getProductGroup(product);
+  const groupTerms = RELATED_BLOG_TERMS_BY_GROUP[productGroup].map(normalizeText);
   const productTerms = getSearchTerms(
     [product.name, product.category, product.shortDescription, ...product.tags, ...product.benefits].join(" ")
-  );
+  ).slice(0, 8);
 
   return BLOG_POSTS.map((post, index) => {
     const postText = normalizeText(
-      [post.title, post.excerpt, post.description, ...post.keywords].join(" ")
+      [
+        post.title,
+        post.excerpt,
+        post.description,
+        ...post.keywords,
+        ...post.sections.flatMap((section) => [
+          section.heading,
+          ...(section.body ?? []),
+          ...(section.blocks ?? []).flatMap((block) => {
+            if (block.type === "table") return [block.caption, ...block.headers, ...block.rows.flat()];
+            if (block.type === "list") return block.items;
+            if (block.type === "quote") return [block.quote, block.cite];
+            if (block.type === "callout") return [block.title, block.body];
+            if (block.type === "image") return [block.alt, block.caption];
+            return [block.text];
+          }),
+        ]),
+      ]
+        .filter(Boolean)
+        .join(" ")
     );
-    const score = productTerms.reduce(
+    const groupScore = groupTerms.reduce(
+      (total, term) => total + (postText.includes(term) ? 3 : 0),
+      0
+    );
+    const productScore = productTerms.reduce(
       (total, term) => total + (postText.includes(term) ? 1 : 0),
       0
     );
 
-    return { post, score, index };
+    return { post, score: groupScore + productScore, index };
   })
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score || a.index - b.index)
@@ -98,6 +182,14 @@ function getProductMetadataTitle(product: NonNullable<ReturnType<typeof getProdu
   return product.name.length <= 30
     ? `${product.name} | Móc khóa len handmade LyliShop`
     : `${product.name} | LyliShop`;
+}
+
+function getProductHeading(product: NonNullable<ReturnType<typeof getProductBySlug>>) {
+  if (product.detailHeading) return product.detailHeading;
+
+  return normalizeText(product.name).startsWith("moc khoa")
+    ? product.name
+    : `Móc khóa len handmade ${product.name}`;
 }
 
 export function generateStaticParams() {
@@ -136,28 +228,16 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product) notFound();
   const relatedProducts = getRelatedProducts(product);
   const relatedBlogPosts = getRelatedBlogPosts(product);
-  const productImages = product.images ?? [product.image];
-  const thumbnailImages = productImages.slice(1);
-  const productFaqs = [
-    {
-      id: `${product.slug}-custom-color`,
-      question: `Có thể đặt ${product.name} theo màu riêng không?`,
-      answer:
-        "Có. Bạn có thể nhắn LyliShop màu mong muốn, tone màu yêu thích hoặc ảnh mẫu tham khảo để shop tư vấn trước khi làm.",
-    },
-    {
-      id: `${product.slug}-gift`,
-      question: `${product.name} có phù hợp làm quà tặng handmade không?`,
-      answer:
-        "Có. Sản phẩm nhỏ gọn, dễ treo balo hoặc túi xách, phù hợp làm quà sinh nhật, quà cảm ơn hoặc món quà nhỏ cho người thích đồ handmade.",
-    },
-    {
-      id: `${product.slug}-order`,
-      question: `Đặt ${product.name} tại LyliShop như thế nào?`,
-      answer:
-        "Bạn chọn mẫu trên website rồi nhắn Zalo hoặc Facebook. Shop sẽ xác nhận màu, số lượng, giá theo kích thước và thời gian hoàn thiện trước khi chốt đơn.",
-    },
+  const productHeading = getProductHeading(product);
+  const productInformation = getProductInformation(product);
+  const productInformationRows = [
+    { label: "Chất liệu", value: productInformation.material },
+    { label: "Kích thước", value: productInformation.size },
+    { label: "Màu sắc", value: productInformation.colors },
+    { label: "Gia công", value: productInformation.production },
+    { label: "Bảo quản", value: productInformation.care },
   ];
+  const productFaqs = product.faqs;
 
   return (
     <>
@@ -195,55 +275,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
 
           <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:items-start">
-            <div className="grid gap-4">
-              <div className="overflow-hidden rounded-2xl border border-border/70 bg-white/70 shadow-sm backdrop-blur-md">
-                <div className="relative aspect-square bg-gradient-to-b from-white to-rose-50">
-                  <Image
-                    src={productImages[0].src}
-                    alt={productImages[0].alt}
-                    width={productImages[0].width}
-                    height={productImages[0].height}
-                    className="h-full w-full object-cover"
-                    priority
-                    fetchPriority="high"
-                    quality={60}
-                    sizes="(max-width: 1024px) 100vw, 520px"
-                  />
-                </div>
-              </div>
-
-              {thumbnailImages.length > 0 ? (
-                <div className="grid grid-cols-3 gap-3">
-                  {thumbnailImages.map((image) => (
-                    <div
-                      key={image.src}
-                      className="overflow-hidden rounded-lg border border-border/70 bg-white/70 shadow-sm"
-                    >
-                      <div className="relative aspect-square bg-gradient-to-b from-white to-rose-50">
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          width={image.width}
-                          height={image.height}
-                          className="h-full w-full object-cover"
-                          loading="lazy"
-                          quality={55}
-                          sizes="(max-width: 1024px) 50vw, 250px"
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div
-                  role="img"
-                  aria-label={`Khung ảnh bổ sung của ${product.name}`}
-                  className="flex aspect-[4/1] items-center justify-center rounded-lg border border-dashed border-primary/25 bg-white/70 text-sm text-muted-foreground shadow-sm"
-                >
-                  Ảnh bổ sung sẽ được cập nhật khi có hình thật.
-                </div>
-              )}
-            </div>
+            <ProductImageGallery product={product} />
 
             <div>
               <div className="mb-4 flex flex-wrap gap-2 sm:hidden">
@@ -251,7 +283,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <Badge variant="secondary">Đóng gói làm quà</Badge>
               </div>
               <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-                {product.name}
+                {productHeading}
               </h1>
               <p className="mt-3 text-base leading-7 text-muted-foreground sm:text-lg">
                 {product.shortDescription}
@@ -266,33 +298,44 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </span>
               </div>
 
-              <Card className="mt-6 bg-white/70 p-5 shadow-sm backdrop-blur-md">
-                <div className="grid gap-4 sm:grid-cols-3">
-                  <div>
-                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                      Danh mục
-                    </p>
-                    <p className="mt-1 text-sm font-medium text-foreground">{product.category}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                      Chất liệu
-                    </p>
-                    <p className="mt-1 text-sm font-medium text-foreground">{product.material}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                      Kích thước
-                    </p>
-                    <p className="mt-1 text-sm font-medium text-foreground">
-                      Xác nhận theo mẫu/size khi liên hệ
-                    </p>
-                  </div>
-                </div>
+              <Card className="mt-4 bg-white/70 p-5 shadow-sm backdrop-blur-md">
+                <p className="font-display text-base font-semibold">Điểm nổi bật</p>
+                <ul className="mt-3 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
+                  {PRODUCT_DETAIL_HIGHLIGHTS.map((item) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <li key={item.label} className="flex items-center gap-2">
+                        <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                          <Icon className="h-4 w-4" aria-hidden="true" />
+                        </span>
+                        <span>{item.label}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
               </Card>
 
               <Card className="mt-4 bg-white/70 p-5 shadow-sm backdrop-blur-md">
-                <h2 className="font-display text-base font-semibold">Điểm nổi bật</h2>
+                <p className="font-display text-base font-semibold">Quy trình đặt hàng</p>
+                <ol className="mt-3 grid gap-3 text-sm sm:grid-cols-2">
+                  {PRODUCT_ORDER_FLOW.map((step, index) => (
+                    <li key={step} className="rounded-md border border-border/70 bg-background/60 p-3">
+                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 text-sm font-semibold text-primary">
+                        {index + 1}
+                      </span>
+                      <span className="mt-2 block font-medium leading-snug text-foreground">
+                        {step}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </Card>
+
+              <ProductOrderPanel product={product} />
+
+              <Card className="mt-4 bg-white/70 p-5 shadow-sm backdrop-blur-md">
+                <p className="font-display text-base font-semibold">Gợi ý nhanh</p>
                 <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
                   {product.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-2">
@@ -337,12 +380,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               ) : null}
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button asChild size="lg">
-                  <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
-                    <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                    Liên hệ Zalo
-                  </a>
-                </Button>
                 <Button asChild size="lg" variant="outline">
                   <Link href="/products">Xem thêm móc khóa len</Link>
                 </Button>
@@ -359,10 +396,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   </a>
                 </Button>
               </div>
-
-              <p className="mt-4 text-sm text-muted-foreground">
-                Muốn đổi màu? Nhắn shop bảng màu bạn thích, shop sẽ xác nhận mẫu trước khi bắt đầu làm.
-              </p>
             </div>
           </div>
         </Container>
@@ -372,15 +405,63 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <Container>
           <div className="grid gap-8 lg:grid-cols-[1fr_0.78fr]">
             <div>
+              <Card className="mb-5 bg-white/70 p-5 shadow-sm sm:p-6">
+                <p className="font-display text-lg font-semibold">Bạn cần chuẩn bị gì?</p>
+                <ul className="mt-4 grid gap-2 text-sm leading-6 text-muted-foreground sm:grid-cols-2">
+                  {PRODUCT_PREPARE_CHECKLIST.map((item) => (
+                    <li key={item} className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+
               <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-                Mô tả
+                Mô tả sản phẩm
               </p>
               <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                 Chi tiết về {product.name}
               </h2>
-              <div className="mt-5 whitespace-pre-line rounded-2xl border border-border/70 bg-white/70 p-5 text-base leading-8 text-muted-foreground shadow-sm sm:p-6">
+              <Card className="mt-5 whitespace-pre-line bg-white/70 p-5 text-base leading-8 text-muted-foreground shadow-sm sm:p-6">
                 {product.longDescription}
-              </div>
+              </Card>
+
+              <Card className="mt-5 bg-white/70 p-5 shadow-sm sm:p-6">
+                <h2 className="font-display text-2xl font-semibold tracking-tight">
+                  Thông tin sản phẩm
+                </h2>
+                <div className="mt-5 overflow-hidden rounded-lg border border-border/70">
+                  <table className="w-full border-collapse text-left text-sm">
+                    <tbody className="divide-y divide-border/70">
+                      {productInformationRows.map((row) => (
+                        <tr key={row.label} className="bg-white/60">
+                          <th
+                            scope="row"
+                            className="w-36 bg-rose-50/70 px-4 py-3 font-medium text-foreground sm:w-44"
+                          >
+                            {row.label}
+                          </th>
+                          <td className="px-4 py-3 leading-6 text-muted-foreground">{row.value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Card>
+
+              <Card className="mt-5 bg-white/70 p-5 shadow-sm sm:p-6">
+                <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                  Đánh giá
+                </p>
+                <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight">
+                  Phản hồi khách hàng
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">
+                  Tính năng đánh giá đang được phát triển. LyliShop chỉ hiển thị phản hồi thật sau
+                  khi được khách hàng đồng ý.
+                </p>
+              </Card>
             </div>
 
             <div className="grid gap-5">
@@ -485,11 +566,26 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </details>
             ))}
           </div>
+          <Card className="mx-auto mt-6 max-w-3xl bg-rose-50/70 p-5 shadow-sm sm:p-6">
+            <h3 className="font-display text-lg font-semibold">Cam kết từ LyliShop</h3>
+            <ul className="mt-4 grid gap-2 text-sm leading-6 text-muted-foreground sm:grid-cols-2">
+              {LYLISHOP_COMMITMENTS.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <CheckCircle2
+                    className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                    aria-hidden="true"
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </Card>
         </Container>
       </section>
 
-      <section className="bg-background py-14 sm:py-20">
-        <Container>
+      {relatedProducts.length > 0 ? (
+        <section className="bg-background py-14 sm:py-20">
+          <Container>
             <div className="mx-auto max-w-2xl text-center">
               <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
                 Có thể bạn cũng thích
@@ -507,11 +603,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <ProductCard key={item.slug} product={item} />
               ))}
             </div>
-        </Container>
-      </section>
+          </Container>
+        </section>
+      ) : null}
 
       <section className="bg-white py-14 sm:py-20">
         <Container>
+          <Card className="mb-5 bg-white/80 p-5 text-center shadow-sm sm:p-6">
+            <p className="mx-auto max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+              LyliShop luôn khuyến khích khách hàng trao đổi mẫu, màu sắc và yêu cầu riêng trước
+              khi đặt để sản phẩm phù hợp nhất với mong muốn.
+            </p>
+          </Card>
           <div className="rounded-2xl border border-border/70 bg-rose-50/80 p-6 text-center shadow-sm sm:p-8">
             <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
               Liên hệ LyliShop

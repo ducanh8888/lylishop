@@ -45,28 +45,40 @@ export const metadata = createPageMetadata({
 
 const CATEGORY_ITEMS = [
   {
-    title: "Móc khóa Mini",
-    description: "Nhỏ gọn, nhẹ tay, hợp treo chìa khóa hoặc túi mini.",
+    title: "Mini",
+    price: "Từ 49.000đ",
+    description: "Combo quà nhỏ xinh",
+    cta: "Xem combo",
   },
   {
-    title: "Móc khóa Size S",
-    description: "Dễ tặng, dễ dùng hằng ngày và phù hợp đặt theo nhóm.",
+    title: "Size S",
+    price: "45.000đ",
+    description: "Nhiều mẫu nhất",
+    cta: "Chọn mẫu",
   },
   {
-    title: "Móc khóa Size M",
-    description: "Nổi bật hơn trên balo, túi tote hoặc hộp bút.",
+    title: "Size M",
+    price: "59.000đ",
+    description: "Quà tặng nổi bật",
+    cta: "Xem mẫu",
   },
   {
-    title: "Móc khóa Size L",
-    description: "Dành cho mẫu cần nhiều chi tiết và tạo điểm nhấn rõ.",
+    title: "Size L",
+    price: "69.000đ",
+    description: "Kích thước lớn hơn",
+    cta: "Khám phá",
   },
   {
     title: "Hoa len",
-    description: "Mẫu hoa nhỏ xinh, hợp làm quà nhẹ nhàng và tinh tế.",
+    price: "35.000-40.000đ",
+    description: "Không héo, lưu giữ lâu",
+    cta: "Xem hoa",
   },
   {
     title: "Thú bông len",
-    description: "Dáng mềm, dễ thương, hợp người thích phụ kiện handmade.",
+    price: "Từ 150.000đ",
+    description: "Món quà handmade độc đáo",
+    cta: "Xem thú bông",
   },
 ];
 
@@ -337,10 +349,11 @@ function CategorySection() {
               )}
               <div className="flex flex-1 flex-col p-4">
                 <h3 className="font-display text-base font-semibold leading-snug tracking-tight">{category.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">{category.description}</p>
+                <p className="mt-2 text-sm font-semibold text-primary">{category.price}</p>
+                <p className="mt-1 flex-1 text-sm leading-6 text-muted-foreground">{category.description}</p>
                 <Button asChild variant="outline" size="sm" className="mt-4 w-full">
-                  <Link href="/products">
-                    Xem sản phẩm
+                  <Link href="/products" aria-label={`${category.cta} ${category.title}`}>
+                    {category.cta}
                   </Link>
                 </Button>
               </div>
