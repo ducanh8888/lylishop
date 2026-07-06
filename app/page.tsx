@@ -6,18 +6,16 @@ import {
   Camera,
   Gift,
   HeartHandshake,
-  Mail,
-  MapPin,
   MessageCircle,
-  Phone,
   Sparkles,
   Star,
   ThumbsUp,
 } from "lucide-react";
 
 import { Container } from "@/components/Container";
-import { ContactOrderCard } from "@/components/contact/ContactOrderCard";
 import { JsonLd } from "@/components/JsonLd";
+import { ContactSection } from "@/components/sections/ContactSection";
+import { HomepageAboutSection } from "@/components/sections/HomepageAboutSection";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { formatVnd } from "@/lib/format";
@@ -122,12 +120,6 @@ const HOMEPAGE_IMAGES = {
     alt: "Nhieu mau moc khoa len handmade cua LyliShop",
     width: 1200,
     height: 960,
-  },
-  about: {
-    src: "/images/homepage/lylishop-about-handmade-workshop.webp",
-    alt: "Nhieu mau moc khoa len mini duoc chuan bi tai LyliShop",
-    width: 1200,
-    height: 900,
   },
 } as const;
 
@@ -533,284 +525,6 @@ function NewsSection() {
   );
 }
 
-const ABOUT_CARDS = [
-  {
-    title: "Sứ mệnh",
-    description:
-      "Mang đến những món quà handmade được tạo nên từ sự tỉ mỉ và chân thành, giúp mỗi sản phẩm đều mang ý nghĩa riêng dành cho người nhận.",
-    icon: HeartHandshake,
-  },
-  {
-    title: "Giá trị cốt lõi",
-    values: ["Handmade tỉ mỉ", "Chất lượng", "Thân thiện", "Luôn lắng nghe khách hàng"],
-    icon: Sparkles,
-  },
-  {
-    title: "Định vị thương hiệu",
-    description:
-      "LyliShop hướng đến hình ảnh một thương hiệu phụ kiện len handmade trẻ trung, tinh tế và gần gũi, phù hợp với những ai yêu thích sự dễ thương và các món quà mang dấu ấn cá nhân.",
-    icon: Gift,
-  },
-];
-
-const HANDMADE_PROCESS = [
-  {
-    title: "Trao đổi mẫu",
-    description:
-      "LyliShop hỏi rõ mẫu, tone màu, dịp tặng và số lượng để tránh làm sai mong muốn của khách.",
-  },
-  {
-    title: "Móc và hoàn thiện",
-    description:
-      "Sản phẩm được móc thủ công, chỉnh chi tiết nhỏ, gắn khoen và kiểm tra form trước khi đóng gói.",
-  },
-  {
-    title: "Kiểm tra, đóng gói",
-    description:
-      "Shop kiểm tra lại sản phẩm, gói gọn theo phong cách quà tặng và xác nhận thông tin giao hàng qua tin nhắn.",
-  },
-];
-
-function AboutSection() {
-  return (
-    <section id="about" className="scroll-mt-24 bg-background py-14 sm:py-20 lg:py-24">
-      <Container>
-        <SectionTitle
-          eyebrow="Giới thiệu"
-          title="Giới thiệu LyliShop"
-          description="LyliShop mang đến những sản phẩm handmade được móc hoàn toàn thủ công, phù hợp làm quà tặng và phụ kiện cá nhân với phong cách dễ thương, tinh tế và mang dấu ấn riêng."
-        />
-
-        <div className="mt-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-primary/10 bg-gradient-to-b from-white to-rose-50 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-500">
-            <Image
-              src={HOMEPAGE_IMAGES.about.src}
-              alt={HOMEPAGE_IMAGES.about.alt}
-              width={HOMEPAGE_IMAGES.about.width}
-              height={HOMEPAGE_IMAGES.about.height}
-              className="h-full w-full object-cover"
-              sizes="(max-width: 1024px) 100vw, 520px"
-              loading="lazy"
-              quality={75}
-            />
-          </div>
-
-          <Card className="bg-white/75 p-6 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-500 sm:p-7">
-            <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-              Câu chuyện nhỏ
-            </p>
-            <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight">
-              Những món quà len được chuẩn bị bằng sự tỉ mỉ.
-            </h3>
-            <div className="mt-4 space-y-3 text-sm leading-7 text-muted-foreground sm:text-base">
-              <p>
-                LyliShop tập trung vào móc khóa len, hoa len và thú bông len nhỏ xinh.
-                Mỗi sản phẩm được làm thủ công để người mua có thể chọn món quà gần
-                với sở thích và câu chuyện của người nhận. Shop hoạt động theo mô hình
-                handmade theo đơn, không sản xuất hàng loạt.
-              </p>
-              <p>
-                Shop ưu tiên cách tư vấn rõ ràng, nhẹ nhàng và gần gũi để khách dễ
-                chọn mẫu, màu sắc và cách đóng gói phù hợp trước khi liên hệ đặt hàng.
-              </p>
-            </div>
-          </Card>
-        </div>
-
-        <Card className="mt-8 bg-white/75 p-6 shadow-sm sm:p-7">
-          <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-            Quy trình thực hiện
-          </p>
-          <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight">
-            Quy trình handmade tại LyliShop
-          </h3>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
-            Mỗi đơn được chuẩn bị theo tin nhắn trao đổi với khách, từ chọn màu đến kiểm tra thành phẩm.
-            Quy trình này giúp người mua biết rõ shop đang làm gì trước khi chốt đơn qua mạng xã hội.
-          </p>
-          <ol className="mt-6 grid gap-4 md:grid-cols-3">
-            {HANDMADE_PROCESS.map((step, index) => (
-              <li key={step.title} className="rounded-lg border border-border/70 bg-background/70 p-4">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-sm font-semibold text-primary">
-                  {index + 1}
-                </span>
-                <h4 className="mt-3 font-display text-base font-semibold">{step.title}</h4>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">{step.description}</p>
-              </li>
-            ))}
-          </ol>
-        </Card>
-
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {ABOUT_CARDS.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Card key={item.title} className="h-full bg-white/75 p-6 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-                <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-md bg-primary/10 text-primary">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <h3 className="mt-4 font-display text-lg font-semibold tracking-tight">
-                  {item.title}
-                </h3>
-                {item.values ? (
-                  <ul className="mt-3 grid gap-2 text-left text-sm leading-6 text-muted-foreground">
-                    {item.values.map((value) => (
-                      <li key={value} className="flex items-start gap-2">
-                        <span className="text-primary" aria-hidden="true">✔</span>
-                        <span>{value}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {item.description}
-                  </p>
-                )}
-              </Card>
-            );
-          })}
-        </div>
-
-        <Card className="mt-8 bg-rose-50/80 p-6 text-center shadow-sm sm:p-8">
-          <h3 className="font-display text-2xl font-semibold tracking-tight">
-            Bạn đã tìm được mẫu yêu thích?
-          </h3>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
-            Xem thêm mẫu đang có hoặc nhắn LyliShop màu, số lượng và ngày cần nhận để shop tư vấn phù hợp hơn.
-          </p>
-          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button asChild>
-              <Link href="/products">
-                🟣 Xem cửa hàng
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/#contact">💬 Liên hệ ngay</Link>
-            </Button>
-          </div>
-        </Card>
-      </Container>
-    </section>
-  );
-}
-
-function ContactSection() {
-  const contactItems = [
-    {
-      label: "Facebook",
-      value: "Theo dõi LyliShop.",
-      href: SITE.socials.facebook,
-      icon: ThumbsUp,
-    },
-    {
-      label: "Instagram",
-      value: "Xem hình ảnh sản phẩm.",
-      href: SITE.socials.instagram,
-      icon: Camera,
-    },
-    {
-      label: "Zalo",
-      value: "Tư vấn nhanh.",
-      href: SITE.socials.zalo,
-      icon: MessageCircle,
-    },
-    {
-      label: "Điện thoại",
-      value: SITE.phone,
-      href: `tel:${SITE.phone}`,
-      icon: Phone,
-    },
-    {
-      label: "Email",
-      value: SITE.email,
-      href: `mailto:${SITE.email}`,
-      icon: Mail,
-    },
-    {
-      label: "Google Maps",
-      value: "Shop hiện tư vấn và chốt đơn online.",
-      icon: MapPin,
-    },
-  ];
-  return (
-    <section id="contact" className="scroll-mt-24 bg-white py-14 sm:py-20 lg:py-24">
-      <span id="order" className="sr-only" aria-hidden="true" />
-      <Container>
-        <SectionTitle
-          eyebrow="Liên hệ"
-          title="Liên hệ & Đặt hàng"
-          description="Bạn cần tư vấn hoặc muốn đặt móc khóa handmade theo yêu cầu? LyliShop luôn sẵn sàng hỗ trợ bạn qua các kênh liên hệ dưới đây."
-        />
-
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-[0.8fr_1.2fr]">
-          <Card className="h-full bg-background/70 p-5 shadow-sm sm:p-6">
-            <h3 className="font-display text-xl font-semibold tracking-tight">
-              Thông tin liên hệ
-            </h3>
-            <div className="mt-5 grid grid-cols-2 gap-3">
-              {contactItems.map((item) => {
-                const Icon = item.icon;
-                const content = (
-                  <>
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-primary/10 text-primary">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <h4 className="font-display text-sm font-semibold leading-tight">
-                        {item.label}
-                      </h4>
-                      <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                        {item.value}
-                      </p>
-                    </div>
-                  </>
-                );
-
-                return item.href ? (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target={item.href.startsWith("http") ? "_blank" : undefined}
-                    rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                    className="flex min-h-32 flex-col gap-3 rounded-lg border border-border/70 bg-white/75 p-4 shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
-                  >
-                    {content}
-                  </a>
-                ) : (
-                  <div
-                    key={item.label}
-                    className="flex min-h-32 flex-col gap-3 rounded-lg border border-border/70 bg-white/75 p-4 shadow-sm"
-                  >
-                    {content}
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="mt-5 overflow-hidden rounded-lg border border-border/70 bg-white/75 shadow-sm">
-              <div className="border-b border-border/70 px-5 py-4">
-                <h4 className="font-display text-base font-semibold">Google Maps</h4>
-              </div>
-              <div
-                role="img"
-                aria-label="Khung placeholder Google Maps LyliShop"
-                className="flex min-h-[300px] items-center justify-center bg-gradient-to-b from-white to-rose-50 p-6 text-center"
-              >
-                <p className="max-w-xs text-sm leading-6 text-muted-foreground">
-                  LyliShop hiện chốt đơn online qua Facebook, Instagram và Zalo. Khung bản đồ sẽ được thay bằng địa chỉ công khai khi shop có điểm nhận/gửi phù hợp.
-                </p>
-              </div>
-            </div>
-          </Card>
-
-          <ContactOrderCard />
-        </div>
-      </Container>
-    </section>
-  );
-}
-
 export default function HomePage() {
   return (
     <>
@@ -824,7 +538,7 @@ export default function HomePage() {
       <FeaturedProductsSection />
       <ReviewSection />
       <NewsSection />
-      <AboutSection />
+      <HomepageAboutSection />
       <ContactSection />
     </>
   );

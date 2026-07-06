@@ -30,17 +30,14 @@ export function BlogCard({
     width: 1200,
     height: 630,
   };
+  const imageAlt = `Ảnh minh họa cho bài viết ${post.title} của LyliShop`;
 
   return (
     <Card className="group flex h-full flex-col overflow-hidden bg-white/75 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-      <Link
-        href={`/blog/${post.slug}`}
-        className="relative block aspect-[4/3] overflow-hidden bg-gradient-to-b from-white to-rose-50"
-        aria-label={`Đọc bài viết ${post.title}`}
-      >
+      <div className="relative block aspect-[4/3] overflow-hidden bg-gradient-to-b from-white to-rose-50">
         <Image
           src={image.src}
-          alt={image.alt}
+          alt={imageAlt}
           width={image.width}
           height={image.height}
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
@@ -51,7 +48,7 @@ export function BlogCard({
         <div className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-foreground shadow-sm backdrop-blur">
           {post.readingTime}
         </div>
-      </Link>
+      </div>
 
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
@@ -66,9 +63,7 @@ export function BlogCard({
         </div>
 
         <Heading className="mt-3 font-display text-xl font-semibold leading-tight tracking-tight">
-          <Link href={`/blog/${post.slug}`} className="transition hover:text-primary">
-            {post.title}
-          </Link>
+          {post.title}
         </Heading>
         <p className="mt-3 text-sm leading-6 text-muted-foreground">{post.excerpt}</p>
 
@@ -82,7 +77,7 @@ export function BlogCard({
 
         <div className="mt-auto pt-5">
           <Button asChild variant="outline" className="w-full sm:w-fit">
-            <Link href={`/blog/${post.slug}`}>
+            <Link href={`/blog/${post.slug}`} aria-label={`Đọc bài viết ${post.title}`}>
               Đọc bài viết
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>

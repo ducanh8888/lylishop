@@ -11,10 +11,18 @@ import { Card } from "@/components/ui/card";
 export function ProductCard({
   product,
   className,
+  ctaLabel = "Xem chi tiết",
+  image,
+  imageAlt,
 }: {
   product: Product;
   className?: string;
+  ctaLabel?: string;
+  image?: Product["image"];
+  imageAlt?: string;
 }) {
+  const cardImage = image ?? product.image;
+
   return (
     <Card
       className={cn(
@@ -25,14 +33,14 @@ export function ProductCard({
       <Link
         href={`/products/${product.slug}`}
         className="flex h-full w-full flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-        aria-label={`Xem chi tiết ${product.name}`}
+        aria-label={`${ctaLabel} ${product.name}`}
       >
         <div className="relative aspect-square overflow-hidden bg-gradient-to-b from-white to-rose-50">
           <Image
-            src={product.image.src}
-            alt={product.image.alt}
-            width={product.image.width}
-            height={product.image.height}
+            src={cardImage.src}
+            alt={imageAlt ?? cardImage.alt}
+            width={cardImage.width}
+            height={cardImage.height}
             className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
             loading="lazy"
@@ -59,7 +67,7 @@ export function ProductCard({
 
           <div className="mt-auto pt-5">
             <span className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-md border border-border/70 bg-background/80 px-4 text-sm font-medium text-foreground shadow-sm transition group-hover:border-primary/30 group-hover:bg-primary group-hover:text-primary-foreground">
-              Xem chi tiết
+              {ctaLabel}
               <ArrowUpRight
                 className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                 aria-hidden="true"

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Camera, MessageCircle, ThumbsUp } from "lucide-react";
+import { ArrowRight, Camera, CheckCircle2, MessageCircle, ThumbsUp } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { PRODUCTS } from "@/lib/products";
+import { getProductGroup, PRODUCTS, type Product, type ProductGroup } from "@/lib/products";
 import { createPageMetadata, HOME_OG_IMAGE } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/schema";
@@ -26,77 +26,143 @@ export const metadata = createPageMetadata({
 
 const PRODUCT_CATEGORIES = [
   {
+    id: "mini",
     title: "Móc khóa Mini",
     label: "Mini",
     description: "Nhỏ gọn, nhẹ tay, hợp treo chìa khóa hoặc túi mini.",
+    ctaLabel: "Xem combo",
   },
   {
+    id: "size-s",
     title: "Móc khóa Size S",
     label: "S",
     description: "Dễ chọn làm quà nhỏ, phù hợp dùng hằng ngày.",
+    ctaLabel: "Chọn mẫu",
   },
   {
+    id: "size-m",
     title: "Móc khóa Size M",
     label: "M",
     description: "Kích thước vừa đủ nổi bật trên balo hoặc túi tote.",
+    ctaLabel: "Xem mẫu",
   },
   {
+    id: "size-l",
     title: "Móc khóa Size L",
     label: "L",
     description: "Phù hợp mẫu nhiều chi tiết hoặc muốn tạo điểm nhấn.",
+    ctaLabel: "Khám phá",
   },
   {
+    id: "flower",
     title: "Hoa len",
     label: "Hoa",
     description: "Nhẹ nhàng, tinh tế, hợp tặng bạn bè hoặc tự thưởng.",
+    ctaLabel: "Xem hoa",
   },
   {
+    id: "plush",
     title: "Thú bông len",
     label: "Thú",
     description: "Dáng mềm, dễ thương, hợp người thích phụ kiện handmade.",
+    ctaLabel: "Xem thú bông",
   },
+] satisfies Array<{
+  id: ProductGroup;
+  title: string;
+  label: string;
+  description: string;
+  ctaLabel: string;
+}>;
+
+const PRODUCT_GROUP_DESCRIPTIONS: Record<ProductGroup, string> = {
+  mini: "Nhóm mini phù hợp khi cần món quà nhỏ, dễ đặt theo combo và dễ phối màu theo sở thích.",
+  "size-s": "Size S là nhóm dễ dùng hằng ngày, hợp treo chìa khóa, balo hoặc tặng bạn bè.",
+  "size-m": "Size M nổi bật hơn khi treo balo hoặc túi tote, phù hợp làm quà tặng có dấu ấn riêng.",
+  "size-l": "Size L dành cho mẫu nhiều chi tiết, cần tạo điểm nhấn rõ hơn khi treo balo hoặc túi lớn.",
+  flower: "Hoa len phù hợp làm quà tặng giữ được lâu, có thể trao đổi màu hoa và cách gói.",
+  plush: "Thú bông len hợp làm quà handmade mềm mại, có thể chọn màu và trao đổi chi tiết trước khi làm.",
+};
+
+const PRODUCT_TRUST_ITEMS = [
+  "Handmade theo từng đơn",
+  "Có thể chọn màu",
+  "Nhận làm theo ảnh",
+  "Shop xác nhận mẫu trước khi thực hiện",
 ];
 
 const SHOP_HERO_IMAGE = {
   src: "/images/homepage/lylishop-hero-handmade-keychains.webp",
-  alt: "Nhieu mau moc khoa len handmade cua LyliShop",
+  alt: "Nhiều mẫu móc khóa len handmade của LyliShop",
   width: 1200,
   height: 960,
 } as const;
 
-const PRODUCT_CATEGORY_IMAGES = [
-  {
+type CategoryImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+const PRODUCT_CATEGORY_IMAGES: Record<ProductGroup, CategoryImage | null> = {
+  mini: {
     src: "/images/categories/moc-khoa-mini.webp",
-    alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
+    alt: "Bộ móc khóa len mini nhiều màu của LyliShop",
     width: 900,
     height: 900,
   },
-  {
+  "size-s": {
     src: "/images/categories/moc-khoa-size-s.webp",
-    alt: "Moc khoa len size S nhieu mau de thuong",
+    alt: "Móc khóa len size S nhiều mẫu của LyliShop",
     width: 900,
     height: 900,
   },
-  {
+  "size-m": {
     src: "/images/categories/moc-khoa-size-m.webp",
-    alt: "Moc khoa len size M handmade tren khay tre",
+    alt: "Móc khóa len size M handmade trên khay tre",
     width: 900,
     height: 900,
   },
-  null,
-  {
+  "size-l": null,
+  flower: {
     src: "/images/categories/hoa-len.webp",
-    alt: "Bo hoa len handmade nhieu mau",
+    alt: "Bó hoa len handmade nhiều màu của LyliShop",
     width: 900,
     height: 900,
   },
-  {
+  plush: {
     src: "/images/categories/thu-bong-len.webp",
-    alt: "Thu bong len handmade mau hong",
+    alt: "Thú bông len handmade màu hồng của LyliShop",
     width: 900,
     height: 900,
   },
-] as const;
+};
+
+function getGroupSectionId(group: ProductGroup) {
+  return `nhom-${group}`;
+}
+
+function getProductsByGroup(group: ProductGroup) {
+  return PRODUCTS.filter((product) => getProductGroup(product) === group);
+}
+
+function getListingImage(product: Product) {
+  const productGroup = getProductGroup(product);
+
+  if (productGroup === "size-m") {
+    return product.images?.find((image) => image.src.includes("/moc-khoa-size-m/")) ?? product.image;
+  }
+
+  return product.image;
+}
+
+function getListingImageAlt(product: Product) {
+  const productGroup = getProductGroup(product);
+  const groupTitle = PRODUCT_CATEGORIES.find((category) => category.id === productGroup)?.title;
+
+  return `${product.name} thuộc nhóm ${groupTitle ?? "sản phẩm handmade"} tại LyliShop`;
+}
 
 export default function ProductsPage() {
   return (
@@ -230,8 +296,9 @@ export default function ProductsPage() {
           </div>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-            {PRODUCT_CATEGORIES.map((category, index) => {
-              const image = PRODUCT_CATEGORY_IMAGES[index];
+            {PRODUCT_CATEGORIES.map((category) => {
+              const image = PRODUCT_CATEGORY_IMAGES[category.id];
+              const productCount = getProductsByGroup(category.id).length;
 
               return (
               <Card
@@ -239,8 +306,9 @@ export default function ProductsPage() {
                 className="group flex h-full flex-col overflow-hidden bg-white/75 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg"
               >
                 <Link
-                  href="#product-grid"
+                  href={`#${getGroupSectionId(category.id)}`}
                   className="flex h-full flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  aria-label={`${category.ctaLabel} ${category.title}`}
                 >
                   {image ? (
                     <div className="relative aspect-[4/3] overflow-hidden border-b border-border/70 bg-gradient-to-b from-white to-rose-50 xl:aspect-square">
@@ -266,11 +334,14 @@ export default function ProductsPage() {
                     <h3 className="font-display text-base font-semibold leading-snug tracking-tight">
                       {category.title}
                     </h3>
+                    <p className="mt-1 text-xs font-medium text-primary">
+                      {productCount > 0 ? `${productCount} mẫu đang hiển thị` : "Đang cập nhật mẫu"}
+                    </p>
                     <p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">
                       {category.description}
                     </p>
                     <span className="mt-4 inline-flex items-center justify-center gap-2 rounded-md border border-border/70 bg-background/80 px-3 py-2 text-sm font-medium transition group-hover:border-primary/30 group-hover:bg-primary group-hover:text-primary-foreground">
-                      Xem sản phẩm
+                      {category.ctaLabel}
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </span>
                   </div>
@@ -286,22 +357,92 @@ export default function ProductsPage() {
         <Container>
           <SectionHeading
             eyebrow="Tất cả sản phẩm"
-            title="Danh sách móc khóa len handmade"
-            description="Grid sản phẩm giữ card đồng bộ với Homepage: ảnh, danh mục, tên, giá, mô tả ngắn và nút xem chi tiết."
+            title="Danh sách móc khóa len handmade theo từng nhóm"
+            description="Mỗi nhóm sản phẩm được tách riêng để bạn dễ xem mẫu, so sánh size và chọn kênh liên hệ phù hợp trước khi đặt."
           />
-          <div className="mt-8 flex flex-col gap-3 rounded-lg border border-border/70 bg-background/70 p-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <p>Hiển thị {PRODUCTS.length} mẫu đang có trên LyliShop.</p>
+
+          <div className="mt-8 grid gap-3 rounded-xl border border-primary/15 bg-background/80 p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-4">
+            {PRODUCT_TRUST_ITEMS.map((item) => (
+              <div key={item} className="flex items-start gap-2 text-sm leading-6 text-muted-foreground">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-5 flex flex-col gap-3 rounded-lg border border-border/70 bg-background/70 p-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+            <p>Hiển thị {PRODUCTS.length} mẫu đang có trên LyliShop, chia theo 6 nhóm sản phẩm chính.</p>
             <Link href="/moc-khoa-len" className="font-medium text-primary hover:underline">
               Xem hướng dẫn chọn móc khóa len
             </Link>
           </div>
+
           <div
             id="product-grid"
-            className="mt-12 grid scroll-mt-24 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+            className="mt-12 scroll-mt-24 space-y-14"
           >
-            {PRODUCTS.map((p) => (
-              <ProductCard key={p.slug} product={p} />
-            ))}
+            {PRODUCT_CATEGORIES.map((category) => {
+              const products = getProductsByGroup(category.id);
+
+              return (
+                <section
+                  key={category.id}
+                  id={getGroupSectionId(category.id)}
+                  className="scroll-mt-24"
+                  aria-labelledby={`${getGroupSectionId(category.id)}-title`}
+                >
+                  <div className="mb-6 flex flex-col gap-3 border-b border-border/70 pb-5 sm:flex-row sm:items-end sm:justify-between">
+                    <div className="max-w-2xl">
+                      <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                        {category.label}
+                      </p>
+                      <h2
+                        id={`${getGroupSectionId(category.id)}-title`}
+                        className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl"
+                      >
+                        {category.title}
+                      </h2>
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground sm:text-base">
+                        {PRODUCT_GROUP_DESCRIPTIONS[category.id]}
+                      </p>
+                    </div>
+                    <p className="text-sm font-medium text-primary">
+                      {products.length > 0 ? `${products.length} mẫu` : "Đang cập nhật"}
+                    </p>
+                  </div>
+
+                  {products.length > 0 ? (
+                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                      {products.map((product) => (
+                        <ProductCard
+                          key={product.slug}
+                          product={product}
+                          ctaLabel={category.ctaLabel}
+                          image={getListingImage(product)}
+                          imageAlt={getListingImageAlt(product)}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="rounded-xl border border-dashed border-primary/25 bg-rose-50/60 p-6 text-sm leading-7 text-muted-foreground">
+                      <p className="font-medium text-foreground">
+                        LyliShop đang chuẩn bị ảnh và mẫu {category.title.toLowerCase()} phù hợp để hiển thị.
+                      </p>
+                      <p className="mt-2">
+                        Nếu bạn cần mẫu size này, hãy nhắn Zalo để shop kiểm tra khả năng làm theo màu,
+                        kích thước và ảnh tham khảo trước khi xác nhận.
+                      </p>
+                      <Button asChild className="mt-4" variant="outline">
+                        <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                          <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                          Hỏi mẫu {category.label}
+                        </a>
+                      </Button>
+                    </div>
+                  )}
+                </section>
+              );
+            })}
           </div>
         </Container>
       </section>
