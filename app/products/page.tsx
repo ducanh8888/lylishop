@@ -179,7 +179,7 @@ export default function ProductsPage() {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", url: SITE.url },
-          { name: "Cửa hàng", url: `${SITE.url}/products` },
+          { name: "Sản phẩm", url: `${SITE.url}/products` },
         ])}
       />
 
@@ -188,7 +188,7 @@ export default function ProductsPage() {
           <Breadcrumbs
             items={[
               { label: "Trang chủ", href: "/" },
-              { label: "Cửa hàng" },
+              { label: "Sản phẩm" },
             ]}
             className="mb-6"
           />
@@ -196,7 +196,7 @@ export default function ProductsPage() {
           <div className="grid gap-8 rounded-2xl border border-border/70 bg-white/70 p-5 shadow-sm backdrop-blur-md sm:p-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
             <div>
               <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-                Cửa hàng LyliShop
+                Sản phẩm LyliShop
               </p>
               <h1 className="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                 Móc khóa len handmade nhỏ xinh, dễ chọn làm quà.

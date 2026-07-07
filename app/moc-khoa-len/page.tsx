@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle2,
   Gift,
+  MessageCircle,
   Palette,
   ShieldCheck,
   ShoppingBag,
@@ -18,7 +20,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BLOG_POSTS } from "@/lib/blog";
-import { PRODUCTS } from "@/lib/products";
+import { getProductGroup, PRODUCTS, type Product, type ProductGroup } from "@/lib/products";
 import { createPageMetadata, HOME_OG_IMAGE } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import {
@@ -48,11 +50,13 @@ const KEYWORDS = [
 
 const PILLAR_NAV = [
   { href: "#moc-khoa-len-la-gi", label: "Móc khóa len là gì" },
+  { href: "#phan-loai-moc-khoa-len", label: "Phân loại móc khóa len" },
   { href: "#goi-y-chon-nhanh", label: "Gợi ý chọn nhanh" },
   { href: "#bang-chon-size", label: "Chọn size" },
-  { href: "#cach-chon-moc-khoa-len", label: "Cách chọn móc khóa len" },
+  { href: "#so-sanh-dong-san-pham", label: "So sánh dòng sản phẩm" },
+  { href: "#quy-trinh-dat-hang", label: "Quy trình đặt hàng" },
   { href: "#moc-khoa-len-lam-qua", label: "Móc khóa len làm quà" },
-  { href: "#phan-loai-moc-khoa-len", label: "Phân loại móc khóa len" },
+  { href: "#cach-chon-moc-khoa-len", label: "Cách chọn móc khóa len" },
 ];
 
 const FAQ = [
@@ -104,6 +108,54 @@ const FAQ = [
     answer:
       "Bạn nên gửi tên mẫu, màu mong muốn, số lượng, ngày cần nhận và chi tiết muốn thêm nếu có. Shop sẽ xác nhận lại trước khi bắt đầu làm.",
   },
+  {
+    id: "co-goi-qua-khong",
+    question: "Có gói quà không?",
+    answer:
+      "Có thể hỗ trợ gói quà nếu bạn cần. Khi nhắn LyliShop, hãy ghi rõ sản phẩm dùng để tặng ai hoặc dịp nào để shop tư vấn cách gói phù hợp trước khi xác nhận đơn.",
+  },
+  {
+    id: "co-viet-thiep-khong",
+    question: "Có viết thiệp không?",
+    answer:
+      "LyliShop có thể ghi nhận yêu cầu kèm thiệp trong phần ghi chú. Nội dung, kiểu thiệp và khả năng chuẩn bị sẽ được shop xác nhận lại qua tin nhắn trước khi làm.",
+  },
+  {
+    id: "co-lam-theo-anh-khong",
+    question: "Có làm móc khóa len theo ảnh không?",
+    answer:
+      "Có thể nhận làm theo ảnh tham khảo nếu mẫu phù hợp với kỹ thuật móc len và chất liệu hiện có. Shop sẽ trao đổi trước về form, màu, kích thước và chi tiết nào có thể giữ giống ảnh.",
+  },
+  {
+    id: "bao-lau-hoan-thanh",
+    question: "Bao lâu hoàn thành một mẫu móc khóa len?",
+    answer:
+      "Thời gian hoàn thành phụ thuộc vào mẫu, số lượng và độ chi tiết. LyliShop sẽ báo thời gian dự kiến qua tin nhắn sau khi bạn gửi mẫu, màu và ngày cần nhận.",
+  },
+  {
+    id: "co-ship-toan-quoc-khong",
+    question: "Có ship toàn quốc không?",
+    answer:
+      "LyliShop hỗ trợ tư vấn và chốt đơn online. Thông tin giao hàng, phí vận chuyển và thời gian nhận sẽ được xác nhận theo từng đơn trước khi shop bắt đầu chuẩn bị sản phẩm.",
+  },
+  {
+    id: "thanh-toan-nhu-the-nao",
+    question: "Thanh toán như thế nào?",
+    answer:
+      "Cách thanh toán sẽ được LyliShop xác nhận trực tiếp qua kênh bạn liên hệ. Website không có giỏ hàng hoặc checkout, mọi thông tin đặt hàng đều được trao đổi qua Zalo, Facebook hoặc Instagram.",
+  },
+  {
+    id: "bao-quan-moc-khoa-len",
+    question: "Bảo quản móc khóa len ra sao?",
+    answer:
+      "Nên giữ sản phẩm khô thoáng, tránh ngâm nước lâu, tránh kéo mạnh các chi tiết nhỏ và hạn chế để vật nặng đè lên form móc khóa trong thời gian dài.",
+  },
+  {
+    id: "moc-khoa-len-co-giat-duoc-khong",
+    question: "Móc khóa len có giặt được không?",
+    answer:
+      "Nếu cần vệ sinh, bạn nên lau hoặc chấm nhẹ khu vực bị bẩn bằng khăn ẩm, sau đó để khô tự nhiên. Không nên vò mạnh, ngâm lâu hoặc dùng nhiệt cao vì có thể làm xù len và lệch form.",
+  },
 ];
 
 const useCases = [
@@ -151,6 +203,63 @@ const quickChoiceGuides = [
   },
 ];
 
+const PILLAR_HERO_IMAGE = {
+  src: "/images/homepage/lylishop-hero-handmade-keychains.webp",
+  alt: "Các mẫu móc khóa len handmade của LyliShop",
+  width: 1200,
+  height: 960,
+} as const;
+
+const productGroupSections = [
+  {
+    id: "mini",
+    title: "Móc khóa Mini",
+    description:
+      "Nhỏ gọn, nhẹ tay, phù hợp treo chìa khóa, túi mini hoặc làm quà tặng theo combo.",
+    ctaLabel: "Xem combo",
+  },
+  {
+    id: "size-s",
+    title: "Móc khóa Size S",
+    description:
+      "Dễ dùng hằng ngày, nhiều mẫu để chọn và phù hợp khi cần món quà nhỏ có thể chọn màu.",
+    ctaLabel: "Chọn mẫu",
+  },
+  {
+    id: "size-m",
+    title: "Móc khóa Size M",
+    description:
+      "Nổi bật hơn nhóm mini, phù hợp treo balo, túi tote hoặc làm quà tặng có điểm nhấn.",
+    ctaLabel: "Xem mẫu",
+  },
+  {
+    id: "size-l",
+    title: "Móc khóa Size L",
+    description:
+      "Phù hợp với mẫu nhiều chi tiết hoặc khách muốn phụ kiện nhìn rõ hơn khi treo balo, túi lớn.",
+    ctaLabel: "Khám phá",
+  },
+  {
+    id: "flower",
+    title: "Hoa len",
+    description:
+      "Bó hoa và hoa len handmade, phù hợp làm quà tặng lưu giữ lâu hoặc trang trí góc nhỏ.",
+    ctaLabel: "Xem hoa",
+  },
+  {
+    id: "plush",
+    title: "Thú bông len",
+    description:
+      "Dáng mềm và nhiều chi tiết hơn, hợp làm quà handmade hoặc món trang trí cá nhân.",
+    ctaLabel: "Xem thú bông",
+  },
+] satisfies Array<{
+  id: ProductGroup;
+  title: string;
+  description: string;
+  ctaLabel: string;
+}>;
+
 const sizeGuideRows = [
   {
     size: "Size S",
@@ -169,6 +278,84 @@ const sizeGuideRows = [
     range: "10-12 cm",
     price: "Từ 69k",
     bestFor: "Mẫu nhiều chi tiết hoặc món quà muốn tạo điểm nhấn rõ",
+  },
+];
+
+const comparisonRows = [
+  {
+    group: "Mini",
+    size: "3-4 cm",
+    purpose: "Treo chìa khóa, túi mini, đặt theo combo",
+    visibility: "Gọn nhẹ",
+    gift: "Quà nhỏ, quà nhóm",
+    price: "Từ 45k, tùy mẫu",
+  },
+  {
+    group: "Size S",
+    size: "5-7 cm",
+    purpose: "Treo hằng ngày, balo, túi xách",
+    visibility: "Dễ nhìn nhưng không vướng",
+    gift: "Bạn bè, lớp học, đồng nghiệp",
+    price: "Từ 45k, tùy mẫu",
+  },
+  {
+    group: "Size M",
+    size: "8-10 cm",
+    purpose: "Treo balo, túi tote, hộp bút",
+    visibility: "Nổi bật hơn size nhỏ",
+    gift: "Quà sinh nhật, quà nhóm",
+    price: "Theo mẫu hiện có",
+  },
+  {
+    group: "Size L",
+    size: "10-12 cm",
+    purpose: "Mẫu nhiều chi tiết, treo balo hoặc túi lớn",
+    visibility: "Nổi bật rõ",
+    gift: "Món quà cần điểm nhấn",
+    price: "Đang cập nhật theo mẫu",
+  },
+  {
+    group: "Hoa len",
+    size: "Tùy loại hoa",
+    purpose: "Quà tặng, phụ kiện kèm hộp quà",
+    visibility: "Nhẹ nhàng, tinh tế",
+    gift: "Người thích hoa, quà lưu giữ lâu",
+    price: "Tùy loại hoa",
+  },
+  {
+    group: "Thú bông len",
+    size: "Tùy mẫu",
+    purpose: "Treo túi, trang trí bàn học hoặc làm quà",
+    visibility: "Mềm mại, nhiều chi tiết",
+    gift: "Người thích phụ kiện handmade",
+    price: "Theo mẫu và kích thước",
+  },
+];
+
+const orderSteps = [
+  {
+    step: "Bước 1",
+    title: "Chọn mẫu",
+    description:
+      "Bạn chọn nhóm Mini, Size S, Size M, Hoa len hoặc Thú bông len phù hợp với nhu cầu.",
+  },
+  {
+    step: "Bước 2",
+    title: "Chọn màu",
+    description:
+      "Gửi màu mong muốn hoặc tone màu người nhận thích để LyliShop tư vấn cách phối.",
+  },
+  {
+    step: "Bước 3",
+    title: "Gửi ảnh hoặc ghi chú",
+    description:
+      "Nếu muốn làm theo ảnh, đổi chi tiết, gói quà hoặc kèm thiệp, bạn ghi rõ trong tin nhắn.",
+  },
+  {
+    step: "Bước 4",
+    title: "LyliShop xác nhận rồi mới bắt đầu làm",
+    description:
+      "Shop xác nhận mẫu, màu, số lượng và thời gian dự kiến trước khi thực hiện sản phẩm.",
   },
 ];
 
@@ -241,6 +428,31 @@ const RELATED_BLOG_POSTS = BLOG_POSTS.filter((post) =>
     )
   )
 ).slice(0, 4);
+
+function getGroupSectionId(group: ProductGroup) {
+  return `nhom-${group}`;
+}
+
+function getProductsByGroup(group: ProductGroup) {
+  return PRODUCTS.filter((product) => getProductGroup(product) === group);
+}
+
+function getPillarProductImage(product: Product) {
+  const productGroup = getProductGroup(product);
+
+  if (productGroup === "size-m") {
+    return product.images?.find((image) => image.src.includes("/moc-khoa-size-m/")) ?? product.image;
+  }
+
+  return product.image;
+}
+
+function getPillarProductImageAlt(product: Product) {
+  const productGroup = getProductGroup(product);
+  const groupTitle = productGroupSections.find((group) => group.id === productGroup)?.title;
+
+  return `${product.name} trong nhóm ${groupTitle ?? "sản phẩm len handmade"} của LyliShop`;
+}
 
 export const metadata: Metadata = createPageMetadata({
   title: "Móc khóa len handmade cute, dễ thương làm quà",
@@ -321,28 +533,43 @@ export default function MocKhoaLenPage() {
               </div>
             </div>
 
-            <div className="grid gap-3 rounded-xl border border-border/70 bg-white/70 p-5 shadow-sm backdrop-blur-md">
-              <h2 className="font-display text-lg font-semibold">Thông tin nhanh về móc khóa len</h2>
-              <dl className="grid gap-3 text-sm">
-                <div className="flex items-start justify-between gap-4">
-                  <dt className="text-muted-foreground">Khoảng giá</dt>
-                  <dd className="font-medium">
-                    {formatVnd(minPrice)} - {formatVnd(maxPrice)}
-                  </dd>
-                </div>
-                <div className="flex items-start justify-between gap-4">
-                  <dt className="text-muted-foreground">Chất liệu</dt>
-                  <dd className="font-medium">Len mềm, khoen kim loại</dd>
-                </div>
-                <div className="flex items-start justify-between gap-4">
-                  <dt className="text-muted-foreground">Phong cách</dt>
-                  <dd className="font-medium">Cute, mini, handmade</dd>
-                </div>
-                <div className="flex items-start justify-between gap-4">
-                  <dt className="text-muted-foreground">Đặt hàng</dt>
-                  <dd className="font-medium">Instagram, TikTok, Facebook, Zalo</dd>
-                </div>
-              </dl>
+            <div className="grid gap-4">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/70 bg-white shadow-sm">
+                <Image
+                  src={PILLAR_HERO_IMAGE.src}
+                  alt={PILLAR_HERO_IMAGE.alt}
+                  width={PILLAR_HERO_IMAGE.width}
+                  height={PILLAR_HERO_IMAGE.height}
+                  sizes="(max-width: 1024px) 100vw, 44vw"
+                  className="h-full w-full object-cover"
+                  priority
+                  fetchPriority="high"
+                />
+              </div>
+
+              <div className="grid gap-3 rounded-xl border border-border/70 bg-white/70 p-5 shadow-sm backdrop-blur-md">
+                <h2 className="font-display text-lg font-semibold">Thông tin nhanh về móc khóa len</h2>
+                <dl className="grid gap-3 text-sm">
+                  <div className="flex items-start justify-between gap-4">
+                    <dt className="text-muted-foreground">Khoảng giá</dt>
+                    <dd className="font-medium">
+                      {formatVnd(minPrice)} - {formatVnd(maxPrice)}
+                    </dd>
+                  </div>
+                  <div className="flex items-start justify-between gap-4">
+                    <dt className="text-muted-foreground">Chất liệu</dt>
+                    <dd className="font-medium">Len Milk Cotton, khoen kim loại</dd>
+                  </div>
+                  <div className="flex items-start justify-between gap-4">
+                    <dt className="text-muted-foreground">Phong cách</dt>
+                    <dd className="font-medium">Handmade, chọn màu, làm quà</dd>
+                  </div>
+                  <div className="flex items-start justify-between gap-4">
+                    <dt className="text-muted-foreground">Đặt hàng</dt>
+                    <dd className="font-medium">Ưu tiên Zalo, Facebook, Instagram</dd>
+                  </div>
+                </dl>
+              </div>
             </div>
           </div>
         </Container>
@@ -477,10 +704,131 @@ export default function MocKhoaLenPage() {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {PRODUCTS.map((product) => (
-              <ProductCard key={product.slug} product={product} />
-            ))}
+          <div
+            id="so-sanh-dong-san-pham"
+            className="mt-10 scroll-mt-24 rounded-xl border border-border/70 bg-white/70 p-5 shadow-sm sm:p-6"
+          >
+            <div className="max-w-3xl">
+              <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                So sánh nhanh
+              </p>
+              <h2 className="mt-1 font-display text-xl font-semibold tracking-tight text-foreground">
+                So sánh nhanh các dòng sản phẩm
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Bảng này giúp bạn chọn nhóm sản phẩm phù hợp trước khi xem chi tiết từng
+                mẫu. Mức giá là thông tin tham khảo theo dữ liệu hiện có và sẽ được
+                LyliShop xác nhận lại qua tin nhắn.
+              </p>
+            </div>
+
+            <div className="mt-5 overflow-hidden rounded-lg border border-border/70 bg-background/70">
+              <div className="overflow-x-auto">
+                <table className="min-w-full border-collapse text-left text-sm">
+                  <thead className="bg-rose-50/90 text-foreground">
+                    <tr>
+                      <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">Dòng</th>
+                      <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">Kích thước</th>
+                      <th scope="col" className="px-4 py-3 font-semibold">Mục đích sử dụng</th>
+                      <th scope="col" className="px-4 py-3 font-semibold">Độ nổi bật</th>
+                      <th scope="col" className="px-4 py-3 font-semibold">Phù hợp làm quà</th>
+                      <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">Giá tham khảo</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border/70">
+                    {comparisonRows.map((row) => (
+                      <tr key={row.group} className="align-top">
+                        <td className="whitespace-nowrap px-4 py-3 font-medium text-foreground">{row.group}</td>
+                        <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">{row.size}</td>
+                        <td className="min-w-56 px-4 py-3 leading-6 text-muted-foreground">{row.purpose}</td>
+                        <td className="min-w-40 px-4 py-3 leading-6 text-muted-foreground">{row.visibility}</td>
+                        <td className="min-w-48 px-4 py-3 leading-6 text-muted-foreground">{row.gift}</td>
+                        <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">{row.price}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-10">
+            {productGroupSections.map((group) => {
+              const products = getProductsByGroup(group.id);
+
+              return (
+                <section
+                  key={group.id}
+                  id={getGroupSectionId(group.id)}
+                  className="scroll-mt-24 rounded-xl border border-border/70 bg-white/70 p-5 shadow-sm sm:p-6"
+                  aria-labelledby={`${getGroupSectionId(group.id)}-title`}
+                >
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                    <div className="max-w-2xl">
+                      <h2
+                        id={`${getGroupSectionId(group.id)}-title`}
+                        className="font-display text-2xl font-semibold tracking-tight text-foreground"
+                      >
+                        {group.title}
+                      </h2>
+                      <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                        {group.description}
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-2 sm:flex-row">
+                      <Button asChild variant="outline">
+                        <Link href={`/products#${getGroupSectionId(group.id)}`}>
+                          {group.ctaLabel}
+                        </Link>
+                      </Button>
+                      <Button asChild variant="ghost">
+                        <Link href="/#contact">Liên hệ đặt theo yêu cầu</Link>
+                      </Button>
+                    </div>
+                  </div>
+
+                  {products.length > 0 ? (
+                    <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                      {products.map((product) => (
+                        <ProductCard
+                          key={product.slug}
+                          product={product}
+                          ctaLabel={group.ctaLabel}
+                          image={getPillarProductImage(product)}
+                          imageAlt={getPillarProductImageAlt(product)}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="mt-6 rounded-lg border border-dashed border-border bg-background/70 p-5 text-sm leading-6 text-muted-foreground">
+                      Đang cập nhật thêm mẫu. Bạn có thể nhắn LyliShop để gửi ảnh tham khảo
+                      hoặc mô tả ý tưởng muốn làm theo yêu cầu.
+                    </div>
+                  )}
+                </section>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 rounded-xl border border-primary/20 bg-rose-50/80 p-5 text-center shadow-sm">
+            <h2 className="font-display text-xl font-semibold tracking-tight">
+              Bạn muốn chọn mẫu theo màu riêng?
+            </h2>
+            <p className="mx-auto mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
+              Gửi LyliShop mẫu bạn thích, màu muốn phối và ngày cần nhận để shop kiểm tra
+              khả năng thực hiện trước khi xác nhận.
+            </p>
+            <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
+              <Button asChild>
+                <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  Nhắn Zalo
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/products">Xem sản phẩm</Link>
+              </Button>
+            </div>
           </div>
 
           {RELATED_BLOG_POSTS.length > 0 ? (
@@ -517,6 +865,61 @@ export default function MocKhoaLenPage() {
               </div>
             </div>
           ) : null}
+        </Container>
+      </section>
+
+      <section
+        id="quy-trinh-dat-hang"
+        className="scroll-mt-24 bg-white py-14 sm:py-20"
+      >
+        <Container>
+          <SectionHeading
+            eyebrow="Quy trình"
+            title="Quy trình đặt móc khóa len handmade"
+            description="LyliShop không dùng giỏ hàng hay checkout. Mỗi đơn được trao đổi trực tiếp để shop hiểu đúng mẫu, màu và yêu cầu riêng trước khi bắt đầu làm."
+          />
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {orderSteps.map((item, index) => (
+              <article
+                key={item.step}
+                className="relative rounded-xl border border-border/70 bg-background/70 p-5 shadow-sm"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                    {item.step}
+                  </span>
+                  {index < orderSteps.length - 1 ? (
+                    <ArrowRight className="hidden h-4 w-4 text-primary/70 xl:block" aria-hidden="true" />
+                  ) : null}
+                </div>
+                <h3 className="mt-4 font-display text-lg font-semibold tracking-tight">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  {item.description}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mx-auto mt-8 max-w-3xl rounded-xl border border-primary/20 bg-rose-50/80 p-5 text-center shadow-sm">
+            <p className="text-sm leading-6 text-muted-foreground">
+              Nếu bạn chưa chắc nên chọn mẫu nào, hãy gửi màu yêu thích, người nhận và
+              dịp tặng. LyliShop sẽ tư vấn hướng phù hợp trước khi xác nhận đơn.
+            </p>
+            <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
+              <Button asChild>
+                <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  Nhắn Zalo tư vấn
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/#contact">Liên hệ đặt theo yêu cầu</Link>
+              </Button>
+            </div>
+          </div>
         </Container>
       </section>
 

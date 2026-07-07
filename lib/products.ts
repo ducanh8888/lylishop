@@ -471,7 +471,7 @@ const PRODUCT_DATA: ProductData[] = [
     benefits: ["Tạo hình thỏ nhỏ xinh, dễ treo hằng ngày", ...DEFAULT_BENEFITS],
     image: {
       src: "/images/products/thu-bong-len/thu-bong-len-tho-hong-cover.webp",
-      alt: "Thu bong len tho hong handmade cua LyliShop",
+      alt: "Thú bông len thỏ hồng handmade của LyliShop",
       width: 900,
       height: 1200,
     },
@@ -508,26 +508,26 @@ const PRODUCT_DATA: ProductData[] = [
     benefits: ["Tạo hình dâu tây nhỏ gọn, màu sắc ngọt ngào", ...DEFAULT_BENEFITS],
     image: {
       src: "/images/products/moc-khoa-mini/moc-khoa-mini-nhieu-mau-cover.webp",
-      alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
+      alt: "Bộ móc khóa len mini nhiều màu của LyliShop",
       width: 1000,
       height: 1000,
     },
     images: [
       {
         src: "/images/products/moc-khoa-mini/moc-khoa-mini-nhieu-mau-cover.webp",
-        alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
+        alt: "Bộ móc khóa len mini nhiều màu của LyliShop",
         width: 1000,
         height: 1000,
       },
       {
         src: "/images/products/moc-khoa-mini/moc-khoa-mini-hang-tang-lylishop.webp",
-        alt: "Nhieu mau moc khoa len mini dang chuan bi tai LyliShop",
+        alt: "Nhiều mẫu móc khóa len mini đang chuẩn bị tại LyliShop",
         width: 1200,
         height: 1200,
       },
       {
         src: "/images/products/moc-khoa-mini/moc-khoa-mini-dong-goi-nhieu-mau.webp",
-        alt: "Moc khoa len mini dong goi nhieu mau",
+        alt: "Móc khóa len mini đóng gói nhiều màu",
         width: 1000,
         height: 1000,
       }
@@ -569,26 +569,26 @@ const PRODUCT_DATA: ProductData[] = [
     benefits: ["Dáng hoa tulip gọn, dễ phối với balo hoặc túi tote", ...DEFAULT_BENEFITS],
     image: {
       src: "/images/products/hoa-len/hoa-len-bo-hoa-handmade-cover.webp",
-      alt: "Bo hoa len handmade nhieu mau cua LyliShop",
+      alt: "Bó hoa len handmade nhiều màu của LyliShop",
       width: 900,
       height: 1200,
     },
     images: [
       {
         src: "/images/products/hoa-len/hoa-len-bo-hoa-handmade-cover.webp",
-        alt: "Bo hoa len handmade nhieu mau cua LyliShop",
+        alt: "Bó hoa len handmade nhiều màu của LyliShop",
         width: 900,
         height: 1200,
       },
       {
         src: "/images/products/hoa-len/hoa-len-nhieu-mau-quy-trinh.webp",
-        alt: "Hoa len nhieu mau trong qua trinh chuan bi",
+        alt: "Hoa len nhiều màu trong quá trình chuẩn bị",
         width: 900,
         height: 1200,
       },
       {
         src: "/images/products/hoa-len/hoa-len-mini-treo-tui.webp",
-        alt: "Hoa len mini dung lam phu kien treo tui",
+        alt: "Hoa len mini dùng làm phụ kiện treo túi",
         width: 900,
         height: 1200,
       }
@@ -630,7 +630,7 @@ const PRODUCT_DATA: ProductData[] = [
     benefits: ["Tạo hình thỏ tai dài mềm mại, nổi bật khi treo túi", ...DEFAULT_BENEFITS],
     image: {
       src: "/images/products/thu-bong-len/thu-bong-len-tho-hong-cover.webp",
-      alt: "Thu bong len tho hong handmade cua LyliShop",
+      alt: "Thú bông len thỏ hồng handmade của LyliShop",
       width: 900,
       height: 1200,
     },
@@ -667,7 +667,7 @@ const PRODUCT_DATA: ProductData[] = [
     benefits: ["Chi tiết đệm chân mèo thêu nổi bật, dễ kẹp và dễ treo", ...DEFAULT_BENEFITS],
     image: {
       src: "/images/products/moc-khoa-size-s/moc-khoa-size-s-nhieu-mau-cover.webp",
-      alt: "Moc khoa len size S nhieu mau de thuong",
+      alt: "Móc khóa len size S nhiều mẫu dễ thương",
       width: 1000,
       height: 1000,
     },
@@ -700,20 +700,14 @@ const PRODUCT_DATA: ProductData[] = [
     benefits: ["Nhiều mẫu thú mini size S dễ chọn theo nhóm", ...DEFAULT_BENEFITS],
     image: {
       src: "/images/products/moc-khoa-size-s/moc-khoa-size-s-nhieu-mau-cover.webp",
-      alt: "Moc khoa len size S nhieu mau de thuong",
+      alt: "Móc khóa len size S nhiều mẫu dễ thương",
       width: 1000,
       height: 1000,
     },
     images: [
       {
         src: "/images/products/moc-khoa-size-s/moc-khoa-size-s-nhieu-mau-cover.webp",
-        alt: "Moc khoa len size S nhieu mau de thuong",
-        width: 1000,
-        height: 1000,
-      },
-      {
-        src: "/images/products/moc-khoa-mini/moc-khoa-mini-nhieu-mau-cover.webp",
-        alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
+        alt: "Móc khóa len size S nhiều mẫu dễ thương",
         width: 1000,
         height: 1000,
       }
@@ -748,26 +742,26 @@ const PRODUCT_DATA: ProductData[] = [
     benefits: ["Nhiều mẫu đồng giá dễ chọn làm quà nhỏ", ...DEFAULT_BENEFITS],
     image: {
       src: "/images/products/moc-khoa-mini/moc-khoa-mini-dong-goi-nhieu-mau.webp",
-      alt: "Moc khoa len mini dong goi nhieu mau",
+      alt: "Móc khóa len mini đóng gói nhiều màu",
       width: 1000,
       height: 1000,
     },
     images: [
       {
         src: "/images/products/moc-khoa-mini/moc-khoa-mini-dong-goi-nhieu-mau.webp",
-        alt: "Moc khoa len mini dong goi nhieu mau",
+        alt: "Móc khóa len mini đóng gói nhiều màu",
         width: 1000,
         height: 1000,
       },
       {
         src: "/images/products/moc-khoa-mini/moc-khoa-mini-nhieu-mau-cover.webp",
-        alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
+        alt: "Bộ móc khóa len mini nhiều màu của LyliShop",
         width: 1000,
         height: 1000,
       },
       {
         src: "/images/products/moc-khoa-mini/moc-khoa-mini-hang-tang-lylishop.webp",
-        alt: "Nhieu mau moc khoa len mini dang chuan bi tai LyliShop",
+        alt: "Nhiều mẫu móc khóa len mini đang chuẩn bị tại LyliShop",
         width: 1200,
         height: 1200,
       }
@@ -801,33 +795,15 @@ const PRODUCT_DATA: ProductData[] = [
     },
     benefits: ["Giá tốt từ 45k, dễ đặt theo nhóm hoặc làm quà lớp", ...DEFAULT_BENEFITS],
     image: {
-      src: "/images/products/moc-khoa-mini/moc-khoa-mini-nhieu-mau-cover.webp",
-      alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
-      width: 1000,
-      height: 1000,
+      src: "/images/products/moc-khoa-size-m/moc-khoa-size-m-kem-hong-xanh.webp",
+      alt: "Móc khóa len size M nhiều màu trên khay tre",
+      width: 1200,
+      height: 1062,
     },
     images: [
       {
-        src: "/images/products/moc-khoa-mini/moc-khoa-mini-nhieu-mau-cover.webp",
-        alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
-        width: 1000,
-        height: 1000,
-      },
-      {
-        src: "/images/products/moc-khoa-mini/moc-khoa-mini-hang-tang-lylishop.webp",
-        alt: "Nhieu mau moc khoa len mini dang chuan bi tai LyliShop",
-        width: 1200,
-        height: 1200,
-      },
-      {
-        src: "/images/products/moc-khoa-mini/moc-khoa-mini-dong-goi-nhieu-mau.webp",
-        alt: "Moc khoa len mini dong goi nhieu mau",
-        width: 1000,
-        height: 1000,
-      },
-      {
         src: "/images/products/moc-khoa-size-m/moc-khoa-size-m-kem-hong-xanh.webp",
-        alt: "Moc khoa len size M nhieu mau tren khay tre",
+        alt: "Móc khóa len size M nhiều màu trên khay tre",
         width: 1200,
         height: 1062,
       }

@@ -126,6 +126,9 @@ export function ProductImageGallery({ product }: { product: Product }) {
   return (
     <div aria-label={`Thư viện ảnh ${product.name}`} className="grid gap-4">
       <div className="lg:hidden">
+        <p className="mb-2 text-center text-xs font-medium text-muted-foreground">
+          Vuốt để xem thêm ảnh
+        </p>
         <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2">
           {galleryItems.map((item) => (
             <div key={item.id} className="min-w-full snap-start">

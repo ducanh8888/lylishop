@@ -1,7 +1,7 @@
 {
   "name": "LyliShop",
   "short_name": "LyliShop",
-  "description": "LyliShop showcases handmade crochet keychains and small yarn accessories for gifts.",
+  "description": "LyliShop giới thiệu móc khóa len handmade, hoa len và thú bông len làm quà tặng.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

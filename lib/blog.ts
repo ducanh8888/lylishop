@@ -79,7 +79,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readingTime: "4 phút đọc",
     image: {
       src: "/images/blog/moc-khoa-mini-hang-tang-lylishop.webp",
-      alt: "Bo moc khoa len mini nhieu mau dang chuan bi tai LyliShop",
+      alt: "Bộ móc khóa len mini nhiều màu đang chuẩn bị tại LyliShop",
       width: 1200,
       height: 900,
     },
@@ -275,7 +275,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readingTime: "4 phút đọc",
     image: {
       src: "/images/blog/moc-khoa-mini-hang-tang-lylishop.webp",
-      alt: "Nhieu mau moc khoa len handmade lam qua tang nho",
+      alt: "Nhiều mẫu móc khóa len handmade làm quà tặng nhỏ",
       width: 1200,
       height: 900,
     },
@@ -372,7 +372,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readingTime: "4 phút đọc",
     image: {
       src: "/images/blog/quy-trinh-moc-khoa-mini-phoi.webp",
-      alt: "Moc khoa len mini trong qua trinh chuan bi",
+      alt: "Móc khóa len mini trong quá trình chuẩn bị",
       width: 1200,
       height: 900,
     },

@@ -9,7 +9,6 @@ import {
   MessageCircle,
   PackageCheck,
   Palette,
-  Ruler,
   ThumbsUp,
 } from "lucide-react";
 
@@ -35,24 +34,6 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductImageGallery } from "@/components/products/ProductImageGallery";
 import { ProductOrderPanel } from "@/components/products/ProductOrderPanel";
-
-const ORDER_STEPS = [
-  {
-    title: "Chọn mẫu, màu và số lượng",
-    description:
-      "Bạn gửi mẫu đang xem, màu mong muốn, size và số lượng cần đặt để shop kiểm tra nhanh.",
-  },
-  {
-    title: "Shop xác nhận trước khi làm",
-    description:
-      "LyliShop báo lại giá theo kích thước, thời gian hoàn thiện và phí giao hàng dự kiến.",
-  },
-  {
-    title: "Chốt đơn qua tin nhắn",
-    description:
-      "Sau khi thống nhất mẫu, shop mới bắt đầu làm và cập nhật thông tin giao hàng cho bạn.",
-  },
-];
 
 const CARE_TIPS = [
   "Cầm vào khoen kim loại khi tháo khỏi túi hoặc balo, hạn chế kéo mạnh phần thân len.",
@@ -91,6 +72,73 @@ const LYLISHOP_COMMITMENTS = [
   "Có thể đặt theo yêu cầu",
   "Kiểm tra sản phẩm trước khi giao",
   "Hỗ trợ tư vấn trước khi đặt",
+];
+
+const PRODUCT_GROUP_CONTEXT: Record<
+  ProductGroup,
+  {
+    label: string;
+    href: string;
+    relatedTitle: string;
+    relatedDescription: string;
+    decisionItems: string[];
+  }
+> = {
+  mini: {
+    label: "Mini",
+    href: "/products#nhom-mini",
+    relatedTitle: "Sản phẩm cùng nhóm Mini",
+    relatedDescription:
+      "Xem thêm các mẫu mini nhỏ gọn, dễ đặt theo combo hoặc làm quà tặng nhẹ nhàng.",
+    decisionItems: ["Quà nhỏ cho bạn thân", "Móc khóa chìa khóa nhẹ", "Combo quà nhóm"],
+  },
+  "size-s": {
+    label: "Size S",
+    href: "/products#nhom-size-s",
+    relatedTitle: "Sản phẩm cùng nhóm Size S",
+    relatedDescription:
+      "Xem thêm các mẫu size S dễ treo hằng ngày, phù hợp chìa khóa, balo hoặc túi nhỏ.",
+    decisionItems: ["Móc khóa balo hoặc túi nhỏ", "Quà handmade dễ chọn", "Phụ kiện dùng hằng ngày"],
+  },
+  "size-m": {
+    label: "Size M",
+    href: "/products#nhom-size-m",
+    relatedTitle: "Sản phẩm cùng nhóm Size M",
+    relatedDescription:
+      "Xem thêm các mẫu size M nổi bật hơn khi treo balo, túi tote hoặc làm quà tặng.",
+    decisionItems: ["Quà sinh nhật", "Móc khóa balo nổi bật", "Quà nhóm hoặc quà couple"],
+  },
+  "size-l": {
+    label: "Size L",
+    href: "/products#nhom-size-l",
+    relatedTitle: "Sản phẩm cùng nhóm Size L",
+    relatedDescription:
+      "Xem thêm nhóm size L dành cho mẫu nhiều chi tiết hoặc phụ kiện cần điểm nhấn rõ.",
+    decisionItems: ["Phụ kiện treo balo lớn", "Mẫu nhiều chi tiết", "Quà cần điểm nhấn"],
+  },
+  flower: {
+    label: "Hoa len",
+    href: "/products#nhom-flower",
+    relatedTitle: "Sản phẩm cùng nhóm Hoa len",
+    relatedDescription:
+      "Xem thêm hoa len handmade phù hợp làm quà lưu giữ lâu hoặc trang trí góc nhỏ.",
+    decisionItems: ["Quà sinh nhật", "Quà tặng lưu giữ lâu", "Hoa len không héo"],
+  },
+  plush: {
+    label: "Thú bông len",
+    href: "/products#nhom-plush",
+    relatedTitle: "Sản phẩm cùng nhóm Thú bông len",
+    relatedDescription:
+      "Xem thêm thú bông len mềm mại, hợp làm quà tặng hoặc phụ kiện trang trí.",
+    decisionItems: ["Quà handmade mềm mại", "Trang trí bàn học", "Móc khóa túi hoặc balo"],
+  },
+};
+
+const TRUST_CONFIRMATION_ITEMS = [
+  "Xác nhận mẫu, màu và số lượng qua tin nhắn trước khi làm.",
+  "Báo lại thời gian hoàn thiện dự kiến theo từng mẫu.",
+  "Tư vấn phần nào có thể làm giống ảnh và phần nào cần điều chỉnh.",
+  "Website không xử lý checkout; khách chốt đơn trực tiếp qua kênh liên hệ.",
 ];
 
 const RELATED_BLOG_TERMS_BY_GROUP: Record<ProductGroup, string[]> = {
@@ -226,6 +274,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) notFound();
+  const productGroup = getProductGroup(product);
+  const productGroupContext = PRODUCT_GROUP_CONTEXT[productGroup];
   const relatedProducts = getRelatedProducts(product);
   const relatedBlogPosts = getRelatedBlogPosts(product);
   const productHeading = getProductHeading(product);
@@ -246,7 +296,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", url: SITE.url },
-          { name: "Cửa hàng", url: `${SITE.url}/products` },
+          { name: "Sản phẩm", url: `${SITE.url}/products` },
           { name: product.name, url: `${SITE.url}/products/${product.slug}` },
         ])}
       />
@@ -255,7 +305,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <Breadcrumbs
             items={[
               { label: "Trang chủ", href: "/" },
-              { label: "Cửa hàng", href: "/products" },
+              { label: "Sản phẩm", href: "/products" },
               { label: product.name },
             ]}
             className="mb-5"
@@ -263,9 +313,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
           <div className="flex items-center justify-between gap-3">
             <Button asChild variant="ghost">
-              <Link href="/products" aria-label="Quay lại cửa hàng LyliShop">
+              <Link href="/products" aria-label="Quay lại trang sản phẩm LyliShop">
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                Cửa hàng
+                Sản phẩm
               </Link>
             </Button>
             <div className="hidden items-center gap-2 sm:flex">
@@ -346,6 +396,27 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </ul>
               </Card>
 
+              <Card className="mt-4 bg-white/70 p-5 shadow-sm backdrop-blur-md">
+                <p className="font-display text-base font-semibold">Phù hợp nếu bạn đang tìm</p>
+                <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
+                  {productGroupContext.decisionItems.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle2
+                        className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                        aria-hidden="true"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={productGroupContext.href}
+                  className="mt-4 inline-flex text-sm font-medium text-primary hover:underline"
+                >
+                  Xem nhóm {productGroupContext.label}
+                </Link>
+              </Card>
+
               <div className="mt-4 flex flex-wrap gap-2">
                 {product.tags.map((tag) => (
                   <Badge key={tag} variant="secondary">
@@ -379,21 +450,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </div>
               ) : null}
 
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button asChild size="lg" variant="outline">
-                  <Link href="/products">Xem thêm móc khóa len</Link>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <Link href="/moc-khoa-len">Cách chọn móc khóa len</Link>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <Link href="/blog">Đọc thêm về quà handmade</Link>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                    <Camera className="h-4 w-4" aria-hidden="true" />
-                    Nhắn Instagram
+              <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                <Button asChild size="lg">
+                  <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
+                    <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                    Nhắn Zalo đặt hàng
                   </a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/products">Xem tất cả sản phẩm</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/moc-khoa-len">Cẩm nang móc khóa len</Link>
                 </Button>
               </div>
             </div>
@@ -500,24 +568,22 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               <Card className="bg-white/70 p-5 shadow-sm">
                 <div className="flex items-center gap-3">
-                  <Ruler className="h-5 w-5 text-primary" aria-hidden="true" />
-                  <h3 className="font-display text-lg font-semibold">Quy trình liên hệ</h3>
+                  <PackageCheck className="h-5 w-5 text-primary" aria-hidden="true" />
+                  <h3 className="font-display text-lg font-semibold">
+                    LyliShop xác nhận trước khi làm
+                  </h3>
                 </div>
-                <ol className="mt-4 grid gap-4">
-                  {ORDER_STEPS.map((step, index) => (
-                    <li key={step.title} className="flex gap-3">
-                      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-sm font-semibold text-primary">
-                        {index + 1}
-                      </span>
-                      <span>
-                        <span className="block text-sm font-medium text-foreground">{step.title}</span>
-                        <span className="mt-1 block text-sm leading-6 text-muted-foreground">
-                          {step.description}
-                        </span>
-                      </span>
+                <ul className="mt-4 grid gap-3 text-sm leading-6 text-muted-foreground">
+                  {TRUST_CONFIRMATION_ITEMS.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle2
+                        className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                        aria-hidden="true"
+                      />
+                      <span>{item}</span>
                     </li>
                   ))}
-                </ol>
+                </ul>
               </Card>
 
               {relatedBlogPosts.length > 0 ? (
@@ -583,29 +649,39 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </Container>
       </section>
 
-      {relatedProducts.length > 0 ? (
-        <section className="bg-background py-14 sm:py-20">
-          <Container>
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
-                Có thể bạn cũng thích
-              </p>
-              <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-                Móc khóa len liên quan
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
-                Xem thêm các mẫu móc khóa len handmade khác để dễ chọn quà hoặc phối theo
-                màu bạn thích.
-              </p>
-            </div>
+      <section className="bg-background py-14 sm:py-20">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+              Cùng nhóm sản phẩm
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+              {productGroupContext.relatedTitle}
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
+              {productGroupContext.relatedDescription}
+            </p>
+            <Button asChild variant="outline" className="mt-5">
+              <Link href={productGroupContext.href}>
+                Xem tất cả mẫu {productGroupContext.label}
+              </Link>
+            </Button>
+          </div>
+
+          {relatedProducts.length > 0 ? (
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {relatedProducts.map((item) => (
                 <ProductCard key={item.slug} product={item} />
               ))}
             </div>
-          </Container>
-        </section>
-      ) : null}
+          ) : (
+            <div className="mx-auto mt-8 max-w-2xl rounded-xl border border-dashed border-primary/25 bg-white/70 p-5 text-center text-sm leading-6 text-muted-foreground shadow-sm">
+              LyliShop đang cập nhật thêm mẫu trong nhóm {productGroupContext.label}. Bạn có
+              thể xem toàn bộ nhóm sản phẩm hoặc gửi ảnh tham khảo để shop tư vấn mẫu phù hợp.
+            </div>
+          )}
+        </Container>
+      </section>
 
       <section className="bg-white py-14 sm:py-20">
         <Container>

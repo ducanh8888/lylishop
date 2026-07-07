@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { Camera, MessageCircle, ThumbsUp } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container } from "@/components/Container";
@@ -17,32 +18,53 @@ import { blogJsonLd, breadcrumbJsonLd } from "@/lib/schema";
 
 const PAGE_PATH = "/blog";
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
+const FEATURED_BLOG_SLUG = "qua-handmade-tang-ban-gai";
 
 const BLOG_TOPICS = [
   {
+    id: "qua-handmade",
     title: "Quà tặng handmade",
-    description: "Gợi ý chọn món quà nhỏ, dễ thương và có cảm xúc riêng.",
+    description: "Gợi ý chọn món quà handmade có cảm xúc riêng.",
+    postSlugs: ["qua-handmade-tang-ban-gai", "qua-sinh-nhat-handmade", "y-nghia-qua-handmade"],
   },
   {
-    title: "Phụ kiện len",
-    description: "Cách hiểu và chọn phụ kiện len phù hợp với người dùng hằng ngày.",
+    id: "moc-khoa-len",
+    title: "Móc khóa len",
+    description: "Cách hiểu và chọn phụ kiện len dùng hằng ngày.",
+    postSlugs: ["phu-kien-len-handmade-la-gi", "y-nghia-qua-handmade"],
   },
   {
-    title: "Chăm sóc đồ len",
-    description: "Mẹo giữ phụ kiện handmade sạch, bền form và dùng lâu hơn.",
+    id: "hoa-len",
+    title: "Hoa len",
+    description: "Gợi ý chọn hoa len và quà handmade nhẹ nhàng.",
+    postSlugs: ["qua-handmade-tang-ban-gai"],
   },
   {
-    title: "Câu chuyện sản phẩm",
-    description: "Những góc nhìn nhẹ nhàng về ý nghĩa món quà thủ công.",
+    id: "bao-quan",
+    title: "Bảo quản",
+    description: "Mẹo giữ phụ kiện len sạch, bền form và dùng lâu hơn.",
+    postSlugs: ["cach-bao-quan-phu-kien-len"],
   },
 ];
 
 const BLOG_HERO_IMAGE = {
   src: "/images/og/lylishop-blog-og.webp",
-  alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
+  alt: "Cẩm nang quà handmade và phụ kiện len của LyliShop",
   width: 1200,
   height: 630,
 } as const;
+
+function getBlogPost(slug: string) {
+  return BLOG_POSTS.find((post) => post.slug === slug);
+}
+
+function getTopicPosts(postSlugs: string[]) {
+  return postSlugs.map(getBlogPost).filter((post): post is NonNullable<typeof post> => Boolean(post));
+}
+
+function getBlogImageAlt(title: string) {
+  return `Ảnh minh họa cho bài viết ${title} của LyliShop`;
+}
 
 export const metadata: Metadata = createPageMetadata({
   title: "Cảm hứng quà handmade nhỏ xinh",
@@ -98,13 +120,56 @@ export default function BlogPage() {
             eyebrow="Cẩm nang LyliShop"
             title="Cảm hứng quà handmade nhỏ xinh"
             description="Những gợi ý nhẹ nhàng về quà handmade, phụ kiện len và cách chọn món quà có cảm xúc riêng."
-            primaryHref="#blog-posts"
-            primaryLabel="Đọc bài mới"
+            primaryHref="#featured-article"
+            primaryLabel="Đọc bài nổi bật"
             secondaryHref="#blog-topics"
             secondaryLabel="Xem chủ đề"
             image={BLOG_HERO_IMAGE}
             priority
           />
+        </Container>
+      </section>
+
+      <section id="featured-article" className="bg-background py-14 sm:py-20">
+        <Container>
+          {(() => {
+            const featuredPost = getBlogPost(FEATURED_BLOG_SLUG) ?? BLOG_POSTS[0];
+
+            return (
+              <div className="grid gap-8 rounded-2xl border border-border/70 bg-white/75 p-5 shadow-sm sm:p-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-primary/10 bg-gradient-to-b from-white to-rose-50">
+                  <Image
+                    src={featuredPost.image.src}
+                    alt={getBlogImageAlt(featuredPost.title)}
+                    width={featuredPost.image.width}
+                    height={featuredPost.image.height}
+                    className="h-full w-full object-cover"
+                    sizes="(max-width: 1024px) 100vw, 520px"
+                    loading="lazy"
+                    quality={70}
+                  />
+                </div>
+
+                <div>
+                  <p className="font-display text-xs font-semibold uppercase tracking-wider text-primary/90">
+                    Bài viết nổi bật
+                  </p>
+                  <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                    {featuredPost.title}
+                  </h2>
+                  <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">
+                    {featuredPost.excerpt}
+                  </p>
+                  <Button asChild className="mt-6">
+                    <Link href={`/blog/${featuredPost.slug}`} aria-label={`Đọc bài viết ${featuredPost.title}`}>
+                      Đọc bài viết
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            );
+          })()}
         </Container>
       </section>
 
@@ -154,10 +219,10 @@ export default function BlogPage() {
                   {topic.description}
                 </p>
                 <Link
-                  href="#blog-posts"
+                  href={`#${topic.id}`}
                   className="mt-4 inline-flex text-sm font-medium text-primary hover:underline"
                 >
-                  Xem bài viết
+                  Xem chủ đề
                 </Link>
               </Card>
             ))}
@@ -174,17 +239,52 @@ export default function BlogPage() {
                   Danh sách bài viết
                 </p>
                 <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-                  Bài viết mới từ LyliShop
+                  Bài viết theo chủ đề
                 </h2>
               </div>
-              <div className="grid gap-5 md:grid-cols-2">
-                {BLOG_POSTS.map((post) => (
-                  <BlogCard key={post.slug} post={post} headingLevel="h3" />
-                ))}
+
+              <div className="space-y-12">
+                {BLOG_TOPICS.map((topic) => {
+                  const posts = getTopicPosts(topic.postSlugs);
+
+                  return (
+                    <section
+                      key={topic.id}
+                      id={topic.id}
+                      className="scroll-mt-24"
+                      aria-labelledby={`${topic.id}-title`}
+                    >
+                      <div className="mb-6 border-b border-border/70 pb-5">
+                        <h2
+                          id={`${topic.id}-title`}
+                          className="font-display text-2xl font-semibold tracking-tight sm:text-3xl"
+                        >
+                          {topic.title}
+                        </h2>
+                        <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
+                          {topic.description}
+                        </p>
+                      </div>
+
+                      <div className="grid gap-5 md:grid-cols-2">
+                        {posts.map((post) => (
+                          <BlogCard key={post.slug} post={post} headingLevel="h3" reduceDuplicateLinks />
+                        ))}
+                      </div>
+                    </section>
+                  );
+                })}
               </div>
             </div>
 
-            <BlogSidebar posts={BLOG_POSTS} />
+            <BlogSidebar
+              posts={BLOG_POSTS}
+              topics={BLOG_TOPICS.map((topic) => ({
+                title: topic.title,
+                href: `#${topic.id}`,
+                description: topic.description,
+              }))}
+            />
           </div>
         </Container>
       </section>
@@ -196,29 +296,20 @@ export default function BlogPage() {
               Cần gợi ý quà?
             </p>
             <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-              Nhắn LyliShop qua kênh bạn tiện nhất.
+              Xem sản phẩm rồi nhắn LyliShop tư vấn mẫu phù hợp.
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
-              Gửi shop dịp tặng, người nhận và màu bạn thích. LyliShop sẽ gợi ý mẫu
-              handmade phù hợp qua Facebook, Instagram hoặc Zalo.
+              Nếu một bài viết giúp bạn chọn được hướng quà tặng, hãy xem các mẫu đang có
+              rồi nhắn Zalo để LyliShop tư vấn màu, size và thời gian hoàn thiện.
             </p>
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild>
+                <Link href="/products">Xem sản phẩm</Link>
+              </Button>
+              <Button asChild variant="outline">
                 <a href={SITE.socials.zalo} target="_blank" rel="noreferrer">
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                  Zalo
-                </a>
-              </Button>
-              <Button asChild variant="outline">
-                <a href={SITE.socials.facebook} target="_blank" rel="noreferrer">
-                  <ThumbsUp className="h-4 w-4" aria-hidden="true" />
-                  Facebook
-                </a>
-              </Button>
-              <Button asChild variant="outline">
-                <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">
-                  <Camera className="h-4 w-4" aria-hidden="true" />
-                  Instagram
+                  Nhắn Zalo tư vấn
                 </a>
               </Button>
             </div>

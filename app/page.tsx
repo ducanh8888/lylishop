@@ -83,19 +83,19 @@ const CATEGORY_ITEMS = [
 const CATEGORY_IMAGES = [
   {
     src: "/images/categories/moc-khoa-mini.webp",
-    alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
+    alt: "Bộ móc khóa len mini nhiều màu của LyliShop",
     width: 900,
     height: 900,
   },
   {
     src: "/images/categories/moc-khoa-size-s.webp",
-    alt: "Moc khoa len size S nhieu mau de thuong",
+    alt: "Móc khóa len size S nhiều mẫu dễ thương",
     width: 900,
     height: 900,
   },
   {
     src: "/images/categories/moc-khoa-size-m.webp",
-    alt: "Moc khoa len size M handmade tren khay tre",
+    alt: "Móc khóa len size M handmade trên khay tre",
     width: 900,
     height: 900,
   },
@@ -108,7 +108,7 @@ const CATEGORY_IMAGES = [
   },
   {
     src: "/images/categories/thu-bong-len.webp",
-    alt: "Thu bong len handmade mau hong",
+    alt: "Thú bông len handmade màu hồng",
     width: 900,
     height: 900,
   },
@@ -117,7 +117,7 @@ const CATEGORY_IMAGES = [
 const HOMEPAGE_IMAGES = {
   hero: {
     src: "/images/homepage/lylishop-hero-handmade-keychains.webp",
-    alt: "Nhieu mau moc khoa len handmade cua LyliShop",
+    alt: "Nhiều mẫu móc khóa len handmade của LyliShop",
     width: 1200,
     height: 960,
   },
@@ -126,13 +126,13 @@ const HOMEPAGE_IMAGES = {
 const FEATURED_ARTICLE_IMAGES = [
   {
     src: "/images/blog/moc-khoa-mini-hang-tang-lylishop.webp",
-    alt: "Nhieu mau moc khoa len handmade lam qua tang nho",
+    alt: "Nhiều mẫu móc khóa len handmade làm quà tặng nhỏ",
     width: 1200,
     height: 900,
   },
   {
     src: "/images/blog/hoa-len-bo-hoa-handmade.webp",
-    alt: "Bo hoa len handmade dung lam qua tang",
+    alt: "Bó hoa len handmade dùng làm quà tặng",
     width: 1200,
     height: 900,
   },

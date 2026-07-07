@@ -8,25 +8,25 @@ export type GalleryImage = {
 export const GALLERY_IMAGES: GalleryImage[] = [
   {
     src: "/images/products/moc-khoa-mini/moc-khoa-mini-dong-goi-nhieu-mau.webp",
-    alt: "Moc khoa len mini dong goi nhieu mau",
+    alt: "Móc khóa len mini đóng gói nhiều màu",
     width: 1000,
     height: 1000,
   },
   {
     src: "/images/blog/quy-trinh-moc-khoa-mini-phoi.webp",
-    alt: "Moc khoa len mini trong qua trinh chuan bi",
+    alt: "Móc khóa len mini trong quá trình chuẩn bị",
     width: 1200,
     height: 900,
   },
   {
     src: "/images/products/thu-bong-len/thu-bong-len-tho-hong-cover.webp",
-    alt: "Thu bong len tho hong handmade cua LyliShop",
+    alt: "Thú bông len thỏ hồng handmade của LyliShop",
     width: 900,
     height: 1200,
   },
   {
     src: "/images/products/moc-khoa-mini/moc-khoa-mini-nhieu-mau-cover.webp",
-    alt: "Bo moc khoa len mini nhieu mau cua LyliShop",
+    alt: "Bộ móc khóa len mini nhiều màu của LyliShop",
     width: 1000,
     height: 1000,
   },
@@ -38,19 +38,19 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     src: "/images/products/moc-khoa-size-s/moc-khoa-size-s-nhieu-mau-cover.webp",
-    alt: "Moc khoa len size S nhieu mau de thuong",
+    alt: "Móc khóa len size S nhiều mẫu dễ thương",
     width: 1000,
     height: 1000,
   },
   {
     src: "/images/products/moc-khoa-size-m/moc-khoa-size-m-kem-hong-xanh.webp",
-    alt: "Moc khoa len size M nhieu mau tren khay tre",
+    alt: "Móc khóa len size M nhiều màu trên khay tre",
     width: 1200,
     height: 1062,
   },
   {
     src: "/images/homepage/lylishop-hero-handmade-keychains.webp",
-    alt: "Nhieu mau moc khoa len handmade cua LyliShop",
+    alt: "Nhiều mẫu móc khóa len handmade của LyliShop",
     width: 1200,
     height: 960,
   },
