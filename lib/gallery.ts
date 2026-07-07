@@ -32,7 +32,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     src: "/images/products/hoa-len/hoa-len-bo-hoa-handmade-cover.webp",
-    alt: "Bo hoa len handmade nhieu mau cua LyliShop",
+    alt: "Bó hoa len handmade nhiều màu của LyliShop",
     width: 900,
     height: 1200,
   },
