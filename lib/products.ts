@@ -717,29 +717,29 @@ const PRODUCT_DATA: ProductData[] = [
   },
   {
     slug: "set-moc-khoa-len-6-mau-qua-tang",
-    name: "Mẫu móc khóa đồng giá 45k",
-    detailHeading: "Móc khóa len Mini Handmade",
-    category: "Set móc khóa len handmade",
-    tags: ["đồng giá 45k", "quà tặng handmade dễ thương", "móc khóa len theo yêu cầu", "móc khóa len cute"],
-    priceVnd: 45000,
+    name: "Combo 3 móc khóa len Mini",
+    detailHeading: "Móc khóa len Mini Handmade combo 3 chiếc",
+    category: "Combo móc khóa len Mini",
+    tags: ["combo móc khóa mini", "móc khóa len mini", "quà tặng handmade", "móc khóa len theo yêu cầu"],
+    priceVnd: 49000,
     shortDescription:
-      "Móc khóa len mini được làm thủ công từ len Milk Cotton, phù hợp khi bạn cần quà nhỏ, giá tốt và dễ mua theo combo. Kích thước 3-4cm giúp sản phẩm nhẹ, dễ treo và không chiếm nhiều chỗ. LyliShop nhận phối màu, chọn mẫu cùng màu hoặc mix màu theo yêu cầu để món quà có cảm giác riêng.",
-    longDescription: productDescriptionWithTieredPrice("Mẫu móc khóa len handmade đồng giá 45k", [
+      "Combo 3 móc khóa len Mini được làm thủ công từ len Milk Cotton, phù hợp khi bạn cần set quà nhỏ để tặng bạn bè hoặc treo chìa khóa, balo, túi mini. LyliShop gợi ý các mẫu cún con, mèo, thỏ, cừu với màu xanh lá, đỏ hoặc hồng; bạn vẫn có thể nhắn shop để đổi mẫu, đổi màu hoặc gửi ảnh tham khảo trước khi làm.",
+    longDescription: productDescription("Combo 3 móc khóa len Mini handmade", [
       "Nhóm mini phù hợp nhất khi bạn muốn một món quà nhỏ, giá tốt và có thể đặt theo combo.",
       "Kích thước gọn giúp sản phẩm dễ treo chìa khóa, túi tote, balo hoặc hộp bút mà không vướng.",
-      "Có thể chọn combo cùng màu để đồng bộ hoặc phối màu ngẫu nhiên nếu muốn mỗi mẫu có nét riêng.",
-      "Nên chọn tone màu theo tính cách người nhận: nhẹ nhàng, dễ thương hoặc nổi bật hơn khi treo túi.",
+      "Gợi ý mẫu gồm cún con, mèo, thỏ, cừu hoặc các mẫu mini có form đơn giản để set 3 chiếc nhìn đồng bộ.",
+      "Màu gợi ý gồm xanh lá, đỏ và hồng; có thể đổi sang tone khác nếu bạn muốn set quà hợp người nhận hơn.",
       "Shop xác nhận mẫu, size, số lượng và thời gian hoàn thiện trước khi chốt đơn qua tin nhắn.",
-    ]),
+    ], MINI_SIZE_NOTE),
     metaDescription:
-      "Mẫu móc khóa len handmade đồng giá 45k tại LyliShop, nhận chọn màu, đóng gói xinh và có ưu đãi hiện hành số lượng giới hạn.",
+      "Combo 3 móc khóa len Mini handmade tại LyliShop, gợi ý mẫu cún con, mèo, thỏ, cừu và nhận chọn màu theo yêu cầu.",
     material: DEFAULT_MATERIAL,
     orderOptions: MINI_ORDER_OPTIONS,
     information: {
       size: "Mini: 3-4 cm",
       colors: "Trắng, kem, hồng, tím, xanh, nâu, vàng hoặc phối theo yêu cầu",
     },
-    benefits: ["Nhiều mẫu đồng giá dễ chọn làm quà nhỏ", ...DEFAULT_BENEFITS],
+    benefits: ["Combo 3 chiếc dễ chọn làm quà nhỏ", ...DEFAULT_BENEFITS],
     image: {
       src: "/images/products/moc-khoa-mini/moc-khoa-mini-dong-goi-nhieu-mau.webp",
       alt: "Móc khóa len mini đóng gói nhiều màu",
@@ -766,7 +766,7 @@ const PRODUCT_DATA: ProductData[] = [
         height: 1200,
       }
     ],
-    highlights: ["Đồng giá 45k", "Hợp làm quà", "Có ưu đãi hiện hành"],
+    highlights: ["Combo 3 chiếc", "Gợi ý cún, mèo, thỏ, cừu", "Chọn màu trước khi làm"],
     promotion: ACTIVE_PROMOTION,
   },
   {

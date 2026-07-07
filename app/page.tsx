@@ -47,36 +47,42 @@ const CATEGORY_ITEMS = [
     price: "Từ 49.000đ",
     description: "Combo quà nhỏ xinh",
     cta: "Xem combo",
+    href: "/products#nhom-mini",
   },
   {
     title: "Size S",
     price: "45.000đ",
     description: "Nhiều mẫu nhất",
     cta: "Chọn mẫu",
+    href: "/products#nhom-size-s",
   },
   {
     title: "Size M",
     price: "59.000đ",
     description: "Quà tặng nổi bật",
     cta: "Xem mẫu",
+    href: "/products#nhom-size-m",
   },
   {
     title: "Size L",
     price: "69.000đ",
     description: "Kích thước lớn hơn",
     cta: "Khám phá",
+    href: "/products#nhom-size-l",
   },
   {
     title: "Hoa len",
     price: "35.000-40.000đ",
     description: "Không héo, lưu giữ lâu",
     cta: "Xem hoa",
+    href: "/products#nhom-flower",
   },
   {
     title: "Thú bông len",
     price: "Từ 150.000đ",
     description: "Món quà handmade độc đáo",
     cta: "Xem thú bông",
+    href: "/products#nhom-plush",
   },
 ];
 
@@ -102,7 +108,7 @@ const CATEGORY_IMAGES = [
   null,
   {
     src: "/images/categories/hoa-len.webp",
-    alt: "Bo hoa len handmade nhieu mau",
+    alt: "Bó hoa len handmade nhiều màu",
     width: 900,
     height: 900,
   },
@@ -344,7 +350,7 @@ function CategorySection() {
                 <p className="mt-2 text-sm font-semibold text-primary">{category.price}</p>
                 <p className="mt-1 flex-1 text-sm leading-6 text-muted-foreground">{category.description}</p>
                 <Button asChild variant="outline" size="sm" className="mt-4 w-full">
-                  <Link href="/products" aria-label={`${category.cta} ${category.title}`}>
+                  <Link href={category.href} aria-label={`${category.cta} ${category.title}`}>
                     {category.cta}
                   </Link>
                 </Button>
@@ -359,15 +365,15 @@ function CategorySection() {
 }
 
 function FeaturedProductsSection() {
-  const products = FEATURED_PRODUCTS.slice(0, 6);
+  const products = FEATURED_PRODUCTS.slice(0, 4);
 
   return (
     <section id="featured" className="bg-white py-14 sm:py-20 lg:py-24">
       <Container>
         <SectionTitle
-          eyebrow="Sản phẩm bán chạy"
-          title="Những mẫu móc khóa len được hỏi nhiều"
-          description="Card sản phẩm giữ ngắn gọn để bạn xem nhanh mẫu, giá và liên hệ shop khi cần chọn màu hoặc đặt số lượng."
+          eyebrow="Sản phẩm nổi bật"
+          title="Một số mẫu móc khóa len đang được ưu tiên hiển thị"
+          description="Giữ danh sách ngắn để khách xem nhanh mẫu, giá và chọn đúng nhóm trước khi nhắn shop tư vấn."
         />
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -84,6 +84,16 @@ const PRODUCT_GROUP_DESCRIPTIONS: Record<ProductGroup, string> = {
   plush: "Thú bông len hợp làm quà handmade mềm mại, có thể chọn màu và trao đổi chi tiết trước khi làm.",
 };
 
+const MINI_MAIN_PRODUCT_SLUG = "set-moc-khoa-len-6-mau-qua-tang";
+
+const MINI_COMBO_GUIDE = {
+  title: "Sản phẩm chính: Combo 3 móc khóa len Mini",
+  description:
+    "Phù hợp khi bạn muốn chọn một set quà nhỏ, dễ chia cho bạn bè hoặc dùng làm phụ kiện treo chìa khóa, balo, túi mini.",
+  suggestions: ["Cún con", "Mèo", "Thỏ", "Cừu"],
+  colors: ["Xanh lá", "Đỏ", "Hồng"],
+};
+
 const PRODUCT_TRUST_ITEMS = [
   "Handmade theo từng đơn",
   "Có thể chọn màu",
@@ -144,6 +154,10 @@ function getGroupSectionId(group: ProductGroup) {
 }
 
 function getProductsByGroup(group: ProductGroup) {
+  if (group === "mini") {
+    return PRODUCTS.filter((product) => product.slug === MINI_MAIN_PRODUCT_SLUG);
+  }
+
   return PRODUCTS.filter((product) => getProductGroup(product) === group);
 }
 
@@ -410,6 +424,51 @@ export default function ProductsPage() {
                       {products.length > 0 ? `${products.length} mẫu` : "Đang cập nhật"}
                     </p>
                   </div>
+
+                  {category.id === "mini" ? (
+                    <div className="mb-6 rounded-xl border border-primary/15 bg-rose-50/70 p-4 shadow-sm sm:p-5">
+                      <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:items-start">
+                        <div>
+                          <p className="font-display text-sm font-semibold text-primary">
+                            {MINI_COMBO_GUIDE.title}
+                          </p>
+                          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                            {MINI_COMBO_GUIDE.description}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-wider text-foreground/70">
+                            Gợi ý mẫu
+                          </p>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {MINI_COMBO_GUIDE.suggestions.map((item) => (
+                              <span
+                                key={item}
+                                className="rounded-full border border-border/70 bg-white/80 px-3 py-1 text-sm text-muted-foreground"
+                              >
+                                {item}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-wider text-foreground/70">
+                            Màu gợi ý
+                          </p>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {MINI_COMBO_GUIDE.colors.map((item) => (
+                              <span
+                                key={item}
+                                className="rounded-full border border-border/70 bg-white/80 px-3 py-1 text-sm text-muted-foreground"
+                              >
+                                {item}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
 
                   {products.length > 0 ? (
                     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
