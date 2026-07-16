@@ -105,7 +105,12 @@ const CATEGORY_IMAGES = [
     width: 900,
     height: 900,
   },
-  null,
+  {
+    src: "/images/products/moc-khoa-size-l/moc-khoa-size-l-12cm-cover.jpg",
+    alt: "Móc khóa len Size L handmade cao 12 cm của LyliShop",
+    width: 1280,
+    height: 853,
+  },
   {
     src: "/images/categories/hoa-len.webp",
     alt: "Bó hoa len handmade nhiều màu",

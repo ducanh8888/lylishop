@@ -171,6 +171,13 @@ const SIZE_M_ORDER_OPTIONS: ProductOrderOptionInput[] = [
   { label: "Đặt theo yêu cầu" },
 ];
 
+const SIZE_L_ORDER_OPTIONS: ProductOrderOptionInput[] = [
+  { label: "Thỏ hồng Size L", priceVnd: 69000 },
+  { label: "Gà vàng Size L", priceVnd: 69000 },
+  { label: "Vịt dưa hấu Size L", priceVnd: 69000 },
+  { label: "Đặt theo yêu cầu" },
+];
+
 function formatPriceText(price: number) {
   return `${price.toLocaleString("vi-VN")}đ`;
 }
@@ -809,6 +816,47 @@ const PRODUCT_DATA: ProductData[] = [
       }
     ],
     highlights: ["Đồng giá từ 45k", "Hợp đặt số lượng", "10 mẫu mix dễ chọn"],
+  },
+  {
+    slug: "moc-khoa-len-size-l-handmade",
+    name: "Móc khóa len Size L 12cm",
+    detailHeading: "Móc khóa len Size L Handmade",
+    category: "Móc khóa len Size L",
+    tags: ["móc khóa len size-l", "móc khóa len size L", "treo balo", "quà handmade"],
+    priceVnd: 69000,
+    shortDescription:
+      "Móc khóa len Size L được làm thủ công từ len Milk Cotton, phù hợp khi bạn muốn phụ kiện nổi bật hơn để treo balo, túi xách hoặc làm quà tặng. Mẫu ảnh đang có các form thỏ hồng, gà vàng và vịt dưa hấu với kích thước tham khảo ngang 5cm, cao 12cm. LyliShop nhận trao đổi màu và chi tiết trước khi làm.",
+    longDescription: productDescription("Móc khóa len Size L handmade", [
+      "Size L phù hợp khi bạn muốn móc khóa nhìn rõ hơn trên balo, túi tote hoặc túi lớn.",
+      "Ảnh chính đang thể hiện ba mẫu tham khảo gồm thỏ hồng, gà vàng và vịt dưa hấu.",
+      "Kích thước trong ảnh là ngang 5cm và cao 12cm, phù hợp để khách dễ hình dung trước khi đặt.",
+      "Có thể trao đổi màu, form nhân vật hoặc gửi ảnh tham khảo để LyliShop kiểm tra khả năng thực hiện.",
+      "Shop xác nhận mẫu, màu, khoen treo và thời gian hoàn thiện qua tin nhắn trước khi bắt đầu làm.",
+    ]),
+    metaDescription:
+      "Móc khóa len Size L handmade cao 12cm tại LyliShop, phù hợp treo balo, túi xách và nhận chọn màu theo yêu cầu.",
+    material: DEFAULT_MATERIAL,
+    orderOptions: SIZE_L_ORDER_OPTIONS,
+    information: {
+      size: "Size L: ngang 5 cm, cao 12 cm theo mẫu ảnh",
+      colors: "Hồng, vàng, xanh lá, đỏ hoặc phối theo yêu cầu",
+    },
+    benefits: ["Kích thước nổi bật hơn khi treo balo hoặc túi lớn", ...DEFAULT_BENEFITS],
+    image: {
+      src: "/images/products/moc-khoa-size-l/moc-khoa-size-l-12cm-cover.jpg",
+      alt: "Móc khóa len Size L handmade cao 12 cm của LyliShop",
+      width: 1280,
+      height: 853,
+    },
+    images: [
+      {
+        src: "/images/products/moc-khoa-size-l/moc-khoa-size-l-12cm-cover.jpg",
+        alt: "Móc khóa len Size L handmade cao 12 cm của LyliShop",
+        width: 1280,
+        height: 853,
+      }
+    ],
+    highlights: ["Size L 12cm", "Nổi bật khi treo balo", "Có thể chọn màu"],
   },
 ];
 
