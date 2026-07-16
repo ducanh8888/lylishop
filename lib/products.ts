@@ -854,6 +854,30 @@ const PRODUCT_DATA: ProductData[] = [
         alt: "Móc khóa len Size L handmade cao 12 cm của LyliShop",
         width: 1280,
         height: 853,
+      },
+      {
+        src: "/images/products/moc-khoa-size-l/moc-khoa-size-l-tho-hong.jpg",
+        alt: "Móc khóa len Size L hình thỏ hồng handmade của LyliShop",
+        width: 1280,
+        height: 1280,
+      },
+      {
+        src: "/images/products/moc-khoa-size-l/moc-khoa-size-l-ga-vang.jpg",
+        alt: "Móc khóa len Size L hình gà vàng handmade của LyliShop",
+        width: 1280,
+        height: 1280,
+      },
+      {
+        src: "/images/products/moc-khoa-size-l/moc-khoa-size-l-vit-dua-hau.jpg",
+        alt: "Móc khóa len Size L hình vịt dưa hấu handmade của LyliShop",
+        width: 1280,
+        height: 1280,
+      },
+      {
+        src: "/images/products/moc-khoa-size-l/moc-khoa-size-l-treo-balo.jpg",
+        alt: "Móc khóa len Size L hình gà vàng treo balo của LyliShop",
+        width: 960,
+        height: 1280,
       }
     ],
     highlights: ["Size L 12cm", "Nổi bật khi treo balo", "Có thể chọn màu"],
