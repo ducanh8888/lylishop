@@ -16,6 +16,7 @@ import { Container } from "@/components/Container";
 import { JsonLd } from "@/components/JsonLd";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { HomepageAboutSection } from "@/components/sections/HomepageAboutSection";
+import { MiniComboOptions } from "@/components/sections/MiniComboOptions";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { formatVnd } from "@/lib/format";
@@ -354,11 +355,15 @@ function CategorySection() {
                 <h3 className="font-display text-base font-semibold leading-snug tracking-tight">{category.title}</h3>
                 <p className="mt-2 text-sm font-semibold text-primary">{category.price}</p>
                 <p className="mt-1 flex-1 text-sm leading-6 text-muted-foreground">{category.description}</p>
-                <Button asChild variant="outline" size="sm" className="mt-4 w-full">
-                  <Link href={category.href} aria-label={`${category.cta} ${category.title}`}>
-                    {category.cta}
-                  </Link>
-                </Button>
+                {category.title === "Mini" ? (
+                  <MiniComboOptions />
+                ) : (
+                  <Button asChild variant="outline" size="sm" className="mt-4 w-full">
+                    <Link href={category.href} aria-label={`${category.cta} ${category.title}`}>
+                      {category.cta}
+                    </Link>
+                  </Button>
+                )}
               </div>
             </Card>
             );
